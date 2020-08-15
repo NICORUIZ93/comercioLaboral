@@ -12,7 +12,9 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
 
-      this.hasOne(models.Rol)
+      this.belongsTo(models.Rol, {
+        foreignKey: "IdRol"
+      });
     }
   };
   Usuario.init({
@@ -24,7 +26,10 @@ module.exports = (sequelize, DataTypes) => {
     direccion: DataTypes.STRING,
     contrasena: DataTypes.STRING,
     username: DataTypes.STRING,
-    IdRol: DataTypes.INTEGER
+    IdRol: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    }
   }, {
     sequelize,
     modelName: 'Usuario',

@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -8,13 +8,12 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-
-    await queryInterface.addConstraint("Usuarios", {
-      fields: ["IdRol"],
+    await queryInterface.addConstraint("Productos", {
+      fields: ["IdCategoria"],
       type: "foreign key",
-      name: "Usuarios_IdRol_Roles_fk",
+      name: 'Productos_IdCategoria_categorias_fk',
       references: {
-        table: "Roles",
+        table: "Categoria",
         field: "id",
       },
       onDelete: "cascade",
@@ -29,7 +28,6 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-
-     await queryInterface.removeConstraint("Usuarios","Usuarios_IdRol_Roles_fk");
-  } 
+    await queryInterface.removeConstraint("Usuarios","Productos_IdCategoria_categoria_fk");
+  }
 };

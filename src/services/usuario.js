@@ -1,11 +1,12 @@
 const bcrypt = require("bcrypt");
 const Usuario = require("../db/models").Usuario;
+const Rol = require("../db/models").Rol;
 
 const service = {
   async obtenerUsuarios() {
     try {
 
-      const usuarios = await Usuario.findAll({ raw: true } );
+      const usuarios = await Usuario.findAll({ raw: false, include: [Rol] } );
 
       return usuarios.map(u => {
         delete u.contrasena;

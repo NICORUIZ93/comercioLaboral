@@ -21,7 +21,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       telefono: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
       },
       direccion: {
         type: Sequelize.STRING
@@ -33,7 +33,8 @@ module.exports = {
         type: Sequelize.STRING
       },
       IdRol: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,

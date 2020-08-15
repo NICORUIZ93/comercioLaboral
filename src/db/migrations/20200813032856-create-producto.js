@@ -12,10 +12,8 @@ module.exports = {
         type: Sequelize.STRING
       },
       IdCategoria: {
-        type: Sequelize.INTEGER
-      },
-      categoria: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER,
+        allowNull: false
       },
       valor: {
         type: Sequelize.DECIMAL

@@ -11,6 +11,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.belongsTo(models.Categoria, {
+        foreignKey: "IdCategoria"
+      });
+      /*
+      this.belongsTo(models.Recurso, {
+        foreignKey: "IdRecurso"
+      });
+      */
     }
   };
   Producto.init({
