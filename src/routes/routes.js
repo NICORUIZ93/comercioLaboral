@@ -8,8 +8,11 @@ module.exports = app => {
     })
   })
 
+  //Rutas usuarios
   app.post("/api/login", auth.Login)
   app.get("/api/usuarios", auth.VerificarToken, usuarioController.obtenerUsuarios)
   app.post("/api/usuario",  usuarioController.crearUsuario)
+  app.put("/api/usuario",  auth.VerificarToken, usuarioController.actualizarUsuario)
+  app.delete("/api/usuario/:id",  auth.VerificarToken, usuarioController.eliminarUsuario)
 
 }
