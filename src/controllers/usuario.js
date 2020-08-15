@@ -40,7 +40,8 @@ module.exports = {
   async eliminarUsuario(req, res) {
     try {
 
-      const nuevoUsuario = await usuarioService.eliminarUsuario(req.body);
+      const idUsuario = req.params.id;
+      const nuevoUsuario = await usuarioService.eliminarUsuario(idUsuario);
 
       return res.status(200).json(nuevoUsuario);
 
@@ -49,7 +50,6 @@ module.exports = {
       return res.status(500).send(e);
     }
   }
-
 
 
 };
