@@ -1,4 +1,5 @@
 const usuarioController = require("../controllers/usuario")
+const cargarArchivosController = require("../controllers/cargarArchivos")
 const auth = require("../services/auth");
 
 module.exports = app => {
@@ -7,6 +8,9 @@ module.exports = app => {
       data: "Api MultiStore v1",
     })
   })
+  
+  //Ruta cargue de archivos
+  app.post("/api/archivos", cargarArchivosController.cargarArchivos)
 
   //Rutas usuarios
   app.post("/api/login", auth.Login)

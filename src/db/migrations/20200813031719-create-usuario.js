@@ -32,6 +32,9 @@ module.exports = {
       username: {
         type: Sequelize.STRING
       },
+      esMayorista: {
+        type: Sequelize.BOOLEAN
+      },
       IdRol: {
         type: Sequelize.INTEGER,
         allowNull: false

@@ -26,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     direccion: DataTypes.STRING,
     contrasena: DataTypes.STRING,
     username: DataTypes.STRING,
+    esMayorista: DataTypes.BOOLEAN,
     IdRol: {
       type: DataTypes.INTEGER,
       allowNull: false
