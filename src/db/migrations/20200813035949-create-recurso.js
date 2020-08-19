@@ -11,7 +11,10 @@ module.exports = {
       nombre: {
         type: Sequelize.STRING
       },
-      url: {
+      key: {
+        type: Sequelize.STRING
+      },
+      extension: {
         type: Sequelize.STRING
       },
       prioridad: {

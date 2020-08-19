@@ -19,6 +19,10 @@ module.exports = (sequelize, DataTypes) => {
     telefono: DataTypes.INTEGER,
     descripcion: DataTypes.STRING,
     IdRecurso: DataTypes.INTEGER,
+    banco: DataTypes.STRING,
+    numeroCuenta: DataTypes.STRING,
+    tipoCuenta: DataTypes.STRING,
+    maxFotos: DataTypes.INTEGER,
     estado: DataTypes.BOOLEAN
   }, {
     sequelize,

@@ -20,11 +20,23 @@ module.exports = {
       descripcion: {
         type: Sequelize.STRING
       },
-      IdRecurso: {
+      cantidad: {
         type: Sequelize.INTEGER
+      },
+      banco: {
+        type: Sequelize.STRING
+      },
+      numeroCuenta: {
+        type: Sequelize.STRING
+      },
+      tipoCuenta: {
+        type: Sequelize.STRING
       },
       estado: {
         type: Sequelize.BOOLEAN
+      },
+      maxFotos: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

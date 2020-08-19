@@ -1,30 +1,17 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Productos', {
+    await queryInterface.createTable('RolFuncionalidad', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      nombre: {
-        type: Sequelize.STRING
-      },
-      IdCategoria: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-      },
-      valor: {
-        type: Sequelize.DECIMAL
-      },
-      IdRecurso: {
+      IdRol: {
         type: Sequelize.INTEGER
       },
-      estado: {
-        type: Sequelize.BOOLEAN
-      },
-      maxFotos: {
+      IdFuncionalidad: {
         type: Sequelize.INTEGER
       },
       createdAt: {
@@ -36,8 +23,10 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
+
+    
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Productos');
+    await queryInterface.dropTable('RolFuncionalidad');
   }
 };

@@ -14,6 +14,9 @@ module.exports = {
       IdProducto: {
         type: Sequelize.INTEGER
       },
+      stock: {
+        type: Sequelize.INTEGER
+      },
       estado: {
         type: Sequelize.BOOLEAN
       },

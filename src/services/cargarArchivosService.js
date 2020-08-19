@@ -22,7 +22,6 @@ const uploadS3 = multer({
   }),
 }).array("archivos", 5);
 
-
 const service = {
   async cargarArchivosS3(req, res) {
     try {
@@ -37,24 +36,25 @@ const service = {
           message: "Error: No File Selected",
         });
       } else {
-
         let fileArray = req.files,
-          fileLocation;
+          key,
+          fileExtension,
+          filename;
         const images = [];
         for (let i = 0; i < fileArray.length; i++) {
-          fileLocation = fileArray[i].location;
-          console.log("filenm", fileLocation);
-          images.push(fileLocation);
+          key = fileArray[i].key;
+          filename = fileArray[i].originalname;
+          fileExtension = filename.split(".").pop();
+          images.push({ key: key, extension: fileExtension, name: filename });
         }
 
         return {
           status: "ok",
-          filesArray: fileArray,
-          locationArray: images,
+          recursos: images,
         };
       }
     } catch (error) {
-      return `Error ${error}`;
+      return `status: ${error.status}, Mensaje: ${error.message}`;
     }
   },
 };
