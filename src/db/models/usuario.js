@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
         otherKey: "IdProducto",
       });
 
-      this.hasMany(models.Pedido, { foreignKey: "IdTienda" });
+      //this.hasMany(models.Pedido, { foreignKey: "IdTienda" });
 
       this.belongsToMany(models.Tienda, {
         through: models.Pedido,
@@ -36,7 +36,10 @@ module.exports = (sequelize, DataTypes) => {
   Usuario.init({
     nombre: DataTypes.STRING,
     apellido: DataTypes.STRING,
-    correo: DataTypes.STRING,
+    correo: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     dni: DataTypes.STRING,
     telefono: DataTypes.INTEGER,
     direccion: DataTypes.STRING,

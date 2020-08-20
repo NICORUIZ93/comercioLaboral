@@ -17,10 +17,11 @@ module.exports = (sequelize, DataTypes) => {
         otherKey: "IdProducto",
       });
 
+      /*
       this.belongsTo(models.Tienda, {
         foreignKey: "IdTienda"
       });
-      
+      */
     }
   };
   Pedido.init({

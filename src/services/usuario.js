@@ -9,8 +9,8 @@ const service = {
       const usuarios = await Usuario.findAll({ raw: false, include: [Rol] } );
 
       return usuarios.map(u => {
-        delete u.contrasena;
-        return u;
+        const { contrasena, ...usuarioSinContrasena } = u;
+        return usuarioSinContrasena;
       });
 
     } catch (error) {
@@ -21,9 +21,10 @@ const service = {
     try {
 
       const usuario = (await Usuario.findByPk(idUsuario)).get({plain:true});
-      delete usuario.contrasena;
 
-      return usuario;
+      const { contrasena, ...usuarioSinContrasena } = usuario;
+
+      return usuarioSinContrasena;
 
     } catch (error) {
         return `Error ${error}`;
@@ -37,9 +38,9 @@ const service = {
 
       const resultadocreate = (await Usuario.create(usuario)).get({plain:true});
 
-      delete resultadocreate.contrasena;
+      const { contrasena, ...usuarioSinContrasena } = resultadocreate;
 
-      return resultadocreate;
+      return usuarioSinContrasena;
 
     } catch (error) {
       return `Error ${error}`;
