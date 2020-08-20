@@ -42,6 +42,9 @@ module.exports = {
         include: [Rol],
       });
 
+      if(!usuario)
+        throw Error("Usuario no existe");
+
       const rol = usuario.Rol.nombre;
       const token = generarToken(username, rol);
 
