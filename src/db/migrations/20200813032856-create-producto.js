@@ -18,9 +18,6 @@ module.exports = {
       valor: {
         type: Sequelize.DECIMAL
       },
-      IdRecurso: {
-        type: Sequelize.INTEGER
-      },
       estado: {
         type: Sequelize.BOOLEAN
       },
