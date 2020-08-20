@@ -27,6 +27,12 @@ module.exports = (sequelize, DataTypes) => {
 
       this.hasMany(models.Pedido, { foreignKey: "IdTienda" });
 
+      this.belongsToMany(models.Usuario, {
+        through: models.Pedido,
+        foreignKey: "IdTienda",
+        otherKey: "IdUsuario",
+      });
+
     }
   };
   Tienda.init({
