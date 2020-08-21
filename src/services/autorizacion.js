@@ -11,6 +11,7 @@ const jwtExpirySeconds = 60 * 15;
 
 module.exports = {
    autorizar(roles = []) {
+     
     if (typeof roles === "string") {
       roles = [roles];
     }

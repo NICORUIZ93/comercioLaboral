@@ -3,6 +3,7 @@ const express = require('express')
 const helmet = require('helmet')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const errorHandler = require('../src/helpers/error-handler');
 
 const app = express()
 
@@ -13,7 +14,7 @@ app.use(cors())
 
 require("../src/routes/routes")(app)
 
-app.get('/', (req, res) => res.json({ message: 'Hello World' }))
+app.use(errorHandler);
 
 
 app.listen(config.PORT, config.HOST, function () {

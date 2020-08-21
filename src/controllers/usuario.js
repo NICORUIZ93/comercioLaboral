@@ -12,7 +12,7 @@ module.exports = {
   },
   async obtenerUsuario(req, res) {
     try {
-      const idUsuario = req.params.idUsuario;
+      const idUsuario = req.params.id;
       const usuario = await usuarioService.obtenerUsuario(idUsuario);
 
       return res.status(200).json(usuario);

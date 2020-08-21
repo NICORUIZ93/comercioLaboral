@@ -9,9 +9,11 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       IdTienda: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       IdProducto: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       stock: {

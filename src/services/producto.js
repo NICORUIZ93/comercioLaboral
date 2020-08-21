@@ -1,4 +1,6 @@
 const Producto = require("../db/models").Producto;
+const TiendaProducto = require("../db/models").TiendaProducto;
+var sequelize = require('../db/models').sequelize;
 
 const service = {
   async obtenerProductos() {
@@ -23,12 +25,20 @@ const service = {
         return `Error ${error}`;
     }
   },
-  async crearProducto(nuevoProducto) {
+  async crearProducto(idTienda, nuevoProducto) {
     try {
-             
-      const resultadocreate = (await Producto.create(nuevoProducto)).get({plain:true});
 
-      return resultadocreate;
+      const result = await sequelize.transaction(async (t) => {
+
+        const resultadocreate = await Producto.create(nuevoProducto, { transaction: t });
+    
+        await TiendaProducto.create({ IdTienda: idTienda, IdProducto: resultadocreate.id, stock: resultadocreate.cantidad }, { transaction: t });
+
+        return resultadocreate;
+    
+      });
+     
+      return result;
 
     } catch (error) {
       return `Error ${error}`;

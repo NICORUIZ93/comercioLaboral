@@ -12,7 +12,7 @@ module.exports = {
   },
   async obtenerTienda(req, res) {
     try {
-      const idTienda  = req.params.idTienda;
+      const idTienda  = req.params.id;
 
       const tiendas = await tiendaService.obtenerTienda(idTienda);
       return res.status(200).json(tiendas);
