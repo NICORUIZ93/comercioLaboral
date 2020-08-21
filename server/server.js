@@ -12,6 +12,8 @@ app.use(express.json())
 app.use(helmet())
 app.use(cors())
 
+console.log('env variable 1' + process.env.JWT_SECRET);
+
 require("../src/routes/routes")(app)
 
 app.use(errorHandler);
