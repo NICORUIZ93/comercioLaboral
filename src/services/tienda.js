@@ -13,6 +13,7 @@ const service = {
         return `Error ${error}`;
     }
   },
+  
   async obtenerTienda(idTienda) {
     try {
 

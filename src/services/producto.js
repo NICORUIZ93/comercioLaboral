@@ -1,43 +1,32 @@
-const bcrypt = require("bcrypt");
-const Usuario = require("../db/models").Usuario;
-const Rol = require("../db/models").Rol;
+const Producto = require("../db/models").Producto;
 
 const service = {
-  async obtenerUsuarios() {
+  async obtenerProductos() {
     try {
 
-      const usuarios = await Usuario.findAll({ raw: false, include: [Rol] } );
+      const productos = await Producto.findAll();
 
-      return usuarios.map(u => {
-        delete u.contrasena;
-        return u;
-      });
+      return productos;
 
     } catch (error) {
         return `Error ${error}`;
     }
   },
-  async obtenerUsuario(idUsuario) {
+  async obtenerProducto(idProducto) {
     try {
 
-      const usuario = (await Usuario.findByPk(idUsuario)).get({plain:true});
-      delete usuario.contrasena;
-
-      return usuario;
+      const producto = (await Producto.findByPk(idProducto)).get({plain:true});
+  
+      return producto;
 
     } catch (error) {
         return `Error ${error}`;
     }
   },
-  async crearUsuario(nuevoUsuario) {
+  async crearProducto(nuevoProducto) {
     try {
              
-      let usuario = {...nuevoUsuario};
-      usuario.contrasena = bcrypt.hashSync(nuevoUsuario.contrasena, 10);
-
-      const resultadocreate = (await Usuario.create(usuario)).get({plain:true});
-
-      delete resultadocreate.contrasena;
+      const resultadocreate = (await Producto.create(nuevoProducto)).get({plain:true});
 
       return resultadocreate;
 
@@ -45,12 +34,12 @@ const service = {
       return `Error ${error}`;
     }
   },
-  async actualizarUsuario(usuario) {
+  async actualizarProducto(producto) {
     try {
              
-    const resultadoUpdate = (await Usuario.update(usuario, {
+    const resultadoUpdate = (await Producto.update(producto, {
         where: {
-          id: usuario.id
+          id: producto.id
         }
       }));
 
@@ -60,12 +49,12 @@ const service = {
       return `Error ${error}`;
     }
   },
-  async eliminarUsuario(idUsuario) {
+  async eliminarProducto(idProducto) {
     try {
              
-    const resultadoDestroy = (await Usuario.destroy({
+    const resultadoDestroy = (await Producto.destroy({
         where: {
-          id: idUsuario
+          id: idProducto
         }
       }));
 
@@ -78,4 +67,4 @@ const service = {
   
 }
 
-module.exports.usuarioService = service;
+module.exports.productoService = service;

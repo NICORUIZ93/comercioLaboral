@@ -10,7 +10,16 @@ module.exports = {
       res.status(500).send(e);
     }
   },
+  async obtenerUsuario(req, res) {
+    try {
+      const idUsuario = req.params.idUsuario;
+      const usuario = await usuarioService.obtenerUsuario(idUsuario);
 
+      return res.status(200).json(usuario);
+    } catch (e) {
+      res.status(500).send(e);
+    }
+  },
   async crearUsuario(req, res) {
     try {
 
