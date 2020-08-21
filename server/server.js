@@ -18,6 +18,7 @@ require("../src/routes/routes")(app)
 
 app.use(errorHandler);
 
+console.log('hos variable' + process.env.HOST);
 
 app.listen(config.PORT, config.HOST, function () {
     console.log(`App listening on http://${config.HOST}:${config.PORT}`);
