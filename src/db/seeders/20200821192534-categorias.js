@@ -2,11 +2,9 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-       
-    queryInterface.bulkInsert(
-      "Categorias",
-      [
-        {
+
+      Example:
+      await queryInterface.bulkInsert('Categorias', [{       
           id:1,
           nombre: "Hogar",
           estado: true,
@@ -203,13 +201,11 @@ module.exports = {
           estado: true,
           createdAt: new Date(),
           updatedAt: new Date(),
-        },
-      ],
-      {}
-    );
+        }], {});
+    
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete("Categorias", null, {});
+     await queryInterface.bulkDelete('Categorias', null, {});    
   }
 };

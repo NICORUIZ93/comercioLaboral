@@ -23,8 +23,8 @@ module.exports = {
   async crearProducto(req, res) {
     try {
 
-      const { idTienda, ...producto } = req.body;
-      const nuevoProducto = await productoService.crearProducto(idTienda, producto);
+      const { IdTienda, ...producto } = req.body;
+      const nuevoProducto = await productoService.crearProducto(IdTienda, producto);
 
       return res.status(200).json(nuevoProducto);
 
