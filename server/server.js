@@ -20,7 +20,6 @@ app.use(errorHandler);
 
 console.log('hos variable' + process.env.HOST);
 
-app.listen(config.PORT, config.HOST, function () {
-    console.log(`App listening on http://${config.HOST}:${config.PORT}`);
-  });
-  
+app.listen(config.PORT, function () {
+    console.log(`App listening on port:${config.PORT}`);
+});
