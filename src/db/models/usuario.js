@@ -41,9 +41,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     dni: DataTypes.STRING,
-    telefono: DataTypes.INTEGER,
+    telefono: DataTypes.BIGINT,
     direccion: DataTypes.STRING,
     contrasena: DataTypes.STRING,
+    confirmarContrasena: DataTypes.STRING,
     username: DataTypes.STRING,
     esMayorista: DataTypes.BOOLEAN,
     IdRol: {

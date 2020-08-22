@@ -3,7 +3,8 @@ const productoController = require("../controllers/producto");
 const tiendaController = require("../controllers/tienda")
 const cargarArchivosController = require("../controllers/cargarArchivos")
 const autorizacion = require("../services/autorizacion");
-const Rol = require('../helpers/roles');
+const Rol = require('../constants/roles');
+const validadorUsuario = require("../helpers/validadores_request/usuario/crearUsuarioSchema");
 
 
 module.exports = app => {
@@ -22,7 +23,7 @@ module.exports = app => {
   //Rutas Usuarios
   app.get("/api/usuarios", autorizacion.autorizar(Rol.Administrador), usuarioController.obtenerUsuarios)
   app.get("/api/usuario/:id", autorizacion.autorizar(Rol.Administrador), usuarioController.obtenerUsuario)
-  app.post("/api/usuario", usuarioController.crearUsuario)
+  app.post("/api/usuario", validadorUsuario.crearUsuarioSchema, usuarioController.crearUsuario)
   app.put("/api/usuario", autorizacion.autorizar(Rol.Administrador), usuarioController.actualizarUsuario)
   app.delete("/api/usuario/:id", autorizacion.autorizar(Rol.Administrador), usuarioController.eliminarUsuario)
 

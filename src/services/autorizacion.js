@@ -4,7 +4,7 @@ const Usuario = require("../db/models").Usuario;
 const Rol = require("../db/models").Rol;
 const { Op } = require("sequelize");
 const jwtExpress = require("express-jwt");
-const _Rol = require('../helpers/roles');
+const _Rol = require('../constants/roles');
 
 const _jwtSecret = process.env.JWT_SECRET;
 const jwtExpirySeconds = 60 * 15;

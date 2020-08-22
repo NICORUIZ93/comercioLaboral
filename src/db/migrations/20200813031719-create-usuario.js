@@ -28,6 +28,9 @@ module.exports = {
       direccion: {
         type: Sequelize.STRING
       },
+      confirmarContrasena: {
+        type: Sequelize.STRING
+      },
       contrasena: {
         type: Sequelize.STRING
       },
