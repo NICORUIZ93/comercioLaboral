@@ -26,7 +26,9 @@ module.exports = {
         (await usuarioService.obtenerUsuarioPorParametros([
           { username: req.body.username },
           { correo: req.body.correo },
-        ])) != undefined;
+        ]));
+
+        console.log(existeElUsuario);
 
       if (existeElUsuario) {
         throw Error("El usuario ya existe");
