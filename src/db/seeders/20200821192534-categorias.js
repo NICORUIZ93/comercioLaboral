@@ -3,8 +3,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
 
-      Example:
-      await queryInterface.bulkInsert('Categorias', [{       
+       queryInterface.bulkInsert('Categorias', [{       
           id:1,
           nombre: "Hogar",
           estado: true,
