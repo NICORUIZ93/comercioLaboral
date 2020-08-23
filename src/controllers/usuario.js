@@ -1,4 +1,5 @@
 const { usuarioService } = require("../services/usuario");
+const Rol = require("../constants/roles");
 
 module.exports = {
   async obtenerUsuarios(req, res) {
@@ -23,12 +24,16 @@ module.exports = {
     try {
       const existeElUsuario =
         (await usuarioService.obtenerUsuarioPorParametros([
-          { username: req.username },
-          { correo: req.correo },
+          { username: req.body.username },
+          { correo: req.body.correo },
         ])) !== null;
 
       if (existeElUsuario) {
         throw Error("El usuario ya existe");
+      }
+
+      if(req.body.IdRol === Rol.AdministradorID){
+        throw Error("Rol invalido");
       }
 
       const nuevoUsuario = await usuarioService.crearUsuario(req.body);

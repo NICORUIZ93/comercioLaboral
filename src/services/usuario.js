@@ -30,8 +30,10 @@ const service = {
   async crearUsuario(nuevoUsuario) {
     try {
       let usuario = { ...nuevoUsuario };
-      usuario.contrasena = bcrypt.hashSync(nuevoUsuario.contrasena, 10);
-
+      
+      if (nuevoUsuario.contrasena) {
+        usuario.contrasena = bcrypt.hashSync(nuevoUsuario.contrasena, 10);
+      }
       const resultadocreate = (await Usuario.create(usuario)).get({
         plain: true,
       });
