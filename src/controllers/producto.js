@@ -13,7 +13,7 @@ module.exports = {
   async obtenerProducto(req, res) {
     try {
       const idProducto = req.params.id;
-      const producto = await usuarioService.obtenerProducto(idProducto);
+      const producto = await productoService.obtenerProducto(idProducto);
       
       return res.status(200).json(producto);
     } catch (e) {
