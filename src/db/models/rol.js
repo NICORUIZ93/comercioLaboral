@@ -26,7 +26,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "Rol"
+      modelName: "Rol",
+      name: {
+        singular: 'Rol',
+        plural: 'Roles',
+      }
     }
   );
   return Rol;
