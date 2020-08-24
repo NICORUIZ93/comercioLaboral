@@ -1,5 +1,6 @@
 const Producto = require("../db/models").Producto;
 const TiendaProducto = require("../db/models").TiendaProducto;
+const Categoria = require("../db/models").Categoria;
 var sequelize = require('../db/models').sequelize;
 
 const service = {
@@ -17,7 +18,7 @@ const service = {
   async obtenerProducto(idProducto) {
     try {
 
-      const producto = (await Producto.findByPk(idProducto)).get({plain:true});
+      const producto = (await Producto.findByPk(idProducto, { include: [Categoria] })).get({plain:true});
   
       return producto;
 
