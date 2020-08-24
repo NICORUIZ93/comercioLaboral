@@ -28,16 +28,16 @@ module.exports = app => {
   app.delete("/api/usuario/:id", autorizacion.autorizar(Rol.Administrador), usuarioController.eliminarUsuario)
 
   //Rutas Tiendas
-  app.get("/api/tiendas", autorizacion.autorizar([Rol.Comprador,Rol.Vendedor,Rol.Administrador]), tiendaController.obtenerTiendas)
-  app.get("/api/tienda/:id", autorizacion.autorizar([Rol.Comprador,Rol.Vendedor,Rol.Administrador]), tiendaController.obtenerTienda)
+  app.get("/api/tiendas", tiendaController.obtenerTiendas)
+  app.get("/api/tienda/:id", tiendaController.obtenerTienda)
   app.post("/api/tienda", autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]), tiendaController.crearTienda)
   app.put("/api/tienda", autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]), tiendaController.actualizarTienda)
   app.delete("/api/tienda/:id", autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]), tiendaController.eliminarTienda)
 
   //Rutas Productos
-  app.get("/api/productos", autorizacion.autorizar([Rol.Comprador,Rol.Vendedor,Rol.Administrador]), productoController.obtenerProductos)
-  app.get("/api/producto/:id", autorizacion.autorizar([Rol.Comprador,Rol.Vendedor,Rol.Administrador]), productoController.obtenerProducto)
-  app.post("/api/producto",  autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]), productoController.crearProducto)
+  app.get("/api/productos", productoController.obtenerProductos)
+  app.get("/api/producto/:id", productoController.obtenerProducto)
+  app.post("/api/producto", autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]), productoController.crearProducto)
   app.put("/api/producto", autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]), productoController.actualizarProducto)
   app.delete("/api/producto/:id", autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]), productoController.eliminarProducto)
 
