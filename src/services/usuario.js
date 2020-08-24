@@ -6,7 +6,7 @@ const { Op } = require("sequelize");
 const service = {
   async obtenerUsuarios() {
     try {
-      const usuarios = await Usuario.findAll({ include: [Rol] }).get({ plain: true });
+      const usuarios = await Usuario.findAll({ raw: false, include: [Rol] });
 
       return usuarios.map((u) => {
         const { contrasena, ...usuarioSinContrasena } = u;
