@@ -12,7 +12,9 @@ const service = {
         const { contrasena, ...usuarioSinContrasena } = u;
         return usuarioSinContrasena;
       });
+      
     } catch (error) {
+      console.log(error.message);
       return `Error ${error}`;
     }
   },

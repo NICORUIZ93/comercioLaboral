@@ -7,6 +7,7 @@ module.exports = {
       const usuarios = await usuarioService.obtenerUsuarios();
       return res.status(200).json(usuarios);
     } catch (e) {
+      console.log(e.message);
       res.status(500).send(e);
     }
   },
