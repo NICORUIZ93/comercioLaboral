@@ -46,6 +46,8 @@ module.exports = (sequelize, DataTypes) => {
     valor: DataTypes.DECIMAL,
     cantidad: DataTypes.INTEGER,
     maxFotos: DataTypes.INTEGER,
+    oferta: DataTypes.BOOLEAN,
+    valorOferta: DataTypes.DECIMAL,
     estado: DataTypes.BOOLEAN
   }, {
     sequelize,

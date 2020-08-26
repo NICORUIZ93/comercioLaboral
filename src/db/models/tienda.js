@@ -44,7 +44,10 @@ module.exports = (sequelize, DataTypes) => {
     numeroCuenta: DataTypes.STRING,
     tipoCuenta: DataTypes.STRING,
     maxFotos: DataTypes.INTEGER,
-    estado: DataTypes.BOOLEAN
+    estado: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
+    }
   }, {
     sequelize,
     modelName: 'Tienda',

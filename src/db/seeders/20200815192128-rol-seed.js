@@ -28,6 +28,14 @@ module.exports = {
       {}
     );
 
+    await queryInterface.sequelize.transaction(async (transaction) => {
+      const tableName = 'Roles';
+      const sequenceColumn = 'id';
+
+      const [[{ max }]] = await queryInterface.sequelize.query(`SELECT MAX("${sequenceColumn}") AS max FROM public."${tableName}";`, { transaction });
+      await queryInterface.sequelize.query(`ALTER SEQUENCE public."${tableName}_${sequenceColumn}_seq" RESTART WITH ${max + 1};`, { transaction });
+    });
+
   },
 
   down: async (queryInterface, Sequelize) => {

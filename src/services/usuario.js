@@ -6,12 +6,8 @@ const { Op } = require("sequelize");
 const service = {
   async obtenerUsuarios() {
     try {
-      const usuarios = await Usuario.findAll({ include: [Rol] });
-
-      return usuarios.map((u) => {
-        const { contrasena, ...usuarioSinContrasena } = u.dataValues;
-        return usuarioSinContrasena;
-      });
+      const usuarios = await Usuario.findAll({ attributes: { exclude: ['contrasena'] }, include: [Rol] });
+      return usuarios;
 
     } catch (error) {
       console.log(error.message);

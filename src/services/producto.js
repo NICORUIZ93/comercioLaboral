@@ -1,15 +1,20 @@
 const Producto = require("../db/models").Producto;
 const TiendaProducto = require("../db/models").TiendaProducto;
 const Categoria = require("../db/models").Categoria;
+const Tienda = require("../db/models").Tienda;
 var sequelize = require('../db/models').sequelize;
 
 const service = {
   async obtenerProductos() {
     try {
 
-      const productos = await Producto.findAll();
+      const productos = await Producto.findAll({ include: [Tienda] });
 
-      return productos;
+      return productos.map((p) => {
+        const { Tiendas, ...producto } = p.dataValues;
+        producto.Tienda = Tiendas[0];
+        return producto;
+      });
 
     } catch (error) {
         return `Error ${error}`;
