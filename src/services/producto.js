@@ -2,17 +2,19 @@ const Producto = require("../db/models").Producto;
 const TiendaProducto = require("../db/models").TiendaProducto;
 const Categoria = require("../db/models").Categoria;
 const Tienda = require("../db/models").Tienda;
+const Recurso = require("../db/models").Recurso;
 var sequelize = require('../db/models').sequelize;
 
 const service = {
   async obtenerProductos() {
     try {
 
-      const productos = await Producto.findAll({ include: [Tienda] });
+      const productos = await Producto.findAll({ include: [Tienda, Recurso] });
 
       return productos.map((p) => {
         const { Tiendas, ...producto } = p.dataValues;
-        producto.Tienda = Tiendas[0];
+        producto.IdTienda = Tiendas[0].id;
+        producto.NombreTienda = Tiendas[0].nombre;
         return producto;
       });
 
