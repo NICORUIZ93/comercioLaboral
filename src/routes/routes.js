@@ -60,9 +60,9 @@ module.exports = app => {
   app.delete("/api/categoria/:id", validadorEliminarCategoria, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ categoriaController.eliminarCategoria)
 
   //Rutas Mensajes
-  app.get("/api/mensaje/porIdTienda/:id", validadorObtenerMensaje, mensajeController.obtenerMensajesPorTienda)
-  app.get("/api/mensaje/porIdProducto/:id", validadorObtenerMensaje, mensajeController.obtenerMensajesPorProducto)
-  app.get("/api/mensaje/porIdMensaje/:id", validadorObtenerMensaje, mensajeController.obtenerMensajesPorId)
+  app.get("/api/mensajes/porIdTienda/:id", validadorObtenerMensaje, mensajeController.obtenerMensajesPorTienda)
+  app.get("/api/mensajes/porIdProducto/:id", validadorObtenerMensaje, mensajeController.obtenerMensajesPorProducto)
+  app.get("/api/mensajes/porIdMensaje/:id", validadorObtenerMensaje, mensajeController.obtenerMensajesPorId)
   app.post("/api/mensaje", validadorCrearMensaje, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ mensajeController.crearMensaje)
   app.delete("/api/mensaje/:id", validadorEliminarMensaje, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ mensajeController.eliminarMensaje)
 
