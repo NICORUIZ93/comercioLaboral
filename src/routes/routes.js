@@ -8,12 +8,14 @@ const cargarArchivosController = require("../controllers/cargarArchivos")
 const autorizacion = require("../services/autorizacion");
 const categoriaController = require("../controllers/categoria")
 const plataformaPagosController = require("../controllers/plataformaPagos")
+const mensajeController = require("../controllers/mensaje")
 
 //Validadores
 const { validadorCrearUsuario, validadorActualizarUsuario, validadorEliminarUsuario, validadorObtenerUsuario } = require("../helpers/validadores_request/usuario");
 const { validadorCrearProducto, validadorActualizarProducto, validadorEliminarProducto, validadorObtenerProducto } = require("../helpers/validadores_request/producto");
 const { validadorCrearTienda, validadorActualizarTienda, validadorEliminarTienda, validadorObtenerTienda } = require("../helpers/validadores_request/tienda");
 const { validadorCrearCategoria, validadorActualizarCategoria, validadorEliminarCategoria, validadorObtenerCategoria } = require("../helpers/validadores_request/categoria");
+const { validadorCrearMensaje, validadorObtenerMensaje, validadorEliminarMensaje } = require("../helpers/validadores_request/mensaje");
 
 
 module.exports = app => {
@@ -56,6 +58,13 @@ module.exports = app => {
   app.post("/api/categoria", validadorCrearCategoria, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ categoriaController.crearCategoria)
   app.put("/api/categoria", validadorActualizarCategoria, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ categoriaController.actualizarCategoria)
   app.delete("/api/categoria/:id", validadorEliminarCategoria, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ categoriaController.eliminarCategoria)
+
+  //Rutas Mensajes
+  app.get("/api/mensaje/porIdTienda/:id", validadorObtenerMensaje, mensajeController.obtenerMensajesPorTienda)
+  app.get("/api/mensaje/porIdProducto/:id", validadorObtenerMensaje, mensajeController.obtenerMensajesPorProducto)
+  app.get("/api/mensaje/porIdMensaje/:id", validadorObtenerMensaje, mensajeController.obtenerMensajesPorId)
+  app.post("/api/mensaje", validadorCrearMensaje, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ mensajeController.crearMensaje)
+  app.delete("/api/mensaje/:id", validadorEliminarMensaje, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ mensajeController.eliminarMensaje)
 
   //Rutas Plataforma de pagos
   app.get("/api/pago/bancos", /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ plataformaPagosController.obtenerBancos)
