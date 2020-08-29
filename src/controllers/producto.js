@@ -1,4 +1,5 @@
 const { productoService } = require( "../services/producto");
+const paginador = require("../helpers/paginacion/paginador");
 
 module.exports = {
 
@@ -6,6 +7,20 @@ module.exports = {
     try {
       const productos = await productoService.obtenerProductos();
       return res.status(200).json(productos);
+    } catch (e) {
+      res.status(500).send(e);
+    }
+  },
+  async obtenerProductosPaginado(req, res) {
+    try {
+
+      const { pagina, tamano } = req.query;
+      const { limit, offset } = paginador.obtenerPaginacion(pagina, tamano);
+
+      const productos = await productoService.obtenerProductosPaginado(pagina, limit, offset);
+
+      return res.status(200).json(productos);
+      
     } catch (e) {
       res.status(500).send(e);
     }

@@ -1,11 +1,13 @@
 const Categoria = require("../db/models").Categoria;
+const { Op } = require("sequelize");
 
 const service = {
   async obtenerCategorias() {
     try {
-
-      const categorias = await Categoria.findAll({ raw: false } );
-
+      const categorias = await Categoria.findAll({
+        where: { IdPadre: { [Op.is]: null } },
+        include: [{ model: Categoria, as: "SubCategorias" }],
+      });
       return categorias;
 
     } catch (error) {
@@ -16,7 +18,9 @@ const service = {
   async obtenerCategoria(idCategoria) {
     try {
 
-      const categoria = (await Categoria.findByPk(idCategoria)).get({plain:true});
+      const categoria = await Categoria.findByPk(idCategoria, {
+        include: [{ model: Categoria, as: "SubCategorias" }]
+      });
 
       return categoria;
 
