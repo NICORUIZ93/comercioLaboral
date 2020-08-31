@@ -9,6 +9,7 @@ const autorizacion = require("../services/autorizacion");
 const categoriaController = require("../controllers/categoria")
 const plataformaPagosController = require("../controllers/plataformaPagos")
 const mensajeController = require("../controllers/mensaje")
+const listaController = require("../controllers/listas")
 
 //Validadores
 const { validadorObtenerPorId } = require("../helpers/validadores_request/genericos");
@@ -76,5 +77,9 @@ module.exports = app => {
 
   //Rutas Plataforma de pagos
   app.get("/api/pago/bancos", /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ plataformaPagosController.obtenerBancos)
+
+  //Rutas listas
+  app.get("/api/lista/ciudades", /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ listaController.obtenerLista)
+
 
 }

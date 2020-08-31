@@ -1,5 +1,4 @@
 const Joi = require("joi");
-const Rol = require("../../../constants/roles");
 
 const crearUsuariosMasivoSchema = (req, res, next) => {
   // define base schema rules
