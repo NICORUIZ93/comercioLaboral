@@ -22,7 +22,10 @@ module.exports = (sequelize, DataTypes) => {
   Rol.init(
     {
       nombre: DataTypes.STRING,
-      estado: DataTypes.BOOLEAN,
+      estado: {
+        type:DataTypes.BOOLEAN,
+        defaultValue: true
+      }
     },
     {
       sequelize,

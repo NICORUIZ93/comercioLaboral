@@ -63,6 +63,15 @@ const service = {
       return `Error ${error}`;
     }
   },
+  async crearEmpleadosMasivo(nuevosUsuarios) {
+    try {
+      const resultadocreate = (await Usuario.bulkCreate(nuevosUsuarios));
+
+      return resultadocreate;
+    } catch (error) {
+      return `Error ${error}`;
+    }
+  },
   async actualizarUsuario(usuario) {
     try {
       const resultadoUpdate = await Usuario.update(usuario, {

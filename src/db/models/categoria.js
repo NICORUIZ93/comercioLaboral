@@ -19,7 +19,10 @@ module.exports = (sequelize, DataTypes) => {
   Categoria.init({
     IdPadre: DataTypes.INTEGER,
     nombre: DataTypes.STRING,
-    estado: DataTypes.BOOLEAN
+    estado: {
+      type:DataTypes.BOOLEAN,
+      defaultValue: true
+    }
   }, {
     sequelize,
     modelName: 'Categoria',

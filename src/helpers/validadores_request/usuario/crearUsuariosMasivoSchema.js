@@ -1,18 +1,26 @@
 const Joi = require("joi");
+const Rol = require("../../../constants/roles");
 
-const obtenerUrlArchivoSchema = (req, res, next) => {
+const crearUsuariosMasivoSchema = (req, res, next) => {
   // define base schema rules
+
   const reglasSchema = {
-    archivos: Joi.array().items(Joi.object({
-      key: Joi.string().empty("").required(),
-      type: Joi.string().empty("").required()
-   })).min(1).required()
+    usuarios: Joi.array().items(
+      Joi.object({
+        nombre: Joi.string().empty(""),
+        apellido: Joi.string().empty(""),
+        correo: Joi.string().email().empty("").required(),
+        dni: Joi.string().empty(""),
+        telefono: Joi.number().integer(),
+        direccion: Joi.string().min(6).empty(""),
+        IdRol: Joi.number().integer().required(),
+        IdFoto: Joi.number().integer(),
+      })
+    ).min(1).max(4).required(),
   };
 
-
   // create schema object with rules
-  const schema = Joi.object(reglasSchema);
-
+  const schema = Joi.object(reglasSchema)
 
   // schema options
   const opciones = {
@@ -34,4 +42,4 @@ const obtenerUrlArchivoSchema = (req, res, next) => {
   }
 };
 
-module.exports.obtenerUrlArchivoSchema = obtenerUrlArchivoSchema;
+module.exports.crearUsuariosMasivoSchema = crearUsuariosMasivoSchema;

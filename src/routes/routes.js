@@ -12,7 +12,7 @@ const mensajeController = require("../controllers/mensaje")
 
 //Validadores
 const { validadorObtenerPorId } = require("../helpers/validadores_request/genericos");
-const { validadorCrearUsuario, validadorActualizarUsuario, validadorEliminarUsuario } = require("../helpers/validadores_request/usuario");
+const { validadorCrearUsuario, validadorActualizarUsuario, validadorEliminarUsuario, validadorcrearUsuariosMasivo } = require("../helpers/validadores_request/usuario");
 const { validadorCrearProducto, validadorActualizarProducto, validadorEliminarProducto, validadorObtenerProductosPaginado } = require("../helpers/validadores_request/producto");
 const { validadorCrearTienda, validadorActualizarTienda, validadorEliminarTienda } = require("../helpers/validadores_request/tienda");
 const { validadorCrearCategoria, validadorActualizarCategoria, validadorEliminarCategoria } = require("../helpers/validadores_request/categoria");
@@ -30,6 +30,7 @@ module.exports = app => {
   
   //Ruta cargue de archivos
   app.post("/api/archivos", cargarArchivosController.cargarArchivos)
+  app.post("/api/archivos/modelo", cargarArchivosController.cargarArchivosPorModelo)
   app.get("/api/archivos/url", validadorobtenerUrlArchivo, cargarArchivosController.obtenerUrlRecurso)
 
   //Login
@@ -39,6 +40,7 @@ module.exports = app => {
   app.get("/api/usuarios", /*autorizacion.autorizar(Rol.Administrador),*/ usuarioController.obtenerUsuarios)
   app.get("/api/usuario/:id", validadorObtenerPorId, /*autorizacion.autorizar(Rol.Administrador),*/ usuarioController.obtenerUsuario)
   app.post("/api/usuario", validadorCrearUsuario, usuarioController.crearUsuario)
+  app.post("/api/usuarios/empleados", validadorcrearUsuariosMasivo, usuarioController.crearEmpleadosMasivo)
   app.put("/api/usuario", validadorActualizarUsuario, /*autorizacion.autorizar(Rol.Administrador),*/ usuarioController.actualizarUsuario)
   app.delete("/api/usuario/:id", validadorEliminarUsuario, /*autorizacion.autorizar(Rol.Administrador),*/ usuarioController.eliminarUsuario)
 

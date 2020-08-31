@@ -24,18 +24,17 @@ module.exports = {
   },
   async crearUsuario(req, res) {
     try {
-      const existeElUsuario =
-        (await usuarioService.obtenerUsuarioPorParametros([
-          { correo: req.body.correo }
-        ]));
+      const existeElUsuario = await usuarioService.obtenerUsuarioPorParametros([
+        { correo: req.body.correo },
+      ]);
 
-        console.log(existeElUsuario);
+      console.log(existeElUsuario);
 
       if (existeElUsuario) {
         throw Error("El usuario ya existe");
       }
 
-      if(req.body.IdRol === Rol.AdministradorID){
+      if (req.body.IdRol === Rol.AdministradorID) {
         throw Error("Rol invalido");
       }
 
@@ -47,7 +46,32 @@ module.exports = {
       return res.status(500).send(e.message);
     }
   },
+  async crearEmpleadosMasivo(req, res) {
+    try {
+      const usuariosACrear = req.body.usuarios;
 
+      for (const usuario of usuariosACrear) {
+        const existeElUsuario = await usuarioService.obtenerUsuarioPorParametros(
+          [{ correo: usuario.correo }]
+        );
+        if (existeElUsuario)
+          throw Error(`El usuario ${usuario.correo} ya existe`);
+      }
+
+      if (usuariosACrear.some((usuario) => usuario.IdRol !== Rol.EmpleadoID)) {
+        throw Error("Rol invalido, solo rol empleado");
+      }
+
+      const nuevoUsuario = await usuarioService.crearEmpleadosMasivo(
+        usuariosACrear
+      );
+
+      return res.status(200).json(nuevoUsuario);
+    } catch (e) {
+      console.log(e);
+      return res.status(500).send(e.message);
+    }
+  },
   async actualizarUsuario(req, res) {
     try {
       const nuevoUsuario = await usuarioService.actualizarUsuario(req.body);

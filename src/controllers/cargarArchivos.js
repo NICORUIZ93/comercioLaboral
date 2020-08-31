@@ -14,6 +14,17 @@ module.exports = {
       return res.status(500).send(e);
     }
   },
+  async cargarArchivosPorModelo(req, res) {
+    try {
+      
+      const respuestaCargue = await recursosService.crearRecursoPorModelo(req, res);
+
+      return res.status(200).json(respuestaCargue);
+
+    } catch (e) {
+      return res.status(500).send(e);
+    }
+  },
   async obtenerUrlRecurso(req, res) {
     try {
 

@@ -30,6 +30,20 @@ const service = {
         return `Error ${error}`;
     }
   },
+  async crearRecursoPorModelo(req, res) {
+    try {
+      const tipoRecurso = req.query.tipo;
+      const id = req.query.id; 
+  
+      const resultadocreate =  await agregarRecursos(req, res);
+      const resultadoAsociarRecursoAModelo = await agregarRecursosSegunModelo(tipoRecurso, id, resultadocreate);
+
+      return resultadoAsociarRecursoAModelo;
+
+    } catch (error) {
+      return `Error ${error}`;
+    }
+  },
   async crearRecurso(req, res) {
     try {
       
@@ -64,10 +78,7 @@ const service = {
 const agregarRecursos = async (req, res) =>
 {
   try {
-
-    const tipoRecurso = req.query.tipoRecurso;
-    const id = req.query.id; 
-
+  
     const nuevosRecursos = [];
     const respuestaCargue = await cargarArchivosService.cargarArchivosS3(req, res);
 
@@ -82,11 +93,7 @@ const agregarRecursos = async (req, res) =>
 
     const resultadoBulkRecurso = await Recurso.bulkCreate(nuevosRecursos);
 
-    if(tipoRecurso === 'usuario') return resultadoBulkRecurso;
-
-    const resultadoBulkModelo = await agregarRecursosSegunModelo(tipoRecurso, id, resultadoBulkRecurso);
-
-    return resultadoBulkModelo;
+    return resultadoBulkRecurso;
 
   } catch (error) {
     return `Error ${error}`;
