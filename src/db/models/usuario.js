@@ -30,7 +30,11 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "IdUsuario",
         otherKey: "IdTienda",
       });
-      
+
+      this.hasMany(models.UsuariosTienda, { foreignKey: "IdUsuario"} ); 
+
+      this.belongsTo(models.Recurso, { foreignKey: "IdFoto", as: 'Foto'} );
+
     }
   };
   Usuario.init({
@@ -44,12 +48,12 @@ module.exports = (sequelize, DataTypes) => {
     telefono: DataTypes.BIGINT,
     direccion: DataTypes.STRING,
     contrasena: DataTypes.STRING,
-    username: DataTypes.STRING,
     esMayorista: DataTypes.BOOLEAN,
     IdRol: {
       type: DataTypes.INTEGER,
       allowNull: false
-    }
+    },
+    IdFoto: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Usuario',

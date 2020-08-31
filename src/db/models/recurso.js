@@ -23,12 +23,18 @@ module.exports = (sequelize, DataTypes) => {
         otherKey: "IdTienda",
       });
 
+     
+      this.hasOne(models.Usuario, {
+        foreignKey: "IdFoto",
+        as: 'Foto'
+      });
     }
   };
   Recurso.init({
     nombre: DataTypes.STRING,
     key: DataTypes.STRING,
     extension:DataTypes.STRING,
+    url: DataTypes.STRING,
     prioridad: DataTypes.INTEGER
   }, {
     sequelize,

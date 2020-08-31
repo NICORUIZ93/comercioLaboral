@@ -12,7 +12,6 @@ module.exports = {
           telefono: "15242",
           direccion: "cll 44 b bis sur # 73 a 16",
           contrasena: "adminpass",
-          username: "ADMIN1",
           IdRol: 1,
           createdAt: new Date(),
           updatedAt: new Date()
@@ -32,6 +31,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete("Usuarios", { username: 'ADMIN1' }, {});
+    await queryInterface.bulkDelete("Usuarios", { id: 1 }, {});
   },
 };

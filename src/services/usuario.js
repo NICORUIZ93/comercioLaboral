@@ -1,14 +1,24 @@
 const bcrypt = require("bcrypt");
 const Usuario = require("../db/models").Usuario;
 const Rol = require("../db/models").Rol;
+const Recurso = require("../db/models").Recurso;
 const { Op } = require("sequelize");
 
 const service = {
   async obtenerUsuarios() {
     try {
-      const usuarios = await Usuario.findAll({ attributes: { exclude: ['contrasena'] }, include: [Rol] });
+      const usuarios = await Usuario.findAll({
+        attributes: { exclude: ["contrasena"] },
+        include: [
+          Rol,
+          {
+            model: Recurso,
+            as: "Foto",
+            attributes: ["id", "nombre", "key", "extension"],
+          },
+        ],
+      });
       return usuarios;
-
     } catch (error) {
       console.log(error.message);
       return `Error ${error}`;
@@ -16,11 +26,21 @@ const service = {
   },
   async obtenerUsuario(idUsuario) {
     try {
-      const usuario = (await Usuario.findByPk(idUsuario)).get({ plain: true });
+      const usuario = (
+        await Usuario.findByPk(idUsuario, {
+          attributes: { exclude: ["contrasena"] },
+          include: [
+            Rol,
+            {
+              model: Recurso,
+              as: "Foto",
+              attributes: ["id", "nombre", "key", "extension"],
+            },
+          ],
+        })
+      ).get({ plain: true });
 
-      const { contrasena, ...usuarioSinContrasena } = usuario;
-
-      return usuarioSinContrasena;
+      return usuario;
     } catch (error) {
       return `Error ${error}`;
     }
@@ -28,7 +48,7 @@ const service = {
   async crearUsuario(nuevoUsuario) {
     try {
       let usuario = { ...nuevoUsuario };
-      
+
       if (nuevoUsuario.contrasena) {
         usuario.contrasena = bcrypt.hashSync(nuevoUsuario.contrasena, 10);
       }
@@ -82,6 +102,7 @@ const service = {
       return `Error ${error}`;
     }
   },
+  
 };
 
 module.exports.usuarioService = service;

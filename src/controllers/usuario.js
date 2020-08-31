@@ -26,8 +26,7 @@ module.exports = {
     try {
       const existeElUsuario =
         (await usuarioService.obtenerUsuarioPorParametros([
-          { username: req.body.username },
-          { correo: req.body.correo },
+          { correo: req.body.correo }
         ]));
 
         console.log(existeElUsuario);

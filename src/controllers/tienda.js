@@ -20,11 +20,20 @@ module.exports = {
       res.status(500).send(e);
     }
   },
+  async obtenerTiendaPorUsuario(req, res) {
+    try {
+      const idUsuario  = req.params.id;
 
+      const tienda = await tiendaService.obtenerTiendaPorUsuario(idUsuario);
+      return res.status(200).json(tienda);
+    } catch (e) {
+      res.status(500).send(e);
+    }
+  },  
   async crearTienda(req, res) {
     try {
-
-      const nuevaTienda = await tiendaService.crearTienda(req.body);
+      const {IdUsuario, ...tiendaSinUsuario} = req.body;
+      const nuevaTienda = await tiendaService.crearTienda(IdUsuario, tiendaSinUsuario, true);
 
       return res.status(200).json(nuevaTienda);
 

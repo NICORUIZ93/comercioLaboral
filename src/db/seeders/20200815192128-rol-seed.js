@@ -23,6 +23,13 @@ module.exports = {
           estado: true,
           createdAt: new Date(),
           updatedAt: new Date(),
+        },
+        {
+          id: 4,
+          nombre: "Empleado",
+          estado: true,
+          createdAt: new Date(),
+          updatedAt: new Date(),
         }
       ],
       {}

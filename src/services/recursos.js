@@ -77,11 +77,12 @@ const agregarRecursos = async (req, res) =>
       let key = recursosCargue[i].key;
       let extension = recursosCargue[i].extension;
       let nombre = recursosCargue[i].name;
-
-      nuevosRecursos.push({ nombre, key, extension});
+      nuevosRecursos.push({ nombre, key, extension });
     }
 
     const resultadoBulkRecurso = await Recurso.bulkCreate(nuevosRecursos);
+
+    if(tipoRecurso === 'usuario') return resultadoBulkRecurso;
 
     const resultadoBulkModelo = await agregarRecursosSegunModelo(tipoRecurso, id, resultadoBulkRecurso);
 
@@ -117,6 +118,9 @@ const agregarRecursosSegunModelo = async (tipoRecurso, id, arrayRecursos) =>
     return `Error ${error}`;
   }
 };
+
+
+
 
 
 

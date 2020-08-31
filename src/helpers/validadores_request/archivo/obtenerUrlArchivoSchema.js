@@ -1,17 +1,12 @@
 const Joi = require("joi");
 
-const crearTiendaSchema = (req, res, next) => {
+const obtenerUrlArchivoSchema = (req, res, next) => {
   // define base schema rules
   const reglasSchema = {
-    nombre: Joi.string().empty("").required(),
-    direccion: Joi.string().empty("").required(),
-    descripcion: Joi.string().empty("").required(),
-    banco: Joi.string().empty(""),
-    numeroCuenta: Joi.string().empty(""),
-    tipoCuenta: Joi.string().empty(""),
-    maxFotos: Joi.number().integer(),
-    IdUsuario: Joi.number().integer().required(),
-    estado:Joi.boolean()
+    archivos: Joi.array().items(Joi.object({
+      key: Joi.string().empty("").required(),
+      type: Joi.string().empty("").required()
+   }))
   };
 
 
@@ -39,4 +34,4 @@ const crearTiendaSchema = (req, res, next) => {
   }
 };
 
-module.exports.crearTiendaSchema = crearTiendaSchema;
+module.exports.obtenerUrlArchivoSchema = obtenerUrlArchivoSchema;

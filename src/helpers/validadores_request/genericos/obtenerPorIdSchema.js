@@ -1,17 +1,9 @@
 const Joi = require("joi");
 
-const crearTiendaSchema = (req, res, next) => {
+const obtenerPorIdSchema = (req, res, next) => {
   // define base schema rules
   const reglasSchema = {
-    nombre: Joi.string().empty("").required(),
-    direccion: Joi.string().empty("").required(),
-    descripcion: Joi.string().empty("").required(),
-    banco: Joi.string().empty(""),
-    numeroCuenta: Joi.string().empty(""),
-    tipoCuenta: Joi.string().empty(""),
-    maxFotos: Joi.number().integer(),
-    IdUsuario: Joi.number().integer().required(),
-    estado:Joi.boolean()
+    id: Joi.number().integer().required()
   };
 
 
@@ -27,7 +19,7 @@ const crearTiendaSchema = (req, res, next) => {
   };
 
   // validate request body against schema
-  const { error, value } = schema.validate(req.body, opciones);
+  const { error, value } = schema.validate(req.params, opciones);
 
   if (error) {
     // on fail return comma separated errors
@@ -39,4 +31,4 @@ const crearTiendaSchema = (req, res, next) => {
   }
 };
 
-module.exports.crearTiendaSchema = crearTiendaSchema;
+module.exports.obtenerPorIdSchema = obtenerPorIdSchema;

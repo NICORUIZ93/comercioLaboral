@@ -1,4 +1,5 @@
 const { recursosService } = require( "../services/recursos");
+const { cargarArchivosService } = require( "../services/cargarArchivosService");
 
 module.exports = {
 
@@ -13,7 +14,27 @@ module.exports = {
       return res.status(500).send(e);
     }
   },
+  async obtenerUrlRecurso(req, res) {
+    try {
 
+      const arrArchivos = req.body.archivos;
+      let urls = [];
+
+      urls = await Promise.all(arrArchivos.map(async (archivo) => {
+        return {
+          url: await cargarArchivosService.obtenerUrlRecurso(archivo.key, archivo.type),
+          key: archivo.key,
+          type : archivo.type
+        }
+      }));
+
+      return res.status(200).json(urls);
+
+    } catch (e) {
+      return res.status(500).send(e);
+    }
+  },
+  
 };
 
 

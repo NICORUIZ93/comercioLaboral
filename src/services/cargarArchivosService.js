@@ -44,7 +44,7 @@ const service = {
         for (let i = 0; i < fileArray.length; i++) {
           key = fileArray[i].key;
           filename = fileArray[i].originalname;
-          fileExtension = filename.split(".").pop();
+          fileExtension = fileArray[i].mimetype;
           images.push({ key: key, extension: fileExtension, name: filename });
         }
 
@@ -56,6 +56,20 @@ const service = {
     } catch (error) {
       return `status: ${error.status}, Mensaje: ${error.message}`;
     }
+  },
+  async obtenerUrlRecurso(key, type) {
+    return new Promise((resolve, reject) => {
+      let params = {
+        Bucket: process.env.AWS_BUCKET_NAME,
+        Key: key,
+        Expires: 60 * 30,
+        ResponseContentType: type,
+      };
+      s3Bucket.getSignedUrl("getObject", params, (err, url) => {
+        if (err) reject(err);
+        resolve(url);
+      });
+    });
   },
 };
 
