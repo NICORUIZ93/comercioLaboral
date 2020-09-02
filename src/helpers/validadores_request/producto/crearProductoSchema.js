@@ -11,7 +11,13 @@ const crearProductoSchema = (req, res, next) => {
     cantidad: Joi.number().integer().required(),
     maxFotos: Joi.number(),
     oferta:Joi.boolean(),
-    estado:Joi.boolean()
+    estado:Joi.boolean(),
+    imagenes: Joi.array().items(
+      Joi.object({
+        url: Joi.string().empty(""),
+        prioridad: Joi.number().integer()
+      })
+    )
   };
 
   if (req.body.oferta) {

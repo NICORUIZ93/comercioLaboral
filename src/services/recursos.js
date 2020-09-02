@@ -44,6 +44,28 @@ const service = {
       return `Error ${error}`;
     }
   },
+  async crearRecursoTabla(recurso) {
+    try {
+      
+      const resultadoCreateRecurso = await Recurso.create(recurso);
+
+      return resultadoCreateRecurso;
+
+    } catch (error) {
+      return `Error ${error}`;
+    }
+  },
+  async crearRecursosMasivoTabla(recursos) {
+    try {
+      
+      const resultadoCreateRecurso = await Recurso.bulkCreate(recursos);
+
+      return resultadoCreateRecurso;
+
+    } catch (error) {
+      return `Error ${error}`;
+    }
+  },
   async crearRecurso(req, res) {
     try {
       

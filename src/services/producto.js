@@ -3,6 +3,7 @@ const TiendaProducto = require("../db/models").TiendaProducto;
 const Categoria = require("../db/models").Categoria;
 const Tienda = require("../db/models").Tienda;
 const Recurso = require("../db/models").Recurso;
+const ProductoRecurso = require("../db/models").ProductoRecurso;
 var sequelize = require("../db/models").sequelize;
 const paginador = require("../helpers/paginacion/paginador");
 
@@ -97,6 +98,8 @@ const service = {
         ],
       });
 
+      if(!producto) throw Error('No existe el producto indicado');
+
       const { Tiendas, Recursos, ...productoFiltrado } = producto.dataValues;
       productoFiltrado.IdTienda = Tiendas[0].id;
       productoFiltrado.NombreTienda = Tiendas[0].nombre;
@@ -110,24 +113,40 @@ const service = {
   },
   async crearProducto(idTienda, nuevoProducto) {
     try {
-      const result = await sequelize.transaction(async (t) => {
-        const resultadocreate = await Producto.create(nuevoProducto, {
+      let recursosAgregadosProducto = [];
+      let resultadoNuevoProducto;
+
+      await sequelize.transaction(async (t) => {
+         resultadoNuevoProducto = (await Producto.create(nuevoProducto, {
           transaction: t,
+        })).get({
+          plain: true,
         });
 
         await TiendaProducto.create(
           {
             IdTienda: idTienda,
-            IdProducto: resultadocreate.id,
-            stock: resultadocreate.cantidad,
+            IdProducto: resultadoNuevoProducto.id,
+            stock: resultadoNuevoProducto.cantidad,
           },
           { transaction: t }
         );
 
-        return resultadocreate;
+        //return resultadoNuevoProducto;
       });
 
-      return result;
+      if (resultadoNuevoProducto) {
+        if (nuevoProducto.imagenes) {
+          recursosAgregadosProducto = await agregarRecursosProducto(
+            nuevoProducto.imagenes,
+            resultadoNuevoProducto.id
+          );
+          resultadoNuevoProducto.imagenes = recursosAgregadosProducto;
+        }
+      }
+
+      return resultadoNuevoProducto;
+
       
     } catch (error) {
       return `Error ${error}`;
@@ -159,6 +178,36 @@ const service = {
       return `Error ${error}`;
     }
   },
+};
+
+
+//Privados
+const agregarRecursosProducto = async (recursos, IdProducto) => {
+  try {
+    let recursosCreados = [];
+
+    const result = await sequelize.transaction(async (transaction) => {
+      const nuevosRecursosProducto = [];
+      recursosCreados = (
+        await Recurso.bulkCreate(recursos, {
+          transaction,
+        })
+      ).map((r) => {
+        const { createdAt, updatedAt, ...dataValue } = r.dataValues;
+        return dataValue;
+      });
+
+      for (recurso of recursosCreados) {
+        nuevosRecursosProducto.push({ IdProducto, IdRecurso: recurso.id });
+      }
+
+      await ProductoRecurso.bulkCreate(nuevosRecursosProducto, { transaction });
+    });
+
+    return recursosCreados;
+  } catch (error) {
+    throw error;
+  }
 };
 
 module.exports.productoService = service;

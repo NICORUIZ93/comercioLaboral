@@ -3,6 +3,8 @@ const Usuario = require("../db/models").Usuario;
 const Rol = require("../db/models").Rol;
 const Recurso = require("../db/models").Recurso;
 const { Op } = require("sequelize");
+const _Rol = require("../constants/roles");
+const { recursosService } = require( "../services/recursos");
 
 const service = {
   async obtenerUsuarios() {
@@ -48,14 +50,29 @@ const service = {
   async crearUsuario(nuevoUsuario) {
     try {
       let usuario = { ...nuevoUsuario };
+      let recurso;
 
       if (nuevoUsuario.contrasena) {
         usuario.contrasena = bcrypt.hashSync(nuevoUsuario.contrasena, 10);
+        usuario.IdRol = _Rol.VendedorID;
       }
-      const resultadocreate = (await Usuario.create(usuario)).get({
+
+      const {imagen, ...usuarioSinImagen} = usuario;
+
+      if (imagen) {
+        recurso = await recursosService.crearRecursoTabla({
+          url: imagen
+        });
+      }
+
+      const resultadocreate = (await Usuario.create(usuarioSinImagen)).get({
         plain: true,
       });
 
+      if(recurso){
+        resultadocreate.IdFoto = recurso.id;
+      }
+  
       const { contrasena, ...usuarioSinContrasena } = resultadocreate;
 
       return usuarioSinContrasena;
@@ -104,14 +121,18 @@ const service = {
         where: {
           [Op.or]: parametrosWhere,
         },
+        include: [Rol]
       });
 
-      return usuario;
+      return usuario ? usuario.dataValues : null;
+
     } catch (error) {
-      return `Error ${error}`;
+       throw error;
     }
   },
   
 };
+
+
 
 module.exports.usuarioService = service;

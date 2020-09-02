@@ -1,1014 +1,7047 @@
-'use strict';
+"use strict";
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    
-      await queryInterface.bulkInsert('Ciudades', [{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5001","municipio":"Medellín", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5002","municipio":"Abejorral", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5004","municipio":"Abriaquí", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5021","municipio":"Alejandría", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5030","municipio":"Amagá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5031","municipio":"Amalfi", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5034","municipio":"Andes", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5036","municipio":"Angelópolis", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5038","municipio":"Angostura", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5040","municipio":"Anorí", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68176","municipio":"Chimá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5044","municipio":"Anza", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5045","municipio":"Apartadó", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5051","municipio":"Arboletes", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5055","municipio":"Argelia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5059","municipio":"Armenia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5079","municipio":"Barbosa", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5088","municipio":"Bello", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5091","municipio":"Betania", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5093","municipio":"Betulia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5101","municipio":"Ciudad Bolívar", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5107","municipio":"Briceño", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5113","municipio":"Buriticá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5120","municipio":"Cáceres", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5125","municipio":"Caicedo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5129","municipio":"Caldas", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5134","municipio":"Campamento", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5138","municipio":"Cañasgordas", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5142","municipio":"Caracolí", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5145","municipio":"Caramanta", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5147","municipio":"Carepa", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"70","departamento":"Sucre","c_digo_dane_del_municipio":"70670","municipio":"Sampués", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5150","municipio":"Carolina", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5154","municipio":"Caucasia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5172","municipio":"Chigorodó", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5190","municipio":"Cisneros", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5197","municipio":"Cocorná", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5206","municipio":"Concepción", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5209","municipio":"Concordia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5212","municipio":"Copacabana", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5234","municipio":"Dabeiba", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5237","municipio":"Don Matías", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5240","municipio":"Ebéjico", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5250","municipio":"El Bagre", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5264","municipio":"Entrerrios", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5266","municipio":"Envigado", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5282","municipio":"Fredonia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5306","municipio":"Giraldo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5308","municipio":"Girardota", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5310","municipio":"Gómez Plata", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"85","departamento":"Casanare","c_digo_dane_del_municipio":"85225","municipio":"Nunchía", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5315","municipio":"Guadalupe", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5318","municipio":"Guarne", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5321","municipio":"Guatapé", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5347","municipio":"Heliconia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5353","municipio":"Hispania", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5360","municipio":"Itagui", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5361","municipio":"Ituango", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"54","departamento":"Norte de Santander","c_digo_dane_del_municipio":"54518","municipio":"Pamplona", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5368","municipio":"Jericó", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5376","municipio":"La Ceja", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5380","municipio":"La Estrella", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5390","municipio":"La Pintada", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5400","municipio":"La Unión", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5411","municipio":"Liborina", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5425","municipio":"Maceo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5440","municipio":"Marinilla", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5467","municipio":"Montebello", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5475","municipio":"Murindó", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5480","municipio":"Mutatá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5483","municipio":"Nariño", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5490","municipio":"Necoclí", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5495","municipio":"Nechí", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5501","municipio":"Olaya", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5541","municipio":"Peñol", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5543","municipio":"Peque", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5576","municipio":"Pueblorrico", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5579","municipio":"Puerto Berrío", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5585","municipio":"Puerto Nare", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5591","municipio":"Puerto Triunfo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5604","municipio":"Remedios", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5607","municipio":"Retiro", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5615","municipio":"Rionegro", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5628","municipio":"Sabanalarga", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5631","municipio":"Sabaneta", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5642","municipio":"Salgar", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25019","municipio":"Albán", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"97","departamento":"Vaupés","c_digo_dane_del_municipio":"97889","municipio":"Yavaraté", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5652","municipio":"San Francisco", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5656","municipio":"San Jerónimo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"23","departamento":"Córdoba","c_digo_dane_del_municipio":"23466","municipio":"Montelíbano", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"86","departamento":"Putumayo","c_digo_dane_del_municipio":"86568","municipio":"Puerto Asís", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5660","municipio":"San Luis", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5664","municipio":"San Pedro", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"70","departamento":"Sucre","c_digo_dane_del_municipio":"70215","municipio":"Corozal", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5667","municipio":"San Rafael", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5670","municipio":"San Roque", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5674","municipio":"San Vicente", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5679","municipio":"Santa Bárbara", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52110","municipio":"Buesaco", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5690","municipio":"Santo Domingo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5697","municipio":"El Santuario", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5736","municipio":"Segovia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5761","municipio":"Sopetrán", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5789","municipio":"Támesis", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5790","municipio":"Tarazá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5792","municipio":"Tarso", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5809","municipio":"Titiribí", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5819","municipio":"Toledo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5837","municipio":"Turbo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5842","municipio":"Uramita", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5847","municipio":"Urrao", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5854","municipio":"Valdivia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5856","municipio":"Valparaíso", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5858","municipio":"Vegachí", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5861","municipio":"Venecia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"85","departamento":"Casanare","c_digo_dane_del_municipio":"85139","municipio":"Maní", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5885","municipio":"Yalí", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5887","municipio":"Yarumal", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5890","municipio":"Yolombó", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5893","municipio":"Yondó", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5895","municipio":"Zaragoza", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"8","departamento":"Atlántico","c_digo_dane_del_municipio":"8001","municipio":"Barranquilla", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"8","departamento":"Atlántico","c_digo_dane_del_municipio":"8078","municipio":"Baranoa", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13268","municipio":"El Peñón", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"8","departamento":"Atlántico","c_digo_dane_del_municipio":"8141","municipio":"Candelaria", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"8","departamento":"Atlántico","c_digo_dane_del_municipio":"8296","municipio":"Galapa", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"76","departamento":"Valle del Cauca","c_digo_dane_del_municipio":"76834","municipio":"Tuluá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73152","municipio":"Casabianca", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"8","departamento":"Atlántico","c_digo_dane_del_municipio":"8421","municipio":"Luruaco", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"8","departamento":"Atlántico","c_digo_dane_del_municipio":"8433","municipio":"Malambo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"8","departamento":"Atlántico","c_digo_dane_del_municipio":"8436","municipio":"Manatí", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25040","municipio":"Anolaima", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"8","departamento":"Atlántico","c_digo_dane_del_municipio":"8549","municipio":"Piojó", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"8","departamento":"Atlántico","c_digo_dane_del_municipio":"8558","municipio":"Polonuevo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25175","municipio":"Chía", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52835","municipio":"San Andrés de Tumaco", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"8","departamento":"Atlántico","c_digo_dane_del_municipio":"8634","municipio":"Sabanagrande", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"8","departamento":"Atlántico","c_digo_dane_del_municipio":"8638","municipio":"Sabanalarga", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"8","departamento":"Atlántico","c_digo_dane_del_municipio":"8675","municipio":"Santa Lucía", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"8","departamento":"Atlántico","c_digo_dane_del_municipio":"8685","municipio":"Santo Tomás", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"8","departamento":"Atlántico","c_digo_dane_del_municipio":"8758","municipio":"Soledad", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"8","departamento":"Atlántico","c_digo_dane_del_municipio":"8770","municipio":"Suan", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"8","departamento":"Atlántico","c_digo_dane_del_municipio":"8832","municipio":"Tubará", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"8","departamento":"Atlántico","c_digo_dane_del_municipio":"8849","municipio":"Usiacurí", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"18","departamento":"Caquetá","c_digo_dane_del_municipio":"18460","municipio":"Milán", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68147","municipio":"Capitanejo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13006","municipio":"Achí", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73043","municipio":"Anzoátegui", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13042","municipio":"Arenal", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13052","municipio":"Arjona", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13062","municipio":"Arroyohondo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"76","departamento":"Valle del Cauca","c_digo_dane_del_municipio":"76275","municipio":"Florida", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13140","municipio":"Calamar", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13160","municipio":"Cantagallo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13188","municipio":"Cicuco", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13212","municipio":"Córdoba", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13222","municipio":"Clemencia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"8","departamento":"Atlántico","c_digo_dane_del_municipio":"8606","municipio":"Repelón", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13248","municipio":"El Guamo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5284","municipio":"Frontino", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13430","municipio":"Magangué", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13433","municipio":"Mahates", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13440","municipio":"Margarita", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13458","municipio":"Montecristo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13468","municipio":"Mompós", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13473","municipio":"Morales", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13490","municipio":"Norosí", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13549","municipio":"Pinillos", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13580","municipio":"Regidor", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13600","municipio":"Río Viejo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13647","municipio":"San Estanislao", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13650","municipio":"San Fernando", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25258","municipio":"El Peñón", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"54","departamento":"Norte de Santander","c_digo_dane_del_municipio":"54520","municipio":"Pamplonita", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13657","municipio":"San Juan Nepomuceno", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"91","departamento":"Amazonas","c_digo_dane_del_municipio":"91460","municipio":"Miriti Paraná", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"85","departamento":"Casanare","c_digo_dane_del_municipio":"85400","municipio":"Támara", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13673","municipio":"Santa Catalina", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13683","municipio":"Santa Rosa", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15806","municipio":"Tibasosa", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13744","municipio":"Simití", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13760","municipio":"Soplaviento", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13780","municipio":"Talaigua Nuevo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13810","municipio":"Tiquisio", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13836","municipio":"Turbaco", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13838","municipio":"Turbaná", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13873","municipio":"Villanueva", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19517","municipio":"Páez", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15001","municipio":"Tunja", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15022","municipio":"Almeida", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15047","municipio":"Aquitania", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15051","municipio":"Arcabuco", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73001","municipio":"Ibagué", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15090","municipio":"Berbeo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15092","municipio":"Betéitiva", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15097","municipio":"Boavita", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15104","municipio":"Boyacá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15106","municipio":"Briceño", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15109","municipio":"Buena Vista", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15114","municipio":"Busbanzá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15131","municipio":"Caldas", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15135","municipio":"Campohermoso", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15162","municipio":"Cerinza", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15172","municipio":"Chinavita", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15176","municipio":"Chiquinquirá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15180","municipio":"Chiscas", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15183","municipio":"Chita", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15185","municipio":"Chitaraque", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15187","municipio":"Chivatá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15204","municipio":"Cómbita", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15212","municipio":"Coper", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15215","municipio":"Corrales", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15218","municipio":"Covarachía", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15223","municipio":"Cubará", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15224","municipio":"Cucaita", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15226","municipio":"Cuítiva", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15232","municipio":"Chíquiza", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15236","municipio":"Chivor", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15238","municipio":"Duitama", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15244","municipio":"El Cocuy", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15248","municipio":"El Espino", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15272","municipio":"Firavitoba", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15276","municipio":"Floresta", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15293","municipio":"Gachantivá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15296","municipio":"Gameza", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15299","municipio":"Garagoa", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15317","municipio":"Guacamayas", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15322","municipio":"Guateque", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15325","municipio":"Guayatá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15332","municipio":"Güicán", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15362","municipio":"Iza", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15367","municipio":"Jenesano", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15368","municipio":"Jericó", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15377","municipio":"Labranzagrande", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15380","municipio":"La Capilla", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15401","municipio":"La Victoria", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"8","departamento":"Atlántico","c_digo_dane_del_municipio":"8573","municipio":"Puerto Colombia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52083","municipio":"Belén", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15425","municipio":"Macanal", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15442","municipio":"Maripí", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15455","municipio":"Miraflores", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15464","municipio":"Mongua", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15466","municipio":"Monguí", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15469","municipio":"Moniquirá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15480","municipio":"Muzo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15491","municipio":"Nobsa", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15494","municipio":"Nuevo Colón", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15500","municipio":"Oicatá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15507","municipio":"Otanche", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15511","municipio":"Pachavita", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15514","municipio":"Páez", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15516","municipio":"Paipa", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15518","municipio":"Pajarito", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15522","municipio":"Panqueba", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15531","municipio":"Pauna", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15533","municipio":"Paya", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25758","municipio":"Sopó", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15542","municipio":"Pesca", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15550","municipio":"Pisba", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15572","municipio":"Puerto Boyacá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15580","municipio":"Quípama", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15599","municipio":"Ramiriquí", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15600","municipio":"Ráquira", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15621","municipio":"Rondón", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15632","municipio":"Saboyá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15638","municipio":"Sáchica", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15646","municipio":"Samacá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15660","municipio":"San Eduardo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"27","departamento":"Chocó","c_digo_dane_del_municipio":"27150","municipio":"Carmen del Darien", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25299","municipio":"Gama", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15673","municipio":"San Mateo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25718","municipio":"Sasaima", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52240","municipio":"Chachagüí", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15686","municipio":"Santana", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15690","municipio":"Santa María", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"54","departamento":"Norte de Santander","c_digo_dane_del_municipio":"54001","municipio":"Cúcuta", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15696","municipio":"Santa Sofía", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15720","municipio":"Sativanorte", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15723","municipio":"Sativasur", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15740","municipio":"Siachoque", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15753","municipio":"Soatá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15755","municipio":"Socotá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15757","municipio":"Socha", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15759","municipio":"Sogamoso", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15761","municipio":"Somondoco", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15762","municipio":"Sora", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15763","municipio":"Sotaquirá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15764","municipio":"Soracá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15774","municipio":"Susacón", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15776","municipio":"Sutamarchán", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15778","municipio":"Sutatenza", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15790","municipio":"Tasco", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15798","municipio":"Tenza", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15804","municipio":"Tibaná", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15808","municipio":"Tinjacá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15810","municipio":"Tipacoque", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15814","municipio":"Toca", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13001","municipio":"Cartagena", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15820","municipio":"Tópaga", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15822","municipio":"Tota", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15835","municipio":"Turmequé", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5313","municipio":"Granada", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15839","municipio":"Tutazá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15842","municipio":"Umbita", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15861","municipio":"Ventaquemada", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15879","municipio":"Viracachá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15897","municipio":"Zetaquira", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"17","departamento":"Caldas","c_digo_dane_del_municipio":"17001","municipio":"Manizales", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"17","departamento":"Caldas","c_digo_dane_del_municipio":"17013","municipio":"Aguadas", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"17","departamento":"Caldas","c_digo_dane_del_municipio":"17042","municipio":"Anserma", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"17","departamento":"Caldas","c_digo_dane_del_municipio":"17050","municipio":"Aranzazu", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"17","departamento":"Caldas","c_digo_dane_del_municipio":"17088","municipio":"Belalcázar", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"17","departamento":"Caldas","c_digo_dane_del_municipio":"17174","municipio":"Chinchiná", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"17","departamento":"Caldas","c_digo_dane_del_municipio":"17272","municipio":"Filadelfia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"17","departamento":"Caldas","c_digo_dane_del_municipio":"17380","municipio":"La Dorada", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"17","departamento":"Caldas","c_digo_dane_del_municipio":"17388","municipio":"La Merced", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"17","departamento":"Caldas","c_digo_dane_del_municipio":"17433","municipio":"Manzanares", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"17","departamento":"Caldas","c_digo_dane_del_municipio":"17442","municipio":"Marmato", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"17","departamento":"Caldas","c_digo_dane_del_municipio":"17446","municipio":"Marulanda", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"17","departamento":"Caldas","c_digo_dane_del_municipio":"17486","municipio":"Neira", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"17","departamento":"Caldas","c_digo_dane_del_municipio":"17495","municipio":"Norcasia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"17","departamento":"Caldas","c_digo_dane_del_municipio":"17513","municipio":"Pácora", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"17","departamento":"Caldas","c_digo_dane_del_municipio":"17524","municipio":"Palestina", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"17","departamento":"Caldas","c_digo_dane_del_municipio":"17541","municipio":"Pensilvania", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"17","departamento":"Caldas","c_digo_dane_del_municipio":"17614","municipio":"Riosucio", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"17","departamento":"Caldas","c_digo_dane_del_municipio":"17616","municipio":"Risaralda", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"17","departamento":"Caldas","c_digo_dane_del_municipio":"17653","municipio":"Salamina", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"17","departamento":"Caldas","c_digo_dane_del_municipio":"17662","municipio":"Samaná", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"17","departamento":"Caldas","c_digo_dane_del_municipio":"17665","municipio":"San José", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"17","departamento":"Caldas","c_digo_dane_del_municipio":"17777","municipio":"Supía", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"17","departamento":"Caldas","c_digo_dane_del_municipio":"17867","municipio":"Victoria", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"17","departamento":"Caldas","c_digo_dane_del_municipio":"17873","municipio":"Villamaría", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"17","departamento":"Caldas","c_digo_dane_del_municipio":"17877","municipio":"Viterbo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"18","departamento":"Caquetá","c_digo_dane_del_municipio":"18001","municipio":"Florencia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"18","departamento":"Caquetá","c_digo_dane_del_municipio":"18029","municipio":"Albania", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"47","departamento":"Magdalena","c_digo_dane_del_municipio":"47720","municipio":"Santa Bárbara de Pinto", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13442","municipio":"María la Baja", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"18","departamento":"Caquetá","c_digo_dane_del_municipio":"18205","municipio":"Curillo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"18","departamento":"Caquetá","c_digo_dane_del_municipio":"18247","municipio":"El Doncello", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"18","departamento":"Caquetá","c_digo_dane_del_municipio":"18256","municipio":"El Paujil", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"18","departamento":"Caquetá","c_digo_dane_del_municipio":"18479","municipio":"Morelia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"18","departamento":"Caquetá","c_digo_dane_del_municipio":"18592","municipio":"Puerto Rico", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"18","departamento":"Caquetá","c_digo_dane_del_municipio":"18410","municipio":"La Montañita", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"18","departamento":"Caquetá","c_digo_dane_del_municipio":"18753","municipio":"San Vicente del Caguán", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"18","departamento":"Caquetá","c_digo_dane_del_municipio":"18756","municipio":"Solano", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"18","departamento":"Caquetá","c_digo_dane_del_municipio":"18785","municipio":"Solita", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"18","departamento":"Caquetá","c_digo_dane_del_municipio":"18860","municipio":"Valparaíso", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19001","municipio":"Popayán", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19022","municipio":"Almaguer", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19050","municipio":"Argelia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19075","municipio":"Balboa", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19100","municipio":"Bolívar", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19110","municipio":"Buenos Aires", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19130","municipio":"Cajibío", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19137","municipio":"Caldono", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19142","municipio":"Caloto", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19212","municipio":"Corinto", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19256","municipio":"El Tambo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19290","municipio":"Florencia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19300","municipio":"Guachené", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19318","municipio":"Guapi", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19355","municipio":"Inzá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19364","municipio":"Jambaló", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19392","municipio":"La Sierra", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19397","municipio":"La Vega", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19418","municipio":"López", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19450","municipio":"Mercaderes", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19455","municipio":"Miranda", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19473","municipio":"Morales", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19513","municipio":"Padilla", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19532","municipio":"Patía", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19533","municipio":"Piamonte", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19548","municipio":"Piendamó", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19573","municipio":"Puerto Tejada", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19585","municipio":"Puracé", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19622","municipio":"Rosas", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68250","municipio":"El Peñón", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5364","municipio":"Jardín", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19701","municipio":"Santa Rosa", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19743","municipio":"Silvia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19760","municipio":"Sotara", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19780","municipio":"Suárez", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19785","municipio":"Sucre", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19807","municipio":"Timbío", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19809","municipio":"Timbiquí", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19821","municipio":"Toribio", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19824","municipio":"Totoró", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19845","municipio":"Villa Rica", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"20","departamento":"Cesar","c_digo_dane_del_municipio":"20001","municipio":"Valledupar", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"20","departamento":"Cesar","c_digo_dane_del_municipio":"20011","municipio":"Aguachica", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"20","departamento":"Cesar","c_digo_dane_del_municipio":"20013","municipio":"Agustín Codazzi", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"20","departamento":"Cesar","c_digo_dane_del_municipio":"20032","municipio":"Astrea", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"20","departamento":"Cesar","c_digo_dane_del_municipio":"20045","municipio":"Becerril", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"20","departamento":"Cesar","c_digo_dane_del_municipio":"20060","municipio":"Bosconia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"20","departamento":"Cesar","c_digo_dane_del_municipio":"20175","municipio":"Chimichagua", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"20","departamento":"Cesar","c_digo_dane_del_municipio":"20178","municipio":"Chiriguaná", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"20","departamento":"Cesar","c_digo_dane_del_municipio":"20228","municipio":"Curumaní", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"20","departamento":"Cesar","c_digo_dane_del_municipio":"20238","municipio":"El Copey", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"20","departamento":"Cesar","c_digo_dane_del_municipio":"20250","municipio":"El Paso", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"20","departamento":"Cesar","c_digo_dane_del_municipio":"20295","municipio":"Gamarra", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"20","departamento":"Cesar","c_digo_dane_del_municipio":"20310","municipio":"González", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"20","departamento":"Cesar","c_digo_dane_del_municipio":"20383","municipio":"La Gloria", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"76","departamento":"Valle del Cauca","c_digo_dane_del_municipio":"76364","municipio":"Jamundí", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"20","departamento":"Cesar","c_digo_dane_del_municipio":"20443","municipio":"Manaure", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"20","departamento":"Cesar","c_digo_dane_del_municipio":"20517","municipio":"Pailitas", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"20","departamento":"Cesar","c_digo_dane_del_municipio":"20550","municipio":"Pelaya", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"20","departamento":"Cesar","c_digo_dane_del_municipio":"20570","municipio":"Pueblo Bello", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"27","departamento":"Chocó","c_digo_dane_del_municipio":"27787","municipio":"Tadó", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"20","departamento":"Cesar","c_digo_dane_del_municipio":"20621","municipio":"La Paz", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"20","departamento":"Cesar","c_digo_dane_del_municipio":"20710","municipio":"San Alberto", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"20","departamento":"Cesar","c_digo_dane_del_municipio":"20750","municipio":"San Diego", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"20","departamento":"Cesar","c_digo_dane_del_municipio":"20770","municipio":"San Martín", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"20","departamento":"Cesar","c_digo_dane_del_municipio":"20787","municipio":"Tamalameque", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"23","departamento":"Córdoba","c_digo_dane_del_municipio":"23001","municipio":"Montería", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"23","departamento":"Córdoba","c_digo_dane_del_municipio":"23068","municipio":"Ayapel", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"23","departamento":"Córdoba","c_digo_dane_del_municipio":"23079","municipio":"Buenavista", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"23","departamento":"Córdoba","c_digo_dane_del_municipio":"23090","municipio":"Canalete", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"23","departamento":"Córdoba","c_digo_dane_del_municipio":"23162","municipio":"Cereté", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"23","departamento":"Córdoba","c_digo_dane_del_municipio":"23168","municipio":"Chimá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"23","departamento":"Córdoba","c_digo_dane_del_municipio":"23182","municipio":"Chinú", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"85","departamento":"Casanare","c_digo_dane_del_municipio":"85230","municipio":"Orocué", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"23","departamento":"Córdoba","c_digo_dane_del_municipio":"23300","municipio":"Cotorra", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73411","municipio":"Líbano", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"23","departamento":"Córdoba","c_digo_dane_del_municipio":"23417","municipio":"Lorica", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"23","departamento":"Córdoba","c_digo_dane_del_municipio":"23419","municipio":"Los Córdobas", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"23","departamento":"Córdoba","c_digo_dane_del_municipio":"23464","municipio":"Momil", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"23","departamento":"Córdoba","c_digo_dane_del_municipio":"23500","municipio":"Moñitos", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"23","departamento":"Córdoba","c_digo_dane_del_municipio":"23555","municipio":"Planeta Rica", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"23","departamento":"Córdoba","c_digo_dane_del_municipio":"23570","municipio":"Pueblo Nuevo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"23","departamento":"Córdoba","c_digo_dane_del_municipio":"23574","municipio":"Puerto Escondido", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25885","municipio":"Yacopí", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"23","departamento":"Córdoba","c_digo_dane_del_municipio":"23586","municipio":"Purísima", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"23","departamento":"Córdoba","c_digo_dane_del_municipio":"23660","municipio":"Sahagún", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"23","departamento":"Córdoba","c_digo_dane_del_municipio":"23670","municipio":"San Andrés Sotavento", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"23","departamento":"Córdoba","c_digo_dane_del_municipio":"23672","municipio":"San Antero", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"63","departamento":"Quindío","c_digo_dane_del_municipio":"63130","municipio":"Calarcá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5756","municipio":"Sonsón", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"54","departamento":"Norte de Santander","c_digo_dane_del_municipio":"54245","municipio":"El Carmen", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"23","departamento":"Córdoba","c_digo_dane_del_municipio":"23686","municipio":"San Pelayo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"23","departamento":"Córdoba","c_digo_dane_del_municipio":"23807","municipio":"Tierralta", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"23","departamento":"Córdoba","c_digo_dane_del_municipio":"23815","municipio":"Tuchín", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"23","departamento":"Córdoba","c_digo_dane_del_municipio":"23855","municipio":"Valencia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73408","municipio":"Lérida", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25035","municipio":"Anapoima", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25053","municipio":"Arbeláez", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25086","municipio":"Beltrán", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25095","municipio":"Bituima", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25099","municipio":"Bojacá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25120","municipio":"Cabrera", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25123","municipio":"Cachipay", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25126","municipio":"Cajicá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25148","municipio":"Caparrapí", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25151","municipio":"Caqueza", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"23","departamento":"Córdoba","c_digo_dane_del_municipio":"23350","municipio":"La Apartada", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25168","municipio":"Chaguaní", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25178","municipio":"Chipaque", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25181","municipio":"Choachí", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25183","municipio":"Chocontá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25200","municipio":"Cogua", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25214","municipio":"Cota", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25224","municipio":"Cucunubá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25245","municipio":"El Colegio", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25260","municipio":"El Rosal", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25279","municipio":"Fomeque", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25281","municipio":"Fosca", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25286","municipio":"Funza", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25288","municipio":"Fúquene", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25293","municipio":"Gachala", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25295","municipio":"Gachancipá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25297","municipio":"Gachetá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13620","municipio":"San Cristóbal", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25307","municipio":"Girardot", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25312","municipio":"Granada", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25317","municipio":"Guachetá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25320","municipio":"Guaduas", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25322","municipio":"Guasca", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25324","municipio":"Guataquí", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25326","municipio":"Guatavita", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25290","municipio":"Fusagasugá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25335","municipio":"Guayabetal", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25339","municipio":"Gutiérrez", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25368","municipio":"Jerusalén", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25372","municipio":"Junín", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25377","municipio":"La Calera", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25386","municipio":"La Mesa", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25394","municipio":"La Palma", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25398","municipio":"La Peña", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25402","municipio":"La Vega", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25407","municipio":"Lenguazaque", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25426","municipio":"Macheta", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25430","municipio":"Madrid", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25436","municipio":"Manta", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25438","municipio":"Medina", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25473","municipio":"Mosquera", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25483","municipio":"Nariño", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25486","municipio":"Nemocón", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25488","municipio":"Nilo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25489","municipio":"Nimaima", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25491","municipio":"Nocaima", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25506","municipio":"Venecia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25513","municipio":"Pacho", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25518","municipio":"Paime", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25524","municipio":"Pandi", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25530","municipio":"Paratebueno", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25535","municipio":"Pasca", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25572","municipio":"Puerto Salgar", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25580","municipio":"Pulí", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25592","municipio":"Quebradanegra", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25594","municipio":"Quetame", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25596","municipio":"Quipile", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25599","municipio":"Apulo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25612","municipio":"Ricaurte", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13894","municipio":"Zambrano", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25649","municipio":"San Bernardo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25653","municipio":"San Cayetano", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25658","municipio":"San Francisco", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15403","municipio":"La Uvita", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25899","municipio":"Zipaquirá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25736","municipio":"Sesquilé", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25740","municipio":"Sibaté", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25743","municipio":"Silvania", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25745","municipio":"Simijaca", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25754","municipio":"Soacha", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25769","municipio":"Subachoque", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25772","municipio":"Suesca", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25777","municipio":"Supatá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25779","municipio":"Susa", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25781","municipio":"Sutatausa", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25785","municipio":"Tabio", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"63","departamento":"Quindío","c_digo_dane_del_municipio":"63302","municipio":"Génova", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25793","municipio":"Tausa", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25797","municipio":"Tena", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25799","municipio":"Tenjo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25805","municipio":"Tibacuy", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25807","municipio":"Tibirita", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25815","municipio":"Tocaima", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25817","municipio":"Tocancipá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25823","municipio":"Topaipí", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25839","municipio":"Ubalá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25841","municipio":"Ubaque", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73770","municipio":"Suárez", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25845","municipio":"Une", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25851","municipio":"Útica", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"50","departamento":"Meta","c_digo_dane_del_municipio":"50150","municipio":"Castilla la Nueva", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25867","municipio":"Vianí", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25871","municipio":"Villagómez", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25873","municipio":"Villapinzón", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25875","municipio":"Villeta", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25878","municipio":"Viotá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25898","municipio":"Zipacón", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"27","departamento":"Chocó","c_digo_dane_del_municipio":"27001","municipio":"Quibdó", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"27","departamento":"Chocó","c_digo_dane_del_municipio":"27006","municipio":"Acandí", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"27","departamento":"Chocó","c_digo_dane_del_municipio":"27025","municipio":"Alto Baudo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"27","departamento":"Chocó","c_digo_dane_del_municipio":"27050","municipio":"Atrato", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"27","departamento":"Chocó","c_digo_dane_del_municipio":"27073","municipio":"Bagadó", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"27","departamento":"Chocó","c_digo_dane_del_municipio":"27075","municipio":"Bahía Solano", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"27","departamento":"Chocó","c_digo_dane_del_municipio":"27077","municipio":"Bajo Baudó", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15087","municipio":"Belén", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"27","departamento":"Chocó","c_digo_dane_del_municipio":"27099","municipio":"Bojaya", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"27","departamento":"Chocó","c_digo_dane_del_municipio":"27810","municipio":"Unión Panamericana", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"47","departamento":"Magdalena","c_digo_dane_del_municipio":"47570","municipio":"Pueblo Viejo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"27","departamento":"Chocó","c_digo_dane_del_municipio":"27160","municipio":"Cértegui", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"27","departamento":"Chocó","c_digo_dane_del_municipio":"27205","municipio":"Condoto", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"86","departamento":"Putumayo","c_digo_dane_del_municipio":"86885","municipio":"Villagarzón", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25269","municipio":"Facatativá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"27","departamento":"Chocó","c_digo_dane_del_municipio":"27372","municipio":"Juradó", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"27","departamento":"Chocó","c_digo_dane_del_municipio":"27413","municipio":"Lloró", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"27","departamento":"Chocó","c_digo_dane_del_municipio":"27425","municipio":"Medio Atrato", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"27","departamento":"Chocó","c_digo_dane_del_municipio":"27430","municipio":"Medio Baudó", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"27","departamento":"Chocó","c_digo_dane_del_municipio":"27450","municipio":"Medio San Juan", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"27","departamento":"Chocó","c_digo_dane_del_municipio":"27491","municipio":"Nóvita", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"27","departamento":"Chocó","c_digo_dane_del_municipio":"27495","municipio":"Nuquí", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"27","departamento":"Chocó","c_digo_dane_del_municipio":"27580","municipio":"Río Iro", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"27","departamento":"Chocó","c_digo_dane_del_municipio":"27600","municipio":"Río Quito", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"27","departamento":"Chocó","c_digo_dane_del_municipio":"27615","municipio":"Riosucio", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"23","departamento":"Córdoba","c_digo_dane_del_municipio":"23580","municipio":"Puerto Libertador", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"27","departamento":"Chocó","c_digo_dane_del_municipio":"27745","municipio":"Sipí", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"27","departamento":"Chocó","c_digo_dane_del_municipio":"27800","municipio":"Unguía", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41001","municipio":"Neiva", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41006","municipio":"Acevedo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41013","municipio":"Agrado", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41016","municipio":"Aipe", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41020","municipio":"Algeciras", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41026","municipio":"Altamira", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41078","municipio":"Baraya", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41132","municipio":"Campoalegre", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41206","municipio":"Colombia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41244","municipio":"Elías", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41298","municipio":"Garzón", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41306","municipio":"Gigante", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41319","municipio":"Guadalupe", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41349","municipio":"Hobo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41357","municipio":"Iquira", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41359","municipio":"Isnos", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41378","municipio":"La Argentina", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41396","municipio":"La Plata", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"17","departamento":"Caldas","c_digo_dane_del_municipio":"17444","municipio":"Marquetalia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41483","municipio":"Nátaga", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41503","municipio":"Oporapa", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41518","municipio":"Paicol", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41524","municipio":"Palermo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41530","municipio":"Palestina", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41548","municipio":"Pital", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41551","municipio":"Pitalito", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41615","municipio":"Rivera", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41660","municipio":"Saladoblanco", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52051","municipio":"Arboleda", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41676","municipio":"Santa María", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41770","municipio":"Suaza", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41791","municipio":"Tarqui", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41797","municipio":"Tesalia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41799","municipio":"Tello", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41801","municipio":"Teruel", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41807","municipio":"Timaná", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41872","municipio":"Villavieja", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"41","departamento":"Huila","c_digo_dane_del_municipio":"41885","municipio":"Yaguará", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"44","departamento":"La Guajira","c_digo_dane_del_municipio":"44001","municipio":"Riohacha", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"44","departamento":"La Guajira","c_digo_dane_del_municipio":"44035","municipio":"Albania", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"44","departamento":"La Guajira","c_digo_dane_del_municipio":"44078","municipio":"Barrancas", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"44","departamento":"La Guajira","c_digo_dane_del_municipio":"44090","municipio":"Dibula", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"44","departamento":"La Guajira","c_digo_dane_del_municipio":"44098","municipio":"Distracción", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"44","departamento":"La Guajira","c_digo_dane_del_municipio":"44110","municipio":"El Molino", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"44","departamento":"La Guajira","c_digo_dane_del_municipio":"44279","municipio":"Fonseca", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"44","departamento":"La Guajira","c_digo_dane_del_municipio":"44378","municipio":"Hatonuevo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"44","departamento":"La Guajira","c_digo_dane_del_municipio":"44430","municipio":"Maicao", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"44","departamento":"La Guajira","c_digo_dane_del_municipio":"44560","municipio":"Manaure", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"44","departamento":"La Guajira","c_digo_dane_del_municipio":"44847","municipio":"Uribia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"44","departamento":"La Guajira","c_digo_dane_del_municipio":"44855","municipio":"Urumita", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"44","departamento":"La Guajira","c_digo_dane_del_municipio":"44874","municipio":"Villanueva", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"47","departamento":"Magdalena","c_digo_dane_del_municipio":"47001","municipio":"Santa Marta", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"47","departamento":"Magdalena","c_digo_dane_del_municipio":"47030","municipio":"Algarrobo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"47","departamento":"Magdalena","c_digo_dane_del_municipio":"47053","municipio":"Aracataca", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"47","departamento":"Magdalena","c_digo_dane_del_municipio":"47058","municipio":"Ariguaní", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"47","departamento":"Magdalena","c_digo_dane_del_municipio":"47161","municipio":"Cerro San Antonio", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"47","departamento":"Magdalena","c_digo_dane_del_municipio":"47170","municipio":"Chivolo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"47","departamento":"Magdalena","c_digo_dane_del_municipio":"47205","municipio":"Concordia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"47","departamento":"Magdalena","c_digo_dane_del_municipio":"47245","municipio":"El Banco", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"47","departamento":"Magdalena","c_digo_dane_del_municipio":"47258","municipio":"El Piñon", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"47","departamento":"Magdalena","c_digo_dane_del_municipio":"47268","municipio":"El Retén", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"47","departamento":"Magdalena","c_digo_dane_del_municipio":"47288","municipio":"Fundación", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"47","departamento":"Magdalena","c_digo_dane_del_municipio":"47318","municipio":"Guamal", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"47","departamento":"Magdalena","c_digo_dane_del_municipio":"47460","municipio":"Nueva Granada", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"47","departamento":"Magdalena","c_digo_dane_del_municipio":"47541","municipio":"Pedraza", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"47","departamento":"Magdalena","c_digo_dane_del_municipio":"47551","municipio":"Pivijay", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"47","departamento":"Magdalena","c_digo_dane_del_municipio":"47555","municipio":"Plato", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"47","departamento":"Magdalena","c_digo_dane_del_municipio":"47605","municipio":"Remolino", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"47","departamento":"Magdalena","c_digo_dane_del_municipio":"47675","municipio":"Salamina", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"47","departamento":"Magdalena","c_digo_dane_del_municipio":"47703","municipio":"San Zenón", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"47","departamento":"Magdalena","c_digo_dane_del_municipio":"47707","municipio":"Santa Ana", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"47","departamento":"Magdalena","c_digo_dane_del_municipio":"47745","municipio":"Sitionuevo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"47","departamento":"Magdalena","c_digo_dane_del_municipio":"47798","municipio":"Tenerife", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"47","departamento":"Magdalena","c_digo_dane_del_municipio":"47960","municipio":"Zapayán", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"47","departamento":"Magdalena","c_digo_dane_del_municipio":"47980","municipio":"Zona Bananera", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"50","departamento":"Meta","c_digo_dane_del_municipio":"50001","municipio":"Villavicencio", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"50","departamento":"Meta","c_digo_dane_del_municipio":"50006","municipio":"Acacias", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"50","departamento":"Meta","c_digo_dane_del_municipio":"50124","municipio":"Cabuyaro", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"50","departamento":"Meta","c_digo_dane_del_municipio":"50223","municipio":"Cubarral", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"50","departamento":"Meta","c_digo_dane_del_municipio":"50226","municipio":"Cumaral", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"50","departamento":"Meta","c_digo_dane_del_municipio":"50245","municipio":"El Calvario", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"50","departamento":"Meta","c_digo_dane_del_municipio":"50251","municipio":"El Castillo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"50","departamento":"Meta","c_digo_dane_del_municipio":"50270","municipio":"El Dorado", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"76","departamento":"Valle del Cauca","c_digo_dane_del_municipio":"76109","municipio":"Buenaventura", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"50","departamento":"Meta","c_digo_dane_del_municipio":"50313","municipio":"Granada", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"50","departamento":"Meta","c_digo_dane_del_municipio":"50318","municipio":"Guamal", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"50","departamento":"Meta","c_digo_dane_del_municipio":"50325","municipio":"Mapiripán", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"50","departamento":"Meta","c_digo_dane_del_municipio":"50330","municipio":"Mesetas", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"50","departamento":"Meta","c_digo_dane_del_municipio":"50350","municipio":"La Macarena", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"50","departamento":"Meta","c_digo_dane_del_municipio":"50370","municipio":"Uribe", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"50","departamento":"Meta","c_digo_dane_del_municipio":"50400","municipio":"Lejanías", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"50","departamento":"Meta","c_digo_dane_del_municipio":"50450","municipio":"Puerto Concordia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"50","departamento":"Meta","c_digo_dane_del_municipio":"50568","municipio":"Puerto Gaitán", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"50","departamento":"Meta","c_digo_dane_del_municipio":"50573","municipio":"Puerto López", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"50","departamento":"Meta","c_digo_dane_del_municipio":"50577","municipio":"Puerto Lleras", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"50","departamento":"Meta","c_digo_dane_del_municipio":"50590","municipio":"Puerto Rico", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"50","departamento":"Meta","c_digo_dane_del_municipio":"50606","municipio":"Restrepo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"47","departamento":"Magdalena","c_digo_dane_del_municipio":"47189","municipio":"Ciénaga", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"8","departamento":"Atlántico","c_digo_dane_del_municipio":"8560","municipio":"Ponedera", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"50","departamento":"Meta","c_digo_dane_del_municipio":"50686","municipio":"San Juanito", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"50","departamento":"Meta","c_digo_dane_del_municipio":"50689","municipio":"San Martín", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"50","departamento":"Meta","c_digo_dane_del_municipio":"50711","municipio":"Vista Hermosa", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52001","municipio":"Pasto", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52019","municipio":"Albán", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52022","municipio":"Aldana", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52036","municipio":"Ancuyá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15832","municipio":"Tununguá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52079","municipio":"Barbacoas", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15476","municipio":"Motavita", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"23","departamento":"Córdoba","c_digo_dane_del_municipio":"23675","municipio":"San Bernardo del Viento", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52203","municipio":"Colón", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52207","municipio":"Consaca", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52210","municipio":"Contadero", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52215","municipio":"Córdoba", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52224","municipio":"Cuaspud", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52227","municipio":"Cumbal", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52233","municipio":"Cumbitara", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52250","municipio":"El Charco", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52254","municipio":"El Peñol", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52256","municipio":"El Rosario", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"27","departamento":"Chocó","c_digo_dane_del_municipio":"27361","municipio":"Istmina", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52260","municipio":"El Tambo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52287","municipio":"Funes", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52317","municipio":"Guachucal", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52320","municipio":"Guaitarilla", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52323","municipio":"Gualmatán", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52352","municipio":"Iles", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52354","municipio":"Imués", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52356","municipio":"Ipiales", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52378","municipio":"La Cruz", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52381","municipio":"La Florida", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52385","municipio":"La Llanada", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52390","municipio":"La Tola", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52399","municipio":"La Unión", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52405","municipio":"Leiva", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52411","municipio":"Linares", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52418","municipio":"Los Andes", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52427","municipio":"Magüí", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52435","municipio":"Mallama", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52473","municipio":"Mosquera", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52480","municipio":"Nariño", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52490","municipio":"Olaya Herrera", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52506","municipio":"Ospina", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52520","municipio":"Francisco Pizarro", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52540","municipio":"Policarpa", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52560","municipio":"Potosí", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52565","municipio":"Providencia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52573","municipio":"Puerres", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52585","municipio":"Pupiales", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52612","municipio":"Ricaurte", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52621","municipio":"Roberto Payán", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52678","municipio":"Samaniego", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52683","municipio":"Sandoná", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52685","municipio":"San Bernardo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52687","municipio":"San Lorenzo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52693","municipio":"San Pablo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5086","municipio":"Belmira", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15189","municipio":"Ciénega", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52696","municipio":"Santa Bárbara", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52720","municipio":"Sapuyes", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52786","municipio":"Taminango", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52788","municipio":"Tangua", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52699","municipio":"Santacruz", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52838","municipio":"Túquerres", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"52","departamento":"Nariño","c_digo_dane_del_municipio":"52885","municipio":"Yacuanquer", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68575","municipio":"Puerto Wilches", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68573","municipio":"Puerto Parra", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"63","departamento":"Quindío","c_digo_dane_del_municipio":"63001","municipio":"Armenia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"63","departamento":"Quindío","c_digo_dane_del_municipio":"63111","municipio":"Buenavista", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"63","departamento":"Quindío","c_digo_dane_del_municipio":"63190","municipio":"Circasia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"63","departamento":"Quindío","c_digo_dane_del_municipio":"63212","municipio":"Córdoba", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"63","departamento":"Quindío","c_digo_dane_del_municipio":"63272","municipio":"Filandia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"63","departamento":"Quindío","c_digo_dane_del_municipio":"63401","municipio":"La Tebaida", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"63","departamento":"Quindío","c_digo_dane_del_municipio":"63470","municipio":"Montenegro", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"63","departamento":"Quindío","c_digo_dane_del_municipio":"63548","municipio":"Pijao", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"63","departamento":"Quindío","c_digo_dane_del_municipio":"63594","municipio":"Quimbaya", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"63","departamento":"Quindío","c_digo_dane_del_municipio":"63690","municipio":"Salento", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"66","departamento":"Risaralda","c_digo_dane_del_municipio":"66001","municipio":"Pereira", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"66","departamento":"Risaralda","c_digo_dane_del_municipio":"66045","municipio":"Apía", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"66","departamento":"Risaralda","c_digo_dane_del_municipio":"66075","municipio":"Balboa", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"66","departamento":"Risaralda","c_digo_dane_del_municipio":"66170","municipio":"Dosquebradas", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"66","departamento":"Risaralda","c_digo_dane_del_municipio":"66318","municipio":"Guática", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"66","departamento":"Risaralda","c_digo_dane_del_municipio":"66383","municipio":"La Celia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"66","departamento":"Risaralda","c_digo_dane_del_municipio":"66400","municipio":"La Virginia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"66","departamento":"Risaralda","c_digo_dane_del_municipio":"66440","municipio":"Marsella", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"66","departamento":"Risaralda","c_digo_dane_del_municipio":"66456","municipio":"Mistrató", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"66","departamento":"Risaralda","c_digo_dane_del_municipio":"66572","municipio":"Pueblo Rico", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"66","departamento":"Risaralda","c_digo_dane_del_municipio":"66594","municipio":"Quinchía", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"66","departamento":"Risaralda","c_digo_dane_del_municipio":"66687","municipio":"Santuario", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68001","municipio":"Bucaramanga", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68013","municipio":"Aguada", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68020","municipio":"Albania", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68051","municipio":"Aratoca", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68077","municipio":"Barbosa", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68079","municipio":"Barichara", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68081","municipio":"Barrancabermeja", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68092","municipio":"Betulia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68101","municipio":"Bolívar", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68121","municipio":"Cabrera", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68132","municipio":"California", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68152","municipio":"Carcasí", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68160","municipio":"Cepitá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68162","municipio":"Cerrito", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68167","municipio":"Charalá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68169","municipio":"Charta", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68179","municipio":"Chipatá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68190","municipio":"Cimitarra", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68207","municipio":"Concepción", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68209","municipio":"Confines", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68211","municipio":"Contratación", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68217","municipio":"Coromoro", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68229","municipio":"Curití", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68245","municipio":"El Guacamayo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68255","municipio":"El Playón", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68264","municipio":"Encino", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68266","municipio":"Enciso", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68271","municipio":"Florián", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68276","municipio":"Floridablanca", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68296","municipio":"Galán", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68298","municipio":"Gambita", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68307","municipio":"Girón", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68318","municipio":"Guaca", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68320","municipio":"Guadalupe", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68322","municipio":"Guapotá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68324","municipio":"Guavatá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68327","municipio":"Güepsa", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68368","municipio":"Jesús María", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68370","municipio":"Jordán", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68377","municipio":"La Belleza", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68385","municipio":"Landázuri", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68397","municipio":"La Paz", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68406","municipio":"Lebríja", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68418","municipio":"Los Santos", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68425","municipio":"Macaravita", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68432","municipio":"Málaga", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68444","municipio":"Matanza", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68464","municipio":"Mogotes", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68468","municipio":"Molagavita", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68498","municipio":"Ocamonte", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68500","municipio":"Oiba", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68502","municipio":"Onzaga", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68522","municipio":"Palmar", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68533","municipio":"Páramo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68547","municipio":"Piedecuesta", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68549","municipio":"Pinchote", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68572","municipio":"Puente Nacional", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68615","municipio":"Rionegro", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68669","municipio":"San Andrés", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68679","municipio":"San Gil", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68682","municipio":"San Joaquín", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68686","municipio":"San Miguel", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68705","municipio":"Santa Bárbara", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68745","municipio":"Simacota", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68755","municipio":"Socorro", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68770","municipio":"Suaita", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68773","municipio":"Sucre", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68780","municipio":"Suratá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68820","municipio":"Tona", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68861","municipio":"Vélez", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68867","municipio":"Vetas", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68872","municipio":"Villanueva", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68895","municipio":"Zapatoca", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"70","departamento":"Sucre","c_digo_dane_del_municipio":"70001","municipio":"Sincelejo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"70","departamento":"Sucre","c_digo_dane_del_municipio":"70110","municipio":"Buenavista", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"70","departamento":"Sucre","c_digo_dane_del_municipio":"70124","municipio":"Caimito", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"70","departamento":"Sucre","c_digo_dane_del_municipio":"70204","municipio":"Coloso", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"70","departamento":"Sucre","c_digo_dane_del_municipio":"70221","municipio":"Coveñas", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"70","departamento":"Sucre","c_digo_dane_del_municipio":"70230","municipio":"Chalán", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"70","departamento":"Sucre","c_digo_dane_del_municipio":"70233","municipio":"El Roble", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"70","departamento":"Sucre","c_digo_dane_del_municipio":"70235","municipio":"Galeras", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"70","departamento":"Sucre","c_digo_dane_del_municipio":"70265","municipio":"Guaranda", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"70","departamento":"Sucre","c_digo_dane_del_municipio":"70400","municipio":"La Unión", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"70","departamento":"Sucre","c_digo_dane_del_municipio":"70418","municipio":"Los Palmitos", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"70","departamento":"Sucre","c_digo_dane_del_municipio":"70429","municipio":"Majagual", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"70","departamento":"Sucre","c_digo_dane_del_municipio":"70473","municipio":"Morroa", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"70","departamento":"Sucre","c_digo_dane_del_municipio":"70508","municipio":"Ovejas", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"70","departamento":"Sucre","c_digo_dane_del_municipio":"70523","municipio":"Palmito", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"70","departamento":"Sucre","c_digo_dane_del_municipio":"70678","municipio":"San Benito Abad", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"70","departamento":"Sucre","c_digo_dane_del_municipio":"70708","municipio":"San Marcos", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"70","departamento":"Sucre","c_digo_dane_del_municipio":"70713","municipio":"San Onofre", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"70","departamento":"Sucre","c_digo_dane_del_municipio":"70717","municipio":"San Pedro", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"70","departamento":"Sucre","c_digo_dane_del_municipio":"70771","municipio":"Sucre", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"70","departamento":"Sucre","c_digo_dane_del_municipio":"70823","municipio":"Tolú Viejo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73024","municipio":"Alpujarra", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73026","municipio":"Alvarado", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73030","municipio":"Ambalema", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73055","municipio":"Armero", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73067","municipio":"Ataco", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73124","municipio":"Cajamarca", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73168","municipio":"Chaparral", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73200","municipio":"Coello", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73217","municipio":"Coyaima", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73226","municipio":"Cunday", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73236","municipio":"Dolores", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73268","municipio":"Espinal", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73270","municipio":"Falan", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73275","municipio":"Flandes", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73283","municipio":"Fresno", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73319","municipio":"Guamo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73347","municipio":"Herveo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73349","municipio":"Honda", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73352","municipio":"Icononzo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73443","municipio":"Mariquita", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73449","municipio":"Melgar", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73461","municipio":"Murillo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73483","municipio":"Natagaima", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73504","municipio":"Ortega", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73520","municipio":"Palocabildo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73547","municipio":"Piedras", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73555","municipio":"Planadas", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73563","municipio":"Prado", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73585","municipio":"Purificación", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73616","municipio":"Rio Blanco", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73622","municipio":"Roncesvalles", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73624","municipio":"Rovira", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73671","municipio":"Saldaña", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73686","municipio":"Santa Isabel", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73861","municipio":"Venadillo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73870","municipio":"Villahermosa", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73873","municipio":"Villarrica", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"81","departamento":"Arauca","c_digo_dane_del_municipio":"81065","municipio":"Arauquita", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"81","departamento":"Arauca","c_digo_dane_del_municipio":"81220","municipio":"Cravo Norte", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"81","departamento":"Arauca","c_digo_dane_del_municipio":"81300","municipio":"Fortul", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"81","departamento":"Arauca","c_digo_dane_del_municipio":"81591","municipio":"Puerto Rondón", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"81","departamento":"Arauca","c_digo_dane_del_municipio":"81736","municipio":"Saravena", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"81","departamento":"Arauca","c_digo_dane_del_municipio":"81794","municipio":"Tame", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"81","departamento":"Arauca","c_digo_dane_del_municipio":"81001","municipio":"Arauca", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"85","departamento":"Casanare","c_digo_dane_del_municipio":"85001","municipio":"Yopal", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"85","departamento":"Casanare","c_digo_dane_del_municipio":"85010","municipio":"Aguazul", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"85","departamento":"Casanare","c_digo_dane_del_municipio":"85015","municipio":"Chámeza", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"85","departamento":"Casanare","c_digo_dane_del_municipio":"85125","municipio":"Hato Corozal", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"85","departamento":"Casanare","c_digo_dane_del_municipio":"85136","municipio":"La Salina", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"85","departamento":"Casanare","c_digo_dane_del_municipio":"85162","municipio":"Monterrey", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"85","departamento":"Casanare","c_digo_dane_del_municipio":"85263","municipio":"Pore", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"85","departamento":"Casanare","c_digo_dane_del_municipio":"85279","municipio":"Recetor", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"85","departamento":"Casanare","c_digo_dane_del_municipio":"85300","municipio":"Sabanalarga", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"85","departamento":"Casanare","c_digo_dane_del_municipio":"85315","municipio":"Sácama", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"85","departamento":"Casanare","c_digo_dane_del_municipio":"85410","municipio":"Tauramena", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"85","departamento":"Casanare","c_digo_dane_del_municipio":"85430","municipio":"Trinidad", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"85","departamento":"Casanare","c_digo_dane_del_municipio":"85440","municipio":"Villanueva", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"86","departamento":"Putumayo","c_digo_dane_del_municipio":"86001","municipio":"Mocoa", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"86","departamento":"Putumayo","c_digo_dane_del_municipio":"86219","municipio":"Colón", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"86","departamento":"Putumayo","c_digo_dane_del_municipio":"86320","municipio":"Orito", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"86","departamento":"Putumayo","c_digo_dane_del_municipio":"86569","municipio":"Puerto Caicedo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"86","departamento":"Putumayo","c_digo_dane_del_municipio":"86571","municipio":"Puerto Guzmán", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"86","departamento":"Putumayo","c_digo_dane_del_municipio":"86573","municipio":"Leguízamo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"86","departamento":"Putumayo","c_digo_dane_del_municipio":"86749","municipio":"Sibundoy", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"86","departamento":"Putumayo","c_digo_dane_del_municipio":"86755","municipio":"San Francisco", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"86","departamento":"Putumayo","c_digo_dane_del_municipio":"86757","municipio":"San Miguel", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"86","departamento":"Putumayo","c_digo_dane_del_municipio":"86760","municipio":"Santiago", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"91","departamento":"Amazonas","c_digo_dane_del_municipio":"91001","municipio":"Leticia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"91","departamento":"Amazonas","c_digo_dane_del_municipio":"91263","municipio":"El Encanto", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"91","departamento":"Amazonas","c_digo_dane_del_municipio":"91405","municipio":"La Chorrera", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"91","departamento":"Amazonas","c_digo_dane_del_municipio":"91407","municipio":"La Pedrera", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"91","departamento":"Amazonas","c_digo_dane_del_municipio":"91430","municipio":"La Victoria", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"91","departamento":"Amazonas","c_digo_dane_del_municipio":"91536","municipio":"Puerto Arica", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"91","departamento":"Amazonas","c_digo_dane_del_municipio":"91540","municipio":"Puerto Nariño", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"91","departamento":"Amazonas","c_digo_dane_del_municipio":"91669","municipio":"Puerto Santander", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"91","departamento":"Amazonas","c_digo_dane_del_municipio":"91798","municipio":"Tarapacá", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"94","departamento":"Guainía","c_digo_dane_del_municipio":"94001","municipio":"Inírida", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"94","departamento":"Guainía","c_digo_dane_del_municipio":"94343","municipio":"Barranco Minas", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"94","departamento":"Guainía","c_digo_dane_del_municipio":"94663","municipio":"Mapiripana", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"94","departamento":"Guainía","c_digo_dane_del_municipio":"94883","municipio":"San Felipe", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"94","departamento":"Guainía","c_digo_dane_del_municipio":"94884","municipio":"Puerto Colombia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"94","departamento":"Guainía","c_digo_dane_del_municipio":"94885","municipio":"La Guadalupe", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"94","departamento":"Guainía","c_digo_dane_del_municipio":"94886","municipio":"Cacahual", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"94","departamento":"Guainía","c_digo_dane_del_municipio":"94887","municipio":"Pana Pana", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"94","departamento":"Guainía","c_digo_dane_del_municipio":"94888","municipio":"Morichal", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"97","departamento":"Vaupés","c_digo_dane_del_municipio":"97001","municipio":"Mitú", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"97","departamento":"Vaupés","c_digo_dane_del_municipio":"97161","municipio":"Caruru", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"97","departamento":"Vaupés","c_digo_dane_del_municipio":"97511","municipio":"Pacoa", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"97","departamento":"Vaupés","c_digo_dane_del_municipio":"97666","municipio":"Taraira", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"97","departamento":"Vaupés","c_digo_dane_del_municipio":"97777","municipio":"Papunaua", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"99","departamento":"Vichada","c_digo_dane_del_municipio":"99001","municipio":"Puerto Carreño", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"99","departamento":"Vichada","c_digo_dane_del_municipio":"99524","municipio":"La Primavera", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"99","departamento":"Vichada","c_digo_dane_del_municipio":"99624","municipio":"Santa Rosalía", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"99","departamento":"Vichada","c_digo_dane_del_municipio":"99773","municipio":"Cumaribo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"18","departamento":"Caquetá","c_digo_dane_del_municipio":"18610","municipio":"San José del Fragua", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"50","departamento":"Meta","c_digo_dane_del_municipio":"50110","municipio":"Barranca de Upía", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68524","municipio":"Palmas del Socorro", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25662","municipio":"San Juan de Río Seco", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"8","departamento":"Atlántico","c_digo_dane_del_municipio":"8372","municipio":"Juan de Acosta", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"50","departamento":"Meta","c_digo_dane_del_municipio":"50287","municipio":"Fuente de Oro", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"85","departamento":"Casanare","c_digo_dane_del_municipio":"85325","municipio":"San Luis de Gaceno", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"27","departamento":"Chocó","c_digo_dane_del_municipio":"27250","municipio":"El Litoral del San Juan", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25843","municipio":"Villa de San Diego de Ubate", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13074","municipio":"Barranco de Loba", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15816","municipio":"Togüí", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13688","municipio":"Santa Rosa del Sur", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"27","departamento":"Chocó","c_digo_dane_del_municipio":"27135","municipio":"El Cantón del San Pablo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15407","municipio":"Villa de Leyva", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"47","departamento":"Magdalena","c_digo_dane_del_municipio":"47692","municipio":"San Sebastián de Buenavista", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15537","municipio":"Paz de Río", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"13","departamento":"Bolívar","c_digo_dane_del_municipio":"13300","municipio":"Hatillo de Loba", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"47","departamento":"Magdalena","c_digo_dane_del_municipio":"47660","municipio":"Sabanas de San Angel", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"95","departamento":"Guaviare","c_digo_dane_del_municipio":"95015","municipio":"Calamar", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"20","departamento":"Cesar","c_digo_dane_del_municipio":"20614","municipio":"Río de Oro", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5665","municipio":"San Pedro de Uraba", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"95","departamento":"Guaviare","c_digo_dane_del_municipio":"95001","municipio":"San José del Guaviare", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15693","municipio":"Santa Rosa de Viterbo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Pacífico","c_digo_dane_del_departamento":"19","departamento":"Cauca","c_digo_dane_del_municipio":"19698","municipio":"Santander de Quilichao", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"95","departamento":"Guaviare","c_digo_dane_del_municipio":"95200","municipio":"Miraflores", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5042","municipio":"Santafé de Antioquia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"50","departamento":"Meta","c_digo_dane_del_municipio":"50680","municipio":"San Carlos de Guaroa", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"8","departamento":"Atlántico","c_digo_dane_del_municipio":"8520","municipio":"Palmar de Varela", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5686","municipio":"Santa Rosa de Osos", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5647","municipio":"San Andrés de Cuerquía", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"73","departamento":"Tolima","c_digo_dane_del_municipio":"73854","municipio":"Valle de San Juan", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68689","municipio":"San Vicente de Chucurí", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68684","municipio":"San José de Miranda", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"88","departamento":"Archipiélago de San Andrés, Providencia y Santa Catalina","c_digo_dane_del_municipio":"88564","municipio":"Providencia", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"66","departamento":"Risaralda","c_digo_dane_del_municipio":"66682","municipio":"Santa Rosa de Cabal", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"25","departamento":"Cundinamarca","c_digo_dane_del_municipio":"25328","municipio":"Guayabal de Siquima", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Sur","c_digo_dane_del_departamento":"18","departamento":"Caquetá","c_digo_dane_del_municipio":"18094","municipio":"Belén de Los Andaquies", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Llano","c_digo_dane_del_departamento":"85","departamento":"Casanare","c_digo_dane_del_municipio":"85250","municipio":"Paz de Ariporo", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"68","departamento":"Santander","c_digo_dane_del_municipio":"68720","municipio":"Santa Helena del Opón", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15681","municipio":"San Pablo de Borbur", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"44","departamento":"La Guajira","c_digo_dane_del_municipio":"44420","municipio":"La Jagua del Pilar", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"20","departamento":"Cesar","c_digo_dane_del_municipio":"20400","municipio":"La Jagua de Ibirico", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Caribe","c_digo_dane_del_departamento":"70","departamento":"Sucre","c_digo_dane_del_municipio":"70742","municipio":"San Luis de Sincé", createdAt: new Date(), updatedAt: new Date()}
-      ,{"region":"Región Centro Oriente","c_digo_dane_del_departamento":"15","departamento":"Boyacá","c_digo_dane_del_municipio":"15667","municipio":"San Luis de Gaceno", createdAt: new Date(), updatedAt: new Date()}], {});
-    
+    await queryInterface.bulkInsert(
+      "Ciudades",
+      [
+        {
+          id: 1,
+          nombre: "Medellín",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 2,
+          nombre: "Abejorral",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 3,
+          nombre: "Abriaquí",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 4,
+          nombre: "Alejandría",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 5,
+          nombre: "Amagá",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 6,
+          nombre: "Amalfi",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 7,
+          nombre: "Andes",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 8,
+          nombre: "Angelópolis",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 9,
+          nombre: "Angostura",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 10,
+          nombre: "Anorí",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 11,
+          nombre: "Chimá",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 12,
+          nombre: "Anza",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 13,
+          nombre: "Apartadó",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 14,
+          nombre: "Arboletes",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 15,
+          nombre: "Argelia",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 16,
+          nombre: "Armenia",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 17,
+          nombre: "Barbosa",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 18,
+          nombre: "Bello",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 19,
+          nombre: "Betania",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 20,
+          nombre: "Betulia",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 21,
+          nombre: "Ciudad Bolívar",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 22,
+          nombre: "Briceño",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 23,
+          nombre: "Buriticá",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 24,
+          nombre: "Cáceres",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 25,
+          nombre: "Caicedo",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 26,
+          nombre: "Caldas",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 27,
+          nombre: "Campamento",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 28,
+          nombre: "Cañasgordas",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 29,
+          nombre: "Caracolí",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 30,
+          nombre: "Caramanta",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 31,
+          nombre: "Carepa",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 32,
+          nombre: "Sampués",
+          departamento: 15,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 33,
+          nombre: "Carolina",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 34,
+          nombre: "Caucasia",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 35,
+          nombre: "Chigorodó",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 36,
+          nombre: "Cisneros",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 37,
+          nombre: "Cocorná",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 38,
+          nombre: "Concepción",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 39,
+          nombre: "Concordia",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 40,
+          nombre: "Copacabana",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 41,
+          nombre: "Dabeiba",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 42,
+          nombre: "Don Matías",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 43,
+          nombre: "Ebéjico",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 44,
+          nombre: "El Bagre",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 45,
+          nombre: "Entrerrios",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 46,
+          nombre: "Envigado",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 47,
+          nombre: "Fredonia",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 48,
+          nombre: "Giraldo",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 49,
+          nombre: "Girardota",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 50,
+          nombre: "Gómez Plata",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 51,
+          nombre: "Nunchía",
+          departamento: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 52,
+          nombre: "Guadalupe",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 53,
+          nombre: "Guarne",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 54,
+          nombre: "Guatapé",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 55,
+          nombre: "Heliconia",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 56,
+          nombre: "Hispania",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 57,
+          nombre: "Itagui",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 58,
+          nombre: "Ituango",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 59,
+          nombre: "Pamplona",
+          departamento: 20,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 60,
+          nombre: "Jericó",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 61,
+          nombre: "La Ceja",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 62,
+          nombre: "La Estrella",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 63,
+          nombre: "La Pintada",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 64,
+          nombre: "La Unión",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 65,
+          nombre: "Liborina",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 66,
+          nombre: "Maceo",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 67,
+          nombre: "Marinilla",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 68,
+          nombre: "Montebello",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 69,
+          nombre: "Murindó",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 70,
+          nombre: "Mutatá",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 71,
+          nombre: "Nariño",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 72,
+          nombre: "Necoclí",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 73,
+          nombre: "Nechí",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 74,
+          nombre: "Olaya",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 75,
+          nombre: "Peñol",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 76,
+          nombre: "Peque",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 77,
+          nombre: "Pueblorrico",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 78,
+          nombre: "Puerto Berrío",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 79,
+          nombre: "Puerto Nare",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 80,
+          nombre: "Puerto Triunfo",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 81,
+          nombre: "Remedios",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 82,
+          nombre: "Retiro",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 83,
+          nombre: "Rionegro",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 84,
+          nombre: "Sabanalarga",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 85,
+          nombre: "Sabaneta",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 86,
+          nombre: "Salgar",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 87,
+          nombre: "Albán",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 88,
+          nombre: "Yavaraté",
+          departamento: 25,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 89,
+          nombre: "San Francisco",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 90,
+          nombre: "San Jerónimo",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 91,
+          nombre: "Montelíbano",
+          departamento: 13,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 92,
+          nombre: "Puerto Asís",
+          departamento: 27,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 93,
+          nombre: "San Luis",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 94,
+          nombre: "San Pedro",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 95,
+          nombre: "Corozal",
+          departamento: 15,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 96,
+          nombre: "San Rafael",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 97,
+          nombre: "San Roque",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 98,
+          nombre: "San Vicente",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 99,
+          nombre: "Santa Bárbara",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 100,
+          nombre: "Buesaco",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 101,
+          nombre: "Santo Domingo",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 102,
+          nombre: "El Santuario",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 103,
+          nombre: "Segovia",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 104,
+          nombre: "Sopetrán",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 105,
+          nombre: "Támesis",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 106,
+          nombre: "Tarazá",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 107,
+          nombre: "Tarso",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 108,
+          nombre: "Titiribí",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 109,
+          nombre: "Toledo",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 110,
+          nombre: "Turbo",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 111,
+          nombre: "Uramita",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 112,
+          nombre: "Urrao",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 113,
+          nombre: "Valdivia",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 114,
+          nombre: "Valparaíso",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 115,
+          nombre: "Vegachí",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 116,
+          nombre: "Venecia",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 117,
+          nombre: "Maní",
+          departamento: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 118,
+          nombre: "Yalí",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 119,
+          nombre: "Yarumal",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 120,
+          nombre: "Yolombó",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 121,
+          nombre: "Yondó",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 122,
+          nombre: "Zaragoza",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 123,
+          nombre: "Barranquilla",
+          departamento: 32,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 124,
+          nombre: "Baranoa",
+          departamento: 32,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 125,
+          nombre: "El Peñón",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 126,
+          nombre: "Candelaria",
+          departamento: 32,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 127,
+          nombre: "Galapa",
+          departamento: 32,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 128,
+          nombre: "Tuluá",
+          departamento: 30,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 129,
+          nombre: "Casabianca",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 130,
+          nombre: "Luruaco",
+          departamento: 32,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 131,
+          nombre: "Malambo",
+          departamento: 32,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 132,
+          nombre: "Manatí",
+          departamento: 32,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 133,
+          nombre: "Anolaima",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 134,
+          nombre: "Piojó",
+          departamento: 32,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 135,
+          nombre: "Polonuevo",
+          departamento: 32,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 136,
+          nombre: "Chía",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 137,
+          nombre: "San Andrés de Tumaco",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 138,
+          nombre: "Sabanagrande",
+          departamento: 32,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 139,
+          nombre: "Sabanalarga",
+          departamento: 32,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 140,
+          nombre: "Santa Lucía",
+          departamento: 32,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 141,
+          nombre: "Santo Tomás",
+          departamento: 32,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 142,
+          nombre: "Soledad",
+          departamento: 32,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 143,
+          nombre: "Suan",
+          departamento: 32,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 144,
+          nombre: "Tubará",
+          departamento: 32,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 145,
+          nombre: "Usiacurí",
+          departamento: 32,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 146,
+          nombre: "Milán",
+          departamento: 11,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 147,
+          nombre: "Capitanejo",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 148,
+          nombre: "Achí",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 149,
+          nombre: "Anzoátegui",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 150,
+          nombre: "Arenal",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 151,
+          nombre: "Arjona",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 152,
+          nombre: "Arroyohondo",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 153,
+          nombre: "Florida",
+          departamento: 30,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 154,
+          nombre: "Calamar",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 155,
+          nombre: "Cantagallo",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 156,
+          nombre: "Cicuco",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 157,
+          nombre: "Córdoba",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 158,
+          nombre: "Clemencia",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 159,
+          nombre: "Repelón",
+          departamento: 32,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 160,
+          nombre: "El Guamo",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 161,
+          nombre: "Frontino",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 162,
+          nombre: "Magangué",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 163,
+          nombre: "Mahates",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 164,
+          nombre: "Margarita",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 165,
+          nombre: "Montecristo",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 166,
+          nombre: "Mompós",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 167,
+          nombre: "Morales",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 168,
+          nombre: "Norosí",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 169,
+          nombre: "Pinillos",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 170,
+          nombre: "Regidor",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 171,
+          nombre: "Río Viejo",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 172,
+          nombre: "San Estanislao",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 173,
+          nombre: "San Fernando",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 174,
+          nombre: "El Peñón",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 175,
+          nombre: "Pamplonita",
+          departamento: 20,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 176,
+          nombre: "San Juan Nepomuceno",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 177,
+          nombre: "Miriti Paraná",
+          departamento: 17,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 178,
+          nombre: "Támara",
+          departamento: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 179,
+          nombre: "Santa Catalina",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 180,
+          nombre: "Santa Rosa",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 181,
+          nombre: "Tibasosa",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 182,
+          nombre: "Simití",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 183,
+          nombre: "Soplaviento",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 184,
+          nombre: "Talaigua Nuevo",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 185,
+          nombre: "Tiquisio",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 186,
+          nombre: "Turbaco",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 187,
+          nombre: "Turbaná",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 188,
+          nombre: "Villanueva",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 189,
+          nombre: "Páez",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 190,
+          nombre: "Tunja",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 191,
+          nombre: "Almeida",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 192,
+          nombre: "Aquitania",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 193,
+          nombre: "Arcabuco",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 194,
+          nombre: "Ibagué",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 195,
+          nombre: "Berbeo",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 196,
+          nombre: "Betéitiva",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 197,
+          nombre: "Boavita",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 198,
+          nombre: "Boyacá",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 199,
+          nombre: "Briceño",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 200,
+          nombre: "Buena Vista",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 201,
+          nombre: "Busbanzá",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 202,
+          nombre: "Caldas",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 203,
+          nombre: "Campohermoso",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 204,
+          nombre: "Cerinza",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 205,
+          nombre: "Chinavita",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 206,
+          nombre: "Chiquinquirá",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 207,
+          nombre: "Chiscas",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 208,
+          nombre: "Chita",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 209,
+          nombre: "Chitaraque",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 210,
+          nombre: "Chivatá",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 211,
+          nombre: "Cómbita",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 212,
+          nombre: "Coper",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 213,
+          nombre: "Corrales",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 214,
+          nombre: "Covarachía",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 215,
+          nombre: "Cubará",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 216,
+          nombre: "Cucaita",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 217,
+          nombre: "Cuítiva",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 218,
+          nombre: "Chíquiza",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 219,
+          nombre: "Chivor",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 220,
+          nombre: "Duitama",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 221,
+          nombre: "El Cocuy",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 222,
+          nombre: "El Espino",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 223,
+          nombre: "Firavitoba",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 224,
+          nombre: "Floresta",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 225,
+          nombre: "Gachantivá",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 226,
+          nombre: "Gameza",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 227,
+          nombre: "Garagoa",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 228,
+          nombre: "Guacamayas",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 229,
+          nombre: "Guateque",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 230,
+          nombre: "Guayatá",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 231,
+          nombre: "Güicán",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 232,
+          nombre: "Iza",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 233,
+          nombre: "Jenesano",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 234,
+          nombre: "Jericó",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 235,
+          nombre: "Labranzagrande",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 236,
+          nombre: "La Capilla",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 237,
+          nombre: "La Victoria",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 238,
+          nombre: "Puerto Colombia",
+          departamento: 32,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 239,
+          nombre: "Belén",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 240,
+          nombre: "Macanal",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 241,
+          nombre: "Maripí",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 242,
+          nombre: "Miraflores",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 243,
+          nombre: "Mongua",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 244,
+          nombre: "Monguí",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 245,
+          nombre: "Moniquirá",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 246,
+          nombre: "Muzo",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 247,
+          nombre: "Nobsa",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 248,
+          nombre: "Nuevo Colón",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 249,
+          nombre: "Oicatá",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 250,
+          nombre: "Otanche",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 251,
+          nombre: "Pachavita",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 252,
+          nombre: "Páez",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 253,
+          nombre: "Paipa",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 254,
+          nombre: "Pajarito",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 255,
+          nombre: "Panqueba",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 256,
+          nombre: "Pauna",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 257,
+          nombre: "Paya",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 258,
+          nombre: "Sopó",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 259,
+          nombre: "Pesca",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 260,
+          nombre: "Pisba",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 261,
+          nombre: "Puerto Boyacá",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 262,
+          nombre: "Quípama",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 263,
+          nombre: "Ramiriquí",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 264,
+          nombre: "Ráquira",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 265,
+          nombre: "Rondón",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 266,
+          nombre: "Saboyá",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 267,
+          nombre: "Sáchica",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 268,
+          nombre: "Samacá",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 269,
+          nombre: "San Eduardo",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 270,
+          nombre: "Carmen del Darien",
+          departamento: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 271,
+          nombre: "Gama",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 272,
+          nombre: "San Mateo",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 273,
+          nombre: "Sasaima",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 274,
+          nombre: "Chachagüí",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 275,
+          nombre: "Santana",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 276,
+          nombre: "Santa María",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 277,
+          nombre: "Cúcuta",
+          departamento: 20,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 278,
+          nombre: "Santa Sofía",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 279,
+          nombre: "Sativanorte",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 280,
+          nombre: "Sativasur",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 281,
+          nombre: "Siachoque",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 282,
+          nombre: "Soatá",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 283,
+          nombre: "Socotá",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 284,
+          nombre: "Socha",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 285,
+          nombre: "Sogamoso",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 286,
+          nombre: "Somondoco",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 287,
+          nombre: "Sora",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 288,
+          nombre: "Sotaquirá",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 289,
+          nombre: "Soracá",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 290,
+          nombre: "Susacón",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 291,
+          nombre: "Sutamarchán",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 292,
+          nombre: "Sutatenza",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 293,
+          nombre: "Tasco",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 294,
+          nombre: "Tenza",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 295,
+          nombre: "Tibaná",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 296,
+          nombre: "Tinjacá",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 297,
+          nombre: "Tipacoque",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 298,
+          nombre: "Toca",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 299,
+          nombre: "Cartagena",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 300,
+          nombre: "Tópaga",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 301,
+          nombre: "Tota",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 302,
+          nombre: "Turmequé",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 303,
+          nombre: "Granada",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 304,
+          nombre: "Tutazá",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 305,
+          nombre: "Umbita",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 306,
+          nombre: "Ventaquemada",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 307,
+          nombre: "Viracachá",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 308,
+          nombre: "Zetaquira",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 309,
+          nombre: "Manizales",
+          departamento: 28,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 310,
+          nombre: "Aguadas",
+          departamento: 28,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 311,
+          nombre: "Anserma",
+          departamento: 28,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 312,
+          nombre: "Aranzazu",
+          departamento: 28,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 313,
+          nombre: "Belalcázar",
+          departamento: 28,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 314,
+          nombre: "Chinchiná",
+          departamento: 28,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 315,
+          nombre: "Filadelfia",
+          departamento: 28,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 316,
+          nombre: "La Dorada",
+          departamento: 28,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 317,
+          nombre: "La Merced",
+          departamento: 28,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 318,
+          nombre: "Manzanares",
+          departamento: 28,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 319,
+          nombre: "Marmato",
+          departamento: 28,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 320,
+          nombre: "Marulanda",
+          departamento: 28,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 321,
+          nombre: "Neira",
+          departamento: 28,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 322,
+          nombre: "Norcasia",
+          departamento: 28,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 323,
+          nombre: "Pácora",
+          departamento: 28,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 324,
+          nombre: "Palestina",
+          departamento: 28,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 325,
+          nombre: "Pensilvania",
+          departamento: 28,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 326,
+          nombre: "Riosucio",
+          departamento: 28,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 327,
+          nombre: "Risaralda",
+          departamento: 28,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 328,
+          nombre: "Salamina",
+          departamento: 28,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 329,
+          nombre: "Samaná",
+          departamento: 28,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 330,
+          nombre: "San José",
+          departamento: 28,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 331,
+          nombre: "Supía",
+          departamento: 28,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 332,
+          nombre: "Victoria",
+          departamento: 28,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 333,
+          nombre: "Villamaría",
+          departamento: 28,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 334,
+          nombre: "Viterbo",
+          departamento: 28,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 335,
+          nombre: "Florencia",
+          departamento: 11,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 336,
+          nombre: "Albania",
+          departamento: 11,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 337,
+          nombre: "Santa Bárbara de Pinto",
+          departamento: 19,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 338,
+          nombre: "María la Baja",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 339,
+          nombre: "Curillo",
+          departamento: 11,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 340,
+          nombre: "El Doncello",
+          departamento: 11,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 341,
+          nombre: "El Paujil",
+          departamento: 11,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 342,
+          nombre: "Morelia",
+          departamento: 11,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 343,
+          nombre: "Puerto Rico",
+          departamento: 11,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 344,
+          nombre: "La Montañita",
+          departamento: 11,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 345,
+          nombre: "San Vicente del Caguán",
+          departamento: 11,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 346,
+          nombre: "Solano",
+          departamento: 11,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 347,
+          nombre: "Solita",
+          departamento: 11,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 348,
+          nombre: "Valparaíso",
+          departamento: 11,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 349,
+          nombre: "Popayán",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 350,
+          nombre: "Almaguer",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 351,
+          nombre: "Argelia",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 352,
+          nombre: "Balboa",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 353,
+          nombre: "Bolívar",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 354,
+          nombre: "Buenos Aires",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 355,
+          nombre: "Cajibío",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 356,
+          nombre: "Caldono",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 357,
+          nombre: "Caloto",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 358,
+          nombre: "Corinto",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 359,
+          nombre: "El Tambo",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 360,
+          nombre: "Florencia",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 361,
+          nombre: "Guachené",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 362,
+          nombre: "Guapi",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 363,
+          nombre: "Inzá",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 364,
+          nombre: "Jambaló",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 365,
+          nombre: "La Sierra",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 366,
+          nombre: "La Vega",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 367,
+          nombre: "López",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 368,
+          nombre: "Mercaderes",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 369,
+          nombre: "Miranda",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 370,
+          nombre: "Morales",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 371,
+          nombre: "Padilla",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 372,
+          nombre: "Patía",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 373,
+          nombre: "Piamonte",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 374,
+          nombre: "Piendamó",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 375,
+          nombre: "Puerto Tejada",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 376,
+          nombre: "Puracé",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 377,
+          nombre: "Rosas",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 378,
+          nombre: "El Peñón",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 379,
+          nombre: "Jardín",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 380,
+          nombre: "Santa Rosa",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 381,
+          nombre: "Silvia",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 382,
+          nombre: "Sotara",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 383,
+          nombre: "Suárez",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 384,
+          nombre: "Sucre",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 385,
+          nombre: "Timbío",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 386,
+          nombre: "Timbiquí",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 387,
+          nombre: "Toribio",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 388,
+          nombre: "Totoró",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 389,
+          nombre: "Villa Rica",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 390,
+          nombre: "Valledupar",
+          departamento: 24,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 391,
+          nombre: "Aguachica",
+          departamento: 24,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 392,
+          nombre: "Agustín Codazzi",
+          departamento: 24,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 393,
+          nombre: "Astrea",
+          departamento: 24,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 394,
+          nombre: "Becerril",
+          departamento: 24,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 395,
+          nombre: "Bosconia",
+          departamento: 24,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 396,
+          nombre: "Chimichagua",
+          departamento: 24,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 397,
+          nombre: "Chiriguaná",
+          departamento: 24,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 398,
+          nombre: "Curumaní",
+          departamento: 24,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 399,
+          nombre: "El Copey",
+          departamento: 24,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 400,
+          nombre: "El Paso",
+          departamento: 24,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 401,
+          nombre: "Gamarra",
+          departamento: 24,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 402,
+          nombre: "González",
+          departamento: 24,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 403,
+          nombre: "La Gloria",
+          departamento: 24,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 404,
+          nombre: "Jamundí",
+          departamento: 30,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 405,
+          nombre: "Manaure",
+          departamento: 24,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 406,
+          nombre: "Pailitas",
+          departamento: 24,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 407,
+          nombre: "Pelaya",
+          departamento: 24,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 408,
+          nombre: "Pueblo Bello",
+          departamento: 24,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 409,
+          nombre: "Tadó",
+          departamento: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 410,
+          nombre: "La Paz",
+          departamento: 24,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 411,
+          nombre: "San Alberto",
+          departamento: 24,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 412,
+          nombre: "San Diego",
+          departamento: 24,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 413,
+          nombre: "San Martín",
+          departamento: 24,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 414,
+          nombre: "Tamalameque",
+          departamento: 24,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 415,
+          nombre: "Montería",
+          departamento: 13,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 416,
+          nombre: "Ayapel",
+          departamento: 13,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 417,
+          nombre: "Buenavista",
+          departamento: 13,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 418,
+          nombre: "Canalete",
+          departamento: 13,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 419,
+          nombre: "Cereté",
+          departamento: 13,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 420,
+          nombre: "Chimá",
+          departamento: 13,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 421,
+          nombre: "Chinú",
+          departamento: 13,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 422,
+          nombre: "Orocué",
+          departamento: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 423,
+          nombre: "Cotorra",
+          departamento: 13,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 424,
+          nombre: "Líbano",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 425,
+          nombre: "Lorica",
+          departamento: 13,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 426,
+          nombre: "Los Córdobas",
+          departamento: 13,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 427,
+          nombre: "Momil",
+          departamento: 13,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 428,
+          nombre: "Moñitos",
+          departamento: 13,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 429,
+          nombre: "Planeta Rica",
+          departamento: 13,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 430,
+          nombre: "Pueblo Nuevo",
+          departamento: 13,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 431,
+          nombre: "Puerto Escondido",
+          departamento: 13,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 432,
+          nombre: "Yacopí",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 433,
+          nombre: "Purísima",
+          departamento: 13,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 434,
+          nombre: "Sahagún",
+          departamento: 13,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 435,
+          nombre: "San Andrés Sotavento",
+          departamento: 13,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 436,
+          nombre: "San Antero",
+          departamento: 13,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 437,
+          nombre: "Calarcá",
+          departamento: 9,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 438,
+          nombre: "Sonsón",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 439,
+          nombre: "El Carmen",
+          departamento: 20,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 440,
+          nombre: "San Pelayo",
+          departamento: 13,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 441,
+          nombre: "Tierralta",
+          departamento: 13,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 442,
+          nombre: "Tuchín",
+          departamento: 13,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 443,
+          nombre: "Valencia",
+          departamento: 13,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 444,
+          nombre: "Lérida",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 445,
+          nombre: "Anapoima",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 446,
+          nombre: "Arbeláez",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 447,
+          nombre: "Beltrán",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 448,
+          nombre: "Bituima",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 449,
+          nombre: "Bojacá",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 450,
+          nombre: "Cabrera",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 451,
+          nombre: "Cachipay",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 452,
+          nombre: "Cajicá",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 453,
+          nombre: "Caparrapí",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 454,
+          nombre: "Caqueza",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 455,
+          nombre: "La Apartada",
+          departamento: 13,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 456,
+          nombre: "Chaguaní",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 457,
+          nombre: "Chipaque",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 458,
+          nombre: "Choachí",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 459,
+          nombre: "Chocontá",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 460,
+          nombre: "Cogua",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 461,
+          nombre: "Cota",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 462,
+          nombre: "Cucunubá",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 463,
+          nombre: "El Colegio",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 464,
+          nombre: "El Rosal",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 465,
+          nombre: "Fomeque",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 466,
+          nombre: "Fosca",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 467,
+          nombre: "Funza",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 468,
+          nombre: "Fúquene",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 469,
+          nombre: "Gachala",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 470,
+          nombre: "Gachancipá",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 471,
+          nombre: "Gachetá",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 472,
+          nombre: "San Cristóbal",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 473,
+          nombre: "Girardot",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 474,
+          nombre: "Granada",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 475,
+          nombre: "Guachetá",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 476,
+          nombre: "Guaduas",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 477,
+          nombre: "Guasca",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 478,
+          nombre: "Guataquí",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 479,
+          nombre: "Guatavita",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 480,
+          nombre: "Fusagasugá",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 481,
+          nombre: "Guayabetal",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 482,
+          nombre: "Gutiérrez",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 483,
+          nombre: "Jerusalén",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 484,
+          nombre: "Junín",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 485,
+          nombre: "La Calera",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 486,
+          nombre: "La Mesa",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 487,
+          nombre: "La Palma",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 488,
+          nombre: "La Peña",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 489,
+          nombre: "La Vega",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 490,
+          nombre: "Lenguazaque",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 491,
+          nombre: "Macheta",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 492,
+          nombre: "Madrid",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 493,
+          nombre: "Manta",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 494,
+          nombre: "Medina",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 495,
+          nombre: "Mosquera",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 496,
+          nombre: "Nariño",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 497,
+          nombre: "Nemocón",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 498,
+          nombre: "Nilo",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 499,
+          nombre: "Nimaima",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 500,
+          nombre: "Nocaima",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 501,
+          nombre: "Venecia",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 502,
+          nombre: "Pacho",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 503,
+          nombre: "Paime",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 504,
+          nombre: "Pandi",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 505,
+          nombre: "Paratebueno",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 506,
+          nombre: "Pasca",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 507,
+          nombre: "Puerto Salgar",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 508,
+          nombre: "Pulí",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 509,
+          nombre: "Quebradanegra",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 510,
+          nombre: "Quetame",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 511,
+          nombre: "Quipile",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 512,
+          nombre: "Apulo",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 513,
+          nombre: "Ricaurte",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 514,
+          nombre: "Zambrano",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 515,
+          nombre: "San Bernardo",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 516,
+          nombre: "San Cayetano",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 517,
+          nombre: "San Francisco",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 518,
+          nombre: "La Uvita",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 519,
+          nombre: "Zipaquirá",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 520,
+          nombre: "Sesquilé",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 521,
+          nombre: "Sibaté",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 522,
+          nombre: "Silvania",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 523,
+          nombre: "Simijaca",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 524,
+          nombre: "Soacha",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 525,
+          nombre: "Subachoque",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 526,
+          nombre: "Suesca",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 527,
+          nombre: "Supatá",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 528,
+          nombre: "Susa",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 529,
+          nombre: "Sutatausa",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 530,
+          nombre: "Tabio",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 531,
+          nombre: "Génova",
+          departamento: 9,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 532,
+          nombre: "Tausa",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 533,
+          nombre: "Tena",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 534,
+          nombre: "Tenjo",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 535,
+          nombre: "Tibacuy",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 536,
+          nombre: "Tibirita",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 537,
+          nombre: "Tocaima",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 538,
+          nombre: "Tocancipá",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 539,
+          nombre: "Topaipí",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 540,
+          nombre: "Ubalá",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 541,
+          nombre: "Ubaque",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 542,
+          nombre: "Suárez",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 543,
+          nombre: "Une",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 544,
+          nombre: "Útica",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 545,
+          nombre: "Castilla la Nueva",
+          departamento: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 546,
+          nombre: "Vianí",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 547,
+          nombre: "Villagómez",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 548,
+          nombre: "Villapinzón",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 549,
+          nombre: "Villeta",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 550,
+          nombre: "Viotá",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 551,
+          nombre: "Zipacón",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 552,
+          nombre: "Quibdó",
+          departamento: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 553,
+          nombre: "Acandí",
+          departamento: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 554,
+          nombre: "Alto Baudo",
+          departamento: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 555,
+          nombre: "Atrato",
+          departamento: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 556,
+          nombre: "Bagadó",
+          departamento: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 557,
+          nombre: "Bahía Solano",
+          departamento: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 558,
+          nombre: "Bajo Baudó",
+          departamento: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 559,
+          nombre: "Belén",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 560,
+          nombre: "Bojaya",
+          departamento: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 561,
+          nombre: "Unión Panamericana",
+          departamento: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 562,
+          nombre: "Pueblo Viejo",
+          departamento: 19,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 563,
+          nombre: "Cértegui",
+          departamento: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 564,
+          nombre: "Condoto",
+          departamento: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 565,
+          nombre: "Villagarzón",
+          departamento: 27,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 566,
+          nombre: "Facatativá",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 567,
+          nombre: "Juradó",
+          departamento: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 568,
+          nombre: "Lloró",
+          departamento: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 569,
+          nombre: "Medio Atrato",
+          departamento: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 570,
+          nombre: "Medio Baudó",
+          departamento: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 571,
+          nombre: "Medio San Juan",
+          departamento: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 572,
+          nombre: "Nóvita",
+          departamento: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 573,
+          nombre: "Nuquí",
+          departamento: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 574,
+          nombre: "Río Iro",
+          departamento: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 575,
+          nombre: "Río Quito",
+          departamento: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 576,
+          nombre: "Riosucio",
+          departamento: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 577,
+          nombre: "Puerto Libertador",
+          departamento: 13,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 578,
+          nombre: "Sipí",
+          departamento: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 579,
+          nombre: "Unguía",
+          departamento: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 580,
+          nombre: "Neiva",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 581,
+          nombre: "Acevedo",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 582,
+          nombre: "Agrado",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 583,
+          nombre: "Aipe",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 584,
+          nombre: "Algeciras",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 585,
+          nombre: "Altamira",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 586,
+          nombre: "Baraya",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 587,
+          nombre: "Campoalegre",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 588,
+          nombre: "Colombia",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 589,
+          nombre: "Elías",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 590,
+          nombre: "Garzón",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 591,
+          nombre: "Gigante",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 592,
+          nombre: "Guadalupe",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 593,
+          nombre: "Hobo",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 594,
+          nombre: "Iquira",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 595,
+          nombre: "Isnos",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 596,
+          nombre: "La Argentina",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 597,
+          nombre: "La Plata",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 598,
+          nombre: "Marquetalia",
+          departamento: 28,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 599,
+          nombre: "Nátaga",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 600,
+          nombre: "Oporapa",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 601,
+          nombre: "Paicol",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 602,
+          nombre: "Palermo",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 603,
+          nombre: "Palestina",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 604,
+          nombre: "Pital",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 605,
+          nombre: "Pitalito",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 606,
+          nombre: "Rivera",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 607,
+          nombre: "Saladoblanco",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 608,
+          nombre: "Arboleda",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 609,
+          nombre: "Santa María",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 610,
+          nombre: "Suaza",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 611,
+          nombre: "Tarqui",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 612,
+          nombre: "Tesalia",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 613,
+          nombre: "Tello",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 614,
+          nombre: "Teruel",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 615,
+          nombre: "Timaná",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 616,
+          nombre: "Villavieja",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 617,
+          nombre: "Yaguará",
+          departamento: 29,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 618,
+          nombre: "Riohacha",
+          departamento: 23,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 619,
+          nombre: "Albania",
+          departamento: 23,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 620,
+          nombre: "Barrancas",
+          departamento: 23,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 621,
+          nombre: "Dibula",
+          departamento: 23,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 622,
+          nombre: "Distracción",
+          departamento: 23,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 623,
+          nombre: "El Molino",
+          departamento: 23,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 624,
+          nombre: "Fonseca",
+          departamento: 23,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 625,
+          nombre: "Hatonuevo",
+          departamento: 23,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 626,
+          nombre: "Maicao",
+          departamento: 23,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 627,
+          nombre: "Manaure",
+          departamento: 23,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 628,
+          nombre: "Uribia",
+          departamento: 23,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 629,
+          nombre: "Urumita",
+          departamento: 23,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 630,
+          nombre: "Villanueva",
+          departamento: 23,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 631,
+          nombre: "Santa Marta",
+          departamento: 19,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 632,
+          nombre: "Algarrobo",
+          departamento: 19,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 633,
+          nombre: "Aracataca",
+          departamento: 19,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 634,
+          nombre: "Ariguaní",
+          departamento: 19,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 635,
+          nombre: "Cerro San Antonio",
+          departamento: 19,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 636,
+          nombre: "Chivolo",
+          departamento: 19,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 637,
+          nombre: "Concordia",
+          departamento: 19,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 638,
+          nombre: "El Banco",
+          departamento: 19,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 639,
+          nombre: "El Piñon",
+          departamento: 19,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 640,
+          nombre: "El Retén",
+          departamento: 19,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 641,
+          nombre: "Fundación",
+          departamento: 19,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 642,
+          nombre: "Guamal",
+          departamento: 19,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 643,
+          nombre: "Nueva Granada",
+          departamento: 19,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 644,
+          nombre: "Pedraza",
+          departamento: 19,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 645,
+          nombre: "Pivijay",
+          departamento: 19,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 646,
+          nombre: "Plato",
+          departamento: 19,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 647,
+          nombre: "Remolino",
+          departamento: 19,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 648,
+          nombre: "Salamina",
+          departamento: 19,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 649,
+          nombre: "San Zenón",
+          departamento: 19,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 650,
+          nombre: "Santa Ana",
+          departamento: 19,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 651,
+          nombre: "Sitionuevo",
+          departamento: 19,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 652,
+          nombre: "Tenerife",
+          departamento: 19,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 653,
+          nombre: "Zapayán",
+          departamento: 19,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 654,
+          nombre: "Zona Bananera",
+          departamento: 19,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 655,
+          nombre: "Villavicencio",
+          departamento: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 656,
+          nombre: "Acacias",
+          departamento: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 657,
+          nombre: "Cabuyaro",
+          departamento: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 658,
+          nombre: "Cubarral",
+          departamento: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 659,
+          nombre: "Cumaral",
+          departamento: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 660,
+          nombre: "El Calvario",
+          departamento: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 661,
+          nombre: "El Castillo",
+          departamento: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 662,
+          nombre: "El Dorado",
+          departamento: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 663,
+          nombre: "Buenaventura",
+          departamento: 30,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 664,
+          nombre: "Granada",
+          departamento: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 665,
+          nombre: "Guamal",
+          departamento: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 666,
+          nombre: "Mapiripán",
+          departamento: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 667,
+          nombre: "Mesetas",
+          departamento: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 668,
+          nombre: "La Macarena",
+          departamento: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 669,
+          nombre: "Uribe",
+          departamento: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 670,
+          nombre: "Lejanías",
+          departamento: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 671,
+          nombre: "Puerto Concordia",
+          departamento: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 672,
+          nombre: "Puerto Gaitán",
+          departamento: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 673,
+          nombre: "Puerto López",
+          departamento: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 674,
+          nombre: "Puerto Lleras",
+          departamento: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 675,
+          nombre: "Puerto Rico",
+          departamento: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 676,
+          nombre: "Restrepo",
+          departamento: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 677,
+          nombre: "Ciénaga",
+          departamento: 19,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 678,
+          nombre: "Ponedera",
+          departamento: 32,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 679,
+          nombre: "San Juanito",
+          departamento: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 680,
+          nombre: "San Martín",
+          departamento: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 681,
+          nombre: "Vista Hermosa",
+          departamento: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 682,
+          nombre: "Pasto",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 683,
+          nombre: "Albán",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 684,
+          nombre: "Aldana",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 685,
+          nombre: "Ancuyá",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 686,
+          nombre: "Tununguá",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 687,
+          nombre: "Barbacoas",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 688,
+          nombre: "Motavita",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 689,
+          nombre: "San Bernardo del Viento",
+          departamento: 13,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 690,
+          nombre: "Colón",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 691,
+          nombre: "Consaca",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 692,
+          nombre: "Contadero",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 693,
+          nombre: 13,
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 694,
+          nombre: "Cuaspud",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 695,
+          nombre: "Cumbal",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 696,
+          nombre: "Cumbitara",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 697,
+          nombre: "El Charco",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 698,
+          nombre: "El Peñol",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 699,
+          nombre: "El Rosario",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 700,
+          nombre: "Istmina",
+          departamento: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 701,
+          nombre: "El Tambo",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 702,
+          nombre: "Funes",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 703,
+          nombre: "Guachucal",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 704,
+          nombre: "Guaitarilla",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 705,
+          nombre: "Gualmatán",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 706,
+          nombre: "Iles",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 707,
+          nombre: "Imués",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 708,
+          nombre: "Ipiales",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 709,
+          nombre: "La Cruz",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 710,
+          nombre: "La Florida",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 711,
+          nombre: "La Llanada",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 712,
+          nombre: "La Tola",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 713,
+          nombre: "La Unión",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 714,
+          nombre: "Leiva",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 715,
+          nombre: "Linares",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 716,
+          nombre: "Los Andes",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 717,
+          nombre: "Magüí",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 718,
+          nombre: "Mallama",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 719,
+          nombre: "Mosquera",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 720,
+          nombre: 18,
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 721,
+          nombre: "Olaya Herrera",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 722,
+          nombre: "Ospina",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 723,
+          nombre: "Francisco Pizarro",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 724,
+          nombre: "Policarpa",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 725,
+          nombre: "Potosí",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 726,
+          nombre: "Providencia",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 727,
+          nombre: "Puerres",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 728,
+          nombre: "Pupiales",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 729,
+          nombre: "Ricaurte",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 730,
+          nombre: "Roberto Payán",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 731,
+          nombre: "Samaniego",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 732,
+          nombre: "Sandoná",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 733,
+          nombre: "San Bernardo",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 734,
+          nombre: "San Lorenzo",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 735,
+          nombre: "San Pablo",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 736,
+          nombre: "Belmira",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 737,
+          nombre: "Ciénega",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 738,
+          nombre: "Santa Bárbara",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 739,
+          nombre: "Sapuyes",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 740,
+          nombre: "Taminango",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 741,
+          nombre: "Tangua",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 742,
+          nombre: "Santacruz",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 743,
+          nombre: "Túquerres",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 744,
+          nombre: "Yacuanquer",
+          departamento: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 745,
+          nombre: "Puerto Wilches",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 746,
+          nombre: "Puerto Parra",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 747,
+          nombre: "Armenia",
+          departamento: 9,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 748,
+          nombre: "Buenavista",
+          departamento: 9,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 749,
+          nombre: "Circasia",
+          departamento: 9,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 750,
+          nombre: "Córdoba",
+          departamento: 9,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 751,
+          nombre: "Filandia",
+          departamento: 9,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 752,
+          nombre: "La Tebaida",
+          departamento: 9,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 753,
+          nombre: "Montenegro",
+          departamento: 9,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 754,
+          nombre: "Pijao",
+          departamento: 9,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 755,
+          nombre: "Quimbaya",
+          departamento: 9,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 756,
+          nombre: "Salento",
+          departamento: 9,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 757,
+          nombre: "Pereira",
+          departamento: 21,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 758,
+          nombre: "Apía",
+          departamento: 21,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 759,
+          nombre: "Balboa",
+          departamento: 21,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 760,
+          nombre: "Dosquebradas",
+          departamento: 21,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 761,
+          nombre: "Guática",
+          departamento: 21,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 762,
+          nombre: "La Celia",
+          departamento: 21,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 763,
+          nombre: "La Virginia",
+          departamento: 21,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 764,
+          nombre: "Marsella",
+          departamento: 21,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 765,
+          nombre: "Mistrató",
+          departamento: 21,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 766,
+          nombre: "Pueblo Rico",
+          departamento: 21,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 767,
+          nombre: "Quinchía",
+          departamento: 21,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 768,
+          nombre: "Santuario",
+          departamento: 21,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 769,
+          nombre: "Bucaramanga",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 770,
+          nombre: "Aguada",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 771,
+          nombre: "Albania",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 772,
+          nombre: "Aratoca",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 773,
+          nombre: "Barbosa",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 774,
+          nombre: "Barichara",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 775,
+          nombre: "Barrancabermeja",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 776,
+          nombre: "Betulia",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 777,
+          nombre: "Atlántico",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 778,
+          nombre: "Cabrera",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 779,
+          nombre: "California",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 780,
+          nombre: "Carcasí",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 781,
+          nombre: "Cepitá",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 782,
+          nombre: "Cerrito",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 783,
+          nombre: "Charalá",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 784,
+          nombre: "Charta",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 785,
+          nombre: "Chipatá",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 786,
+          nombre: "Cimitarra",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 787,
+          nombre: "Concepción",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 788,
+          nombre: "Confines",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 789,
+          nombre: "Contratación",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 790,
+          nombre: "Coromoro",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 791,
+          nombre: "Curití",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 792,
+          nombre: "El Guacamayo",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 793,
+          nombre: "El Playón",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 794,
+          nombre: "Encino",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 795,
+          nombre: "Enciso",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 796,
+          nombre: "Florián",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 797,
+          nombre: "Floridablanca",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 798,
+          nombre: "Galán",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 799,
+          nombre: "Gambita",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 800,
+          nombre: "Girón",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 801,
+          nombre: "Guaca",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 802,
+          nombre: "Guadalupe",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 803,
+          nombre: "Guapotá",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 804,
+          nombre: "Guavatá",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 805,
+          nombre: "Güepsa",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 806,
+          nombre: "Jesús María",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 807,
+          nombre: "Jordán",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 808,
+          nombre: "La Belleza",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 809,
+          nombre: "Landázuri",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 810,
+          nombre: "La Paz",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 811,
+          nombre: "Lebríja",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 812,
+          nombre: "Los Santos",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 813,
+          nombre: "Macaravita",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 814,
+          nombre: "Málaga",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 815,
+          nombre: "Matanza",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 816,
+          nombre: "Mogotes",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 817,
+          nombre: "Molagavita",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 818,
+          nombre: "Ocamonte",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 819,
+          nombre: "Oiba",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 820,
+          nombre: "Onzaga",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 821,
+          nombre: "Palmar",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 822,
+          nombre: "Páramo",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 823,
+          nombre: "Piedecuesta",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 824,
+          nombre: "Pinchote",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 825,
+          nombre: "Puente Nacional",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 826,
+          nombre: "Rionegro",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 827,
+          nombre: "San Andrés",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 828,
+          nombre: "San Gil",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 829,
+          nombre: "San Joaquín",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 830,
+          nombre: "San Miguel",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 831,
+          nombre: "Santa Bárbara",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 832,
+          nombre: "Simacota",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 833,
+          nombre: "Socorro",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 834,
+          nombre: "Suaita",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 835,
+          nombre: "Sucre",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 836,
+          nombre: "Suratá",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 837,
+          nombre: "Tona",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 838,
+          nombre: "Vélez",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 839,
+          nombre: "Vetas",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 840,
+          nombre: "Villanueva",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 841,
+          nombre: "Zapatoca",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 842,
+          nombre: "Sincelejo",
+          departamento: 15,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 843,
+          nombre: "Buenavista",
+          departamento: 15,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 844,
+          nombre: "Caimito",
+          departamento: 15,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 845,
+          nombre: "Coloso",
+          departamento: 15,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 846,
+          nombre: "Coveñas",
+          departamento: 15,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 847,
+          nombre: "Chalán",
+          departamento: 15,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 848,
+          nombre: "El Roble",
+          departamento: 15,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 849,
+          nombre: "Galeras",
+          departamento: 15,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 850,
+          nombre: "Guaranda",
+          departamento: 15,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 851,
+          nombre: "La Unión",
+          departamento: 15,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 852,
+          nombre: "Los Palmitos",
+          departamento: 15,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 853,
+          nombre: "Majagual",
+          departamento: 15,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 854,
+          nombre: "Morroa",
+          departamento: 15,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 855,
+          nombre: "Ovejas",
+          departamento: 15,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 856,
+          nombre: "Palmito",
+          departamento: 15,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 857,
+          nombre: "San Benito Abad",
+          departamento: 15,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 858,
+          nombre: "San Marcos",
+          departamento: 15,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 859,
+          nombre: "San Onofre",
+          departamento: 15,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 860,
+          nombre: "San Pedro",
+          departamento: 15,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 861,
+          nombre: "Sucre",
+          departamento: 15,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 862,
+          nombre: "Tolú Viejo",
+          departamento: 15,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 863,
+          nombre: "Alpujarra",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 864,
+          nombre: "Alvarado",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 865,
+          nombre: "Ambalema",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 866,
+          nombre: "Armero",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 867,
+          nombre: "Ataco",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 868,
+          nombre: "Cajamarca",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 869,
+          nombre: "Chaparral",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 870,
+          nombre: "Coello",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 871,
+          nombre: "Coyaima",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 872,
+          nombre: "Cunday",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 873,
+          nombre: "Dolores",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 874,
+          nombre: "Espinal",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 875,
+          nombre: "Falan",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 876,
+          nombre: "Flandes",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 877,
+          nombre: "Fresno",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 878,
+          nombre: "Guamo",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 879,
+          nombre: "Herveo",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 880,
+          nombre: "Honda",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 881,
+          nombre: "Icononzo",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 882,
+          nombre: "Mariquita",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 883,
+          nombre: "Melgar",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 884,
+          nombre: "Murillo",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 885,
+          nombre: "Natagaima",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 886,
+          nombre: "Ortega",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 887,
+          nombre: "Palocabildo",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 888,
+          nombre: "Piedras",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 889,
+          nombre: "Planadas",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 890,
+          nombre: "Prado",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 891,
+          nombre: "Purificación",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 892,
+          nombre: "Rio Blanco",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 893,
+          nombre: "Roncesvalles",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 894,
+          nombre: "Rovira",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 895,
+          nombre: "Saldaña",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 896,
+          nombre: "Santa Isabel",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 897,
+          nombre: "Venadillo",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 898,
+          nombre: "Villahermosa",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 899,
+          nombre: "Villarrica",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 900,
+          nombre: "Arauquita",
+          departamento: 16,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 901,
+          nombre: "Cravo Norte",
+          departamento: 16,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 902,
+          nombre: "Fortul",
+          departamento: 16,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 903,
+          nombre: "Puerto Rondón",
+          departamento: 16,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 904,
+          nombre: "Saravena",
+          departamento: 16,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 905,
+          nombre: "Tame",
+          departamento: 16,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 906,
+          nombre: "Arauca",
+          departamento: 16,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 907,
+          nombre: "Yopal",
+          departamento: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 908,
+          nombre: "Aguazul",
+          departamento: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 909,
+          nombre: "Chámeza",
+          departamento: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 910,
+          nombre: "Hato Corozal",
+          departamento: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 911,
+          nombre: "La Salina",
+          departamento: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 912,
+          nombre: "Monterrey",
+          departamento: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 913,
+          nombre: "Pore",
+          departamento: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 914,
+          nombre: "Recetor",
+          departamento: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 915,
+          nombre: "Sabanalarga",
+          departamento: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 916,
+          nombre: "Sácama",
+          departamento: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 917,
+          nombre: "Tauramena",
+          departamento: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 918,
+          nombre: "Trinidad",
+          departamento: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 919,
+          nombre: "Villanueva",
+          departamento: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 920,
+          nombre: "Mocoa",
+          departamento: 27,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 921,
+          nombre: "Colón",
+          departamento: 27,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 922,
+          nombre: "Orito",
+          departamento: 27,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 923,
+          nombre: "Puerto Caicedo",
+          departamento: 27,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 924,
+          nombre: "Puerto Guzmán",
+          departamento: 27,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 925,
+          nombre: "Leguízamo",
+          departamento: 27,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 926,
+          nombre: "Sibundoy",
+          departamento: 27,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 927,
+          nombre: "San Francisco",
+          departamento: 27,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 928,
+          nombre: "San Miguel",
+          departamento: 27,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 929,
+          nombre: "Santiago",
+          departamento: 27,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 930,
+          nombre: "Leticia",
+          departamento: 17,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 931,
+          nombre: "El Encanto",
+          departamento: 17,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 932,
+          nombre: "La Chorrera",
+          departamento: 17,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 933,
+          nombre: "La Pedrera",
+          departamento: 17,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 934,
+          nombre: "La Victoria",
+          departamento: 17,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 935,
+          nombre: "Puerto Arica",
+          departamento: 17,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 936,
+          nombre: "Puerto Nariño",
+          departamento: 17,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 937,
+          nombre: "Puerto Santander",
+          departamento: 17,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 938,
+          nombre: "Tarapacá",
+          departamento: 17,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 939,
+          nombre: "Inírida",
+          departamento: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 940,
+          nombre: "Barranco Minas",
+          departamento: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 941,
+          nombre: "Mapiripana",
+          departamento: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 942,
+          nombre: "San Felipe",
+          departamento: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 943,
+          nombre: "Puerto Colombia",
+          departamento: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 944,
+          nombre: "La Guadalupe",
+          departamento: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 945,
+          nombre: "Cacahual",
+          departamento: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 946,
+          nombre: "Pana Pana",
+          departamento: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 947,
+          nombre: "Morichal",
+          departamento: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 948,
+          nombre: "Mitú",
+          departamento: 25,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 949,
+          nombre: "Caruru",
+          departamento: 25,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 950,
+          nombre: "Pacoa",
+          departamento: 25,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 951,
+          nombre: "Taraira",
+          departamento: 25,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 952,
+          nombre: "Papunaua",
+          departamento: 25,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 953,
+          nombre: "Puerto Carreño",
+          departamento: 22,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 954,
+          nombre: "La Primavera",
+          departamento: 22,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 955,
+          nombre: "Santa Rosalía",
+          departamento: 22,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 956,
+          nombre: "Cumaribo",
+          departamento: 22,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 957,
+          nombre: "San José del Fragua",
+          departamento: 11,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 958,
+          nombre: "Barranca de Upía",
+          departamento: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 959,
+          nombre: "Palmas del Socorro",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 960,
+          nombre: "San Juan de Río Seco",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 961,
+          nombre: "Juan de Acosta",
+          departamento: 32,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 962,
+          nombre: "Fuente de Oro",
+          departamento: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 963,
+          nombre: "San Luis de Gaceno",
+          departamento: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 964,
+          nombre: "El Litoral del San Juan",
+          departamento: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 965,
+          nombre: "Villa de San Diego de Ubate",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 966,
+          nombre: "Barranco de Loba",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 967,
+          nombre: "Togüí",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 968,
+          nombre: "Santa Rosa del Sur",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 969,
+          nombre: "El Cantón del San Pablo",
+          departamento: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 970,
+          nombre: "Villa de Leyva",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 971,
+          nombre: "San Sebastián de Buenavista",
+          departamento: 19,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 972,
+          nombre: "Paz de Río",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 973,
+          nombre: "Hatillo de Loba",
+          departamento: 31,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 974,
+          nombre: "Sabanas de San Angel",
+          departamento: 19,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 975,
+          nombre: "Calamar",
+          departamento: 14,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 976,
+          nombre: "Río de Oro",
+          departamento: 24,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 977,
+          nombre: "San Pedro de Uraba",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 978,
+          nombre: "San José del Guaviare",
+          departamento: 14,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 979,
+          nombre: "Santa Rosa de Viterbo",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 980,
+          nombre: "Santander de Quilichao",
+          departamento: 26,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 981,
+          nombre: "Miraflores",
+          departamento: 14,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 982,
+          nombre: "Santafé de Antioquia",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 983,
+          nombre: "San Carlos de Guaroa",
+          departamento: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 984,
+          nombre: "Palmar de Varela",
+          departamento: 32,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 985,
+          nombre: "Santa Rosa de Osos",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 986,
+          nombre: "San Andrés de Cuerquía",
+          departamento: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 987,
+          nombre: "Valle de San Juan",
+          departamento: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 988,
+          nombre: "San Vicente de Chucurí",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 989,
+          nombre: "San José de Miranda",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 990,
+          nombre: "Providencia",
+          departamento: 12,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 991,
+          nombre: "Santa Rosa de Cabal",
+          departamento: 21,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 992,
+          nombre: "Guayabal de Siquima",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 993,
+          nombre: "Belén de Los Andaquies",
+          departamento: 11,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 994,
+          nombre: "Paz de Ariporo",
+          departamento: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 995,
+          nombre: "Santa Helena del Opón",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 996,
+          nombre: "San Pablo de Borbur",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 997,
+          nombre: "La Jagua del Pilar",
+          departamento: 23,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 998,
+          nombre: "La Jagua de Ibirico",
+          departamento: 24,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 999,
+          nombre: "San Luis de Sincé",
+          departamento: 15,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 1000,
+          nombre: "San Luis de Gaceno",
+          departamento: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 1001,
+          nombre: "Bogotá",
+          departamento: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 1002,
+          nombre: "Cali",
+          departamento: 30,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 1003,
+          nombre: "Cucuta",
+          departamento: 20,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 1004,
+          nombre: "Bucaramanga",
+          departamento: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+      ],
+      {}
+    );
   },
 
   down: async (queryInterface, Sequelize) => {
-
-     await queryInterface.bulkDelete('Ciudades', null, {});
-     
-  }
+    await queryInterface.bulkDelete("Ciudades", null, {});
+    await queryInterface.sequelize.query(
+      `ALTER SEQUENCE public."Ciudades_id_seq" RESTART WITH 1;`
+    );
+  },
 };

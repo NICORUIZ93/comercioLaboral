@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       
-      this.belongsTo(models.Usuario, {
+      this.belongsTo(models.Tienda, {
         foreignKey: "IdTienda"
       });
 
@@ -25,6 +25,13 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'CalificacionTienda',
-  });
+    tableName: "CalificacionTiendas",
+    name: {
+      singular: 'Calificacion',
+      plural: 'Calificaciones',
+    }
+  }
+  
+  );
   return CalificacionTienda;
 };

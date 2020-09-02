@@ -12,6 +12,36 @@ module.exports = {
     } catch (e) {
       res.status(500).send(e);
     }
+  },
+  async obtenerListaCiudades(req, res) {
+    try {
+      //const idLista = req.params.id;
+      const lista = await listasService.obtenerListaCiudades();
+      
+      return res.status(200).json(lista);
+    } catch (e) {
+      res.status(500).send(e);
+    }
+  },
+  async obtenerListaCiudadesPorDepartamento(req, res) {
+    try {
+      const departamento = req.params.id;
+      const lista = await listasService.obtenerListaCiudadPorDepartamento(departamento);
+      
+      return res.status(200).json(lista);
+    } catch (e) {
+      res.status(500).send(e);
+    }
+  },
+  async obtenerListaDepartamentos(req, res) {
+    try {
+      //const idLista = req.params.id;
+      const lista = await listasService.obtenerListaDepartamentos();
+      
+      return res.status(200).json(lista);
+    } catch (e) {
+      res.status(500).send(e);
+    }
   }
   
 };

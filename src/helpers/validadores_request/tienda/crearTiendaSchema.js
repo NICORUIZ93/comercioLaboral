@@ -11,7 +11,13 @@ const crearTiendaSchema = (req, res, next) => {
     tipoCuenta: Joi.string().empty(""),
     maxFotos: Joi.number().integer(),
     IdUsuario: Joi.number().integer().required(),
-    estado:Joi.boolean()
+    estado:Joi.boolean(),
+    imagenes: Joi.array().items(
+      Joi.object({
+        url: Joi.string().empty(""),
+        prioridad: Joi.number().integer()
+      })
+    )
   };
 
 

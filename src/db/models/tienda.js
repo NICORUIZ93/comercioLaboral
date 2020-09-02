@@ -24,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       });
 
       //this.hasMany(models.Usuario, { foreignKey: "IdTienda" });
+      this.hasMany(models.CalificacionTienda, {foreignKey: "IdTienda"});
 
       this.hasMany(models.Pedido, { foreignKey: "IdTienda" });
 
@@ -46,6 +47,7 @@ module.exports = (sequelize, DataTypes) => {
     numeroCuenta: DataTypes.STRING,
     tipoCuenta: DataTypes.STRING,
     maxFotos: DataTypes.INTEGER,
+    calificacion: DataTypes.DECIMAL,
     estado: {
       type:DataTypes.BOOLEAN,
       defaultValue: true

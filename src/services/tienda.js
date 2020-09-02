@@ -1,11 +1,26 @@
 const Tienda = require("../db/models").Tienda;
 const UsuariosTienda = require("../db/models").UsuariosTienda;
+const Usuario = require("../db/models").Usuario;
+const TiendaRecurso = require("../db/models").TiendaRecurso;
+const Recurso = require("../db/models").Recurso;
 var sequelize = require("../db/models").sequelize;
+const _Rol = require("../constants/roles");
 
 const service = {
   async obtenerTiendas() {
     try {
-      const tiendas = await Tienda.findAll({ raw: false });
+      const tiendas = await Tienda.findAll({
+        include: [
+          {
+            model: Recurso,
+            as: "Recursos",
+            attributes: ["id", "nombre", "key", "url", "extension"],
+            through: {
+              attributes: [],
+            },
+          },
+        ],
+      });
 
       return tiendas;
     } catch (error) {
@@ -15,44 +30,112 @@ const service = {
 
   async obtenerTienda(idTienda) {
     try {
-      const tienda = (await Tienda.findByPk(idTienda)).get({ plain: true });
+      const tienda = await Tienda.findByPk(idTienda, {
+        include: [
+          {
+            model: UsuariosTienda,
+            as: "UsuariosTiendas",
+            attributes: ["id"],
+            where: { esAdministrador: true },
+            required: false,
+            include: [
+              {
+                model: Usuario,
+                as: "Usuario",
+                attributes: [
+                  "id",
+                  "nombre",
+                  "apellido",
+                  "correo",
+                  "IdRol",
+                  "IdFoto",
+                ],
+              },
+            ],
+          },
+          {
+            model: Recurso,
+            as: "Recursos",
+            attributes: ["id", "nombre", "key", "url", "extension"],
+            through: {
+              attributes: [],
+            },
+          },
+        ],
+      });
 
-      return tienda;
+      const { UsuariosTiendas, ...tiendaSinUsuarios } = tienda.dataValues;
+
+      if (UsuariosTiendas.length > 0) {
+        const empleados = UsuariosTiendas.map((usuarioTienda) => {
+          return usuarioTienda.Usuario;
+        });
+        tiendaSinUsuarios.empleados = empleados;
+      }
+
+      return tiendaSinUsuarios;
     } catch (error) {
       return `Error ${error}`;
     }
   },
   async obtenerTiendaPorUsuario(idUsuario) {
     try {
-      const tienda = await UsuariosTienda.findOne({ where: { IdUsuario: idUsuario, esAdministrador: true }, include:[Tienda] });
+      const tienda = await UsuariosTienda.findOne({
+        where: { IdUsuario: idUsuario, esAdministrador: true },
+        include: [Tienda],
+      });
 
-      if(!tienda) throw Error('No existen tiendas asociadas a el usuario');
+      if (!tienda) throw Error("No existen tiendas asociadas a el usuario");
       return tienda.Tienda;
-
     } catch (error) {
       return `${error}`;
     }
   },
   async crearTienda(idUsuario, nuevaTienda, esAdministrador = false) {
     try {
+      let recursosAgregadosTienda = [];
+      let resultadoNuevaTienda;
+
+      const usuarioQueCreaTienda = await Usuario.findByPk(idUsuario);
+      if (!usuarioQueCreaTienda) throw Error("el usuario no existe");
+
+      if (
+        usuarioQueCreaTienda.IdRol !== _Rol.VendedorID ||
+        usuarioQueCreaTienda.IdRol !== _Rol.AdministradorID
+      ) {
+        throw Error("el usuario no tiene permisos para crear tiendas");
+      }
+
       const result = await sequelize.transaction(async (t) => {
-        const resultadocreate = await Tienda.create(nuevaTienda, {
-          transaction: t,
+        resultadoNuevaTienda = (
+          await Tienda.create(nuevaTienda, {
+            transaction: t,
+          })
+        ).get({
+          plain: true,
         });
 
         await UsuariosTienda.create(
           {
             IdUsuario: idUsuario,
-            IdTienda: resultadocreate.id,
+            IdTienda: resultadoNuevaTienda.id,
             esAdministrador,
           },
           { transaction: t }
         );
-
-        return resultadocreate;
       });
 
-      return result;
+      if (resultadoNuevaTienda) {
+        if (nuevaTienda.imagenes) {
+          recursosAgregadosTienda = await agregarRecursosTienda(
+            nuevaTienda.imagenes,
+            resultadoNuevaTienda.id
+          );
+          resultadoNuevaTienda.imagenes = recursosAgregadosTienda;
+        }
+      }
+
+      return resultadoNuevaTienda;
     } catch (error) {
       return `Error ${error}`;
     }
@@ -83,6 +166,49 @@ const service = {
       return `Error ${error}`;
     }
   },
+};
+
+//Privados
+const agregarRecursosTienda = async (recursos, IdTienda) => {
+  try {
+    let recursosCreados = [];
+
+    const result = await sequelize.transaction(async (transaction) => {
+      const nuevosRecursosTienda = [];
+      recursosCreados = (
+        await Recurso.bulkCreate(recursos, {
+          transaction,
+        })
+      ).map((r) => {
+        const { createdAt, updatedAt, ...dataValue } = r.dataValues;
+        return dataValue;
+      });
+
+      for (recurso of recursosCreados) {
+        nuevosRecursosTienda.push({ IdTienda, IdRecurso: recurso.id });
+      }
+
+      await TiendaRecurso.bulkCreate(nuevosRecursosTienda, { transaction });
+    });
+
+    return recursosCreados;
+  } catch (error) {
+    throw error;
+  }
+};
+
+const obtenerPromedioCalificaciones = async (calificaciones) => {
+  try {
+    calificaciones.map((calificacion) => {
+      return calificacion.calificacion;
+    });
+
+    return nums.reduce((a, b) => a + b) / nums.length;
+
+    return recursosCreados;
+  } catch (error) {
+    throw error;
+  }
 };
 
 module.exports.tiendaService = service;

@@ -48,6 +48,7 @@ module.exports = (sequelize, DataTypes) => {
     maxFotos: DataTypes.INTEGER,
     oferta: DataTypes.BOOLEAN,
     valorOferta: DataTypes.DECIMAL,
+    calificacion: DataTypes.DECIMAL,
     estado: {
       type:DataTypes.BOOLEAN,
       defaultValue: true
