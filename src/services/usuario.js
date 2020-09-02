@@ -4,7 +4,7 @@ const Rol = require("../db/models").Rol;
 const Recurso = require("../db/models").Recurso;
 const { Op } = require("sequelize");
 const _Rol = require("../constants/roles");
-const { recursosService } = require( "../services/recursos");
+const { recursosService } = require("../services/recursos");
 
 const service = {
   async obtenerUsuarios() {
@@ -57,22 +57,22 @@ const service = {
         usuario.IdRol = _Rol.VendedorID;
       }
 
-      const {imagen, ...usuarioSinImagen} = usuario;
+      const { imagen, ...usuarioSinImagen } = usuario;
 
       if (imagen) {
         recurso = await recursosService.crearRecursoTabla({
-          url: imagen
+          url: imagen,
         });
       }
 
-      const resultadocreate = (await Usuario.create(usuarioSinImagen)).get({
+      if (recurso) {
+        usuario.IdFoto = recurso.id;
+      }
+      const resultadocreate = (await Usuario.create(usuario)).get({
         plain: true,
       });
 
-      if(recurso){
-        resultadocreate.IdFoto = recurso.id;
-      }
-  
+
       const { contrasena, ...usuarioSinContrasena } = resultadocreate;
 
       return usuarioSinContrasena;
@@ -82,7 +82,29 @@ const service = {
   },
   async crearEmpleadosMasivo(nuevosUsuarios) {
     try {
-      const resultadocreate = (await Usuario.bulkCreate(nuevosUsuarios));
+      let nuevosUsuariosConRecurso = [];
+      let recursos;
+
+      const imagenesUsuarios = nuevosUsuarios.map((imgUsuario) => {
+        const { imagen, ...usuarioSinImagen } = imgUsuario;
+        return { url: imagen };
+      });
+
+      if (imagenesUsuarios.length > 0) {
+        recursos = await recursosService.crearRecursosMasivoTabla(
+          imagenesUsuarios
+        );
+
+        if(recursos.length > 0){
+          nuevosUsuariosConRecurso = nuevosUsuarios.map(usuario => {
+            const recursoImagen = recursos.find(recurso => recurso.url === usuario.imagen);
+            usuario.IdFoto = recursoImagen ? recursoImagen.id: null;
+            return usuario;
+          });
+        }
+      }
+
+      const resultadocreate = await Usuario.bulkCreate(nuevosUsuariosConRecurso);
 
       return resultadocreate;
     } catch (error) {
@@ -121,18 +143,14 @@ const service = {
         where: {
           [Op.or]: parametrosWhere,
         },
-        include: [Rol]
+        include: [Rol],
       });
 
       return usuario ? usuario.dataValues : null;
-
     } catch (error) {
-       throw error;
+      throw error;
     }
   },
-  
 };
-
-
 
 module.exports.usuarioService = service;

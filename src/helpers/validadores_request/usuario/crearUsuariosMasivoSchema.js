@@ -14,6 +14,7 @@ const crearUsuariosMasivoSchema = (req, res, next) => {
         direccion: Joi.string().min(6).empty(""),
         IdRol: Joi.number().integer().required(),
         IdFoto: Joi.number().integer(),
+        imagen: Joi.string().empty("")
       })
     ).min(1).max(4).required(),
   };
