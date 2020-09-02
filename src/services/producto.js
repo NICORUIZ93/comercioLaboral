@@ -77,6 +77,46 @@ const service = {
       return `Error ${error}`;
     }
   },
+  async buscarProductosPaginado(busqueda, paginacion) {
+    try {
+      const { limit, offset, page } = paginacion;
+
+      const productos = await Producto.findAndCountAll({
+        limit, offset,
+        include: [
+          Tienda,
+          {
+            model: Categoria,
+            as: "Categoria",
+            attributes: ["id", "nombre"],
+          },
+          {
+            model: Recurso,
+            as: "Recursos",
+            attributes: ["id", "nombre", "key", "extension"],
+            through: {
+              attributes: [],
+            },
+          },
+        ],
+        where: {  }
+      });
+
+      const porductosFiltrados = productos.rows.map((p) => {
+        const { Tiendas, Recursos, ...producto } = p.dataValues;
+        producto.IdTienda = Tiendas[0].id;
+        producto.NombreTienda = Tiendas[0].nombre;
+        producto.Recurso = Recursos[0];
+        return producto;
+      });
+      productos.rows = porductosFiltrados;
+
+      return paginador.paginarDatos(productos, page, limit);
+
+    } catch (error) {
+      return `Error ${error}`;
+    }
+  },
   async obtenerProducto(idProducto) {
     try {
       const producto = await Producto.findByPk(idProducto, {

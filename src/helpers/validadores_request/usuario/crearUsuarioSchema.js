@@ -19,11 +19,13 @@ const crearUsuarioSchema = (req, res, next) => {
   // conditional schema rule - only admins can update role
   if (req.body.IdRol) {
     if (req.body.IdRol === Rol.VendedorID) {
-      reglasSchema.contrasena = Joi.string().min(6).empty("");
+      reglasSchema.contrasena = Joi.string().min(6).empty("").required();
+      /*
       reglasSchema.confirmarContrasena = Joi.string()
         .min(6)
         .valid(Joi.ref("contrasena"))
         .empty("");
+      */
     }
   }
 
