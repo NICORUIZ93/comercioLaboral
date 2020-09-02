@@ -16,7 +16,7 @@ const service = {
           {
             model: Recurso,
             as: "Foto",
-            attributes: ["id", "nombre", "key", "extension"],
+            attributes: ["id", "nombre", "key", "extension", "url"],
           },
         ],
       });
@@ -36,7 +36,7 @@ const service = {
             {
               model: Recurso,
               as: "Foto",
-              attributes: ["id", "nombre", "key", "extension"],
+              attributes: ["id", "nombre", "key", "extension", "url"],
             },
           ],
         })
