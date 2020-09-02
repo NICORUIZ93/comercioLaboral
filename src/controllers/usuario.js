@@ -49,6 +49,7 @@ module.exports = {
   async crearEmpleadosMasivo(req, res) {
     try {
       const usuariosACrear = req.body.usuarios;
+      const idTienda = req.body.IdTienda;
 
       for (const usuario of usuariosACrear) {
         const existeElUsuario = await usuarioService.obtenerUsuarioPorParametros(
@@ -63,7 +64,7 @@ module.exports = {
       }
 
       const nuevoUsuario = await usuarioService.crearEmpleadosMasivo(
-        usuariosACrear
+        idTienda, usuariosACrear
       );
 
       return res.status(200).json(nuevoUsuario);

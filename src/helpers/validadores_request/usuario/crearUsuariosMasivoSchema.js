@@ -4,6 +4,7 @@ const crearUsuariosMasivoSchema = (req, res, next) => {
   // define base schema rules
 
   const reglasSchema = {
+    IdTienda: Joi.number().integer().required(),
     usuarios: Joi.array().items(
       Joi.object({
         nombre: Joi.string().empty(""),

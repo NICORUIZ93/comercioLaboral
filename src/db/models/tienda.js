@@ -48,6 +48,7 @@ module.exports = (sequelize, DataTypes) => {
     tipoCuenta: DataTypes.STRING,
     maxFotos: DataTypes.INTEGER,
     calificacion: DataTypes.DECIMAL,
+    //tipoTienda: DataTypes.STRING,
     estado: {
       type:DataTypes.BOOLEAN,
       defaultValue: true

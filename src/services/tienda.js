@@ -36,7 +36,7 @@ const service = {
             model: UsuariosTienda,
             as: "UsuariosTiendas",
             attributes: ["id"],
-            where: { esAdministrador: true },
+            where: { esAdministrador: false },
             required: false,
             include: [
               {

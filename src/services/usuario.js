@@ -2,9 +2,11 @@ const bcrypt = require("bcrypt");
 const Usuario = require("../db/models").Usuario;
 const Rol = require("../db/models").Rol;
 const Recurso = require("../db/models").Recurso;
+const UsuariosTienda = require("../db/models").UsuariosTienda;
 const { Op } = require("sequelize");
 const _Rol = require("../constants/roles");
 const { recursosService } = require("../services/recursos");
+var sequelize = require("../db/models").sequelize;
 
 const service = {
   async obtenerUsuarios() {
@@ -72,7 +74,6 @@ const service = {
         plain: true,
       });
 
-
       const { contrasena, ...usuarioSinContrasena } = resultadocreate;
 
       return usuarioSinContrasena;
@@ -80,10 +81,11 @@ const service = {
       return `Error ${error}`;
     }
   },
-  async crearEmpleadosMasivo(nuevosUsuarios) {
+  async crearEmpleadosMasivo(idTienda, nuevosUsuarios) {
     try {
       let nuevosUsuariosConRecurso = [];
       let recursos;
+      let resultadoCreateNuevosEmpleados = [];
 
       const imagenesUsuarios = nuevosUsuarios.map((imgUsuario) => {
         const { imagen, ...usuarioSinImagen } = imgUsuario;
@@ -95,18 +97,45 @@ const service = {
           imagenesUsuarios
         );
 
-        if(recursos.length > 0){
-          nuevosUsuariosConRecurso = nuevosUsuarios.map(usuario => {
-            const recursoImagen = recursos.find(recurso => recurso.url === usuario.imagen);
-            usuario.IdFoto = recursoImagen ? recursoImagen.id: null;
+        if (recursos.length > 0) {
+          nuevosUsuariosConRecurso = nuevosUsuarios.map((usuario) => {
+            const recursoImagen = recursos.find(
+              (recurso) => recurso.url === usuario.imagen
+            );
+            usuario.IdFoto = recursoImagen ? recursoImagen.id : null;
             return usuario;
           });
         }
       }
 
-      const resultadocreate = await Usuario.bulkCreate(nuevosUsuariosConRecurso);
+      await sequelize.transaction(async (t) => {
 
-      return resultadocreate;
+        resultadoCreateNuevosEmpleados = await Usuario.bulkCreate(
+          nuevosUsuariosConRecurso, { transaction: t }
+        );
+
+        const nuevosUsuariosTienda = resultadoCreateNuevosEmpleados.map(nuevoEmpleado => {
+          
+          return {
+            IdUsuario: nuevoEmpleado.id,
+            IdTienda: idTienda,
+            esAdministrador : false,
+          };
+
+        });
+
+        const gg = await UsuariosTienda.bulkCreate(
+          nuevosUsuariosTienda,
+          { transaction: t }
+        );
+
+        let rr = gg;
+
+      });
+
+
+      return resultadoCreateNuevosEmpleados;
+
     } catch (error) {
       return `Error ${error}`;
     }
