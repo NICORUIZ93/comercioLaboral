@@ -32,7 +32,7 @@ const crearUsuarioSchema = (req, res, next) => {
   // create schema object with rules
   const schema = Joi.object(reglasSchema)
     // make confirmPassword required IF password is present
-    .with("contrasena", "confirmarContrasena");
+    //.with("contrasena", "confirmarContrasena");
 
   // schema options
   const opciones = {

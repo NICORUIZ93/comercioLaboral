@@ -6,6 +6,7 @@ const Recurso = require("../db/models").Recurso;
 const ProductoRecurso = require("../db/models").ProductoRecurso;
 var sequelize = require("../db/models").sequelize;
 const paginador = require("../helpers/paginacion/paginador");
+const { Op } = require("sequelize");
 
 const service = {
   async obtenerProductos() {
@@ -21,7 +22,7 @@ const service = {
           {
             model: Recurso,
             as: "Recursos",
-            attributes: ["id", "nombre", "key", "extension"],
+            attributes: ["id", "nombre", "key", "extension", "url"],
             through: {
               attributes: [],
             },
@@ -43,7 +44,8 @@ const service = {
   async obtenerProductosPaginado(page, limit, offset) {
     try {
       const productos = await Producto.findAndCountAll({
-        limit, offset,
+        limit,
+        offset,
         include: [
           Tienda,
           {
@@ -54,7 +56,7 @@ const service = {
           {
             model: Recurso,
             as: "Recursos",
-            attributes: ["id", "nombre", "key", "extension"],
+            attributes: ["id", "nombre", "key", "extension", "url"],
             through: {
               attributes: [],
             },
@@ -72,7 +74,6 @@ const service = {
       productos.rows = porductosFiltrados;
 
       return paginador.paginarDatos(productos, page, limit);
-
     } catch (error) {
       return `Error ${error}`;
     }
@@ -82,7 +83,8 @@ const service = {
       const { limit, offset, page } = paginacion;
 
       const productos = await Producto.findAndCountAll({
-        limit, offset,
+        limit,
+        offset,
         include: [
           Tienda,
           {
@@ -93,13 +95,26 @@ const service = {
           {
             model: Recurso,
             as: "Recursos",
-            attributes: ["id", "nombre", "key", "extension"],
+            attributes: ["id", "nombre", "key", "extension", "url"],
             through: {
               attributes: [],
             },
           },
         ],
-        where: {  }
+        where: {
+          [Op.or]: [
+            {
+              nombre: {
+                [Op.like]: `%${busqueda}%`,
+              },
+            },
+            {
+              descripcion: {
+                [Op.like]: `%${busqueda}%`,
+              },
+            },
+          ],
+        },
       });
 
       const porductosFiltrados = productos.rows.map((p) => {
@@ -109,10 +124,10 @@ const service = {
         producto.Recurso = Recursos[0];
         return producto;
       });
+
       productos.rows = porductosFiltrados;
 
       return paginador.paginarDatos(productos, page, limit);
-
     } catch (error) {
       return `Error ${error}`;
     }
@@ -125,7 +140,7 @@ const service = {
           {
             model: Categoria,
             as: "Categoria",
-            attributes: ["id", "nombre"]
+            attributes: ["id", "nombre"],
           },
           {
             model: Recurso,
@@ -138,7 +153,7 @@ const service = {
         ],
       });
 
-      if(!producto) throw Error('No existe el producto indicado');
+      if (!producto) throw Error("No existe el producto indicado");
 
       const { Tiendas, Recursos, ...productoFiltrado } = producto.dataValues;
       productoFiltrado.IdTienda = Tiendas[0].id;
@@ -146,7 +161,6 @@ const service = {
       productoFiltrado.Recurso = Recursos[0];
 
       return productoFiltrado;
-
     } catch (error) {
       return `Error ${error}`;
     }
@@ -157,9 +171,11 @@ const service = {
       let resultadoNuevoProducto;
 
       await sequelize.transaction(async (t) => {
-         resultadoNuevoProducto = (await Producto.create(nuevoProducto, {
-          transaction: t,
-        })).get({
+        resultadoNuevoProducto = (
+          await Producto.create(nuevoProducto, {
+            transaction: t,
+          })
+        ).get({
           plain: true,
         });
 
@@ -186,8 +202,6 @@ const service = {
       }
 
       return resultadoNuevoProducto;
-
-      
     } catch (error) {
       return `Error ${error}`;
     }
@@ -219,7 +233,6 @@ const service = {
     }
   },
 };
-
 
 //Privados
 const agregarRecursosProducto = async (recursos, IdProducto) => {
