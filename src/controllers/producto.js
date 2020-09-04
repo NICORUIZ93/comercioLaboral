@@ -89,8 +89,21 @@ module.exports = {
       console.log(e);
       return res.status(500).send(e);
     }
-  }
+  },
+  async cargarRecursosProducto(req, res) {
+    try {
 
+      const idProducto = req.body.idProducto;
+      const recursos = req.body.recursos;
+      const recursosCargados = await productoService.cargarRecursosProducto(idProducto, recursos);
+
+      return res.status(200).json(recursosCargados);
+
+    } catch (e) {
+      console.log(e);
+      return res.status(500).send(e);
+    }
+  }
 
 };
 

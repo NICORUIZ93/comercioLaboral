@@ -22,7 +22,7 @@ const service = {
           {
             model: Recurso,
             as: "Recursos",
-            attributes: ["id", "nombre", "key", "extension", "url"],
+            attributes: ["id", "nombre", "key", "extension", "url", "prioridad"],
             through: {
               attributes: [],
             },
@@ -31,10 +31,10 @@ const service = {
       });
 
       return productos.map((p) => {
-        const { Tiendas, Recursos, ...producto } = p.dataValues;
+        const { Tiendas, ...producto } = p.dataValues;
         producto.IdTienda = Tiendas[0].id;
         producto.NombreTienda = Tiendas[0].nombre;
-        producto.Recurso = Recursos[0];
+        //producto.Recurso = Recursos[0];
         return producto;
       });
     } catch (error) {
@@ -56,7 +56,7 @@ const service = {
           {
             model: Recurso,
             as: "Recursos",
-            attributes: ["id", "nombre", "key", "extension", "url"],
+            attributes: ["id", "nombre", "key", "extension", "url", "prioridad"],
             through: {
               attributes: [],
             },
@@ -65,10 +65,10 @@ const service = {
       });
 
       const porductosFiltrados = productos.rows.map((p) => {
-        const { Tiendas, Recursos, ...producto } = p.dataValues;
+        const { Tiendas, ...producto } = p.dataValues;
         producto.IdTienda = Tiendas[0].id;
         producto.NombreTienda = Tiendas[0].nombre;
-        producto.Recurso = Recursos[0];
+        //producto.Recurso = Recursos[0];
         return producto;
       });
       productos.rows = porductosFiltrados;
@@ -95,7 +95,7 @@ const service = {
           {
             model: Recurso,
             as: "Recursos",
-            attributes: ["id", "nombre", "key", "extension", "url"],
+            attributes: ["id", "nombre", "key", "extension", "url", "prioridad"],
             through: {
               attributes: [],
             },
@@ -118,10 +118,10 @@ const service = {
       });
 
       const porductosFiltrados = productos.rows.map((p) => {
-        const { Tiendas, Recursos, ...producto } = p.dataValues;
+        const { Tiendas, ...producto } = p.dataValues;
         producto.IdTienda = Tiendas[0].id;
         producto.NombreTienda = Tiendas[0].nombre;
-        producto.Recurso = Recursos[0];
+        //producto.Recurso = Recursos[0];
         return producto;
       });
 
@@ -145,7 +145,7 @@ const service = {
           {
             model: Recurso,
             as: "Recursos",
-            attributes: ["id", "nombre", "key", "extension"],
+            attributes: ["id", "nombre", "key", "extension", "url", "prioridad"],
             through: {
               attributes: [],
             },
@@ -155,10 +155,10 @@ const service = {
 
       if (!producto) throw Error("No existe el producto indicado");
 
-      const { Tiendas, Recursos, ...productoFiltrado } = producto.dataValues;
+      const { Tiendas, ...productoFiltrado } = producto.dataValues;
       productoFiltrado.IdTienda = Tiendas[0].id;
       productoFiltrado.NombreTienda = Tiendas[0].nombre;
-      productoFiltrado.Recurso = Recursos[0];
+      //productoFiltrado.Recurso = Recursos[0];
 
       return productoFiltrado;
     } catch (error) {
@@ -167,8 +167,10 @@ const service = {
   },
   async crearProducto(idTienda, nuevoProducto) {
     try {
-      let recursosAgregadosProducto = [];
       let resultadoNuevoProducto;
+
+      const tienda = await Tienda.findByPk(idTienda);
+      if(!tienda) throw Error('la tienda no existe');
 
       await sequelize.transaction(async (t) => {
         resultadoNuevoProducto = (
@@ -187,23 +189,19 @@ const service = {
           },
           { transaction: t }
         );
-
-        //return resultadoNuevoProducto;
       });
 
-      if (resultadoNuevoProducto) {
-        if (nuevoProducto.imagenes) {
-          recursosAgregadosProducto = await agregarRecursosProducto(
-            nuevoProducto.imagenes,
-            resultadoNuevoProducto.id
-          );
-          resultadoNuevoProducto.imagenes = recursosAgregadosProducto;
-        }
+      if (nuevoProducto.imagenes) {
+        resultadoNuevoProducto.imagenes = await this.cargarRecursosProducto(
+          resultadoNuevoProducto.id,
+          nuevoProducto.imagenes
+        );
       }
+
 
       return resultadoNuevoProducto;
     } catch (error) {
-      return `Error ${error}`;
+      return `${error}`;
     }
   },
   async actualizarProducto(producto) {
@@ -232,6 +230,25 @@ const service = {
       return `Error ${error}`;
     }
   },
+  async cargarRecursosProducto(idProducto, recursos) {
+    try {
+      let recursosAgregadosProducto = [];
+
+      const producto = await Producto.findByPk(idProducto);
+      if (!producto) throw Error("el producto no existe");
+
+      if (recursos) {
+        recursosAgregadosProducto = await agregarRecursosProducto(
+          recursos,
+          idProducto
+        );
+      }
+
+      return recursosAgregadosProducto;
+    } catch (error) {
+      throw error;
+    }
+  },
 };
 
 //Privados
@@ -239,7 +256,7 @@ const agregarRecursosProducto = async (recursos, IdProducto) => {
   try {
     let recursosCreados = [];
 
-    const result = await sequelize.transaction(async (transaction) => {
+    await sequelize.transaction(async (transaction) => {
       const nuevosRecursosProducto = [];
       recursosCreados = (
         await Recurso.bulkCreate(recursos, {

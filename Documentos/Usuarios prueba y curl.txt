@@ -1,0 +1,12 @@
+curl -X POST \
+-H "Content-Type: application/json" \
+"https://api.mercadopago.com/users/test_user?access_token=TEST-3158057449316692-090321-09753bd5b2decb1c5d2faebfbc22c5dd-638451131" \
+-d '{"site_id":"MCO"}'
+
+
+
+
+{"id":638493892,"nickname":"TT151464","password":"qatest4891","site_status":"active","email":"test_user_78372966@testuser.com"}
+==> TG-5f5182f5cb8938000883d6a2-638493892
+{"id":638500515,"nickname":"TETE9621964","password":"qatest1083","site_status":"active","email":"test_user_26260561@testuser.com"}
+{"id":638502547,"nickname":"TESTMWQKA56N","password":"qatest3563","site_status":"active","email":"test_user_36626107@testuser.com"}

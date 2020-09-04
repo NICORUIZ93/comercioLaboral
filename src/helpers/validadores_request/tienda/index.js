@@ -2,11 +2,12 @@ const validadorCrearTienda = require("../tienda/crearTiendaSchema").crearTiendaS
 const validadorActualizarTienda = require("../tienda/actualizarTiendaSchema").actualizarTiendaSchema;
 const validadorEliminarTienda = require("../tienda/eliminarTiendaSchema").eliminarTiendaSchema;
 const validadorObtenerTienda = require("../tienda/obtenerTiendaSchema").obtenerTiendaSchema;
-
+const validadorRecursosTienda = require("../tienda/cargarRecursosTiendaSchema").cargarRecursosTiendaSchema;
 
 module.exports = {
     validadorCrearTienda,
     validadorActualizarTienda,
     validadorEliminarTienda,
-    validadorObtenerTienda
+    validadorObtenerTienda,
+    validadorRecursosTienda
 }

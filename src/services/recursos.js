@@ -1,7 +1,7 @@
 const Recurso = require("../db/models").Recurso;
 const TiendaRecurso = require("../db/models").TiendaRecurso;
 const ProductoRecurso = require("../db/models").ProductoRecurso;
-const { cargarArchivosService } = require( "../services/cargarArchivosService");
+const { cargarArchivosService } = require( "../services/cargarArchivosS3");
 
 const service = {
   async obtenerRecursos() {

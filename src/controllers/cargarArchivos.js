@@ -1,5 +1,5 @@
 const { recursosService } = require( "../services/recursos");
-const { cargarArchivosService } = require( "../services/cargarArchivosService");
+const { cargarArchivosService } = require( "../services/cargarArchivosS3");
 
 module.exports = {
 

@@ -4,7 +4,7 @@ const validadorEliminarProducto = require("../producto/eliminarProductoSchema").
 const validadorObtenerProducto = require("../producto/obtenerProductoSchema").obtenerProductoSchema;
 const validadorObtenerProductosPaginado = require("../producto/obtenerProductosPaginadoSchema").obtenerProductosPaginadoSchema;
 const validadorBuscarProductosPaginado = require("../producto/buscarProductosPaginadoSchema").buscarProductosPaginadoSchema;
-
+const validadorRecursosProducto = require("../producto/cargarRecursosProductoSchema").cargarRecursosProductoSchema;
 
 module.exports = {
     validadorCrearProducto,
@@ -12,5 +12,6 @@ module.exports = {
     validadorEliminarProducto,
     validadorObtenerProducto,
     validadorObtenerProductosPaginado,
-    validadorBuscarProductosPaginado
+    validadorBuscarProductosPaginado,
+    validadorRecursosProducto
 }

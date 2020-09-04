@@ -14,7 +14,7 @@ const service = {
           {
             model: Recurso,
             as: "Recursos",
-            attributes: ["id", "nombre", "key", "url", "extension"],
+            attributes: ["id", "nombre", "key", "url", "extension", "url", "prioridad"],
             through: {
               attributes: [],
             },
@@ -56,7 +56,7 @@ const service = {
           {
             model: Recurso,
             as: "Recursos",
-            attributes: ["id", "nombre", "key", "url", "extension"],
+            attributes: ["id", "nombre", "key", "url", "extension", "url", "prioridad"],
             through: {
               attributes: [],
             },
@@ -93,20 +93,19 @@ const service = {
   },
   async crearTienda(idUsuario, nuevaTienda, esAdministrador = false) {
     try {
-      let recursosAgregadosTienda = [];
       let resultadoNuevaTienda;
 
       const usuarioQueCreaTienda = await Usuario.findByPk(idUsuario);
       if (!usuarioQueCreaTienda) throw Error("el usuario no existe");
 
       if (
-        usuarioQueCreaTienda.IdRol !== _Rol.VendedorID ||
+        usuarioQueCreaTienda.IdRol !== _Rol.VendedorID &&
         usuarioQueCreaTienda.IdRol !== _Rol.AdministradorID
       ) {
         throw Error("el usuario no tiene permisos para crear tiendas");
       }
 
-      const result = await sequelize.transaction(async (t) => {
+      await sequelize.transaction(async (t) => {
         resultadoNuevaTienda = (
           await Tienda.create(nuevaTienda, {
             transaction: t,
@@ -125,14 +124,11 @@ const service = {
         );
       });
 
-      if (resultadoNuevaTienda) {
-        if (nuevaTienda.imagenes) {
-          recursosAgregadosTienda = await agregarRecursosTienda(
-            nuevaTienda.imagenes,
-            resultadoNuevaTienda.id
-          );
-          resultadoNuevaTienda.imagenes = recursosAgregadosTienda;
-        }
+      if (nuevaTienda.imagenes) {
+        resultadoNuevaTienda.imagenes = await this.cargarRecursosTienda(
+          resultadoNuevaTienda.id,
+          nuevaTienda.imagenes
+        );
       }
 
       return resultadoNuevaTienda;
@@ -164,6 +160,25 @@ const service = {
       return resultadoDestroy;
     } catch (error) {
       return `Error ${error}`;
+    }
+  },
+  async cargarRecursosTienda(idTienda, recursos) {
+    try {
+      let recursosAgregadosTienda = [];
+
+      const tienda = await Tienda.findByPk(idTienda);
+      if (!tienda) throw Error("la tienda no existe");
+
+      if (recursos) {
+        recursosAgregadosTienda = await agregarRecursosTienda(
+          recursos,
+          idTienda
+        );
+      }
+
+      return recursosAgregadosTienda;
+    } catch (error) {
+      throw error;
     }
   },
 };

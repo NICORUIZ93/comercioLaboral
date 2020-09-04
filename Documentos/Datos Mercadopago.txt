@@ -1,0 +1,34 @@
+App ID:2021095776659637
+
+Secret Key:mXrbYwsmy1AfaiHbKBd0sxY8OV6y7YFI
+
+Name:Comerquio.test
+
+Short Name:Comerquio.test
+
+Description:CUenta de pruebas para marketplace comerquio
+
+cuenta.comerquio@gmail.com
+
+
+Public Key
+TEST-62122174-9e9e-4e0e-8189-04375f220f4c
+
+access token
+TEST-3158057449316692-090321-09753bd5b2decb1c5d2faebfbc22c5dd-638451131
+
+
+---------
+
+comerquio.pass.s3
+
+
+ID de clave de acceso AKIA474665IRE44IGU3W
+
+
+Clave de acceso secreta  IQEn7PT05H97wc6Rjcrwzmkj9Qa1gj/KoSnlJMk3
+
+
+sa-east-1
+
+https://s3-sa-east-1.amazonaws.com/comerquio.test.bucket/<key>
