@@ -13,6 +13,8 @@ const crearTiendaSchema = (req, res, next) => {
     maxFotos: Joi.number().integer(),
     IdUsuario: Joi.number().integer().required(),
     estado:Joi.boolean(),
+    idCiudad: Joi.number().integer(),
+    idDepartamento: Joi.number().integer(),
     imagenes: Joi.array().items(
       Joi.object({
         url: Joi.string().empty(""),

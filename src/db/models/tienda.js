@@ -36,6 +36,13 @@ module.exports = (sequelize, DataTypes) => {
 
       this.hasMany(models.UsuariosTienda, { foreignKey: "IdTienda"} ); 
 
+      this.belongsTo(models.Ciudad, {
+        foreignKey: "idCiudad"
+      });
+
+      this.belongsTo(models.Departamento, {
+        foreignKey: "idDepartamento"
+      });
     }
   };
   Tienda.init({
@@ -48,7 +55,9 @@ module.exports = (sequelize, DataTypes) => {
     tipoCuenta: DataTypes.STRING,
     maxFotos: DataTypes.INTEGER,
     calificacion: DataTypes.DECIMAL,
-    //tipoTienda: DataTypes.STRING,
+    idDepartamento: DataTypes.INTEGER,
+    idCiudad: DataTypes.INTEGER,
+    tipoTienda: DataTypes.STRING,
     estado: {
       type:DataTypes.BOOLEAN,
       defaultValue: true
