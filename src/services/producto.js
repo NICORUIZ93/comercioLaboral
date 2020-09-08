@@ -29,7 +29,7 @@ const service = {
           },
         ],
         order: [
-          ['createdAt', 'ASC']
+          ['createdAt', 'DESC']
         ],
       });
 
