@@ -5,6 +5,7 @@ const validadorObtenerProducto = require("../producto/obtenerProductoSchema").ob
 const validadorObtenerProductosPaginado = require("../producto/obtenerProductosPaginadoSchema").obtenerProductosPaginadoSchema;
 const validadorBuscarProductosPaginado = require("../producto/buscarProductosPaginadoSchema").buscarProductosPaginadoSchema;
 const validadorRecursosProducto = require("../producto/cargarRecursosProductoSchema").cargarRecursosProductoSchema;
+const validadorProductosPorTiendaPaginado = require("../producto/obtenerProductosPorTiendaPaginadoSchema").obtenerProductosPorTiendaPaginadoSchema;
 
 module.exports = {
     validadorCrearProducto,
@@ -13,5 +14,6 @@ module.exports = {
     validadorObtenerProducto,
     validadorObtenerProductosPaginado,
     validadorBuscarProductosPaginado,
-    validadorRecursosProducto
+    validadorRecursosProducto,
+    validadorProductosPorTiendaPaginado
 }

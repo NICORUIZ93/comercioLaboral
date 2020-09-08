@@ -20,6 +20,9 @@ const service = {
             },
           },
         ],
+        order: [
+          ['createdAt', 'ASC']
+        ],
       });
 
       return tiendas;
@@ -83,6 +86,9 @@ const service = {
       const tienda = await UsuariosTienda.findOne({
         where: { IdUsuario: idUsuario, esAdministrador: true },
         include: [Tienda],
+        order: [
+          ['createdAt', 'ASC']
+        ],
       });
 
       if (!tienda) throw Error("No existen tiendas asociadas a el usuario");

@@ -28,6 +28,9 @@ const service = {
             },
           },
         ],
+        order: [
+          ['createdAt', 'ASC']
+        ],
       });
 
       return productos.map((p) => {
@@ -62,6 +65,9 @@ const service = {
             },
           },
         ],
+        order: [
+          ['createdAt', 'ASC']
+        ],
       });
 
       const porductosFiltrados = productos.rows.map((p) => {
@@ -71,6 +77,50 @@ const service = {
         //producto.Recurso = Recursos[0];
         return producto;
       });
+      productos.rows = porductosFiltrados;
+
+      return paginador.paginarDatos(productos, page, limit);
+    } catch (error) {
+      return `Error ${error}`;
+    }
+  },
+  async obtenerProductosPorTiendaPaginado(idTienda, paginacion) {
+    try {
+      const { limit, offset, page } = paginacion;
+
+      const productos = await Producto.findAndCountAll({
+        limit,
+        offset,
+        include: [
+          Tienda,
+          {
+            model: Categoria,
+            as: "Categoria",
+            attributes: ["id", "nombre"],
+          },
+          {
+            model: Recurso,
+            as: "Recursos",
+            attributes: ["id", "nombre", "key", "extension", "url", "prioridad"],
+            through: {
+              attributes: [],
+            },
+          },
+        ],
+        where: { IdTienda: idTienda },
+        order: [
+          ['createdAt', 'ASC']
+        ],
+      });
+
+      const porductosFiltrados = productos.rows.map((p) => {
+        const { Tiendas, ...producto } = p.dataValues;
+        producto.IdTienda = Tiendas[0].id;
+        producto.NombreTienda = Tiendas[0].nombre;
+        //producto.Recurso = Recursos[0];
+        return producto;
+      });
+
       productos.rows = porductosFiltrados;
 
       return paginador.paginarDatos(productos, page, limit);
@@ -115,6 +165,9 @@ const service = {
             },
           ],
         },
+        order: [
+          ['createdAt', 'ASC']
+        ],
       });
 
       const porductosFiltrados = productos.rows.map((p) => {

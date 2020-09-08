@@ -25,6 +25,21 @@ module.exports = {
       res.status(500).send(e);
     }
   },
+  async obtenerProductosPorTiendaPaginado(req, res) {
+    try {
+
+      const { pagina, tamano, idTienda } = req.query;
+      const { limit, offset } = paginador.obtenerPaginacion(pagina, tamano);
+      const paginado = { pagina, limit, offset};
+
+      const productos = await productoService.obtenerProductosPorTiendaPaginado(idTienda, paginado);
+
+      return res.status(200).json(productos);
+      
+    } catch (e) {
+      res.status(500).send(e);
+    }
+  },
   async buscarProductosPaginado(req, res) {
     try {
 
