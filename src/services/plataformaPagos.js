@@ -1,30 +1,41 @@
-const axios = require('axios').default;
+const mercadopago = require("mercadopago");
 
-const service = {
-  async obtenerBancos() {
+class Mercadopago {
+  constructor() {
+    mercadopago.configure({
+      sandbox: true,
+      access_token: process.env.MP_ACCESS_TOKEN,
+    });
+  }
+
+  async obtenerUrlCheckout(datos) {
     try {
 
-      const bancos = await axios.post('https://sandbox.api.payulatam.com/payments-api/4.0/service.cgi', {
-        language: "es",
-        command: "GET_BANKS_LIST",
-        merchant: {
-           apiLogin: "pRRXKOl8ikMmt9u",
-           apiKey: "4Vj8eK4rloUd272L48hsrarnUA"
-        },
-        test: false,
-        bankListInformation: {
-           paymentMethod: "PSE",
-           paymentCountry: "CO"
-        }
-     });
+      const preferencia = await this.construirPreferencia(datos);
+      const urlCheckout = await mercadopago.preferences.create(preferencia);
 
+      return urlCheckout;
 
-      return bancos.data.banks;
+    } catch (error) {}
+  }
 
-    } catch (error) {
-        return `Error ${error}`;
-    }
-  },
+  async construirPreferencia(datos) {
+    let preference = {};
+
+    var item = {
+      title: "Durable Iron Clock",
+      quantity: 9,
+      currency_id: "COP",
+      unit_price: 30.4,
+    };
+
+    var payer = {
+      email: "demo@mail.com",
+    };
+
+    preference.items = [item];
+    preference.payer = payer;
+  }
 }
 
-module.exports.plataformaPagosService = service;
+module.exports.plataformaPagosService = Mercadopago;

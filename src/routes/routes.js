@@ -80,7 +80,7 @@ module.exports = app => {
   app.delete("/api/mensaje/:id", validadorEliminarMensaje, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ mensajeController.eliminarMensaje)
 
   //Rutas Plataforma de pagos
-  app.get("/api/pago/bancos", /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ plataformaPagosController.obtenerBancos)
+  app.get("/api/pago/bancos", /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ listaController.obtenerListaBancos)
 
   //Rutas listas
   app.get("/api/lista/ciudades", /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ listaController.obtenerListaCiudades)

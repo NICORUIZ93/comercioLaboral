@@ -23,6 +23,16 @@ module.exports = {
       res.status(500).send(e);
     }
   },
+  async obtenerListaBancos(req, res) {
+    try {
+      //const idLista = req.params.id;
+      const lista = await listasService.obtenerListaBancos();
+      
+      return res.status(200).json(lista);
+    } catch (e) {
+      res.status(500).send(e);
+    }
+  },
   async obtenerListaCiudadesPorDepartamento(req, res) {
     try {
       const departamento = req.params.id;
