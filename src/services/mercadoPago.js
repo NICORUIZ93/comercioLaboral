@@ -3,17 +3,20 @@ const axios = require("axios").default;
 const { productoService } = require("./producto");
 
 class Mercadopago {
-  constructor(datos) {
-    this.datos = datos;
+  constructor() {
     mercadopago.configure({
       //sandbox: true,
       access_token: datos.tokenMP
     });
   }
 
-  async obtenerIdPreferencia() {
+  obtenerInstancia(){
+    return mercadopago;
+  }
+
+  async obtenerIdPreferencia(datos) {
     try {
-      const preferencia = await this.construirPreferencia();
+      const preferencia = await this.construirPreferencia(datos);
       const idPreferencia = await mercadopago.preferences.create(preferencia);
 
       const { id, init_point, sandbox_init_point } =  idPreferencia.response;
@@ -26,15 +29,15 @@ class Mercadopago {
     }
   }
 
-  async construirPreferencia() {
+  async construirPreferencia(datos) {
     try {
       let preference = {};
 
-      const idProductos = this.datos.productos.map((p) => {
+      const idProductos = datos.productos.map((p) => {
         return p.id;
       });
 
-      const comprador = this.datos.comprador;
+      const comprador = datos.comprador;
 
       const items = (
         await productoService.obtenerProductosPorParametros([
@@ -49,7 +52,7 @@ class Mercadopago {
             ? producto.Recursos[0].url
             : null,
           category_id: `${producto.IdCategoria}`,
-          quantity: parseInt(this.datos.productos.find(p => p.id === producto.id).cantidad),
+          quantity: parseInt(datos.productos.find(p => p.id === producto.id).cantidad),
           currency_id: "COP",
           unit_price: producto.oferta ? parseFloat(producto.valorOferta) : parseFloat(producto.valor),
         };
@@ -88,7 +91,7 @@ class Mercadopago {
 
       preference.items = items;
       preference.payer = payer;
-      preference.marketplace_fee = parseFloat(this.datos.comision);
+      preference.marketplace_fee = parseFloat(datos.comision);
       //preference.notification_url = "https://localhost:3000/webhook";
     
       return preference;
