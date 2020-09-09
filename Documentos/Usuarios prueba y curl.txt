@@ -6,7 +6,41 @@ curl -X POST \
 
 
 
-{"id":638493892,"nickname":"TT151464","password":"qatest4891","site_status":"active","email":"test_user_78372966@testuser.com"}
-==> TG-5f5182f5cb8938000883d6a2-638493892
-{"id":638500515,"nickname":"TETE9621964","password":"qatest1083","site_status":"active","email":"test_user_26260561@testuser.com"}
+
+Administrador
 {"id":638502547,"nickname":"TESTMWQKA56N","password":"qatest3563","site_status":"active","email":"test_user_36626107@testuser.com"}
+
+vendedor
+{"id":638500515,"nickname":"TETE9621964","password":"qatest1083","site_status":"active","email":"test_user_26260561@testuser.com"}
+
+vendedor
+{"id":638493892,"nickname":"TT151464","password":"qatest4891","site_status":"active","email":"test_user_78372966@testuser.com"}
+
+
+
+https://auth.mercadopago.com.co/authorization?client_id=4355852639383181&response_type=code&platform_id=mp&redirect_uri=https://lamejorferiaadmin.herokuapp.com/tienda/gracias
+
+https://auth.mercadopago.com.co/authorization?client_id=5206227307458289&response_type=code&platform_id=mp&redirect_uri=https://www.example.com
+
+
+nuevos ususrios
+
+Administrador
+{"id":638502547,"nickname":"TESTMWQKA56N","password":"qatest3563","site_status":"active","email":"test_user_36626107@testuser.com"}
+vendedores
+{"id":642118092,"nickname":"TETE734030","password":"qatest479","site_status":"active","email":"test_user_4143614@testuser.com"}
+{"id":642124510,"nickname":"TESTABBTVS8Y","password":"qatest690","site_status":"active","email":"test_user_46900064@testuser.com"}
+{"id":642123152,"nickname":"TESTV5NI5XVV","password":"qatest5157","site_status":"active","email":"test_user_8178346@testuser.com"}
+
+admin2
+{"id":642124564,"nickname":"TESTRL9VBXKH","password":"qatest9369","site_status":"active","email":"test_user_7865189@testuser.com"}
+
+
+{"id":642225439,"nickname":"TESTYQHJ98IP","password":"qatest3312","site_status":"active","email":"test_user_79864737@testuser.com"}
+
+
+-----------------------
+
+usuario de prueba produccion
+{"id":642233455,"nickname":"TT087828","password":"qatest94","site_status":"active","email":"test_user_12702368@testuser.com"}
+

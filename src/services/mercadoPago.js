@@ -7,7 +7,7 @@ class Mercadopago {
     this.datos = datos;
     mercadopago.configure({
       //sandbox: true,
-      access_token: datos.tokenMP,
+      access_token: datos.tokenMP
     });
   }
 
@@ -81,6 +81,7 @@ class Mercadopago {
           pending: "https://localhost:3000.com/pending",
           failure: "https://localhost:3000.com/error",
         };
+        preference.auto_return = "approved";
       }
       
 
@@ -88,8 +89,7 @@ class Mercadopago {
       preference.payer = payer;
       preference.marketplace_fee = parseFloat(this.datos.comision);
       //preference.notification_url = "https://localhost:3000/webhook";
-      //preference.auto_return = "approved";
-
+    
       return preference;
     } catch (error) {
       throw error;
