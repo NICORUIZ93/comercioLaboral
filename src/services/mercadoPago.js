@@ -88,7 +88,7 @@ class Mercadopago {
       preference.payer = payer;
       preference.marketplace_fee = parseFloat(this.datos.comision);
       //preference.notification_url = "https://localhost:3000/webhook";
-      preference.auto_return = "approved";
+      //preference.auto_return = "approved";
 
       return preference;
     } catch (error) {
