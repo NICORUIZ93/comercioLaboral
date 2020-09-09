@@ -27,16 +27,16 @@ module.exports = {
 
       const { type, id } = req.body;
 
+      console.log(req.body);
+      console.log(req.query);
       console.log(type);
       console.log(id);
 
       const mercadopago = new Mercadopago();
-      const payment = 
+      const payment = mercadopago.obtenerInformacionPago(id);
 
       console.log(payment);
-      console.log(req.body);
-      console.log(req.query);
-
+      
       return res.status(200).send();
 
     } catch (e) {
