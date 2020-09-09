@@ -16,7 +16,10 @@ class Mercadopago {
       const preferencia = await this.construirPreferencia();
       const idPreferencia = await mercadopago.preferences.create(preferencia);
 
-      return idPreferencia.body.id;
+      const { id, init_point, sandbox_init_point } =  idPreferencia.response;
+
+      return {id, init_point, sandbox_init_point};
+      
     } catch (error) {
       throw error;
     }
