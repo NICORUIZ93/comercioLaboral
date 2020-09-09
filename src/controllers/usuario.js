@@ -8,7 +8,7 @@ module.exports = {
       return res.status(200).json(usuarios);
     } catch (e) {
       console.log(e.message);
-      res.status(500).send(e);
+      res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   async obtenerUsuario(req, res) {
@@ -19,7 +19,7 @@ module.exports = {
       return res.status(200).json(usuario);
     } catch (e) {
       console.log(e.message);
-      res.status(500).send(e);
+      res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   async crearUsuario(req, res) {
@@ -43,7 +43,7 @@ module.exports = {
       return res.status(200).json(nuevoUsuario);
     } catch (e) {
       console.log(e);
-      return res.status(500).send(e.message);
+      res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   async crearEmpleadosMasivo(req, res) {
@@ -70,17 +70,17 @@ module.exports = {
       return res.status(200).json(nuevoUsuario);
     } catch (e) {
       console.log(e);
-      return res.status(500).send(e.message);
+      res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   async actualizarUsuario(req, res) {
     try {
       const nuevoUsuario = await usuarioService.actualizarUsuario(req.body);
 
-      return res.status(200).json(nuevoUsuario);
+      return res.status(200).json({ code: 200, mesaage: 'usuario actualizado' });
     } catch (e) {
       console.log(e);
-      return res.status(500).send(e);
+      res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
 
@@ -89,10 +89,10 @@ module.exports = {
       const idUsuario = req.params.id;
       const nuevoUsuario = await usuarioService.eliminarUsuario(idUsuario);
 
-      return res.status(200).json(nuevoUsuario);
+      return res.status(200).json({ code: 200, mesaage: 'usuario eliminado' });
     } catch (e) {
       console.log(e);
-      return res.status(500).send(e);
+      res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
 };

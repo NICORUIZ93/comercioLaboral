@@ -8,7 +8,7 @@ module.exports = {
       const productos = await productoService.obtenerProductos();
       return res.status(200).json(productos);
     } catch (e) {
-      res.status(500).send(e);
+      res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   async obtenerProductosPaginado(req, res) {
@@ -22,7 +22,7 @@ module.exports = {
       return res.status(200).json(productos);
       
     } catch (e) {
-      res.status(500).send(e);
+      res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   async obtenerProductosPorTiendaPaginado(req, res) {
@@ -37,7 +37,7 @@ module.exports = {
       return res.status(200).json(productos);
       
     } catch (e) {
-      res.status(500).send(e);
+      res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   async buscarProductosPaginado(req, res) {
@@ -52,7 +52,7 @@ module.exports = {
       return res.status(200).json(productos);
       
     } catch (e) {
-      res.status(500).send(e);
+      res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   async obtenerProducto(req, res) {
@@ -62,7 +62,7 @@ module.exports = {
       
       return res.status(200).json(producto);
     } catch (e) {
-      res.status(500).send(e);
+      res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   async crearProducto(req, res) {
@@ -75,7 +75,7 @@ module.exports = {
 
     } catch (e) {
       console.log(e);
-      return res.status(500).send(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
 
@@ -84,11 +84,11 @@ module.exports = {
 
       const nuevoProducto = await productoService.actualizarProducto(req.body);
 
-      return res.status(200).json(nuevoProducto);
+      return res.status(200).json({ code: 200, mesaage: 'producto actualizado' });
 
     } catch (e) {
       console.log(e);
-      return res.status(500).send(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
 
@@ -98,11 +98,11 @@ module.exports = {
       const idProducto = req.params.id;
       const nuevoProducto = await productoService.eliminarProducto(idProducto);
 
-      return res.status(200).json(nuevoProducto);
+      return res.status(200).json({ code: 200, mesaage: 'producto eliminado' });
 
     } catch (e) {
       console.log(e);
-      return res.status(500).send(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   async cargarRecursosProducto(req, res) {
@@ -116,7 +116,7 @@ module.exports = {
 
     } catch (e) {
       console.log(e);
-      return res.status(500).send(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   }
 

@@ -12,7 +12,8 @@ const service = {
 
       return mensajes;
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async obtenerMensajesPorProducto(idProducto) {
@@ -24,7 +25,8 @@ const service = {
 
       return mensajes;
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async obtenerMensajesPorId(id) {
@@ -35,7 +37,8 @@ const service = {
 
       return mensajes;
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async crearMensaje(nuevoMensaje) {
@@ -50,7 +53,8 @@ const service = {
 
       return resultadocreate;
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async eliminarMensaje(idMensaje) {
@@ -63,7 +67,8 @@ const service = {
 
       return resultadoDestroy;
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
 };

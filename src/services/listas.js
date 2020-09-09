@@ -14,7 +14,8 @@ const service = {
 
       return ciudades;
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async obtenerListaCiudadPorDepartamento(departamento) {
@@ -23,7 +24,8 @@ const service = {
       return ciudades;
 
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async obtenerListaCiudades() {
@@ -32,7 +34,8 @@ const service = {
       return ciudades;
 
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async obtenerListaDepartamentos() {
@@ -41,7 +44,8 @@ const service = {
       return departamentos;
 
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async obtenerListaBancos() {
@@ -64,7 +68,8 @@ const service = {
       return bancos.data.banks;
 
     } catch (error) {
-        return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async crearLista(nuevoMensaje) {
@@ -79,7 +84,8 @@ const service = {
 
       return resultadocreate;
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async eliminarLista(idMensaje) {
@@ -92,7 +98,8 @@ const service = {
 
       return resultadoDestroy;
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
 };

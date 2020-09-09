@@ -7,7 +7,8 @@ const service = {
 
       return ciudades;
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async crearSeccion(nuevoSeccion) {
@@ -16,7 +17,8 @@ const service = {
 
       return resultadocreate;
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async obtenerSeccion(idSeccion) {
@@ -27,7 +29,8 @@ const service = {
 
       return Seccion;
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async actualizarSeccion(Seccion) {
@@ -40,7 +43,8 @@ const service = {
 
       return resultadoUpdate;
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async eliminarSeccion(idSeccion) {
@@ -53,7 +57,8 @@ const service = {
 
       return resultadoDestroy;
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
 };

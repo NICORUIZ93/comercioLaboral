@@ -54,7 +54,8 @@ const service = {
         };
       }
     } catch (error) {
-      return `status: ${error.status}, Mensaje: ${error.message}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async obtenerUrlRecurso(key, type) {

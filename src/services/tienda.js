@@ -28,7 +28,8 @@ const service = {
 
       return tiendas;
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
 
@@ -79,7 +80,8 @@ const service = {
 
       return tiendaSinUsuarios;
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async obtenerTiendaPorUsuario(idUsuario) {
@@ -95,7 +97,8 @@ const service = {
       if (!tienda) throw Error("No existen tiendas asociadas a el usuario");
       return tienda.Tienda;
     } catch (error) {
-      return `${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async crearTienda(idUsuario, nuevaTienda, esAdministrador = false) {
@@ -145,7 +148,8 @@ const service = {
 
       return resultadoNuevaTienda;
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async actualizarTienda(tienda) {
@@ -158,7 +162,7 @@ const service = {
 
       return resultadoUpdate;
     } catch (error) {
-      return `Error ${error}`;
+      throw error;
     }
   },
   async eliminarTienda(idTienda) {
@@ -171,7 +175,7 @@ const service = {
 
       return resultadoDestroy;
     } catch (error) {
-      return `Error ${error}`;
+      throw error;
     }
   },
   async cargarRecursosTienda(idTienda, recursos) {
@@ -211,7 +215,8 @@ const service = {
       return resultadoUpdate;
 
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
 };
@@ -241,7 +246,8 @@ const agregarRecursosTienda = async (recursos, IdTienda) => {
 
     return recursosCreados;
   } catch (error) {
-    throw error;
+    console.log(`${error}`);
+      throw error;
   }
 };
 
@@ -255,7 +261,8 @@ const obtenerPromedioCalificaciones = async (calificaciones) => {
 
     return recursosCreados;
   } catch (error) {
-    throw error;
+    console.log(`${error}`);
+      throw error;
   }
 };
 

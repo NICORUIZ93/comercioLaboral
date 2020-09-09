@@ -21,6 +21,7 @@ class Mercadopago {
       return {id, init_point, sandbox_init_point};
 
     } catch (error) {
+      console.log(`${error}`);
       throw error;
     }
   }
@@ -92,6 +93,7 @@ class Mercadopago {
     
       return preference;
     } catch (error) {
+      console.log(`${error}`);
       throw error;
     }
   }
@@ -111,7 +113,7 @@ class Mercadopago {
 
       return autorizacion.data.access_token;
     } catch (error) {
-      console.log(error);
+      console.log(`${error}`);
       throw error;
     }
   }

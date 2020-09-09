@@ -7,7 +7,7 @@ module.exports = {
       const tiendas = await tiendaService.obtenerTiendas();
       return res.status(200).json(tiendas);
     } catch (e) {
-      res.status(500).send(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   async obtenerTienda(req, res) {
@@ -17,7 +17,7 @@ module.exports = {
       const tiendas = await tiendaService.obtenerTienda(idTienda);
       return res.status(200).json(tiendas);
     } catch (e) {
-      res.status(500).send(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   async obtenerTiendaPorUsuario(req, res) {
@@ -27,7 +27,7 @@ module.exports = {
       const tienda = await tiendaService.obtenerTiendaPorUsuario(idUsuario);
       return res.status(200).json(tienda);
     } catch (e) {
-      res.status(500).send(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },  
   async crearTienda(req, res) {
@@ -39,7 +39,7 @@ module.exports = {
 
     } catch (e) {
       console.log(e);
-      return res.status(500).send(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
 
@@ -48,11 +48,11 @@ module.exports = {
 
       const nuevaTienda = await tiendaService.actualizarTienda(req.body);
 
-      return res.status(200).json(nuevaTienda);
+      return res.status(200).json({ code: 200, mesaage: 'tienda actualizada' });
 
     } catch (e) {
       console.log(e);
-      return res.status(500).send(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
 
@@ -62,11 +62,11 @@ module.exports = {
       const idTienda = req.params.id;
       const nuevaTienda = await tiendaService.eliminarTienda(idTienda);
 
-      return res.status(200).json(nuevaTienda);
+      return res.status(200).json({ code: 200, mesaage: 'tienda eliminada' });
 
     } catch (e) {
       console.log(e);
-      return res.status(500).send(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   async cargarRecursosTienda(req, res) {
@@ -80,7 +80,7 @@ module.exports = {
 
     } catch (e) {
       console.log(e);
-      return res.status(500).send(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   async activarTienda(req, res) {
@@ -93,7 +93,7 @@ module.exports = {
 
     } catch (e) {
       console.log(e);
-      return res.status(500).send(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
 };

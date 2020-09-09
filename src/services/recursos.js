@@ -15,7 +15,8 @@ const service = {
       });
 
     } catch (error) {
-        return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async obtenerRecurso(idUsuario) {
@@ -27,7 +28,8 @@ const service = {
       return usuario;
 
     } catch (error) {
-        return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async crearRecursoPorModelo(req, res) {
@@ -41,7 +43,8 @@ const service = {
       return resultadoAsociarRecursoAModelo;
 
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async crearRecursoTabla(recurso) {
@@ -52,7 +55,8 @@ const service = {
       return resultadoCreateRecurso;
 
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async crearRecursosMasivoTabla(recursos) {
@@ -63,7 +67,8 @@ const service = {
       return resultadoCreateRecurso;
 
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async crearRecurso(req, res) {
@@ -74,7 +79,8 @@ const service = {
       return resultadocreate;
 
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async eliminarRecurso(idUsuario) {
@@ -89,7 +95,8 @@ const service = {
       return resultadoDestroy;
 
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   
@@ -118,7 +125,8 @@ const agregarRecursos = async (req, res) =>
     return resultadoBulkRecurso;
 
   } catch (error) {
-    return `Error ${error}`;
+    console.log(`${error}`);
+      throw error;
   }
 };
 
@@ -144,7 +152,8 @@ const agregarRecursosSegunModelo = async (tipoRecurso, id, arrayRecursos) =>
     return resultadocreate;
 
   } catch (error) {
-    return `Error ${error}`;
+    console.log(`${error}`);
+      throw error;
   }
 };
 

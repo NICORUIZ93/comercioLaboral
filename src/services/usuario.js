@@ -24,8 +24,8 @@ const service = {
       });
       return usuarios;
     } catch (error) {
-      console.log(error.message);
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async obtenerUsuario(idUsuario) {
@@ -46,7 +46,8 @@ const service = {
 
       return usuario;
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async crearUsuario(nuevoUsuario) {
@@ -78,7 +79,8 @@ const service = {
 
       return usuarioSinContrasena;
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async crearEmpleadosMasivo(idTienda, nuevosUsuarios) {
@@ -124,12 +126,10 @@ const service = {
 
         });
 
-        const gg = await UsuariosTienda.bulkCreate(
+        await UsuariosTienda.bulkCreate(
           nuevosUsuariosTienda,
           { transaction: t }
         );
-
-        let rr = gg;
 
       });
 
@@ -137,7 +137,8 @@ const service = {
       return resultadoCreateNuevosEmpleados;
 
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async actualizarUsuario(usuario) {
@@ -150,7 +151,8 @@ const service = {
 
       return resultadoUpdate;
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async eliminarUsuario(idUsuario) {
@@ -163,7 +165,8 @@ const service = {
 
       return resultadoDestroy;
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async obtenerUsuarioPorParametros(parametrosWhere) {
@@ -177,6 +180,7 @@ const service = {
 
       return usuario ? usuario.dataValues : null;
     } catch (error) {
+      console.log(`${error}`);
       throw error;
     }
   },

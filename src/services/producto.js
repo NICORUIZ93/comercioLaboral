@@ -41,7 +41,7 @@ const service = {
         return producto;
       });
     } catch (error) {
-      return `Error ${error}`;
+      throw error;
     }
   },
   async obtenerProductosPorParametros(parametrosWhere) {
@@ -114,7 +114,7 @@ const service = {
 
       return paginador.paginarDatos(productos, page, limit);
     } catch (error) {
-      return `Error ${error}`;
+      throw error;
     }
   },
   async obtenerProductosPorTiendaPaginado(idTienda, paginacion) {
@@ -155,10 +155,10 @@ const service = {
 
       productos.rows = porductosFiltrados.filter(f => f.IdTienda === parseInt(idTienda));
       productos.count = productos.rows.length;
-      
+
       return paginador.paginarDatos(productos, pagina, limit);
     } catch (error) {
-      return `Error ${error}`;
+      throw error;
     }
   },
   async buscarProductosPaginado(busqueda, paginacion) {
@@ -215,7 +215,7 @@ const service = {
 
       return paginador.paginarDatos(productos, pagina, limit);
     } catch (error) {
-      return `Error ${error}`;
+      throw error;
     }
   },
   async obtenerProducto(idProducto) {
@@ -248,7 +248,7 @@ const service = {
 
       return productoFiltrado;
     } catch (error) {
-      return `Error ${error}`;
+      throw error;
     }
   },
   async crearProducto(idTienda, nuevoProducto) {
@@ -287,7 +287,7 @@ const service = {
 
       return resultadoNuevoProducto;
     } catch (error) {
-      return `${error}`;
+      throw error;
     }
   },
   async actualizarProducto(producto) {
@@ -312,8 +312,9 @@ const service = {
       });
 
       return resultadoDestroy;
+
     } catch (error) {
-      return `Error ${error}`;
+      throw error;
     }
   },
   async cargarRecursosProducto(idProducto, recursos) {

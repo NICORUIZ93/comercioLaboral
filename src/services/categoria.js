@@ -11,7 +11,8 @@ const service = {
       return categorias;
 
     } catch (error) {
-        return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   
@@ -25,7 +26,8 @@ const service = {
       return categoria;
 
     } catch (error) {
-        return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async crearCategoria(nuevaCategoria) {
@@ -36,7 +38,8 @@ const service = {
       return resultadocreate;
 
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async actualizarCategoria(categoria) {
@@ -51,7 +54,8 @@ const service = {
       return resultadoUpdate;
 
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async eliminarCategoria(idCategoria) {
@@ -66,7 +70,8 @@ const service = {
       return resultadoDestroy;
 
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   
