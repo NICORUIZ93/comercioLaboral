@@ -28,7 +28,7 @@ module.exports = {
       console.log(req.body);
       console.log(req.query);
 
-      return res.status(200);
+      return res.status(200).send();
 
     } catch (e) {
       res.status(500).json(e);
