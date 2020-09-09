@@ -119,7 +119,7 @@ const service = {
   },
   async obtenerProductosPorTiendaPaginado(idTienda, paginacion) {
     try {
-      const { limit, offset, page } = paginacion;
+      const { limit, offset, pagina } = paginacion;
 
       const productos = await Producto.findAndCountAll({
         limit,
@@ -139,8 +139,7 @@ const service = {
               attributes: [],
             },
           },
-        ],
-        where: { IdTienda: idTienda },
+        ],     
         order: [
           ['createdAt', 'ASC']
         ],
@@ -154,16 +153,17 @@ const service = {
         return producto;
       });
 
-      productos.rows = porductosFiltrados;
-
-      return paginador.paginarDatos(productos, page, limit);
+      productos.rows = porductosFiltrados.filter(f => f.IdTienda === parseInt(idTienda));
+      productos.count = productos.rows.length;
+      
+      return paginador.paginarDatos(productos, pagina, limit);
     } catch (error) {
       return `Error ${error}`;
     }
   },
   async buscarProductosPaginado(busqueda, paginacion) {
     try {
-      const { limit, offset, page } = paginacion;
+      const { limit, offset, pagina } = paginacion;
 
       const productos = await Producto.findAndCountAll({
         limit,
@@ -213,7 +213,7 @@ const service = {
 
       productos.rows = porductosFiltrados;
 
-      return paginador.paginarDatos(productos, page, limit);
+      return paginador.paginarDatos(productos, pagina, limit);
     } catch (error) {
       return `Error ${error}`;
     }

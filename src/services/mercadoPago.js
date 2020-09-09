@@ -19,7 +19,7 @@ class Mercadopago {
       const { id, init_point, sandbox_init_point } =  idPreferencia.response;
 
       return {id, init_point, sandbox_init_point};
-      
+
     } catch (error) {
       throw error;
     }
@@ -111,6 +111,7 @@ class Mercadopago {
 
       return autorizacion.data.access_token;
     } catch (error) {
+      console.log(error);
       throw error;
     }
   }
