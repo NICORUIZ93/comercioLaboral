@@ -15,10 +15,11 @@ const listaController = require("../controllers/listas")
 const { validadorObtenerPorId } = require("../helpers/validadores_request/genericos");
 const { validadorCrearUsuario, validadorActualizarUsuario, validadorEliminarUsuario, validadorcrearUsuariosMasivo } = require("../helpers/validadores_request/usuario");
 const { validadorCrearProducto, validadorActualizarProducto, validadorEliminarProducto, validadorObtenerProductosPaginado, validadorBuscarProductosPaginado, validadorRecursosProducto, validadorProductosPorTiendaPaginado } = require("../helpers/validadores_request/producto");
-const { validadorCrearTienda, validadorActualizarTienda, validadorEliminarTienda, validadorRecursosTienda } = require("../helpers/validadores_request/tienda");
+const { validadorCrearTienda, validadorActualizarTienda, validadorEliminarTienda, validadorRecursosTienda, validadorActivarTienda } = require("../helpers/validadores_request/tienda");
 const { validadorCrearCategoria, validadorActualizarCategoria, validadorEliminarCategoria } = require("../helpers/validadores_request/categoria");
 const { validadorCrearMensaje, validadorEliminarMensaje } = require("../helpers/validadores_request/mensaje");
 const { validadorobtenerUrlArchivo } = require("../helpers/validadores_request/archivo");
+const { validadorObtenerPreferencia } = require("../helpers/validadores_request/mercadopago");
 
 
 
@@ -50,6 +51,7 @@ module.exports = app => {
   app.get("/api/tienda/:id", validadorObtenerPorId, tiendaController.obtenerTienda)
   app.get("/api/tienda/porIdUsuario/:id", validadorObtenerPorId, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ tiendaController.obtenerTiendaPorUsuario)
   app.post("/api/tienda", validadorCrearTienda, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ tiendaController.crearTienda)
+  app.post("/api/tienda/activar", validadorActivarTienda, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ tiendaController.activarTienda)
   app.post("/api/tienda/recursos", validadorRecursosTienda, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ tiendaController.cargarRecursosTienda)
   app.put("/api/tienda", validadorActualizarTienda, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ tiendaController.actualizarTienda)
   app.delete("/api/tienda/:id", validadorEliminarTienda, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ tiendaController.eliminarTienda)
@@ -81,6 +83,7 @@ module.exports = app => {
 
   //Rutas Plataforma de pagos
   app.get("/api/pago/bancos", /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ listaController.obtenerListaBancos)
+  app.post("/api/pago/mp/preferencia", validadorObtenerPreferencia, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ plataformaPagosController.obtenerPreferenciaMercadoPago)
 
   //Rutas listas
   app.get("/api/lista/ciudades", /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ listaController.obtenerListaCiudades)

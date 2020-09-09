@@ -58,6 +58,9 @@ module.exports = (sequelize, DataTypes) => {
     idDepartamento: DataTypes.INTEGER,
     idCiudad: DataTypes.INTEGER,
     tipoTienda: DataTypes.STRING,
+    porcentajeComision: DataTypes.DECIMAL,
+    codigoMP: DataTypes.STRING,
+    tokenMP: DataTypes.STRING,
     estado: {
       type:DataTypes.BOOLEAN,
       defaultValue: true

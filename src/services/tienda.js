@@ -5,6 +5,7 @@ const TiendaRecurso = require("../db/models").TiendaRecurso;
 const Recurso = require("../db/models").Recurso;
 var sequelize = require("../db/models").sequelize;
 const _Rol = require("../constants/roles");
+const Mercadopago  = require( "../services/mercadoPago");
 
 const service = {
   async obtenerTiendas() {
@@ -101,6 +102,8 @@ const service = {
     try {
       let resultadoNuevaTienda;
 
+      if(!nuevaTienda.porcentajeComision) nuevaTienda.porcentajeComision = 15;
+
       const usuarioQueCreaTienda = await Usuario.findByPk(idUsuario);
       if (!usuarioQueCreaTienda) throw Error("el usuario no existe");
 
@@ -112,6 +115,9 @@ const service = {
       }
 
       await sequelize.transaction(async (t) => {
+
+        nuevaTienda.estado = false; //en false hasta que no se active
+
         resultadoNuevaTienda = (
           await Tienda.create(nuevaTienda, {
             transaction: t,
@@ -185,6 +191,27 @@ const service = {
       return recursosAgregadosTienda;
     } catch (error) {
       throw error;
+    }
+  },
+  async activarTienda(idTienda, codigoMp) {
+    try {
+      const tienda = (await Tienda.findByPk(idTienda)).dataValues;
+      const tokenMp = await Mercadopago.obtenerTokenVendedor(codigoMp);
+
+      tienda.codigoMP = codigoMp;
+      tienda.tokenMP = tokenMp;
+      tienda.estado = true;
+
+      const resultadoUpdate = await Tienda.update(tienda, {
+        where: {
+          id: tienda.id,
+        },
+      });
+
+      return resultadoUpdate;
+
+    } catch (error) {
+      return `Error ${error}`;
     }
   },
 };

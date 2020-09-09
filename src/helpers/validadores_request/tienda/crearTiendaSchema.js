@@ -15,6 +15,7 @@ const crearTiendaSchema = (req, res, next) => {
     estado:Joi.boolean(),
     idCiudad: Joi.number().integer(),
     idDepartamento: Joi.number().integer(),
+    porcentajeComision: Joi.number(),
     imagenes: Joi.array().items(
       Joi.object({
         url: Joi.string().empty(""),

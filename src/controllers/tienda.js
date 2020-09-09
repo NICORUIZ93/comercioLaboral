@@ -82,8 +82,20 @@ module.exports = {
       console.log(e);
       return res.status(500).send(e);
     }
-  }
+  },
+  async activarTienda(req, res) {
+    try {
 
+      const {idTienda, codigoMp} = req.body;
+      const tienda = await tiendaService.activarTienda(idTienda, codigoMp);
+
+      return res.status(200).json(tienda);
+
+    } catch (e) {
+      console.log(e);
+      return res.status(500).send(e);
+    }
+  },
 };
 
 

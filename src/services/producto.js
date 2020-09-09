@@ -44,6 +44,39 @@ const service = {
       return `Error ${error}`;
     }
   },
+  async obtenerProductosPorParametros(parametrosWhere) {
+    try {
+      const productos = await Producto.findAll({
+        where: {
+          [Op.or]: parametrosWhere,
+        },
+        include: [
+          Tienda,
+          {
+            model: Categoria,
+            as: "Categoria",
+            attributes: ["id", "nombre"],
+          },
+          {
+            model: Recurso,
+            as: "Recursos",
+            attributes: ["id", "nombre", "key", "extension", "url", "prioridad"],
+            through: {
+              attributes: [],
+            },
+          },
+        ],
+        order: [
+          ['createdAt', 'DESC']
+        ],
+      });
+
+      return productos;
+      
+    } catch (error) {
+      throw error;
+    }
+  },
   async obtenerProductosPaginado(page, limit, offset) {
     try {
       const productos = await Producto.findAndCountAll({

@@ -58,4 +58,4 @@ const service = {
   },
 };
 
-module.exports.listasService = service;
+module.exports.bannerService = service;
