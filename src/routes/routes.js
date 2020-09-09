@@ -84,6 +84,7 @@ module.exports = app => {
   //Rutas Plataforma de pagos
   app.get("/api/pago/bancos", /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ listaController.obtenerListaBancos)
   app.post("/api/pago/mp/preferencia", validadorObtenerPreferencia, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ plataformaPagosController.obtenerPreferenciaMercadoPago)
+  app.post("/api/pago/mp/webHooks", /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ plataformaPagosController.webHooks)
 
   //Rutas listas
   app.get("/api/lista/ciudades", /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ listaController.obtenerListaCiudades)

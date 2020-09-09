@@ -117,6 +117,16 @@ class Mercadopago {
       throw error;
     }
   }
+
+  static async webHooks(datos) {
+    try {
+      
+      return "OK";
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
+  }
 }
 
 module.exports = Mercadopago;

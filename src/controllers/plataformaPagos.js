@@ -21,8 +21,19 @@ module.exports = {
     } catch (e) {
       res.status(500).json(e);
     }
+  },
+  async webHooks(req, res) {
+    try {
+
+      console.log(req.body);
+      console.log(req.query);
+
+      return res.status(200);
+
+    } catch (e) {
+      res.status(500).json(e);
+    }
   }
-  
 
 };
 
