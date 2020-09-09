@@ -27,8 +27,11 @@ module.exports = {
 
       const { type, id } = req.body;
 
-      const mercadopago = new Mercadopago().obtenerInstancia();
-      const payment = await mercadopago.payment.get(id);
+      console.log(type);
+      console.log(id);
+
+      const mercadopago = new Mercadopago();
+      const payment = 
 
       console.log(payment);
       console.log(req.body);
@@ -37,6 +40,7 @@ module.exports = {
       return res.status(200).send();
 
     } catch (e) {
+      console.log(e);
       res.status(500).json(e);
     }
   }

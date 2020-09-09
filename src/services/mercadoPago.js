@@ -6,12 +6,17 @@ class Mercadopago {
   constructor() {
     mercadopago.configure({
       //sandbox: true,
-      access_token: datos.tokenMP
+      access_token: datos.tokenMP,
     });
   }
 
-  obtenerInstancia(){
-    return mercadopago;
+  async obtenerInformacionPago(id) {
+    try {
+      const informacionpago = await mercadopago.payment.get(id);
+      return informacionpago;
+    } catch (error) {
+      throw error;
+    }
   }
 
   async obtenerIdPreferencia(datos) {
@@ -19,10 +24,9 @@ class Mercadopago {
       const preferencia = await this.construirPreferencia(datos);
       const idPreferencia = await mercadopago.preferences.create(preferencia);
 
-      const { id, init_point, sandbox_init_point } =  idPreferencia.response;
+      const { id, init_point, sandbox_init_point } = idPreferencia.response;
 
-      return {id, init_point, sandbox_init_point};
-
+      return { id, init_point, sandbox_init_point };
     } catch (error) {
       console.log(`${error}`);
       throw error;
@@ -52,9 +56,13 @@ class Mercadopago {
             ? producto.Recursos[0].url
             : null,
           category_id: `${producto.IdCategoria}`,
-          quantity: parseInt(datos.productos.find(p => p.id === producto.id).cantidad),
+          quantity: parseInt(
+            datos.productos.find((p) => p.id === producto.id).cantidad
+          ),
           currency_id: "COP",
-          unit_price: producto.oferta ? parseFloat(producto.valorOferta) : parseFloat(producto.valor),
+          unit_price: producto.oferta
+            ? parseFloat(producto.valorOferta)
+            : parseFloat(producto.valor),
         };
       });
 
@@ -78,7 +86,6 @@ class Mercadopago {
         },
       };
 
-      
       if (!this.datos.esMovil) {
         preference.back_urls = {
           success: "https://localhost:3000/success",
@@ -87,13 +94,12 @@ class Mercadopago {
         };
         preference.auto_return = "approved";
       }
-      
 
       preference.items = items;
       preference.payer = payer;
       preference.marketplace_fee = parseFloat(datos.comision);
       //preference.notification_url = "https://localhost:3000/webhook";
-    
+
       return preference;
     } catch (error) {
       console.log(`${error}`);
@@ -123,7 +129,6 @@ class Mercadopago {
 
   static async webHooks(datos) {
     try {
-      
       return "OK";
     } catch (error) {
       console.log(`${error}`);
