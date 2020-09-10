@@ -31,6 +31,7 @@ module.exports = {
             break;
 
           default:
+            /*
             console.log("topic => otro");
             const { id } = req.query;
             console.log(id);
@@ -38,6 +39,7 @@ module.exports = {
             const merchantOrder = await mercadopago.procesarNotificacionMerchantOrder(id);
             console.log(merchantOrder);
             console.log(req.body);
+            */
             break;
         }
       }
@@ -49,11 +51,16 @@ module.exports = {
             console.log("body => ");
             console.log(req.body);
 
+            let mercadopago;
             const { data } = req.body;
             if (data) {
               console.log("data => ");
               console.log(data);
-
+              mercadopago = new Mercadopago(process.env.MP_ACCESS_TOKEN_TEST);
+              const pagoInfo = await mercadopago.obtenerInformacionPago(data.id);
+              console.log('pago info => ');
+              console.log(pagoInfo);
+              
               if (data.external_reference) {
                 console.log("data.external_reference => ");
                 console.log(data.external_reference);
@@ -65,7 +72,7 @@ module.exports = {
                   console.log("pedido => ");
                   console.log(pedido);
 
-                  const mercadopago = new Mercadopago(pedido.Tienda.tokenMP);
+                  mercadopago = new Mercadopago(pedido.Tienda.tokenMP);
                   console.log("data.order.id => ");
                   console.log(data.order.id);
                   const payment = await mercadopago.procesarNotificacionMerchantOrder(
