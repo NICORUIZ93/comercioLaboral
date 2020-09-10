@@ -74,7 +74,7 @@ module.exports = {
 
                   mercadopago = new Mercadopago(pedido.Tienda.tokenMP);
                   console.log("data.order.id => ");
-                  console.log(pagoInfo.order.id);
+                  console.log(pagoInfo.body.order.id);
                   const payment = await mercadopago.procesarNotificacionMerchantOrder(
                     pagoInfo.order.id
                   );
