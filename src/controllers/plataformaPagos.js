@@ -33,6 +33,8 @@ module.exports = {
           default:
             console.log("topic => otro");
             const { id } = req.query;
+            console.log(id);
+            console.log(req.query);
             const merchantOrder = await mercadopago.procesarNotificacionMerchantOrder(id);
             console.log(merchantOrder);
             console.log(req.body);
