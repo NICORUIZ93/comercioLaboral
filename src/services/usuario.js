@@ -30,7 +30,7 @@ const service = {
   },
   async obtenerUsuariosPorParametros(parametrosWhere) {
     try {
-      const usuarios = await Producto.findAll({
+      const usuarios = await Usuario.findAll({
         attributes: { exclude: ["contrasena"] },
         where: {
           [Op.or]: parametrosWhere,
