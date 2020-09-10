@@ -26,9 +26,7 @@ module.exports = {
         switch (req.query.topic) {
           case "payment":
             console.log('topic => payment');
-            const { type, data } = req.body;
-            const payment = await mercadopago.obtenerInformacionPago(data.id);
-            console.log(payment);
+            console.log(req.query.body);
             break;
 
           default:
@@ -43,7 +41,7 @@ module.exports = {
         switch (req.query.type) {
           case "payment":
             console.log('type => payment');
-            const { type, data } = req.body;
+            const { data } = req.body;
             const payment = await mercadopago.obtenerInformacionPago(data.id);
             console.log(payment);
             break;
