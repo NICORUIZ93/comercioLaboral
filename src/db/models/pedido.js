@@ -22,6 +22,10 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.Tienda, {
         foreignKey: "IdTienda"
       });
+
+      this.belongsTo(models.usuario, {
+        foreignKey: "IdUsuario"
+      });
       
     }
   };
