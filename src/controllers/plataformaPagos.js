@@ -20,11 +20,12 @@ module.exports = {
   },
   async webHooks(req, res) {
     try {
-      const { type, data } = req.body;
+      
       const mercadopago = new Mercadopago(process.env.MP_ACCESS_TOKEN_TEST);
 
       switch (req.query.topic) {
         case "payment":
+          const { type, data } = req.body;
           const payment = await mercadopago.obtenerInformacionPago(data.id);
           console.log(payment);
           break;
@@ -36,7 +37,7 @@ module.exports = {
       }
 
       return res.status(200).send();
-      
+
     } catch (e) {
       console.log(e);
       res.status(500).json(e);
