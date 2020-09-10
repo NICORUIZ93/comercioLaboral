@@ -24,15 +24,15 @@ module.exports = {
   async webHooks(req, res) {
     try {
 
-      const { type, id } = req.body;
+      const { type, data } = req.body;
 
       console.log(req.body);
       console.log(req.query);
       console.log(type);
-      console.log(id);
+      console.log(data);
 
       const mercadopago = new Mercadopago(process.env.MP_ACCESS_TOKEN_TEST);
-      const payment = await mercadopago.obtenerInformacionPago(id);
+      const payment = await mercadopago.obtenerInformacionPago(data.id);
 
       console.log(payment);
       
