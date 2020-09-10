@@ -46,21 +46,28 @@ module.exports = {
         switch (req.query.type) {
           case "payment":
             console.log("type => payment");
-            console.log("body => " + req.body);
+            console.log("body => ");
+            console.log(req.body);
+
             const { data } = req.body;
             if (data) {
-              console.log("data => " + data);
+              console.log("data => ");
+              console.log(data);
+
               if (data.external_reference) {
-                console.log(
-                  "data.external_reference => " + data.external_reference
-                );
+                console.log("data.external_reference => ");
+                console.log(data.external_reference);
+
                 const pedido = await pedidoService.obtenerPedidoPorParametros([
                   { uuid: data.external_reference },
                 ]);
                 if (pedido) {
-                  console.log("pedido => " + pedido);
+                  console.log("pedido => ");
+                  console.log(pedido);
+
                   const mercadopago = new Mercadopago(pedido.Tienda.tokenMP);
-                  console.log("data.order.id => " + data.order.id);
+                  console.log("data.order.id => ");
+                  console.log(data.order.id);
                   const payment = await mercadopago.procesarNotificacionMerchantOrder(
                     data.order.id
                   );

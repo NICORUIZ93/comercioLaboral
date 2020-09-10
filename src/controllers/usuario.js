@@ -95,4 +95,14 @@ module.exports = {
       res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
+  async eliminarUsuarioLogico(req, res) {
+    try {
+      const idUsuario = req.params.id;
+      await usuarioService.eliminarUsuarioLogico(idUsuario);
+      return res.status(200).json({ code: 200, mesaage: 'usuario eliminado (desactivado)' });
+    } catch (e) {
+      console.log(e);
+      res.status(500).send({ code: 500, mesaage: `${e}` });
+    }
+  },
 };

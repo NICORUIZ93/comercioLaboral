@@ -54,7 +54,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    IdFoto: DataTypes.INTEGER
+    IdFoto: DataTypes.INTEGER,
+    activo: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
+    },
   }, {
     sequelize,
     modelName: 'Usuario',

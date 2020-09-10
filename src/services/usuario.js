@@ -71,6 +71,9 @@ const service = {
       if (recurso) {
         usuario.IdFoto = recurso.id;
       }
+
+      usuario.activo = true;
+
       const resultadocreate = (await Usuario.create(usuario)).get({
         plain: true,
       });
@@ -164,6 +167,20 @@ const service = {
       });
 
       return resultadoDestroy;
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
+  },
+  async eliminarUsuarioLogico(idUsuario) {
+    try {
+      const resultadoUpdate = await Usuario.update({ activo: false }, {
+        where: {
+          id: idUsuario,
+        },
+      });
+
+      return resultadoUpdate;
     } catch (error) {
       console.log(`${error}`);
       throw error;
