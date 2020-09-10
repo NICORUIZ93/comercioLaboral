@@ -1,5 +1,6 @@
 const Mercadopago = require("../services/mercadoPago");
 const { tiendaService } = require("../services/tienda");
+const { pedidoService } = require("../services/pedido");
 
 module.exports = {
   async obtenerPreferenciaMercadoPago(req, res) {
@@ -15,12 +16,11 @@ module.exports = {
 
       return res.status(200).json(preferencia);
     } catch (e) {
-      res.status(500).json(e);
+      res.status(500).json(JSON.stringify(e));
     }
   },
   async webHooks(req, res) {
     try {
-      const mercadopago = new Mercadopago(process.env.MP_ACCESS_TOKEN_TEST);
       /*
       if (req.query.topic) {
         switch (req.query.topic) {
@@ -46,11 +46,27 @@ module.exports = {
         switch (req.query.type) {
           case "payment":
             console.log("type => payment");
-            console.log(req.body);
+            console.log("body => " + req.body);
             const { data } = req.body;
             if (data) {
-              const payment = await mercadopago.obtenerInformacionPago(data.id);
-              console.log(payment);
+              console.log("data => " + data);
+              if (data.external_reference) {
+                console.log(
+                  "data.external_reference => " + data.external_reference
+                );
+                const pedido = await pedidoService.obtenerPedidoPorParametros([
+                  { uuid: data.external_reference },
+                ]);
+                if (pedido) {
+                  console.log("pedido => " + pedido);
+                  const mercadopago = new Mercadopago(pedido.Tienda.tokenMP);
+                  console.log("data.order.id => " + data.order.id);
+                  const payment = await mercadopago.procesarNotificacionMerchantOrder(
+                    data.order.id
+                  );
+                  console.log(payment);
+                }
+              }
             }
             break;
 

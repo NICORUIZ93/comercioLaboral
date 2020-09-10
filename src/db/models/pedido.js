@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
         otherKey: "IdProducto",
       });
 
+      this.Detalle = this.hasMany(models.DetallePedido, { foreignKey: "IdPedido",  as: 'Detalle' });
       /*
       this.belongsTo(models.Tienda, {
         foreignKey: "IdTienda"
@@ -25,9 +26,17 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Pedido.init({
+    id: {
+      field: 'id',
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     IdTienda: DataTypes.INTEGER,
     IdUsuario: DataTypes.INTEGER,
-    valorTotal: DataTypes.DECIMAL
+    valorTotal: DataTypes.DECIMAL,
+    confirmado: DataTypes.BOOLEAN,
+    uuid: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'Pedido',

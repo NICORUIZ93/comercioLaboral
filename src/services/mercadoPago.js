@@ -1,6 +1,8 @@
 const mercadopago = require("mercadopago");
 const axios = require("axios").default;
 const { productoService } = require("./producto");
+const { pedidoService } = require("./pedido");
+const { v4: uuidv4 } = require('uuid');
 
 class Mercadopago {
   constructor(token) {
@@ -32,7 +34,6 @@ class Mercadopago {
     try {
       const merchantOrder = await mercadopago.merchant_orders.get(id);
       return merchantOrder;
-      
     } catch (error) {
       throw error;
     }
@@ -45,6 +46,8 @@ class Mercadopago {
 
       const { id, init_point, sandbox_init_point } = idPreferencia.response;
 
+      await this.guardarPedidoSinConfirmar(datos.comprador, preferencia.items, datos.idTienda, preferencia.external_reference );
+
       return { id, init_point, sandbox_init_point };
     } catch (error) {
       console.log(`${error}`);
@@ -55,6 +58,7 @@ class Mercadopago {
   async construirPreferencia(datos) {
     try {
       let preference = {};
+      const uuidPedido = uuidv4();
 
       const idProductos = datos.productos.map((p) => {
         return p.id;
@@ -86,7 +90,7 @@ class Mercadopago {
       });
 
       const payer = {
-        name: comprador.nobre,
+        name: comprador.nombre,
         surname: comprador.apellido,
         email: comprador.correo,
         date_created: comprador.fechaCreacion,
@@ -105,7 +109,7 @@ class Mercadopago {
         },
       };
 
-      if (!this.datos.esMovil) {
+      if (!datos.esMovil) {
         preference.back_urls = {
           success: "https://localhost:3000/success",
           pending: "https://localhost:3000.com/pending",
@@ -117,6 +121,7 @@ class Mercadopago {
       preference.items = items;
       preference.payer = payer;
       preference.marketplace_fee = parseFloat(datos.comision);
+      preference.external_reference = uuidPedido;
       //preference.notification_url = "https://localhost:3000/webhook";
 
       return preference;
@@ -149,6 +154,24 @@ class Mercadopago {
   static async webHooks(datos) {
     try {
       return "OK";
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
+  }
+
+  async guardarPedidoSinConfirmar(usuario, productos, idTienda, uuid) {
+    try {
+
+      const pedido = {
+        usuario,
+        productos,
+        idTienda,
+        uuid
+      };
+
+      await pedidoService.crearPedidoMercadoPago(pedido);
+
     } catch (error) {
       console.log(`${error}`);
       throw error;
