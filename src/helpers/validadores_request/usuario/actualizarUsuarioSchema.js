@@ -4,34 +4,20 @@ const Rol = require("../../../constants/roles");
 const actualizarUsuarioSchema = (req, res, next) => {
   // define base schema rules
   const reglasSchema = {
-    id: Joi.number().integer(),
+    id: Joi.number().integer().required(),
     nombre: Joi.string().empty(""),
     apellido: Joi.string().empty(""),
-    correo: Joi.string().email().empty("").required(),
+    correo: Joi.string().email().empty(""),
     dni: Joi.string().empty(""),
     telefono: Joi.number().integer(),
     direccion: Joi.string().min(6).empty(""),
-    username: Joi.string().min(3).empty("").required(),
     password: Joi.string().min(6).empty(""),
     IdRol: Joi.number().integer()
   };
 
 
-  // conditional schema rule - only admins can update role
-  if (req.body.IdRol) {
-    if (req.body.IdRol === Rol.VendedorID) {
-      reglasSchema.contrasena = Joi.string().min(6).empty("");
-      reglasSchema.confirmarContrasena = Joi.string()
-        .min(6)
-        .valid(Joi.ref("contrasena"))
-        .empty("");
-    }
-  }
-
   // create schema object with rules
-  const schema = Joi.object(reglasSchema)
-    // make confirmPassword required IF password is present
-    .with("contrasena", "confirmarContrasena");
+  const schema = Joi.object(reglasSchema);
 
   // schema options
   const opciones = {
