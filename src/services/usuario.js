@@ -28,6 +28,33 @@ const service = {
       throw error;
     }
   },
+  async obtenerUsuariosPorParametros(parametrosWhere) {
+    try {
+      const usuarios = await Producto.findAll({
+        attributes: { exclude: ["contrasena"] },
+        where: {
+          [Op.or]: parametrosWhere,
+        },
+        include: [
+          Rol,
+          {
+            model: Recurso,
+            as: "Foto",
+            attributes: ["id", "nombre", "key", "extension", "url"],
+          },
+        ],
+        order: [
+          ['createdAt', 'DESC']
+        ],
+      });
+
+      return usuarios;
+      
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
+  },
   async obtenerUsuario(idUsuario) {
     try {
       const usuario = (

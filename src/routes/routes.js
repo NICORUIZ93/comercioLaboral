@@ -40,6 +40,7 @@ module.exports = app => {
 
   //Rutas Usuarios
   app.get("/api/usuarios", /*autorizacion.autorizar(Rol.Administrador),*/ usuarioController.obtenerUsuarios)
+  app.get("/api/usuarios/activos", /*autorizacion.autorizar(Rol.Administrador),*/ usuarioController.obtenerUsuariosActivos)
   app.get("/api/usuario/:id", validadorObtenerPorId, /*autorizacion.autorizar(Rol.Administrador),*/ usuarioController.obtenerUsuario)
   app.post("/api/usuario", validadorCrearUsuario, usuarioController.crearUsuario)
   app.post("/api/usuarios/empleados", validadorcrearUsuariosMasivo, usuarioController.crearEmpleadosMasivo)

@@ -11,6 +11,15 @@ module.exports = {
       res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
+  async obtenerUsuariosActivos(req, res) {
+    try {
+      const usuarios = await usuarioService.obtenerUsuariosPorParametros([{ activo: true }]);
+      return res.status(200).json(usuarios);
+    } catch (e) {
+      console.log(e.message);
+      res.status(500).send({ code: 500, mesaage: `${e}` });
+    }
+  },
   async obtenerUsuario(req, res) {
     try {
       const idUsuario = req.params.id;
