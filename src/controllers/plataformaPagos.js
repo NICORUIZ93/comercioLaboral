@@ -26,7 +26,8 @@ module.exports = {
         switch (req.query.topic) {
           case "payment":
             console.log('topic => payment');
-            console.log(req.query.body);
+            console.log(req.query);
+            console.log(req.body);
             break;
 
           default:
