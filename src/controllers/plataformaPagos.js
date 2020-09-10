@@ -31,15 +31,15 @@ module.exports = {
             break;
 
           default:
-            /*
+            
             console.log("topic => otro");
             const { id } = req.query;
             console.log(id);
             console.log(req.query);
-            const merchantOrder = await mercadopago.procesarNotificacionMerchantOrder(id);
-            console.log(merchantOrder);
+            //const merchantOrder = await mercadopago.procesarNotificacionMerchantOrder(id);
+            //console.log(merchantOrder);
             console.log(req.body);
-            */
+            
             break;
         }
       }
@@ -60,13 +60,13 @@ module.exports = {
               const pagoInfo = await mercadopago.obtenerInformacionPago(data.id);
               console.log('pago info => ');
               console.log(pagoInfo);
-              
-              if (data.external_reference) {
+
+              if (pagoInfo.external_reference) {
                 console.log("data.external_reference => ");
                 console.log(data.external_reference);
 
                 const pedido = await pedidoService.obtenerPedidoPorParametros([
-                  { uuid: data.external_reference },
+                  { uuid: pagoInfo.external_reference },
                 ]);
                 if (pedido) {
                   console.log("pedido => ");
@@ -74,9 +74,9 @@ module.exports = {
 
                   mercadopago = new Mercadopago(pedido.Tienda.tokenMP);
                   console.log("data.order.id => ");
-                  console.log(data.order.id);
+                  console.log(pagoInfo.order.id);
                   const payment = await mercadopago.procesarNotificacionMerchantOrder(
-                    data.order.id
+                    pagoInfo.order.id
                   );
                   console.log(payment);
                 }
