@@ -32,7 +32,7 @@ module.exports = {
       console.log(id);
 
       const mercadopago = new Mercadopago(process.env.MP_ACCESS_TOKEN_TEST);
-      const payment = mercadopago.obtenerInformacionPago(id);
+      const payment = await mercadopago.obtenerInformacionPago(id);
 
       console.log(payment);
       
