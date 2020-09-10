@@ -21,7 +21,7 @@ module.exports = {
   },
   async webHooks(req, res) {
     try {
-      /*
+      
       if (req.query.topic) {
         switch (req.query.topic) {
           case "payment":
@@ -41,7 +41,7 @@ module.exports = {
             break;
         }
       }
-      */
+      
       if (req.query.type) {
         switch (req.query.type) {
           case "payment":
@@ -78,9 +78,9 @@ module.exports = {
             break;
 
           default:
-            //console.log("type => otro");
-            //console.log(req.query);
-            //console.log(req.body);
+            console.log("type => otro");
+            console.log(req.query);
+            console.log(req.body);
             break;
         }
       }
