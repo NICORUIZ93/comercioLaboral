@@ -19,6 +19,24 @@ class Mercadopago {
     }
   }
 
+  async procesarNotificacionPago(id) {
+    try {
+      const informacionpago = await mercadopago.payment.get(id);
+      return informacionpago;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async procesarNotificacionMerchantOrder(id) {
+    try {
+      const informacionpago = await mercadopago.payment.get(id);
+      return informacionpago;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async obtenerIdPreferencia(datos) {
     try {
       const preferencia = await this.construirPreferencia(datos);
