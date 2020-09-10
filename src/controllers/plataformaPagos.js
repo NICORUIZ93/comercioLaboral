@@ -21,7 +21,7 @@ module.exports = {
   },
   async webHooks(req, res) {
     try {
-      
+      /*
       if (req.query.topic) {
         switch (req.query.topic) {
           case "payment":
@@ -43,7 +43,7 @@ module.exports = {
             break;
         }
       }
-      
+      */
       if (req.query.type) {
         switch (req.query.type) {
           case "payment":
@@ -61,12 +61,12 @@ module.exports = {
               console.log('pago info => ');
               console.log(pagoInfo);
 
-              if (pagoInfo.external_reference) {
+              if (pagoInfo.body.external_reference) {
                 console.log("data.external_reference => ");
                 console.log(data.external_reference);
 
                 const pedido = await pedidoService.obtenerPedidoPorParametros([
-                  { uuid: pagoInfo.external_reference },
+                  { uuid: pagoInfo.body.external_reference },
                 ]);
                 if (pedido) {
                   console.log("pedido => ");
@@ -85,9 +85,9 @@ module.exports = {
             break;
 
           default:
-            console.log("type => otro");
-            console.log(req.query);
-            console.log(req.body);
+            //console.log("type => otro");
+            //console.log(req.query);
+            //console.log(req.body);
             break;
         }
       }
