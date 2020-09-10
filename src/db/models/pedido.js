@@ -18,11 +18,11 @@ module.exports = (sequelize, DataTypes) => {
       });
 
       this.Detalle = this.hasMany(models.DetallePedido, { foreignKey: "IdPedido",  as: 'Detalle' });
-      /*
+      
       this.belongsTo(models.Tienda, {
         foreignKey: "IdTienda"
       });
-      */
+      
     }
   };
   Pedido.init({
