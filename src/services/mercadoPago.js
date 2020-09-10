@@ -30,8 +30,9 @@ class Mercadopago {
 
   async procesarNotificacionMerchantOrder(id) {
     try {
-      const informacionpago = await mercadopago.payment.get(id);
-      return informacionpago;
+      const merchantOrder = await mercadopago.merchant_orders.get(id);
+      return merchantOrder;
+      
     } catch (error) {
       throw error;
     }
