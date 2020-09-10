@@ -3,10 +3,10 @@ const axios = require("axios").default;
 const { productoService } = require("./producto");
 
 class Mercadopago {
-  constructor() {
+  constructor(token) {
     mercadopago.configure({
       //sandbox: true,
-      access_token: datos.tokenMP,
+      access_token: token,
     });
   }
 

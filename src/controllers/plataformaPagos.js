@@ -11,9 +11,8 @@ module.exports = {
       const tienda = await tiendaService.obtenerTienda(datos.idTienda);
 
       datos.comision = tienda.porcentajeComision;
-      datos.tokenMP = tienda.tokenMP;
-
-      const mercadoPago = new Mercadopago();
+ 
+      const mercadoPago = new Mercadopago(tienda.tokenMP);
       const preferencia = await mercadoPago.obtenerIdPreferencia(datos);
 
       return res.status(200).json(preferencia);
@@ -32,7 +31,7 @@ module.exports = {
       console.log(type);
       console.log(id);
 
-      const mercadopago = new Mercadopago();
+      const mercadopago = new Mercadopago(process.env.MP_ACCESS_TOKEN_TEST);
       const payment = mercadopago.obtenerInformacionPago(id);
 
       console.log(payment);
