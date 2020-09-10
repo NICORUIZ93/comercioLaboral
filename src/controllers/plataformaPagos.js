@@ -20,24 +20,43 @@ module.exports = {
   },
   async webHooks(req, res) {
     try {
-      
       const mercadopago = new Mercadopago(process.env.MP_ACCESS_TOKEN_TEST);
 
-      switch (req.query.topic) {
-        case "payment":
-          const { type, data } = req.body;
-          const payment = await mercadopago.obtenerInformacionPago(data.id);
-          console.log(payment);
-          break;
+      if (req.query.topic) {
+        switch (req.query.topic) {
+          case "payment":
+            console.log('topic => payment');
+            const { type, data } = req.body;
+            const payment = await mercadopago.obtenerInformacionPago(data.id);
+            console.log(payment);
+            break;
 
-        default:
-          console.log(req.query.topic);
-          console.log(req.body);
-          break;
+          default:
+            console.log('topic => otro');
+            console.log(req.query.topic);
+            console.log(req.body);
+            break;
+        }
+      }
+      
+      if (req.query.type) {
+        switch (req.query.type) {
+          case "payment":
+            console.log('type => payment');
+            const { type, data } = req.body;
+            const payment = await mercadopago.obtenerInformacionPago(data.id);
+            console.log(payment);
+            break;
+
+          default:
+            console.log('type => otro');
+            console.log(req.query);
+            console.log(req.body);
+            break;
+        }
       }
 
       return res.status(200).send();
-
     } catch (e) {
       console.log(e);
       res.status(500).json(e);
