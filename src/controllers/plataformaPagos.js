@@ -76,7 +76,7 @@ module.exports = {
                   console.log("data.order.id => ");
                   console.log(pagoInfo.body.order.id);
                   const payment = await mercadopago.procesarNotificacionMerchantOrder(
-                    pagoInfo.order.id
+                    pagoInfo.body.order.id
                   );
                   console.log(payment);
                 }
