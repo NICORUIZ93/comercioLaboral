@@ -48,37 +48,48 @@ module.exports = {
         switch (req.query.type) {
           case "payment":
             console.log("type => payment");
-            console.log("body => ");
-            console.log(req.body);
+            //console.log("body => ");
+            //console.log(req.body);
 
             let mercadopago;
-            const { data } = req.body;
+            const { data, action } = req.body;
+
+            console.log('action => ');
+            console.log(action);
+            
             if (data) {
-              console.log("data => ");
-              console.log(data);
+              //console.log("data => ");
+              //console.log(data);
               mercadopago = new Mercadopago(process.env.MP_ACCESS_TOKEN_TEST);
               const pagoInfo = await mercadopago.obtenerInformacionPago(data.id);
-              console.log('pago info => ');
-              console.log(pagoInfo);
+              //console.log('pago info => ');
+              //console.log(pagoInfo);
 
               if (pagoInfo.body.external_reference) {
-                console.log("data.external_reference => ");
+                //console.log("data.external_reference => ");
+                //console.log(pagoInfo.body.external_reference);
+
+                console.log('Payment');
+                console.log(pagoInfo.body.status);
                 console.log(pagoInfo.body.external_reference);
 
                 const pedido = await pedidoService.obtenerPedidoPorParametros([
                   { uuid: pagoInfo.body.external_reference },
                 ]);
                 if (pedido) {
-                  console.log("pedido => ");
-                  console.log(pedido);
+                  //console.log("pedido => ");
+                  //console.log(pedido);
 
                   mercadopago = new Mercadopago(pedido.Tienda.tokenMP);
-                  console.log("data.order.id => ");
-                  console.log(pagoInfo.body.order.id);
+                  //console.log("data.order.id => ");
+                  //console.log(pagoInfo.body.order.id);
                   const payment = await mercadopago.procesarNotificacionMerchantOrder(
                     pagoInfo.body.order.id
                   );
-                  console.log(payment);
+                  //console.log(payment);
+                  console.log('merchant order');
+                  console.log(payment.body.status);
+                  console.log(payment.body.external_reference);
                 }
               }
             }
