@@ -63,7 +63,7 @@ module.exports = {
 
               if (pagoInfo.body.external_reference) {
                 console.log("data.external_reference => ");
-                console.log(data.external_reference);
+                console.log(pagoInfo.body.external_reference);
 
                 const pedido = await pedidoService.obtenerPedidoPorParametros([
                   { uuid: pagoInfo.body.external_reference },
