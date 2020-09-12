@@ -1,5 +1,6 @@
 const { productoService } = require( "../services/producto");
 const paginador = require("../helpers/paginacion/paginador");
+const helperGenericos = require("../helpers/genericos/funciones");
 
 module.exports = {
 
@@ -14,7 +15,8 @@ module.exports = {
   async obtenerProductosOferta(req, res) {
     try {
       const productos = await productoService.obtenerProductosPorParametros([{ oferta: true }]);
-      return res.status(200).json(productos);
+      
+      return res.status(200).json(productos.sort(helperGenericos.ordenarRandom));
     } catch (e) {
       res.status(500).send({ code: 500, mesaage: `${e}` });
     }
