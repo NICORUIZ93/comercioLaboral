@@ -60,6 +60,7 @@ module.exports = app => {
 
   //Rutas Productos
   app.get("/api/productos", productoController.obtenerProductos)
+  app.get("/api/productos/oferta", productoController.obtenerProductosOferta)
   app.get("/api/productos/paginado", validadorObtenerProductosPaginado, productoController.obtenerProductosPaginado)
   app.get("/api/productos/buscar/paginado", validadorBuscarProductosPaginado, productoController.buscarProductosPaginado)
   app.get("/api/productos/tienda/paginado", validadorProductosPorTiendaPaginado, productoController.obtenerProductosPorTiendaPaginado)
