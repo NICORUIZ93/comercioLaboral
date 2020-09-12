@@ -14,9 +14,9 @@ module.exports = {
   },
   async obtenerProductosOferta(req, res) {
     try {
-      const productos = await productoService.obtenerProductosPorParametros([{ oferta: true }]);
-      
-      return res.status(200).json(productos.sort(helperGenericos.ordenarRandom));
+      let productos = await productoService.obtenerProductosPorParametros([{ oferta: true }]);
+      productos = productos.sort(helperGenericos.ordenarRandom);
+      return res.status(200).json(productos);
     } catch (e) {
       res.status(500).send({ code: 500, mesaage: `${e}` });
     }
