@@ -61,7 +61,7 @@ const service = {
           valorTotal: 0,
           confirmado: false,
           uuid: uuid,
-          valorTotal: productos.reduce((a, b) => a + b.valor, 0)
+          valorTotal: productos.reduce((a, b) => a + b.unit_price, 0)
           //Detalle: detallesPedido,
         };
 
