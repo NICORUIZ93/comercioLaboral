@@ -45,7 +45,7 @@ class Mercadopago {
       const prefenreciaMp = await mercadopago.preferences.create(preferencia);
 
       const { id, init_point, sandbox_init_point } = prefenreciaMp.response;
-      console.log('la preferencia es');
+      console.log('la preferencia');
       console.log(prefenreciaMp);
       await this.guardarPedidoSinConfirmar(datos.comprador, preferencia.items, datos.idTienda, preferencia.external_reference );
 
