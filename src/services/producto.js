@@ -370,13 +370,13 @@ const service = {
   },
   async obtenerProductosMasVendidos() {
     try {
-      const productos = await DetallePedido.findAll({
+      const productos = (await DetallePedido.findAll({
         limit: 10,
         group: ["IdProducto"],
         attributes: ["IdProducto", [sequelize.fn("COUNT", "IdProducto"), "count"]],
         order: [[sequelize.literal("count"), "DESC"]],
         raw: true,
-      }).map(producto => { return producto.IdProducto });
+      })).map(producto => { return producto.IdProducto });
 
       const masVendidos = this.obtenerProductosPorParametros([{ IdProducto: productos }]);
 
