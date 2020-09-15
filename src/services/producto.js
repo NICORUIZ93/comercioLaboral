@@ -371,14 +371,16 @@ const service = {
   async obtenerProductosMasVendidos() {
     try {
       const productos = await DetallePedido.findAll({
-        
+        limit: 10,
         group: ["IdProducto"],
         attributes: ["IdProducto", [sequelize.fn("COUNT", "IdProducto"), "count"]],
         order: [[sequelize.literal("count"), "DESC"]],
         raw: true,
-      });
+      }).map(producto => { return producto.IdProducto });
 
-      return productos;
+      const masVendidos = this.obtenerProductosPorParametros([{ IdProducto: productos }]);
+
+      return masVendidos;
     } catch (error) {
       console.log(`${error}`);
       throw error;
