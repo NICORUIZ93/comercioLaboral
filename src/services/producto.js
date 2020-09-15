@@ -378,7 +378,7 @@ const service = {
         raw: true,
       })).map(producto => { return producto.IdProducto });
 
-      const masVendidos = this.obtenerProductosPorParametros([{ IdProducto: productos }]);
+      const masVendidos = this.obtenerProductosPorParametros([{ id: productos }]);
 
       return masVendidos;
     } catch (error) {
