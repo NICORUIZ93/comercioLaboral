@@ -378,7 +378,10 @@ const service = {
         raw: true,
       })).map(producto => { return producto.IdProducto });
 
-      const masVendidos = this.obtenerProductosPorParametros([{ id: productos }]);
+      const masVendidos = (await this.obtenerProductosPorParametros([{ id: productos }])).map(p => { 
+        const producto = productos.find(producto => producto === p.id);
+        return { producto: p, cantidad: producto.count }
+       });
 
       return masVendidos;
     } catch (error) {
