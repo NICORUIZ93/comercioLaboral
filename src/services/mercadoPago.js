@@ -42,10 +42,11 @@ class Mercadopago {
   async obtenerIdPreferencia(datos) {
     try {
       const preferencia = await this.construirPreferencia(datos);
-      const idPreferencia = await mercadopago.preferences.create(preferencia);
+      const prefenreciaMp = await mercadopago.preferences.create(preferencia);
 
-      const { id, init_point, sandbox_init_point } = idPreferencia.response;
-
+      const { id, init_point, sandbox_init_point } = prefenreciaMp.response;
+      console.log('la preferencia es');
+      console.log(prefenreciaMp);
       await this.guardarPedidoSinConfirmar(datos.comprador, preferencia.items, datos.idTienda, preferencia.external_reference );
 
       return { id, init_point, sandbox_init_point };
