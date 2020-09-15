@@ -371,9 +371,7 @@ const service = {
   async obtenerProductosMasVendidos() {
     try {
       const productos = await DetallePedido.findAll({
-        include: [
-          Producto,
-        ],
+        
         group: ["IdProducto"],
         attributes: ["IdProducto", [sequelize.fn("COUNT", "IdProducto"), "count"]],
         order: [[sequelize.literal("count"), "DESC"]],
