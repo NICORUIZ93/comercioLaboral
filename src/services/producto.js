@@ -22,15 +22,20 @@ const service = {
           {
             model: Recurso,
             as: "Recursos",
-            attributes: ["id", "nombre", "key", "extension", "url", "prioridad"],
+            attributes: [
+              "id",
+              "nombre",
+              "key",
+              "extension",
+              "url",
+              "prioridad",
+            ],
             through: {
               attributes: [],
             },
           },
         ],
-        order: [
-          ['createdAt', 'DESC']
-        ],
+        order: [["createdAt", "DESC"]],
       });
 
       return productos.map((p) => {
@@ -60,19 +65,23 @@ const service = {
           {
             model: Recurso,
             as: "Recursos",
-            attributes: ["id", "nombre", "key", "extension", "url", "prioridad"],
+            attributes: [
+              "id",
+              "nombre",
+              "key",
+              "extension",
+              "url",
+              "prioridad",
+            ],
             through: {
               attributes: [],
             },
           },
         ],
-        order: [
-          ['createdAt', 'DESC']
-        ],
+        order: [["createdAt", "DESC"]],
       });
 
       return productos;
-      
     } catch (error) {
       throw error;
     }
@@ -92,15 +101,20 @@ const service = {
           {
             model: Recurso,
             as: "Recursos",
-            attributes: ["id", "nombre", "key", "extension", "url", "prioridad"],
+            attributes: [
+              "id",
+              "nombre",
+              "key",
+              "extension",
+              "url",
+              "prioridad",
+            ],
             through: {
               attributes: [],
             },
           },
         ],
-        order: [
-          ['createdAt', 'ASC']
-        ],
+        order: [["createdAt", "ASC"]],
       });
 
       const porductosFiltrados = productos.rows.map((p) => {
@@ -134,15 +148,20 @@ const service = {
           {
             model: Recurso,
             as: "Recursos",
-            attributes: ["id", "nombre", "key", "extension", "url", "prioridad"],
+            attributes: [
+              "id",
+              "nombre",
+              "key",
+              "extension",
+              "url",
+              "prioridad",
+            ],
             through: {
               attributes: [],
             },
           },
-        ],     
-        order: [
-          ['createdAt', 'ASC']
         ],
+        order: [["createdAt", "ASC"]],
       });
 
       const porductosFiltrados = productos.rows.map((p) => {
@@ -153,7 +172,9 @@ const service = {
         return producto;
       });
 
-      productos.rows = porductosFiltrados.filter(f => f.IdTienda === parseInt(idTienda));
+      productos.rows = porductosFiltrados.filter(
+        (f) => f.IdTienda === parseInt(idTienda)
+      );
       productos.count = productos.rows.length;
 
       return paginador.paginarDatos(productos, pagina, limit);
@@ -178,7 +199,14 @@ const service = {
           {
             model: Recurso,
             as: "Recursos",
-            attributes: ["id", "nombre", "key", "extension", "url", "prioridad"],
+            attributes: [
+              "id",
+              "nombre",
+              "key",
+              "extension",
+              "url",
+              "prioridad",
+            ],
             through: {
               attributes: [],
             },
@@ -198,9 +226,7 @@ const service = {
             },
           ],
         },
-        order: [
-          ['createdAt', 'ASC']
-        ],
+        order: [["createdAt", "ASC"]],
       });
 
       const porductosFiltrados = productos.rows.map((p) => {
@@ -231,7 +257,14 @@ const service = {
           {
             model: Recurso,
             as: "Recursos",
-            attributes: ["id", "nombre", "key", "extension", "url", "prioridad"],
+            attributes: [
+              "id",
+              "nombre",
+              "key",
+              "extension",
+              "url",
+              "prioridad",
+            ],
             through: {
               attributes: [],
             },
@@ -256,7 +289,7 @@ const service = {
       let resultadoNuevoProducto;
 
       const tienda = await Tienda.findByPk(idTienda);
-      if(!tienda) throw Error('la tienda no existe');
+      if (!tienda) throw Error("la tienda no existe");
 
       await sequelize.transaction(async (t) => {
         resultadoNuevoProducto = (
@@ -283,7 +316,6 @@ const service = {
           nuevoProducto.imagenes
         );
       }
-
 
       return resultadoNuevoProducto;
     } catch (error) {
@@ -312,7 +344,6 @@ const service = {
       });
 
       return resultadoDestroy;
-
     } catch (error) {
       throw error;
     }
@@ -333,6 +364,24 @@ const service = {
 
       return recursosAgregadosProducto;
     } catch (error) {
+      throw error;
+    }
+  },
+  async obtenerProductosMasVendidos() {
+    try {
+      const productos = await DetallePedido.findAll({
+        include: [
+          Producto,
+        ],
+        group: ["IdProducto"],
+        attributes: ["IdProducto", [Sequelize.fn("COUNT", "IdProducto"), "count"]],
+        order: [[Sequelize.literal("count"), "DESC"]],
+        raw: true,
+      });
+
+      return productos;
+    } catch (error) {
+      console.log(`${error}`);
       throw error;
     }
   },

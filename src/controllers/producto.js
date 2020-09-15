@@ -21,6 +21,14 @@ module.exports = {
       res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
+  async obtenerProductosMasVendidos(req, res) {
+    try {
+      let productos = await productoService.obtenerProductosMasVendidos();
+      return res.status(200).json(productos);
+    } catch (e) {
+      res.status(500).send({ code: 500, mesaage: `${e}` });
+    }
+  },
   async obtenerProductosPaginado(req, res) {
     try {
 

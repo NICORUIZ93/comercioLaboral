@@ -1,4 +1,5 @@
 const Pedido = require("../db/models").Pedido;
+const Producto = require("../db/models").Producto;
 const Usuario = require("../db/models").Usuario;
 const Tienda = require("../db/models").Tienda;
 const DetallePedido = require("../db/models").DetallePedido;
@@ -9,9 +10,16 @@ const _Rol = require("../constants/roles");
 const service = {
   async obtenerPedidos() {
     try {
-      const ciudades = await Pedido.findAll();
+      const pedidos = await Pedido.findAll({
+        include: [
+          Tienda, Usuario, DetallePedido
+        ],
+        order: [
+          ['createdAt', 'DESC']
+        ],
+      });
 
-      return ciudades;
+      return pedidos;
     } catch (error) {
       console.log(`${error}`);
       throw error;
@@ -138,7 +146,7 @@ const service = {
           [Op.or]: parametrosWhere,
         },
         include: [
-          Tienda, Usuario
+          Tienda, Usuario, DetallePedido
         ],
         order: [
           ['createdAt', 'DESC']
@@ -152,6 +160,28 @@ const service = {
       throw error;
     }
   },
+  async obtenerPedidosPorParametros(parametrosWhere) {
+    try {
+      const pedidos = await Pedido.findAll({
+        where: {
+          [Op.or]: parametrosWhere,
+        },
+        include: [
+          Tienda, Usuario, DetallePedido
+        ],
+        order: [
+          ['createdAt', 'DESC']
+        ],
+      });
+
+      return pedidos;
+      
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
+  },
+
 };
 
 module.exports.pedidoService = service;
