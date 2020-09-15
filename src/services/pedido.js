@@ -59,7 +59,7 @@ const service = {
           valorTotal: 0,
           confirmado: false,
           uuid: uuid,
-          valorTotal: productos.sum(p => p.valor)
+          valorTotal: productos.reduce((a, b) => a+b, 0)
           //Detalle: detallesPedido,
         };
 
