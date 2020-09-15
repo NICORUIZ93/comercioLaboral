@@ -375,8 +375,8 @@ const service = {
           Producto,
         ],
         group: ["IdProducto"],
-        attributes: ["IdProducto", [Sequelize.fn("COUNT", "IdProducto"), "count"]],
-        order: [[Sequelize.literal("count"), "DESC"]],
+        attributes: ["IdProducto", [sequelize.fn("COUNT", "IdProducto"), "count"]],
+        order: [[sequelize.literal("count"), "DESC"]],
         raw: true,
       });
 
