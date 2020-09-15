@@ -1,4 +1,5 @@
 const Producto = require("../db/models").Producto;
+const DetallePedido = require("../db/models").DetallePedido;
 const TiendaProducto = require("../db/models").TiendaProducto;
 const Categoria = require("../db/models").Categoria;
 const Tienda = require("../db/models").Tienda;
