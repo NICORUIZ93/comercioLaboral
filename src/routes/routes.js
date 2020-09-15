@@ -10,6 +10,7 @@ const categoriaController = require("../controllers/categoria")
 const plataformaPagosController = require("../controllers/plataformaPagos")
 const mensajeController = require("../controllers/mensaje")
 const listaController = require("../controllers/listas")
+const pedidoController = require("../controllers/pedidos")
 
 //Validadores
 const { validadorObtenerPorId } = require("../helpers/validadores_request/genericos");
@@ -95,6 +96,9 @@ module.exports = app => {
   app.get("/api/lista/ciudades/departamento/:id", /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ listaController.obtenerListaCiudadesPorDepartamento)
   app.get("/api/lista/departamentos", /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ listaController.obtenerListaDepartamentos)
 
-
+  //Rutas pedidos
+  app.get("/api/pedido", validadorObtenerPorId, pedidoController.obtenerPedido)
+  app.get("/api/pedidos", pedidoController.obtenerPedidos)
+  app.get("/api/pedidos/tienda", validadorObtenerPorId, pedidoController.obtenerPedidosPorTienda)
 
 }

@@ -103,7 +103,14 @@ const service = {
   },
   async obtenerPedido(idPedido) {
     try {
-      const Pedido = (await Pedido.findByPk(idPedido)).get({ plain: true });
+      const Pedido = (await Pedido.findByPk(idPedido, {
+        include: [
+          Tienda, Usuario, DetallePedido
+        ],
+        order: [
+          ['createdAt', 'DESC']
+        ],
+      })).get({ plain: true });
 
       return Pedido;
     } catch (error) {

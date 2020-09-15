@@ -3,10 +3,10 @@ const { pedidoService } = require( "../services/pedido");
 module.exports = {
 
 
-  async obtenerpedido(req, res) {
+  async obtenerPedido(req, res) {
     try {
       const idpedido = req.params.id;
-      const pedido = await pedidoService.obtenerpedido(idpedido);
+      const pedido = await pedidoService.obtenerPedido(idpedido);
       
       return res.status(200).json(pedido);
     } catch (e) {
@@ -32,26 +32,6 @@ module.exports = {
       res.status(500).send(e);
     }
   },
-  async obtenerpedidoCiudadesPorDepartamento(req, res) {
-    try {
-      const departamento = req.params.id;
-      const pedido = await pedidoService.obtenerpedidoCiudadPorDepartamento(departamento);
-      
-      return res.status(200).json(pedido);
-    } catch (e) {
-      res.status(500).send(e);
-    }
-  },
-  async obtenerpedidoDepartamentos(req, res) {
-    try {
-      //const idpedido = req.params.id;
-      const pedido = await pedidoService.obtenerpedidoDepartamentos();
-      
-      return res.status(200).json(pedido);
-    } catch (e) {
-      res.status(500).send(e);
-    }
-  }
   
 };
 
