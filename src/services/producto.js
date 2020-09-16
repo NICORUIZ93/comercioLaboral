@@ -50,6 +50,47 @@ const service = {
       throw error;
     }
   },
+  async obtenerProductosPorTienda(idTienda) {
+    try {
+      const productos = await Producto.findAll({
+        where: { '$Tiendas.id$': idTienda },
+        include: [
+          Tienda,
+          {
+            model: Categoria,
+            as: "Categoria",
+            attributes: ["id", "nombre"],
+          },
+          {
+            model: Recurso,
+            as: "Recursos",
+            attributes: [
+              "id",
+              "nombre",
+              "key",
+              "extension",
+              "url",
+              "prioridad",
+            ],
+            through: {
+              attributes: [],
+            },
+          },
+        ],
+        order: [["createdAt", "DESC"]],
+      });
+
+      return productos.map((p) => {
+        const { Tiendas, ...producto } = p.dataValues;
+        producto.IdTienda = Tiendas[0].id;
+        producto.NombreTienda = Tiendas[0].nombre;
+        //producto.Recurso = Recursos[0];
+        return producto;
+      });
+    } catch (error) {
+      throw error;
+    }
+  },
   async obtenerProductosPorParametros(parametrosWhere) {
     try {
       const productos = await Producto.findAll({

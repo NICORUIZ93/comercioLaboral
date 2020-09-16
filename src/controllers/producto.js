@@ -12,6 +12,15 @@ module.exports = {
       res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
+  async obtenerProductosPorTienda(req, res) {
+    try {
+      const idTienda = req.params.id;
+      const productos = await productoService.obtenerProductosPorTienda(idTienda);
+      return res.status(200).json(productos);
+    } catch (e) {
+      res.status(500).send({ code: 500, mesaage: `${e}` });
+    }
+  },
   async obtenerProductosOferta(req, res) {
     try {
       let productos = await productoService.obtenerProductosPorParametros([{ oferta: true }]);

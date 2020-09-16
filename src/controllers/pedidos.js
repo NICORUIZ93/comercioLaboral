@@ -25,7 +25,7 @@ module.exports = {
   async obtenerPedidosPorTienda(req, res) {
     try {
       const idTienda = req.params.id;
-      const pedidos = await pedidoService.obtenerPedidosPorParametros([{IdTienda: idTienda }]);
+      const pedidos = await pedidoService.obtenerPedidosPorParametros([{ '$Tienda.id$': idTienda }]);
       
       return res.status(200).json(pedidos);
     } catch (e) {

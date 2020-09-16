@@ -48,7 +48,7 @@ module.exports = (sequelize, DataTypes) => {
   Tienda.init({
     nombre: DataTypes.STRING,
     direccion: DataTypes.STRING,
-    telefono: DataTypes.INTEGER,
+    telefono: DataTypes.STRING,
     descripcion: DataTypes.STRING,
     banco: DataTypes.STRING,
     numeroCuenta: DataTypes.STRING,

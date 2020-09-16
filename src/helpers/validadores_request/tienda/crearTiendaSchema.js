@@ -7,6 +7,7 @@ const crearTiendaSchema = (req, res, next) => {
     direccion: Joi.string().empty("").required(),
     descripcion: Joi.string().empty("").required(),
     banco: Joi.string().empty(""),
+    telefono:Joi.string().empty(""),
     numeroCuenta: Joi.string().empty(""),
     tipoCuenta: Joi.string().empty(""),
     tipoTienda: Joi.string().empty(""),
