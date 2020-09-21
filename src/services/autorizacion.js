@@ -57,7 +57,7 @@ module.exports = {
           .json({ token: token, expiresIn: jwtExpirySeconds, usuario: usuarioSinContrasena });
       }
 
-      const loginResult = await bcrypt.compare(contrasena, usuario.contrasena);
+      const loginResult = await bcrypt.compare(contrasena, contrasena);
 
       if (!loginResult) {
         return res.status(401).json({
