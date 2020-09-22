@@ -11,6 +11,7 @@ const plataformaPagosController = require("../controllers/plataformaPagos")
 const mensajeController = require("../controllers/mensaje")
 const listaController = require("../controllers/listas")
 const pedidoController = require("../controllers/pedidos")
+const calificacionTiendaController = require("../controllers/calificacionTienda")
 
 //Validadores
 const { validadorObtenerPorId } = require("../helpers/validadores_request/genericos");
@@ -21,6 +22,7 @@ const { validadorCrearCategoria, validadorActualizarCategoria, validadorEliminar
 const { validadorCrearMensaje, validadorEliminarMensaje } = require("../helpers/validadores_request/mensaje");
 const { validadorobtenerUrlArchivo } = require("../helpers/validadores_request/archivo");
 const { validadorObtenerPreferencia } = require("../helpers/validadores_request/mercadopago");
+const { validadorCrearCalificacion, validadorEliminarCalificacion, validadorObtenerCalificacionTienda } = require("../helpers/validadores_request/calificacionTienda");
 
 
 
@@ -102,4 +104,7 @@ module.exports = app => {
   app.get("/api/pedidos", pedidoController.obtenerPedidos)
   app.get("/api/pedidos/tienda", validadorObtenerPorId, pedidoController.obtenerPedidosPorTienda)
 
+  //Rutas Calificacion tienda
+  app.get("/api/calificacion/tienda/:id", validadorObtenerCalificacionTienda,/*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ calificacionTiendaController.obtenerCalificacionesPorTienda)
+  app.post("/api/calificacion/tienda", validadorCrearCalificacion, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ calificacionTiendaController.crearCalificaciontienda)
 }
