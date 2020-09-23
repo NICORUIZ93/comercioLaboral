@@ -12,10 +12,12 @@ module.exports = {
       datos.comision = tienda.porcentajeComision;
 
       const mercadoPago = new Mercadopago(tienda.tokenMP);
-      const preferencia = await mercadoPago.obtenerIdPreferencia(datos);
-
+      let preferencia = await mercadoPago.obtenerIdPreferencia(datos);
+      preferencia.token = tienda.tokenMP;
+      
       return res.status(200).json(preferencia);
     } catch (e) {
+      console.log(e);
       res.status(500).json(JSON.stringify(e));
     }
   },
