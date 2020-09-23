@@ -61,6 +61,7 @@ module.exports = (sequelize, DataTypes) => {
     porcentajeComision: DataTypes.DECIMAL,
     codigoMP: DataTypes.STRING,
     tokenMP: DataTypes.STRING,
+    publicKeyMP: DataTypes.STRING,
     estado: {
       type:DataTypes.BOOLEAN,
       defaultValue: true

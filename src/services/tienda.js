@@ -200,12 +200,13 @@ const service = {
   async activarTienda(idTienda, codigoMp) {
     try {
       const tienda = (await Tienda.findByPk(idTienda)).dataValues;
-      const tokenMp = await Mercadopago.obtenerTokenVendedor(codigoMp);
+      const data = await Mercadopago.obtenerTokenVendedor(codigoMp);
 
       tienda.codigoMP = codigoMp;
-      tienda.tokenMP = tokenMp;
+      tienda.tokenMP = data.access_token;;
       tienda.estado = true;
-
+      tienda.publicKeyMP = data.public_key;
+      
       const resultadoUpdate = await Tienda.update(tienda, {
         where: {
           id: tienda.id,

@@ -32,6 +32,16 @@ module.exports = {
       res.status(500).send(e);
     }
   },
+  async confirmarPedido(req, res) {
+    try {
+      const idTienda = req.params.id;
+      const pedidos = await pedidoService.obtenerPedidosPorParametros([{ '$Tienda.id$': idTienda }]);
+      
+      return res.status(200).json(pedidos);
+    } catch (e) {
+      res.status(500).send(e);
+    }
+  },
   
 };
 

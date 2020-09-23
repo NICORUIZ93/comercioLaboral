@@ -145,7 +145,7 @@ class Mercadopago {
         }
       );
 
-      return autorizacion.data.access_token;
+      return autorizacion.data;
     } catch (error) {
       console.log(`${error}`);
       throw error;

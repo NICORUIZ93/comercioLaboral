@@ -14,7 +14,8 @@ module.exports = {
       const mercadoPago = new Mercadopago(tienda.tokenMP);
       let preferencia = await mercadoPago.obtenerIdPreferencia(datos);
       preferencia.token = tienda.tokenMP;
-      
+      preferencia.publicKey = tienda.publicKeyMP;
+
       return res.status(200).json(preferencia);
     } catch (e) {
       console.log(e);
