@@ -7,7 +7,7 @@ const { v4: uuidv4 } = require('uuid');
 class Mercadopago {
   constructor(token) {
     mercadopago.configure({
-      //sandbox: true,
+      sandbox: true,
       access_token: token,
     });
   }
