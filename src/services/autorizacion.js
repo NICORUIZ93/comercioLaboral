@@ -33,6 +33,8 @@ module.exports = {
   async login(req, res) {
     const { correo, contrasena, nombre } = req.body;
 
+    const contrasenaSinEncriptar = contrasena;
+
     try {
       if (!correo) {
         return res.status(401).json({ error: "Faltan campos obligatorios" });
@@ -57,7 +59,7 @@ module.exports = {
           .json({ token: token, expiresIn: jwtExpirySeconds, usuario: usuarioSinContrasena });
       }
 
-      const loginResult = await bcrypt.compare(contrasena, contrasena);
+      const loginResult = await bcrypt.compare(contrasenaSinEncriptar, contrasena);
 
       if (!loginResult) {
         return res.status(401).json({

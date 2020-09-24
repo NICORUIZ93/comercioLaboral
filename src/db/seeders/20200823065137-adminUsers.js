@@ -11,7 +11,7 @@ module.exports = {
           dni: "1022381177",
           telefono: "15242",
           direccion: "cll 44 b bis sur # 73 a 16",
-          contrasena: "adminpass",
+          contrasena: "$2b$10$P03a.VG8D0UDu8vBWHMc9.Pt3DUH/JEWp4cNOKgFyvSf88EjCgyya",
           IdRol: 1,
           createdAt: new Date(),
           updatedAt: new Date()
