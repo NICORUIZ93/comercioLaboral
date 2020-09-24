@@ -4,14 +4,17 @@ const actualizarTiendaSchema = (req, res, next) => {
   // define base schema rules
   const reglasSchema = {
     id: Joi.number().integer().required(),
-    nombre: Joi.string().empty("").required(),
-    direccion: Joi.string().empty("").required(),
     descripcion: Joi.string().empty("").required(),
     banco: Joi.string().empty(""),
+    telefono:Joi.string().empty(""),
     numeroCuenta: Joi.string().empty(""),
     tipoCuenta: Joi.string().empty(""),
+    tipoTienda: Joi.string().empty(""),
     maxFotos: Joi.number().integer(),
-    estado:Joi.boolean()
+    estado:Joi.boolean(),
+    idCiudad: Joi.number().integer(),
+    idDepartamento: Joi.number().integer(),
+    porcentajeComision: Joi.number(),
   };
 
 
