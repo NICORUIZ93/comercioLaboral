@@ -25,6 +25,9 @@ class Mercadopago {
   static async procesarNotificacionPago(data) {
     try {
       if (data) {
+        console.log('procesarNotificacionPago');
+        console.log(data);
+        
         let mercadopago = new Mercadopago(process.env.MP_ACCESS_TOKEN_TEST);
         const pagoInfo = await mercadopago.obtenerInformacionPago(data.id);
 
@@ -38,12 +41,16 @@ class Mercadopago {
             const merchantOrder = await mercadopago.obtenerMerchantOrder(
               pagoInfo.body.order.id
             );
+            console.log('prev guardarDatosPago');
+            console.log(merchantOrder.body.payments);
             await guardarDatosPago(merchantOrder.body.payments, pedido.id);
 
             if (
               pagoInfo.body.status === "approved" &&
               merchantOrder.body.status === "closed"
             ) {
+              console.log('prev confirmarPedido');
+              console.log(pedido);
               pedido.idPago = data.id;
               await confirmarPedido(pedido);
             }
@@ -219,11 +226,16 @@ const calcularValorComision = async (productos, comision) => {
 };
 
 const confirmarPedido = async (pedido) => {
+  console.log('confirmarPedido');
+  console.log(pedido);
+
   pedido.confirmado = true;
   await pedidoService.actualizarPedido(pedido);
 };
 
 const guardarDatosPago = async (detalles, idPedido) => {
+  console.log('guardarDatosPago');
+  console.log(detalles);
   
   if(detalles.length > 0){
 
