@@ -255,7 +255,7 @@ const guardarDatosPago = async (detalles, idPedido) => {
       ultima_modificacion: detalle.last_modified,
       monto_reembolsado: detalle.amount_refunded,
     };
-    await pedidoService.guardarDetallePago(pago);
+    await pedidoService.guardarDetallePago(pago, idPedido);
   });
   }
   
