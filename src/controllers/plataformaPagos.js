@@ -93,6 +93,7 @@ module.exports = {
                   console.log('merchant order');
                   console.log(payment.body.status);
                   console.log(payment.body.external_reference);
+                  console.log(payment);
                 }
               }
             }
@@ -107,7 +108,7 @@ module.exports = {
       }
 
       return res.status(200).send();
-      
+
     } catch (e) {
       console.log(e);
       res.status(500).json(e);
