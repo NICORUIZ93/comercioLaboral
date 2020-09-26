@@ -60,16 +60,13 @@ const service = {
             transaction
           });
         
-        let valorTotal = productos.reduce((a, b) => a.valor + b.valor, 0);
-        console.log(valorTotal);
-        
         const pedido = {
           IdTienda: idTienda,
           IdUsuario: user.id,
           valorTotal: 0,
           confirmado: false,
           uuid: uuid,
-          valorTotal: productos.reduce((a, b) => a + b.unit_price, 0)
+          valorTotal: productos.reduce((a, b) => a + b.valorTotal, 0)
           //Detalle: detallesPedido,
         };
 

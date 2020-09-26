@@ -72,6 +72,12 @@ class Mercadopago {
           { id: idProductos },
         ])
       ).map((producto) => {
+        const cantidadProductos = parseInt(
+          datos.productos.find((p) => p.id === producto.id).cantidad
+        );
+        const valorProduto = producto.oferta ? producto.valorOferta : producto.valor;
+        const valorProdutos = valorProduto * cantidadProductos;
+
         return {
           id: producto.id,
           title: producto.nombre,
@@ -80,13 +86,10 @@ class Mercadopago {
             ? producto.Recursos[0].url
             : null,
           category_id: `${producto.IdCategoria}`,
-          quantity: parseInt(
-            datos.productos.find((p) => p.id === producto.id).cantidad
-          ),
+          quantity: cantidadProductos,
           currency_id: "COP",
-          unit_price: producto.oferta
-            ? parseFloat(producto.valorOferta)
-            : parseFloat(producto.valor),
+          unit_price: parseFloat(valorProduto),
+          valorTotal: parseFloat(valorProdutos)
         };
       });
 
@@ -118,12 +121,13 @@ class Mercadopago {
         };
         preference.auto_return = "approved";
       }
-
+      
+      preference.binary_mode = true;
       preference.items = items;
       preference.payer = payer;
-      preference.marketplace_fee = parseFloat(datos.comision);
+      preference.marketplace_fee = await calcularValorComision(items, datos.comision);
       preference.external_reference = uuidPedido;
-      //preference.notification_url = "https://localhost:3000/webhook";
+      //preference.notification_url = "https://localhost:5000/webhook";
 
       return preference;
     } catch (error) {
@@ -178,6 +182,14 @@ class Mercadopago {
       throw error;
     }
   }
+}
+
+const calcularValorComision = async (productos, comision) => {
+
+  const valorTotalProductos = productos.reduce((a, b) => a + b.valorTotal, 0);
+  const porcentajeComision = comision / 100;
+  const valorComision = porcentajeComision * valorTotalProductos;
+  return  parseFloat(valorComision);
 }
 
 module.exports = Mercadopago;
