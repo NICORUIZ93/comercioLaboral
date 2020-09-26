@@ -2,7 +2,7 @@ const mercadopago = require("mercadopago");
 const axios = require("axios").default;
 const { productoService } = require("./producto");
 const { pedidoService } = require("./pedido");
-const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4 } = require("uuid");
 
 class Mercadopago {
   constructor(token) {
@@ -17,24 +17,51 @@ class Mercadopago {
       const informacionpago = await mercadopago.payment.get(id);
       return informacionpago;
     } catch (error) {
+      console.log(`${error}`);
       throw error;
     }
   }
 
-  async procesarNotificacionPago(id) {
+  static async procesarNotificacionPago(data) {
     try {
-      const informacionpago = await mercadopago.payment.get(id);
-      return informacionpago;
+      if (data) {
+        let mercadopago = new Mercadopago(process.env.MP_ACCESS_TOKEN_TEST);
+        const pagoInfo = await mercadopago.obtenerInformacionPago(data.id);
+
+        if (pagoInfo.body.external_reference) {
+          const pedido = await pedidoService.obtenerPedidoPorParametros([
+            { uuid: pagoInfo.body.external_reference },
+          ]);
+
+          if (pedido) {
+            mercadopago = new Mercadopago(pedido.Tienda.tokenMP);
+            const merchantOrder = await mercadopago.obtenerMerchantOrder(
+              pagoInfo.body.order.id
+            );
+            await guardarDatosPago(merchantOrder.body.payments, pedido.id);
+
+            if (
+              pagoInfo.body.status === "approved" &&
+              merchantOrder.body.status === "closed"
+            ) {
+              pedido.idPago = data.id;
+              await confirmarPedido(pedido);
+            }
+          }
+        }
+      }
     } catch (error) {
+      console.log(`${error}`);
       throw error;
     }
   }
 
-  async procesarNotificacionMerchantOrder(id) {
+  async obtenerMerchantOrder(id) {
     try {
       const merchantOrder = await mercadopago.merchant_orders.get(id);
       return merchantOrder;
     } catch (error) {
+      console.log(`${error}`);
       throw error;
     }
   }
@@ -45,9 +72,14 @@ class Mercadopago {
       const prefenreciaMp = await mercadopago.preferences.create(preferencia);
 
       const { id, init_point, sandbox_init_point } = prefenreciaMp.response;
-      console.log('la preferencia');
+      console.log("la preferencia");
       console.log(prefenreciaMp);
-      await this.guardarPedidoSinConfirmar(datos.comprador, preferencia.items, datos.idTienda, preferencia.external_reference );
+      await this.guardarPedidoSinConfirmar(
+        datos.comprador,
+        preferencia.items,
+        datos.idTienda,
+        preferencia.external_reference
+      );
 
       return { id, init_point, sandbox_init_point };
     } catch (error) {
@@ -75,7 +107,9 @@ class Mercadopago {
         const cantidadProductos = parseInt(
           datos.productos.find((p) => p.id === producto.id).cantidad
         );
-        const valorProduto = producto.oferta ? producto.valorOferta : producto.valor;
+        const valorProduto = producto.oferta
+          ? producto.valorOferta
+          : producto.valor;
         const valorProdutos = valorProduto * cantidadProductos;
 
         return {
@@ -89,7 +123,7 @@ class Mercadopago {
           quantity: cantidadProductos,
           currency_id: "COP",
           unit_price: parseFloat(valorProduto),
-          valorTotal: parseFloat(valorProdutos)
+          valorTotal: parseFloat(valorProdutos),
         };
       });
 
@@ -121,11 +155,14 @@ class Mercadopago {
         };
         preference.auto_return = "approved";
       }
-      
+
       preference.binary_mode = true;
       preference.items = items;
       preference.payer = payer;
-      preference.marketplace_fee = await calcularValorComision(items, datos.comision);
+      preference.marketplace_fee = await calcularValorComision(
+        items,
+        datos.comision
+      );
       preference.external_reference = uuidPedido;
       //preference.notification_url = "https://localhost:5000/webhook";
 
@@ -156,27 +193,16 @@ class Mercadopago {
     }
   }
 
-  static async webHooks(datos) {
-    try {
-      return "OK";
-    } catch (error) {
-      console.log(`${error}`);
-      throw error;
-    }
-  }
-
   async guardarPedidoSinConfirmar(usuario, productos, idTienda, uuid) {
     try {
-
       const pedido = {
         usuario,
         productos,
         idTienda,
-        uuid
+        uuid,
       };
 
       await pedidoService.crearPedidoMercadoPago(pedido);
-
     } catch (error) {
       console.log(`${error}`);
       throw error;
@@ -184,12 +210,43 @@ class Mercadopago {
   }
 }
 
+//Privados
 const calcularValorComision = async (productos, comision) => {
-
   const valorTotalProductos = productos.reduce((a, b) => a + b.valorTotal, 0);
   const porcentajeComision = comision / 100;
   const valorComision = porcentajeComision * valorTotalProductos;
-  return  parseFloat(valorComision);
-}
+  return parseFloat(valorComision);
+};
+
+const confirmarPedido = async (pedido) => {
+  pedido.confirmado = true;
+  await pedidoService.actualizarPedido(pedido);
+};
+
+const guardarDatosPago = async (detalles, idPedido) => {
+  
+  if(detalles.length > 0){
+
+  detalles.map(async (detalle) => {
+    const pago = {
+      idMp: detalle.id,
+      idPedido,
+      monto_transaccion: detalle.transaction_amount,
+      monto_total_pagado: detalle.total_paid_amount,
+      costo_envio: detalle.shipping_cost,
+      moneda: detalle.currency_id,
+      estado: detalle.status,
+      detalle_estado: detalle.status_detail,
+      tipo_operacion: detalle.operation_type,
+      fecha_aprobado: detalle.date_approved,
+      fecha_creado: detalle.date_created,
+      ultima_modificacion: detalle.last_modified,
+      monto_reembolsado: detalle.amount_refunded,
+    };
+    await pedidoService.guardarDetallePago(pago);
+  });
+  }
+  
+};
 
 module.exports = Mercadopago;

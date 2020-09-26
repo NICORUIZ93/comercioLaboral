@@ -3,6 +3,7 @@ const Producto = require("../db/models").Producto;
 const Usuario = require("../db/models").Usuario;
 const Tienda = require("../db/models").Tienda;
 const DetallePedido = require("../db/models").DetallePedido;
+const DetallePago = require("../db/models").DetallePago;
 var sequelize = require("../db/models").sequelize;
 const { Op } = require("sequelize");
 const _Rol = require("../constants/roles");
@@ -82,6 +83,7 @@ const service = {
             valor: dp.unit_price,
             descuento: 0,
             impuestos: 0,
+            cantidad: dp.quantity
           };
         });
         
@@ -185,7 +187,21 @@ const service = {
       throw error;
     }
   },
+  async guardarDetallePago(detalles, idPedido) {
+    try {
 
+      const [DetallePago, created] = await DetallePago.findOrCreate({
+        where: { idPedido: idPedido },
+        defaults: detalles
+      });
+
+      return created;
+      
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
+  },
 };
 
 module.exports.pedidoService = service;

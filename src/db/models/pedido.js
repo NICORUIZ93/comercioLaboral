@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       });
 
       this.Detalle = this.hasMany(models.DetallePedido, { foreignKey: "IdPedido",  as: 'Detalle' });
+      this.Pago = this.hasMany(models.DetallePago, { foreignKey: "idPedido",  as: 'Pago' });
       
       this.belongsTo(models.Tienda, {
         foreignKey: "IdTienda"
@@ -41,6 +42,7 @@ module.exports = (sequelize, DataTypes) => {
     valorTotal: DataTypes.DECIMAL,
     confirmado: DataTypes.BOOLEAN,
     uuid: DataTypes.STRING,
+    idPago:DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'Pedido',
