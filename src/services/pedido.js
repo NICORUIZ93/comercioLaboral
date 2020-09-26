@@ -12,7 +12,7 @@ const service = {
     try {
       const pedidos = await Pedido.findAll({
         include: [
-          Tienda, Usuario, DetallePedido
+          Tienda, Usuario, { model: DetallePedido, as: 'Detalle' }
         ],
         order: [
           ['createdAt', 'DESC']
@@ -102,7 +102,7 @@ const service = {
     try {
       const Pedido = (await Pedido.findByPk(idPedido, {
         include: [
-          Tienda, Usuario, DetallePedido
+          Tienda, Usuario, { model: DetallePedido, as: 'Detalle' }
         ],
         order: [
           ['createdAt', 'DESC']
@@ -150,7 +150,7 @@ const service = {
           [Op.or]: parametrosWhere,
         },
         include: [
-          Tienda, Usuario, DetallePedido
+          Tienda, Usuario, { model: DetallePedido, as: 'Detalle' }
         ],
         order: [
           ['createdAt', 'DESC']
