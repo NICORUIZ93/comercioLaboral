@@ -93,6 +93,10 @@ module.exports = {
                   console.log('merchant order');
                   console.log(payment.body.status);
                   console.log(payment.body.external_reference);
+                  console.log(payment.body.payments);
+                  payment.body.payments.map(p => {
+                    console.log(p);
+                  });
                   console.log(payment);
                 }
               }
