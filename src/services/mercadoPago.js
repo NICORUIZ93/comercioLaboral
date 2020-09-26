@@ -28,8 +28,8 @@ class Mercadopago {
         console.log('procesarNotificacionPago');
         console.log(data);
         
-        let mercadopago = new Mercadopago(process.env.MP_ACCESS_TOKEN_TEST);
-        const pagoInfo = await mercadopago.obtenerInformacionPago(data.id);
+        let mp = new Mercadopago(process.env.MP_ACCESS_TOKEN_TEST);
+        const pagoInfo = await mp.obtenerInformacionPago(data.id);
 
         if (pagoInfo.body.external_reference) {
           const pedido = await pedidoService.obtenerPedidoPorParametros([
@@ -37,8 +37,8 @@ class Mercadopago {
           ]);
 
           if (pedido) {
-            mercadopago = new Mercadopago(pedido.Tienda.tokenMP);
-            const merchantOrder = await mercadopago.obtenerMerchantOrder(
+            mp = new Mercadopago(pedido.Tienda.tokenMP);
+            const merchantOrder = await mp.obtenerMerchantOrder(
               pagoInfo.body.order.id
             );
             console.log('prev guardarDatosPago');
