@@ -87,7 +87,7 @@ const service = {
   async obtenerTiendaPorUsuario(idUsuario) {
     try {
       const tienda = await UsuariosTienda.findOne({
-        where: { IdUsuario: idUsuario, esAdministrador: true },
+        where: { IdUsuario: idUsuario },
         include: [Tienda],
         order: [
           ['createdAt', 'ASC']

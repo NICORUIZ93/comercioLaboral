@@ -173,7 +173,7 @@ const service = {
           [Op.or]: parametrosWhere,
         },
         include: [
-          Tienda, Usuario, DetallePedido
+          Tienda, Usuario, { model: DetallePedido, as: 'Detalle' }
         ],
         order: [
           ['createdAt', 'DESC']
