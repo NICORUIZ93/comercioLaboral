@@ -7,7 +7,13 @@ const service = {
     try {
       const mensajes = await Mensaje.findAll({
         where: { IdTienda: idTienda, IdMensaje: { [Op.is]: null } },
-        include: [{ model: Mensaje, as: "SubMensajes" }],
+        include: [
+          {
+            model: Mensaje,
+            as: "SubMensajes",
+            include: [{ model: Mensaje, as: "SubMensajes" }],
+          },
+        ],
       });
 
       return mensajes;
@@ -20,7 +26,13 @@ const service = {
     try {
       const mensajes = await Mensaje.findAll({
         where: { IdProducto: idProducto, IdMensaje: { [Op.is]: null } },
-        include: [{ model: Mensaje, as: "SubMensajes" }],
+        include: [
+          {
+            model: Mensaje,
+            as: "SubMensajes",
+            include: [{ model: Mensaje, as: "SubMensajes" }],
+          },
+        ],
       });
 
       return mensajes;
@@ -32,7 +44,13 @@ const service = {
   async obtenerMensajesPorId(id) {
     try {
       const mensajes = await Mensaje.findByPk(id, {
-        include: [{ model: Mensaje, as: "SubMensajes" }],
+        include: [
+          {
+            model: Mensaje,
+            as: "SubMensajes",
+            include: [{ model: Mensaje, as: "SubMensajes" }],
+          },
+        ],
       });
 
       return mensajes;
