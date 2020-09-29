@@ -32,7 +32,7 @@ class Mercadopago {
         const pagoInfo = await mp.obtenerInformacionPago(data.id);
 
         if (pagoInfo.body.external_reference) {
-          const pedido = await pedidoService.obtenerPedidoPorParametros([
+          let pedido = await pedidoService.obtenerPedidoPorParametros([
             { uuid: pagoInfo.body.external_reference },
           ]);
 
@@ -56,7 +56,7 @@ class Mercadopago {
               
             console.log('previo actualizar pedido: ');
             console.log(pedido);
-            
+
             await pedidoService.actualizarPedido(pedido);           
           }
         }
