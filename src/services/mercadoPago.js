@@ -215,6 +215,7 @@ class Mercadopago {
         productos,
         idTienda,
         uuid,
+        estado: "pending"
       };
 
       await pedidoService.crearPedidoMercadoPago(pedido);
