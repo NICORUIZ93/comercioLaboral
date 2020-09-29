@@ -47,11 +47,16 @@ class Mercadopago {
 
             pedido.estado = pagoInfo.body.status;
             pedido.idPago = data.id;
+            console.log('status: ' + pagoInfo.body.status);
+            console.log('status merchant: ' + merchantOrder.body.status);
             if (
               pagoInfo.body.status === "approved" &&
               merchantOrder.body.status === "closed"
             ) { pedido.confirmado = true; }
               
+            console.log('previo actualizar pedido: ');
+            console.log(pedido);
+            
             await pedidoService.actualizarPedido(pedido);           
           }
         }

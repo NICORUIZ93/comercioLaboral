@@ -119,6 +119,7 @@ const service = {
   },
   async actualizarPedido(Pedido) {
     try {
+      console.log('actualizarPedido #' + Pedido.id);
       const resultadoUpdate = await Pedido.update(Pedido, {
         where: {
           id: Pedido.id,
@@ -127,6 +128,7 @@ const service = {
 
       return resultadoUpdate;
     } catch (error) {
+      console.log('error en actualizarPedido');
       console.log(`${error}`);
       throw error;
     }
