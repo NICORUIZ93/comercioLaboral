@@ -42,6 +42,16 @@ module.exports = {
       res.status(500).send(e);
     }
   },
+  async obtenerEstadoPedido(req, res) {
+    try {
+      const uuid = req.params.id;
+      const pedidos = await pedidoService.obtenerPedidoPorParametros([{ uuid: uuid }]);
+      
+      return res.status(200).json(pedidos.estado);
+    } catch (e) {
+      res.status(500).send(e);
+    }
+  },
   
 };
 

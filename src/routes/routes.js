@@ -14,7 +14,7 @@ const pedidoController = require("../controllers/pedidos")
 const calificacionTiendaController = require("../controllers/calificacionTienda")
 
 //Validadores
-const { validadorObtenerPorId } = require("../helpers/validadores_request/genericos");
+const { validadorObtenerPorId, obtenerPorUuidSchema } = require("../helpers/validadores_request/genericos");
 const { validadorCrearUsuario, validadorActualizarUsuario, validadorEliminarUsuario, validadorcrearUsuariosMasivo } = require("../helpers/validadores_request/usuario");
 const { validadorCrearProducto, validadorActualizarProducto, validadorEliminarProducto, validadorObtenerProductosPaginado, validadorBuscarProductosPaginado, validadorRecursosProducto, validadorProductosPorTiendaPaginado } = require("../helpers/validadores_request/producto");
 const { validadorCrearTienda, validadorActualizarTienda, validadorEliminarTienda, validadorRecursosTienda, validadorActivarTienda } = require("../helpers/validadores_request/tienda");
@@ -103,6 +103,7 @@ module.exports = app => {
   app.get("/api/pedido", validadorObtenerPorId, pedidoController.obtenerPedido)
   app.get("/api/pedidos", pedidoController.obtenerPedidos)
   app.get("/api/pedidos/tienda", validadorObtenerPorId, pedidoController.obtenerPedidosPorTienda)
+  app.get("/api/pedido/estado", obtenerPorUuidSchema, pedidoController.obtenerPedidosPorTienda)
 
   //Rutas Calificacion tienda
   app.get("/api/calificacion/tienda/:id", validadorObtenerCalificacionTienda,/*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ calificacionTiendaController.obtenerCalificacionesPorTienda)

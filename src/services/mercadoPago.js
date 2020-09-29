@@ -96,7 +96,7 @@ class Mercadopago {
         preferencia.external_reference
       );
 
-      return { id, init_point, sandbox_init_point };
+      return { id, init_point, sandbox_init_point, uuid: preferencia.external_reference };
     } catch (error) {
       console.log(`${error}`);
       throw error;
