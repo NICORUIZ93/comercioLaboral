@@ -49,7 +49,7 @@ class Mercadopago {
               id: pedido.id,
               idPago: data.id,
               estado: pagoInfo.body.status,
-              confirmado = false,
+              confirmado = false
             };
 
             console.log('status: ' + pagoInfo.body.status);
