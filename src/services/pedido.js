@@ -117,12 +117,12 @@ const service = {
       throw error;
     }
   },
-  async actualizarPedido(pedido) {
+  async actualizarPedido(pedido, id) {
     try {
-      console.log('actualizarPedido #' + pedido.id);
+      console.log('actualizarPedido #' + id);
       const resultadoUpdate = await Pedido.update(pedido, {
         where: {
-          id: pedido.id,
+          id: id,
         },
       });
 

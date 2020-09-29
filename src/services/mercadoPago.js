@@ -46,7 +46,6 @@ class Mercadopago {
             await guardarDatosPago(merchantOrder.body.payments, pedido.id);
 
             let pedidoPorActualizar = {
-              id: pedido.id,
               idPago: data.id,
               estado: pagoInfo.body.status,
               confirmado = false
@@ -62,7 +61,7 @@ class Mercadopago {
             console.log('previo actualizar pedido: ');
             console.log(pedidoPorActualizar);
 
-            await pedidoService.actualizarPedido(pedidoPorActualizar);           
+            await pedidoService.actualizarPedido(pedidoPorActualizar, pedido.id);           
           }
         }
       }
