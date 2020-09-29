@@ -45,19 +45,24 @@ class Mercadopago {
             console.log(merchantOrder.body.payments);
             await guardarDatosPago(merchantOrder.body.payments, pedido.id);
 
-            pedido.estado = pagoInfo.body.status;
-            pedido.idPago = data.id;
+            let pedidoPorActualizar = {
+              id: pedido.id,
+              idPago: data.id,
+              estado: pagoInfo.body.status,
+              confirmado = false,
+            };
+
             console.log('status: ' + pagoInfo.body.status);
             console.log('status merchant: ' + merchantOrder.body.status);
             if (
               pagoInfo.body.status === "approved" &&
               merchantOrder.body.status === "closed"
-            ) { pedido.confirmado = true; }
+            ) { pedidoPorActualizar.confirmado = true; }
               
             console.log('previo actualizar pedido: ');
-            console.log(pedido);
+            console.log(pedidoPorActualizar);
 
-            await pedidoService.actualizarPedido(pedido);           
+            await pedidoService.actualizarPedido(pedidoPorActualizar);           
           }
         }
       }
