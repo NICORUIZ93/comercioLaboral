@@ -45,15 +45,14 @@ class Mercadopago {
             console.log(merchantOrder.body.payments);
             await guardarDatosPago(merchantOrder.body.payments, pedido.id);
 
+            pedido.estado = pagoInfo.body.status;
+            pedido.idPago = data.id;
             if (
               pagoInfo.body.status === "approved" &&
               merchantOrder.body.status === "closed"
-            ) {
-              console.log('prev confirmarPedido');
-              console.log(pedido);
-              pedido.idPago = data.id;
-              await confirmarPedido(pedido);
-            }
+            ) { pedido.confirmado = true; }
+              
+            await pedidoService.actualizarPedido(pedido);           
           }
         }
       }
@@ -225,13 +224,7 @@ const calcularValorComision = async (productos, comision) => {
   return parseFloat(valorComision);
 };
 
-const confirmarPedido = async (pedido) => {
-  console.log('confirmarPedido');
-  console.log(pedido);
 
-  pedido.confirmado = true;
-  await pedidoService.actualizarPedido(pedido);
-};
 
 const guardarDatosPago = async (detalles, idPedido) => {
   console.log('guardarDatosPago');

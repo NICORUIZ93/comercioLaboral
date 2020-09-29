@@ -187,12 +187,12 @@ const service = {
       throw error;
     }
   },
-  async guardarDetallePago(detalles, idPedido) {
+  async guardarDetallePago(detalle, idPedido) {
     try {
 
-      const [DetallePago, created] = await DetallePago.findOrCreate({
-        where: { idPedido: idPedido },
-        defaults: detalles
+      const [DetallePagos, created] = await DetallePago.findOrCreate({
+        where: { idPedido: idPedido, idMp: detalle.idMp  },
+        defaults: detalle
       });
 
       return created;

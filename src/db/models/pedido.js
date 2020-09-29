@@ -41,6 +41,7 @@ module.exports = (sequelize, DataTypes) => {
     IdUsuario: DataTypes.INTEGER,
     valorTotal: DataTypes.DECIMAL,
     confirmado: DataTypes.BOOLEAN,
+    estado: DataTypes.STRING,
     uuid: DataTypes.STRING,
     idPago:DataTypes.STRING,
   }, {
