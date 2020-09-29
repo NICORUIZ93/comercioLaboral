@@ -193,7 +193,7 @@ const service = {
     try {
 
       const [DetallePagos, created] = await DetallePago.findOrCreate({
-        where: { idPedido: idPedido, idMp: detalle.idMp  },
+        where: { idPedido: idPedido, estado: detalle.estado  },
         defaults: detalle
       });
 
