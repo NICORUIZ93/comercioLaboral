@@ -100,10 +100,10 @@ module.exports = app => {
   app.get("/api/lista/departamentos", /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ listaController.obtenerListaDepartamentos)
 
   //Rutas pedidos
-  app.get("/api/pedido", validadorObtenerPorId, pedidoController.obtenerPedido)
+  app.get("/api/pedido/:id", validadorObtenerPorId, pedidoController.obtenerPedido)
   app.get("/api/pedidos", pedidoController.obtenerPedidos)
   app.get("/api/pedidos/tienda", validadorObtenerPorId, pedidoController.obtenerPedidosPorTienda)
-  app.get("/api/pedido/estado", obtenerPorUuidSchema, pedidoController.obtenerPedidosPorTienda)
+  app.get("/api/pedido/estado/:id", obtenerPorUuidSchema, pedidoController.obtenerPedidosPorTienda)
 
   //Rutas Calificacion tienda
   app.get("/api/calificacion/tienda/:id", validadorObtenerCalificacionTienda,/*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ calificacionTiendaController.obtenerCalificacionesPorTienda)
