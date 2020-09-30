@@ -5,6 +5,7 @@ const TiendaRecurso = require("../db/models").TiendaRecurso;
 const Recurso = require("../db/models").Recurso;
 var sequelize = require("../db/models").sequelize;
 const _Rol = require("../constants/roles");
+const { Op } = require("sequelize");
 const Mercadopago  = require( "../services/mercadoPago");
 
 const service = {
@@ -222,6 +223,8 @@ const service = {
   },
   async contarTiendaPorParametros(parametrosWhere) {
     try {
+      if(!parametrosWhere) return await Tienda.count();
+      
       const numeroDeTiendas = await Tienda.count({
         where: {
           [Op.or]: parametrosWhere,

@@ -230,6 +230,8 @@ const service = {
   },
   async contarUsuarioPorParametros(parametrosWhere) {
     try {
+      if(!parametrosWhere) return await Usuario.count();
+      
       const numeroDeUsuarios = await Usuario.count({
         where: {
           [Op.or]: parametrosWhere,
