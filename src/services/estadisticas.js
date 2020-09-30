@@ -9,12 +9,14 @@ const service = {
       const totalUsuarios = await usuarioService.contarUsuarioPorParametros([{ IdRol: { [Op.ne]: _Rol.AdministradorID } }]);
       const totalVendedores = await usuarioService.contarUsuarioPorParametros([{ IdRol: _Rol.VendedorID }]);
       const totalCompradores = await usuarioService.contarUsuarioPorParametros([{ IdRol: _Rol.CompradorID }]);
+      const totalEmpleados = await usuarioService.contarUsuarioPorParametros([{ IdRol: _Rol.EmpleadoID }]);
       const totalTiendas = await tiendaService.contarTiendaPorParametros();
 
       const totales = {
         totalUsuarios,
         totalVendedores,
         totalCompradores,
+        totalEmpleados,
         totalTiendas
       };
 
