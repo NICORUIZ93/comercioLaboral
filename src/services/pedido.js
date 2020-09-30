@@ -13,7 +13,7 @@ const service = {
     try {
       const pedidos = await Pedido.findAll({
         include: [
-          Tienda, Usuario, { model: DetallePedido, as: 'Detalle' }
+          Tienda, Usuario, DetallePago, { model: DetallePedido, as: 'Detalle' }
         ],
         order: [
           ['createdAt', 'DESC']
