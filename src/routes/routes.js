@@ -113,5 +113,5 @@ module.exports = app => {
 
   //Rutas totales
   app.get("/api/estadisticas/totales",/*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ estadisticasController.obtenerTotales)
-  app.get("/api/estadisticas/totales/porIdTienda/:id", validadorObtenerPorId, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ estadisticasController.obtenerTotalProductosPorTienda)
+  app.get("/api/estadisticas/totales/porIdTienda/:id", validadorObtenerPorId, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ estadisticasController.obtenerTotalesPorTienda)
 }

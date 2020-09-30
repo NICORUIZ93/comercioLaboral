@@ -10,10 +10,10 @@ module.exports = {
       res.status(500).send(e);
     }
   },
-  async obtenerTotalProductosPorTienda(req, res) {
+  async obtenerTotalesPorTienda(req, res) {
     try {
       const idTienda = req.params.id;
-      const totales = await estadisticasService.obtenerTotalesProductosPorTienda(idTienda);
+      const totales = await estadisticasService.obtenerTotalesPorTienda(idTienda);
       return res.status(200).json(totales);
     } catch (e) {
       res.status(500).send(e);
