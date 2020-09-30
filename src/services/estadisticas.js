@@ -38,10 +38,10 @@ const service = {
       const pedidos = await pedidoService.obtenerPedidosPorParametros([{ IdTienda: idTienda }]);
       const mensajes = await mensajeService.obtenerMensajesPorParametros([{ IdTienda: idTienda }]);
 
-      const totalProductos = productos.length;
-      const totalEmpleados = empleados.length;
-      const totalPedidos = pedidos.length;
-      const totalMensajes = mensajes.length;
+      const totalProductos = productos ? productos.length : 0;
+      const totalEmpleados = empleados ? empleados.length : 0;
+      const totalPedidos = pedidos ? pedidos.length : 0;
+      const totalMensajes = mensajes ? mensajes.length: 0;
 
       return { totalProductos, totalEmpleados, totalPedidos, totalMensajes };
 
