@@ -234,7 +234,7 @@ const service = {
       
       const numeroDeUsuarios = await Usuario.count({
         where: {
-          [Op.or]: parametrosWhere,
+          [Op.and]: parametrosWhere,
         }
       });
 

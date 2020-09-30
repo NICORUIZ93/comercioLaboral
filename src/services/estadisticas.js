@@ -1,6 +1,8 @@
 const { usuarioService } = require("../services/usuario");
 const { tiendaService } = require("../services/tienda");
 const { productoService } = require("../services/producto");
+const { pedidoService } = require("../services/pedido");
+const { mensajeService } = require("../services/mensaje");
 const _Rol = require("../constants/roles");
 const { Op } = require("sequelize");
 
@@ -28,12 +30,20 @@ const service = {
       return `Error ${error}`;
     }
   },
-  async obtenerTotalesProductosPorTienda(idTienda) {
+  async obtenerTotalesPorTienda(idTienda) {
     try {
       const productos = await productoService.obtenerProductosPorTienda(idTienda);
-      const totalProductos = productos.length;
+      const empleados = (await tiendaService.obtenerTienda(idTienda)).empleados;
+      const pedidos = await pedidoService.obtenerPedidosPorParametros([{ IdTienda: idTienda }]);
+      const mensajes = await mensajeService.obtenerMensajesPorParametros([{ IdTienda: idTienda }]);
 
-      return { totalProductos };
+      const totalProductos = productos.length;
+      const totalEmpleados = empleados.length;
+      const totalPedidos = pedidos.length;
+      const totalMensajes = mensajes.length;
+
+      return { totalProductos, totalEmpleados, totalPedidos, totalMensajes };
+      
     } catch (error) {
       return `Error ${error}`;
     }

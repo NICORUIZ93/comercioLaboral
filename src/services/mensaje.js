@@ -89,6 +89,21 @@ const service = {
       throw error;
     }
   },
+  async obtenerMensajesPorParametros(parametrosWhere) {
+    try {
+      const mensajes = await Mensaje.findAll({
+        where: {
+          [Op.and]: parametrosWhere,
+        }
+      });
+
+      return mensajes;
+      
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
+  },
 };
 
 module.exports.mensajeService = service;
