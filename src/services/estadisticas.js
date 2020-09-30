@@ -27,6 +27,7 @@ const service = {
 
       return totales;
     } catch (error) {
+      console.log(error);
       return `Error ${error}`;
     }
   },
@@ -43,8 +44,9 @@ const service = {
       const totalMensajes = mensajes.length;
 
       return { totalProductos, totalEmpleados, totalPedidos, totalMensajes };
-      
+
     } catch (error) {
+      console.log(error);
       return `Error ${error}`;
     }
   },
