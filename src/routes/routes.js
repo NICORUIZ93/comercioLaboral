@@ -12,6 +12,7 @@ const mensajeController = require("../controllers/mensaje")
 const listaController = require("../controllers/listas")
 const pedidoController = require("../controllers/pedidos")
 const calificacionTiendaController = require("../controllers/calificacionTienda")
+const estadisticasController = require("../controllers/estadisticas")
 
 //Validadores
 const { validadorObtenerPorId, obtenerPorUuidSchema } = require("../helpers/validadores_request/genericos");
@@ -108,4 +109,7 @@ module.exports = app => {
   //Rutas Calificacion tienda
   app.get("/api/calificacion/tienda/:id", validadorObtenerCalificacionTienda,/*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ calificacionTiendaController.obtenerCalificacionesPorTienda)
   app.post("/api/calificacion/tienda", validadorCrearCalificacion, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ calificacionTiendaController.crearCalificaciontienda)
+
+  //Rutas totales
+  app.get("/api/estadisticas/totales",/*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ estadisticasController.obtenerTotales)
 }

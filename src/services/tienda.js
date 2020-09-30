@@ -220,6 +220,20 @@ const service = {
       throw error;
     }
   },
+  async contarTiendaPorParametros(parametrosWhere) {
+    try {
+      const numeroDeTiendas = await Tienda.count({
+        where: {
+          [Op.or]: parametrosWhere,
+        }
+      });
+
+      return numeroDeTiendas;
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
+  },
 };
 
 //Privados

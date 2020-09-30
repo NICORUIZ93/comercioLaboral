@@ -228,6 +228,20 @@ const service = {
       throw error;
     }
   },
+  async contarUsuarioPorParametros(parametrosWhere) {
+    try {
+      const numeroDeUsuarios = await Usuario.count({
+        where: {
+          [Op.or]: parametrosWhere,
+        }
+      });
+
+      return numeroDeUsuarios;
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
+  },
 };
 
 module.exports.usuarioService = service;

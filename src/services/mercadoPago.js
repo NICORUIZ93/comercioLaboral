@@ -144,6 +144,7 @@ class Mercadopago {
 
       const payer = {
         name: comprador.nombre,
+        
         surname: comprador.apellido,
         email: comprador.correo,
         date_created: comprador.fechaCreacion,
