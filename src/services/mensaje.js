@@ -93,7 +93,7 @@ const service = {
     try {
       const mensajes = await Mensaje.findAll({
         where: {
-          [Op.and]: parametrosWhere,
+          [Op.or]: parametrosWhere,
         }
       });
 
