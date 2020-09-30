@@ -432,6 +432,22 @@ const service = {
       throw error;
     }
   },
+  async contarProductoPorParametros(parametrosWhere) {
+    try {
+      if(!parametrosWhere) return await Producto.count();
+      
+      const numeroDeProductos = await Producto.count({
+        where: {
+          [Op.or]: parametrosWhere,
+        }
+      });
+
+      return numeroDeProductos;
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
+  },
 };
 
 //Privados
