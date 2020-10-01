@@ -10,7 +10,8 @@ module.exports = {
       
       return res.status(200).json(CalificacionTienda);
     } catch (e) {
-      res.status(500).send(e);
+      console.log(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   async obtenerCalificacionesTiendas(req, res) {
@@ -20,7 +21,8 @@ module.exports = {
       
       return res.status(200).json(CalificacionTienda);
     } catch (e) {
-      res.status(500).send(e);
+      console.log(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   async obtenerCalificacionesPorTienda(req, res) {
@@ -30,7 +32,8 @@ module.exports = {
       
       return res.status(200).json(CalificacionTienda);
     } catch (e) {
-      res.status(500).send(e);
+      console.log(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   async crearCalificaciontienda(req, res) {
@@ -42,7 +45,7 @@ module.exports = {
 
     } catch (e) {
       console.log(e);
-      return res.status(500).send(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   

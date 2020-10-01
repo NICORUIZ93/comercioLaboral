@@ -19,7 +19,7 @@ module.exports = {
       return res.status(200).json(preferencia);
     } catch (e) {
       console.log(e);
-      res.status(500).json(JSON.stringify(e));
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   async webHooks(req, res) {

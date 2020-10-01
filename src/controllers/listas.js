@@ -10,7 +10,8 @@ module.exports = {
       
       return res.status(200).json(lista);
     } catch (e) {
-      res.status(500).send(e);
+      console.log(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   async obtenerListaCiudades(req, res) {
@@ -20,7 +21,8 @@ module.exports = {
       
       return res.status(200).json(lista);
     } catch (e) {
-      res.status(500).send(e);
+      console.log(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   async obtenerListaBancos(req, res) {
@@ -30,7 +32,8 @@ module.exports = {
       
       return res.status(200).json(lista);
     } catch (e) {
-      res.status(500).send(e);
+      console.log(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   async obtenerListaCiudadesPorDepartamento(req, res) {
@@ -40,7 +43,8 @@ module.exports = {
       
       return res.status(200).json(lista);
     } catch (e) {
-      res.status(500).send(e);
+      console.log(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   async obtenerListaDepartamentos(req, res) {
@@ -50,7 +54,8 @@ module.exports = {
       
       return res.status(200).json(lista);
     } catch (e) {
-      res.status(500).send(e);
+      console.log(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   }
   

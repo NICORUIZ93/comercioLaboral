@@ -7,7 +7,8 @@ module.exports = {
       const categorias = await categoriaService.obtenerCategorias();
       return res.status(200).json(categorias);
     } catch (e) {
-      res.status(500).send(e);
+      console.log(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   async obtenerCategoria(req, res) {
@@ -17,7 +18,8 @@ module.exports = {
       const categorias = await categoriaService.obtenerCategoria(idCategoria);
       return res.status(200).json(categorias);
     } catch (e) {
-      res.status(500).send(e);
+      console.log(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
 
@@ -30,7 +32,7 @@ module.exports = {
 
     } catch (e) {
       console.log(e);
-      return res.status(500).send(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
 
@@ -43,7 +45,7 @@ module.exports = {
 
     } catch (e) {
       console.log(e);
-      return res.status(500).send(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
 
@@ -57,7 +59,7 @@ module.exports = {
 
     } catch (e) {
       console.log(e);
-      return res.status(500).send(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   }
 

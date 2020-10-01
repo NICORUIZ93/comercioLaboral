@@ -8,7 +8,7 @@ module.exports = {
       const mensajes = await mensajeService.obtenerMensajesPorTienda(idTienda);
       return res.status(200).json(mensajes);
     } catch (e) {
-      res.status(500).send(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   async obtenerMensajesPorProducto(req, res) {
@@ -18,7 +18,7 @@ module.exports = {
       
       return res.status(200).json(mensaje);
     } catch (e) {
-      res.status(500).send(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   async obtenerMensajesPorId(req, res) {
@@ -28,7 +28,7 @@ module.exports = {
       
       return res.status(200).json(mensaje);
     } catch (e) {
-      res.status(500).send(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   async crearMensaje(req, res) {
@@ -40,7 +40,7 @@ module.exports = {
 
     } catch (e) {
       console.log(e);
-      return res.status(500).send(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   async eliminarMensaje(req, res) {
@@ -53,7 +53,7 @@ module.exports = {
 
     } catch (e) {
       console.log(e);
-      return res.status(500).send(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   }
 

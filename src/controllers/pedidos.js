@@ -10,7 +10,7 @@ module.exports = {
       
       return res.status(200).json(pedido);
     } catch (e) {
-      res.status(500).send(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   async obtenerPedidos(req, res) {
@@ -19,7 +19,7 @@ module.exports = {
       
       return res.status(200).json(pedidos);
     } catch (e) {
-      res.status(500).send(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   async obtenerPedidosPorTienda(req, res) {
@@ -29,7 +29,7 @@ module.exports = {
       
       return res.status(200).json(pedidos);
     } catch (e) {
-      res.status(500).send(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   async obtenerComprasPorTienda(req, res) {
@@ -39,7 +39,7 @@ module.exports = {
       
       return res.status(200).json(pedidos);
     } catch (e) {
-      res.status(500).send(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   async confirmarPedido(req, res) {
@@ -49,7 +49,7 @@ module.exports = {
       
       return res.status(200).json(pedidos);
     } catch (e) {
-      res.status(500).send(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   async obtenerEstadoPedido(req, res) {
@@ -59,7 +59,7 @@ module.exports = {
       
       return res.status(200).json(pedidos.estado);
     } catch (e) {
-      res.status(500).send(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   

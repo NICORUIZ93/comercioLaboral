@@ -7,7 +7,8 @@ module.exports = {
       const totales = await estadisticasService.obtenerTotales();
       return res.status(200).json(totales);
     } catch (e) {
-      res.status(500).send(e);
+      console.log(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
   async obtenerTotalesPorTienda(req, res) {
@@ -16,7 +17,8 @@ module.exports = {
       const totales = await estadisticasService.obtenerTotalesPorTienda(idTienda);
       return res.status(200).json(totales);
     } catch (e) {
-      res.status(500).send(e);
+      console.log(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
 
