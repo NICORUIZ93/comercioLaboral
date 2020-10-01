@@ -70,6 +70,8 @@ const service = {
         ],
       });
 
+      if(!tienda) throw Error(`No exite la tienda ${idTienda}`);
+
       const { UsuariosTiendas, ...tiendaSinUsuarios } = tienda.dataValues;
 
       if (UsuariosTiendas.length > 0) {
