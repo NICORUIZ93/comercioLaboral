@@ -6,7 +6,7 @@ const Recurso = require("../db/models").Recurso;
 var sequelize = require("../db/models").sequelize;
 const _Rol = require("../constants/roles");
 const { Op } = require("sequelize");
-const Mercadopago  = require( "../services/mercadoPago");
+const Mercadopago  = require( "./plataformaPago");
 
 const service = {
   async obtenerTiendas() {

@@ -1,4 +1,4 @@
-const Mercadopago = require("../services/mercadoPago");
+const Mercadopago = require("../services/plataformaPago");
 const { tiendaService } = require("../services/tienda");
 const { pedidoService } = require("../services/pedido");
 
