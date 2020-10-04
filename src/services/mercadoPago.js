@@ -2,7 +2,10 @@ const mercadopago = require("mercadopago");
 const axios = require("axios").default;
 const { productoService } = require("./producto");
 const { pedidoService } = require("./pedido");
+const { envioService } = require("./envios");
+const { tiendaProductoService } = require("./tiendaProducto");
 const { v4: uuidv4 } = require("uuid");
+const _EstadosEnvio = require("../constants/estadosEnvio");
 
 class Mercadopago {
   constructor(token) {
@@ -25,9 +28,9 @@ class Mercadopago {
   static async procesarNotificacionPago(data) {
     try {
       if (data) {
-        console.log('procesarNotificacionPago');
+        console.log("procesarNotificacionPago");
         console.log(data);
-        
+
         let mp = new Mercadopago(process.env.MP_ACCESS_TOKEN_TEST);
         const pagoInfo = await mp.obtenerInformacionPago(data.id);
 
@@ -41,27 +44,29 @@ class Mercadopago {
             const merchantOrder = await mp.obtenerMerchantOrder(
               pagoInfo.body.order.id
             );
-            console.log('prev guardarDatosPago');
+            console.log("prev guardarDatosPago");
             console.log(merchantOrder.body.payments);
             await guardarDatosPago(merchantOrder.body.payments, pedido.id);
 
             let pedidoPorActualizar = {
               idPago: data.id,
               estado: pagoInfo.body.status,
-              confirmado: false
+              confirmado: false,
             };
 
-            console.log('status: ' + pagoInfo.body.status);
-            console.log('status merchant: ' + merchantOrder.body.status);
+            console.log("status: " + pagoInfo.body.status);
+            console.log("status merchant: " + merchantOrder.body.status);
             if (
               pagoInfo.body.status === "approved" &&
               merchantOrder.body.status === "closed"
-            ) { pedidoPorActualizar.confirmado = true; }
-              
-            console.log('previo actualizar pedido: ');
+            ) {
+              pedidoPorActualizar.confirmado = true;
+            }
+
+            console.log("previo procesarCambioEnPedido: ");
             console.log(pedidoPorActualizar);
 
-            await pedidoService.actualizarPedido(pedidoPorActualizar, pedido.id);           
+            await procesarCambioEnPedido(pedido, pedidoPorActualizar);
           }
         }
       }
@@ -96,7 +101,12 @@ class Mercadopago {
         preferencia.external_reference
       );
 
-      return { id, init_point, sandbox_init_point, uuid: preferencia.external_reference };
+      return {
+        id,
+        init_point,
+        sandbox_init_point,
+        uuid: preferencia.external_reference,
+      };
     } catch (error) {
       console.log(`${error}`);
       throw error;
@@ -144,7 +154,7 @@ class Mercadopago {
 
       const payer = {
         name: comprador.nombre,
-        
+
         surname: comprador.apellido,
         email: comprador.correo,
         date_created: comprador.fechaCreacion,
@@ -216,10 +226,18 @@ class Mercadopago {
         productos,
         idTienda,
         uuid,
-        estado: "pending"
+        estado: "pending",
       };
 
       await pedidoService.crearPedidoMercadoPago(pedido);
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
+  }
+  static async test(id) {
+    try {
+      await iniciarProcesoDeEnvio(id);
     } catch (error) {
       console.log(`${error}`);
       throw error;
@@ -235,34 +253,81 @@ const calcularValorComision = async (productos, comision) => {
   return parseFloat(valorComision);
 };
 
+const procesarCambioEnPedido = async (pedido, cambiosEnPedido) => {
+  try {
+    console.log(`procesarCambioEnPedido`);
+    await pedidoService.actualizarPedido(cambiosEnPedido, pedido.id);
 
+    if (pedidoPorActualizar.aprobado) {
+      console.log(`pedido aprobado`);
+      await actualizarStockTienda(pedido);
+      await iniciarProcesoDeEnvio(pedido);
+    }
+  } catch (error) {
+    console.log(`${error}`);
+    throw error;
+  }
+};
+
+const actualizarStockTienda = async (pedido) => {
+  try {
+    const idProductos = pedido.Detalle.map((detalle) => {
+      return detalle.IdProducto;
+    });
+    const productos = await tiendaProductoService.obtenerTiendaProductosPorParametros(
+      [{ IdTienda: pedido.IdTienda }, { IdProducto: idProductos }]
+    );
+
+    for (const producto of productos) {
+      if (producto.stock > 0) {
+        const stock = producto.stock - 1;
+        await tiendaProductoService.actualizarTiendaProducto(
+          { stock },
+          { IdTienda: pedido.IdTienda, IdProducto: producto.IdProducto }
+        );
+      }
+    }
+  } catch (error) {
+    console.log(`${error}`);
+    throw error;
+  }
+};
+
+const iniciarProcesoDeEnvio = async (pedido) => {
+  try {
+    console.log(`iniciarProcesoDeEnvio`);
+   await envioService.crearEnvio({idPedido: pedido.id, idTienda: pedido.IdTienda, estado: _EstadosEnvio.Preparando });
+
+  } catch (error) {
+    console.log(`${error}`);
+    throw error;
+  }
+};
 
 const guardarDatosPago = async (detalles, idPedido) => {
-  console.log('guardarDatosPago');
+  console.log("guardarDatosPago");
   console.log(detalles);
-  
-  if(detalles.length > 0){
 
-  detalles.map(async (detalle) => {
-    const pago = {
-      idMp: detalle.id,
-      idPedido,
-      monto_transaccion: detalle.transaction_amount,
-      monto_total_pagado: detalle.total_paid_amount,
-      costo_envio: detalle.shipping_cost,
-      moneda: detalle.currency_id,
-      estado: detalle.status,
-      detalle_estado: detalle.status_detail,
-      tipo_operacion: detalle.operation_type,
-      fecha_aprobado: detalle.date_approved,
-      fecha_creado: detalle.date_created,
-      ultima_modificacion: detalle.last_modified,
-      monto_reembolsado: detalle.amount_refunded,
-    };
-    await pedidoService.guardarDetallePago(pago, idPedido);
-  });
+  if (detalles.length > 0) {
+    detalles.map(async (detalle) => {
+      const pago = {
+        idMp: detalle.id,
+        idPedido,
+        monto_transaccion: detalle.transaction_amount,
+        monto_total_pagado: detalle.total_paid_amount,
+        costo_envio: detalle.shipping_cost,
+        moneda: detalle.currency_id,
+        estado: detalle.status,
+        detalle_estado: detalle.status_detail,
+        tipo_operacion: detalle.operation_type,
+        fecha_aprobado: detalle.date_approved,
+        fecha_creado: detalle.date_created,
+        ultima_modificacion: detalle.last_modified,
+        monto_reembolsado: detalle.amount_refunded,
+      };
+      await pedidoService.guardarDetallePago(pago, idPedido);
+    });
   }
-  
 };
 
 module.exports = Mercadopago;

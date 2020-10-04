@@ -13,6 +13,7 @@ const listaController = require("../controllers/listas")
 const pedidoController = require("../controllers/pedidos")
 const calificacionTiendaController = require("../controllers/calificacionTienda")
 const estadisticasController = require("../controllers/estadisticas")
+const enviosController = require("../controllers/envios")
 
 //Validadores
 const { validadorObtenerPorId, obtenerPorUuidSchema } = require("../helpers/validadores_request/genericos");
@@ -24,6 +25,7 @@ const { validadorCrearMensaje, validadorEliminarMensaje } = require("../helpers/
 const { validadorobtenerUrlArchivo } = require("../helpers/validadores_request/archivo");
 const { validadorObtenerPreferencia } = require("../helpers/validadores_request/mercadopago");
 const { validadorCrearCalificacion, validadorEliminarCalificacion, validadorObtenerCalificacionTienda } = require("../helpers/validadores_request/calificacionTienda");
+const { validadorCrearEnvio } = require("../helpers/validadores_request/envios");
 
 
 
@@ -94,6 +96,7 @@ module.exports = app => {
   app.get("/api/pago/bancos", /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ listaController.obtenerListaBancos)
   app.post("/api/pago/mp/preferencia", validadorObtenerPreferencia, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ plataformaPagosController.obtenerPreferenciaMercadoPago)
   app.post("/api/pago/mp/webHooks", /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ plataformaPagosController.webHooks)
+  app.get("/api/pago/mp/test/:id", /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ plataformaPagosController.test)
 
   //Rutas listas
   app.get("/api/lista/ciudades", /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ listaController.obtenerListaCiudades)
@@ -114,4 +117,8 @@ module.exports = app => {
   //Rutas totales
   app.get("/api/estadisticas/totales",/*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ estadisticasController.obtenerTotales)
   app.get("/api/estadisticas/totales/porIdTienda/:id", validadorObtenerPorId, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ estadisticasController.obtenerTotalesPorTienda)
+
+  //Rutas Envios
+  app.get("/api/envio/:id",/*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ enviosController.obtenerEnvio)
+  app.post("/api/envio/estado", validadorCrearEnvio, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ enviosController.actualizarEstadoEnvio)
 }

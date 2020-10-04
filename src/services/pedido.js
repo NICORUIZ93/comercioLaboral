@@ -102,7 +102,7 @@ const service = {
   },
   async obtenerPedido(idPedido) {
     try {
-      const Pedido = (await Pedido.findByPk(idPedido, {
+      const pedido = (await Pedido.findByPk(idPedido, {
         include: [
           Tienda, Usuario, { model:DetallePago, as: 'DetallesPago' }, { model: DetallePedido, as: 'Detalle' }
         ],
@@ -111,7 +111,7 @@ const service = {
         ],
       })).get({ plain: true });
 
-      return Pedido;
+      return pedido;
     } catch (error) {
       console.log(`${error}`);
       throw error;

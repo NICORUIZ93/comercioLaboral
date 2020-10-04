@@ -28,6 +28,8 @@ module.exports = (sequelize, DataTypes) => {
 
       this.hasMany(models.Pedido, { foreignKey: "IdTienda" });
 
+      this.hasMany(models.Envio, { foreignKey: "idTienda" });
+
       this.belongsToMany(models.Usuario, {
         through: models.Pedido,
         foreignKey: "IdTienda",

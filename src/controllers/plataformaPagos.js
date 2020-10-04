@@ -38,4 +38,15 @@ module.exports = {
       res.status(200).send();
     }
   },
+  async test(req, res) {
+    try {
+
+      await Mercadopago.test(req.params.id);
+    
+      return res.status(200).send();
+    } catch (e) {
+      console.log(e);
+      res.status(200).send();
+    }
+  },
 };
