@@ -36,7 +36,7 @@ const service = {
     try {
 
       const ventas = await pedidoService.obtenerPedidosPorParametros([{ IdTienda: idTienda, confirmado: true }]);
-      const totalValorEnVentas = ventas.reduce((a, b) => a + b.dataValues.valorTotal, 0);
+      const totalValorEnVentas = ventas.reduce((a, b) => parseFloat(a) + parseFloat(b.valorTotal), 0);
       const totalValorEnVentasConComision = ventas.reduce((a, b) => a + b.valorTotalConComison, 0);
       const totalValorComisiones = ventas.reduce((a, b) => a + b.valorComisionMarket, 0);
       
