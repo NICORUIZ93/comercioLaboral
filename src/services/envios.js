@@ -30,12 +30,12 @@ const service = {
   },
   async obtenerUltimoEstadoEnvio(parametrosWhere) {
     try {
-      const estados = (
+      const estados = 
         await Envio.findAll({
           attributes: ["estado"],
           where: parametrosWhere,
-        })
-      ).get({ plain: true });
+        });
+
       console.log("estados");
       console.log(estados);
       const ultimoEstado = Math.max(...estados);
