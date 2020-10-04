@@ -31,10 +31,10 @@ const service = {
   async obtenerUltimoEstadoEnvio(parametrosWhere) {
     try {
       const estados = 
-        await Envio.findAll({
+        (await Envio.findAll({
           attributes: ["estado"],
           where: parametrosWhere,
-        });
+        })).map(atributo => { return atributo.estado });
 
       console.log("estados");
       console.log(estados);
