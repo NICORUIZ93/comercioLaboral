@@ -258,7 +258,7 @@ const procesarCambioEnPedido = async (pedido, cambiosEnPedido) => {
     console.log(`procesarCambioEnPedido`);
     await pedidoService.actualizarPedido(cambiosEnPedido, pedido.id);
 
-    if (pedidoPorActualizar.aprobado) {
+    if (cambiosEnPedido.aprobado) {
       console.log(`pedido aprobado`);
       await actualizarStockTienda(pedido);
       await iniciarProcesoDeEnvio(pedido);
