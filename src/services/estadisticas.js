@@ -3,6 +3,7 @@ const { tiendaService } = require("../services/tienda");
 const { productoService } = require("../services/producto");
 const { pedidoService } = require("../services/pedido");
 const { mensajeService } = require("../services/mensaje");
+
 const _Rol = require("../constants/roles");
 const { Op } = require("sequelize");
 
@@ -31,19 +32,45 @@ const service = {
       return `Error ${error}`;
     }
   },
+  async obtenerTotalesVentasPorTienda(idTienda) {
+    try {
+
+      const ventas = await pedidoService.obtenerPedidosPorParametros([{ IdTienda: idTienda, confirmado: true }]);
+      const totalValorEnVentas = ventas.reduce((a, b) => a + b.valorTotal, 0);
+      const totalValorEnVentasConComision = ventas.reduce((a, b) => a + b.valorTotalConComison, 0);
+      const totalValorComisiones = ventas.reduce((a, b) => a + b.valorComisionMarket, 0);
+      
+      const totalVentas = ventas ? ventas.length : 0;
+
+      const totales = {
+        totalVentas,
+        totalValorEnVentas,
+        totalValorEnVentasConComision,
+        totalValorComisiones,
+      };
+
+      return totales;
+
+    } catch (error) {
+      console.log(error);
+      return `Error ${error}`;
+    }
+  },
   async obtenerTotalesPorTienda(idTienda) {
     try {
       const productos = await productoService.obtenerProductosPorTienda(idTienda);
+      const productosSinStock = productos.filter(producto => { return producto.cantidad === 0 });
       const empleados = (await tiendaService.obtenerTienda(idTienda)).empleados;
       const pedidos = await pedidoService.obtenerPedidosPorParametros([{ IdTienda: idTienda }]);
       const mensajes = await mensajeService.obtenerMensajesPorParametros([{ IdTienda: idTienda }]);
 
       const totalProductos = productos ? productos.length : 0;
+      const totalProductosSinStock = productosSinStock ? productosSinStock.length : 0;
       const totalEmpleados = empleados ? empleados.length : 0;
       const totalPedidos = pedidos ? pedidos.length : 0;
       const totalMensajes = mensajes ? mensajes.length: 0;
 
-      return { totalProductos, totalEmpleados, totalPedidos, totalMensajes };
+      return { totalProductos, totalProductosSinStock, totalEmpleados, totalPedidos, totalMensajes };
 
     } catch (error) {
       console.log(error);

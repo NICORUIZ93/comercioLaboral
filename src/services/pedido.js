@@ -38,7 +38,7 @@ const service = {
   },
   async crearPedidoMercadoPago(nuevoPedido) {
     try {
-      const { usuario, productos, idTienda, uuid } = nuevoPedido;
+      const { usuario, productos, idTienda, uuid,  valorComision } = nuevoPedido;
 
       //let pedidoCreado = {};
 
@@ -61,13 +61,17 @@ const service = {
             transaction
           });
         
+        const valorTotal = productos.reduce((a, b) => a + b.valorTotal, 0);
+        
         const pedido = {
           IdTienda: idTienda,
           IdUsuario: user.id,
           valorTotal: 0,
           confirmado: false,
           uuid: uuid,
-          valorTotal: productos.reduce((a, b) => a + b.valorTotal, 0)
+          valorTotal: valorTotal,
+          valorComisionMarket: valorComision,
+          valorTotalConComison: valorTotal - valorComision
           //Detalle: detallesPedido,
         };
 

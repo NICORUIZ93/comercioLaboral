@@ -98,7 +98,8 @@ class Mercadopago {
         datos.comprador,
         preferencia.items,
         datos.idTienda,
-        preferencia.external_reference
+        preferencia.external_reference,
+        preference.marketplace_fee
       );
 
       return {
@@ -219,7 +220,7 @@ class Mercadopago {
     }
   }
 
-  async guardarPedidoSinConfirmar(usuario, productos, idTienda, uuid) {
+  async guardarPedidoSinConfirmar(usuario, productos, idTienda, uuid, valorComision) {
     try {
       const pedido = {
         usuario,
@@ -227,6 +228,7 @@ class Mercadopago {
         idTienda,
         uuid,
         estado: "pending",
+        valorComision
       };
 
       await pedidoService.crearPedidoMercadoPago(pedido);
@@ -288,6 +290,8 @@ const actualizarStockTienda = async (pedido) => {
           { stock },
           { IdTienda: pedido.IdTienda, IdProducto: producto.IdProducto }
         );
+
+        await productoService.actualizarProductoPorId({ cantidad: stock }, producto.IdProducto);
       }
     }
   } catch (error) {

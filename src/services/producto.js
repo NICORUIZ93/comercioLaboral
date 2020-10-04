@@ -377,6 +377,19 @@ const service = {
       return `Error ${error}`;
     }
   },
+  async actualizarProductoPorId(producto, id) {
+    try {
+      const resultadoUpdate = await Producto.update(producto, {
+        where: {
+          id: id,
+        },
+      });
+
+      return resultadoUpdate;
+    } catch (error) {
+      return `Error ${error}`;
+    }
+  },
   async eliminarProducto(idProducto) {
     try {
       const resultadoDestroy = await Producto.destroy({

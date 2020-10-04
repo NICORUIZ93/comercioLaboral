@@ -46,6 +46,8 @@ module.exports = (sequelize, DataTypes) => {
     estado: DataTypes.STRING,
     uuid: DataTypes.STRING,
     idPago:DataTypes.STRING,
+    valorComisionMarket: DataTypes.DECIMAL,
+    valorTotalConComison: DataTypes.DECIMAL,
   }, {
     sequelize,
     modelName: 'Pedido',
