@@ -258,6 +258,9 @@ const procesarCambioEnPedido = async (pedido, cambiosEnPedido) => {
     console.log(`procesarCambioEnPedido`);
     await pedidoService.actualizarPedido(cambiosEnPedido, pedido.id);
 
+    console.log(`estado pedido`);
+    console.log(cambiosEnPedido.aprobado);
+    
     if (cambiosEnPedido.aprobado) {
       console.log(`pedido aprobado`);
       await actualizarStockTienda(pedido);
