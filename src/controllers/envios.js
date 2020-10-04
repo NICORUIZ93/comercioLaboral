@@ -49,6 +49,8 @@ module.exports = {
       const { idPedido, estado } = req.body;
 
       const estadoActual = await envioService.obtenerUltimoEstadoEnvio({ idPedido: idPedido });
+      console.log("estado actual");
+      console.log(estadoActual);
       const estadoSiguiente = estadoActual + 1;
 
       if(estado != estadoSiguiente) throw Error('El estado al que trata de actualizar no es correcto');

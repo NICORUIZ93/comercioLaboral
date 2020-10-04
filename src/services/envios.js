@@ -21,9 +21,7 @@ const service = {
   },
   async obtenerEnvio(idEnvio) {
     try {
-      const Envio = (
-        await Envio.findByPk(idEnvio)
-      ).get({ plain: true });
+      const Envio = (await Envio.findByPk(idEnvio)).get({ plain: true });
 
       return Envio;
     } catch (error) {
@@ -35,12 +33,14 @@ const service = {
       const estados = (
         await Envio.findAll({
           attributes: ["estado"],
-          where: parametrosWhere
+          where: parametrosWhere,
         })
       ).get({ plain: true });
-
-     const ultimoEstado = Math.max(...estados);
-
+      console.log("estados");
+      console.log(estados);
+      const ultimoEstado = Math.max(...estados);
+      console.log("el ultimo estado es");
+      console.log(ultimoEstado);
       return ultimoEstado;
     } catch (error) {
       return `Error ${error}`;
