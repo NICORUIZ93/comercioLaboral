@@ -1,6 +1,6 @@
-const Mercadopago = require("../services/plataformaPago");
+const MercadoPagoAdapter = require("../models/mercadoPagoAdapter");
 const { tiendaService } = require("../services/tienda");
-const { pedidoService } = require("../services/pedido");
+
 
 module.exports = {
   async obtenerPreferenciaMercadoPago(req, res) {
@@ -11,12 +11,12 @@ module.exports = {
 
       datos.comision = tienda.porcentajeComision;
 
-      const mercadoPago = new Mercadopago(tienda.tokenMP);
-      let preferencia = await mercadoPago.obtenerIdPreferencia(datos);
-      preferencia.token = tienda.tokenMP;
-      preferencia.publicKey = tienda.publicKeyMP;
+      let plataforma = new MercadoPagoAdapter().configurar(tienda.tokenMP);
+      let informacionCheckout = await plataforma.obtenerInformacionDeCheckOut(datos);
+      informacionCheckout.token = tienda.tokenMP;
+      informacionCheckout.publicKey = tienda.publicKeyMP;
 
-      return res.status(200).json(preferencia);
+      return res.status(200).json(informacionCheckout);
     } catch (e) {
       console.log(e);
       return res.status(500).send({ code: 500, mesaage: `${e}` });
@@ -25,28 +25,12 @@ module.exports = {
   async webHooks(req, res) {
     try {
 
-      if (req.query.type) {
-        if (req.query.type === "payment") {
-          const { data } = req.body;
-          await Mercadopago.procesarNotificacionPago(data);
-        }
-      }
+      await new MercadoPagoAdapter().capturarCambiosEnEstadoDelPago(req);
 
       return res.status(200).send();
     } catch (e) {
       console.log(e);
       res.status(200).send();
     }
-  },
-  async test(req, res) {
-    try {
-
-      await Mercadopago.test(req.params.id);
-    
-      return res.status(200).send();
-    } catch (e) {
-      console.log(e);
-      res.status(200).send();
-    }
-  },
+  }
 };

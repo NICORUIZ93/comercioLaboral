@@ -203,10 +203,10 @@ const service = {
   async activarTienda(idTienda, codigoMp) {
     try {
       const tienda = (await Tienda.findByPk(idTienda)).dataValues;
-      const data = await Mercadopago.obtenerTokenVendedor(codigoMp);
+      const data = await obtenerTokenVendedor(codigoMp);
 
       tienda.codigoMP = codigoMp;
-      tienda.tokenMP = data.access_token;;
+      tienda.tokenMP = data.access_token;
       tienda.estado = true;
       tienda.publicKeyMP = data.public_key;
       
@@ -285,5 +285,25 @@ const obtenerPromedioCalificaciones = async (calificaciones) => {
       throw error;
   }
 };
+
+ const obtenerTokenVendedor = async (codigoMP) => {
+  try {
+    const autorizacion = await axios.post(
+      "https://api.mercadopago.com/oauth/token",
+      {
+        client_id: process.env.MP_CLIENT_ID_TEST,
+        client_secret: process.env.MP_CLIENT_SECRET_TEST,
+        grant_type: "authorization_code",
+        code: codigoMP,
+        redirect_uri: process.env.MP_REDIRECT_URI_TEST,
+      }
+    );
+
+    return autorizacion.data;
+  } catch (error) {
+    console.log(`${error}`);
+    throw error;
+  }
+}
 
 module.exports.tiendaService = service;
