@@ -38,7 +38,7 @@ class MercadoPagoAdapter extends PlataformaDePago {
         idTienda: datos.idTienda,
         uuid: preferencia.external_reference,
         estado: "pending",
-        valorComision: preference.marketplace_fee,
+        valorComision: preferencia.marketplace_fee,
       };
       await pedidoService.crearPedidoMercadoPago(pedido);
 

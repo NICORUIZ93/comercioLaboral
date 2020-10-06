@@ -99,7 +99,7 @@ class Mercadopago {
         preferencia.items,
         datos.idTienda,
         preferencia.external_reference,
-        preference.marketplace_fee
+        preferencia.marketplace_fee
       );
 
       return {
