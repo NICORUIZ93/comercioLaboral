@@ -16,7 +16,7 @@ class MercadoPagoAdapter extends PlataformaDePago {
    configurar(parametros) {
     mercadopago.configure({
       //sandbox: parametros.sandbox,
-      access_token: parametros.token,
+      access_token: parametros,
     });
 
     return this;
