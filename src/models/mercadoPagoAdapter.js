@@ -10,6 +10,7 @@ const _EstadosEnvio = require("../constants/estadosEnvio");
 
 class MercadoPagoAdapter extends PlataformaDePago {
   constructor() {
+    super();
   }
 
    configurar(parametros) {
