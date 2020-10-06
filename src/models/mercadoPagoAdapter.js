@@ -18,8 +18,12 @@ class MercadoPagoAdapter extends PlataformaDePago {
       //sandbox: parametros.sandbox,
       access_token: parametros,
     });
-
+    this._mercadopago = mercadopago;
     return this;
+  }
+
+  get mercadopago() {
+    return this._mercadopago;
   }
 
   async obtenerInformacionDeCheckOut(parametros) {
@@ -69,8 +73,9 @@ class MercadoPagoAdapter extends PlataformaDePago {
         console.log("procesarNotificacionPago");
         console.log(data);
 
-        this.configurar(process.env.MP_ACCESS_TOKEN_TEST);
-        const pagoInfo = await mercadopago.payment.get(data.id);
+        //this.configurar(process.env.MP_ACCESS_TOKEN_TEST);
+        let mp = new MercadoPagoAdapter().configurar(process.env.MP_ACCESS_TOKEN_TEST);
+        const pagoInfo = await mp.mercadopago.payment.get(data.id);
 
         if (pagoInfo.body.external_reference) {
           let pedido = await pedidoService.obtenerPedidoPorParametros([
@@ -78,8 +83,9 @@ class MercadoPagoAdapter extends PlataformaDePago {
           ]);
 
           if (pedido) {
-            this.configurar(pedido.Tienda.tokenMP);
-            const merchantOrder = await mercadopago.merchant_orders.get(
+            //this.configurar(pedido.Tienda.tokenMP);
+            mp = new MercadoPagoAdapter().configurar(edido.Tienda.tokenMP);
+            const merchantOrder = await mp.mercadopago.merchant_orders.get(
               pagoInfo.body.order.id
             );
             console.log("prev guardarDatosPago");
