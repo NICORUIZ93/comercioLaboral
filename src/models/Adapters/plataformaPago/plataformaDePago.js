@@ -9,7 +9,7 @@ class PlataformaDePago {
 
     }
 
-    async static capturarCambiosEnEstadoDelPago(parametros){
+    async capturarCambiosEnEstadoDelPago(parametros){
 
 
     }

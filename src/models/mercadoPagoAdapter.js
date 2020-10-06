@@ -1,10 +1,10 @@
 const PlataformaDePago = require("../models/Adapters/plataformaPago/plataformaDePago");
 const mercadopago = require("mercadopago");
 const axios = require("axios").default;
-const { productoService } = require("./producto");
-const { pedidoService } = require("./pedido");
-const { envioService } = require("./envios");
-const { tiendaProductoService } = require("./tiendaProducto");
+const { productoService } = require("../services/producto");
+const { pedidoService } = require("../services/pedido");
+const { envioService } = require("../services/envios");
+const { tiendaProductoService } = require("../services/tiendaProducto");
 const { v4: uuidv4 } = require("uuid");
 const _EstadosEnvio = require("../constants/estadosEnvio");
 
