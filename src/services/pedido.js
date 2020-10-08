@@ -177,7 +177,7 @@ const service = {
     try {
       const pedidos = await Pedido.findAll({
         where: {
-          [Op.and]: parametrosWhere,
+          [Op.or]: parametrosWhere,
         },
         include: [
           Tienda, Usuario, { model:Envio, as: 'EstadosEnvio' }, { model:DetallePago, as: 'DetallesPago' }, { model: DetallePedido, as: 'Detalle' }

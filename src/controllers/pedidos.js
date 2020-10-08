@@ -1,4 +1,5 @@
 const { pedidoService } = require( "../services/pedido");
+const _EstadosPedido = require("../constants/estadosPedido");
 
 module.exports = {
 
@@ -35,7 +36,7 @@ module.exports = {
   async obtenerComprasPorUsuario(req, res) {
     try {
       const idUsuario = req.params.id;
-      const pedidos = await pedidoService.obtenerPedidosPorParametros([{ IdUsuario: idUsuario }, { confirmado: true }]);
+      const pedidos = await pedidoService.obtenerPedidosPorParametros([{ IdUsuario: idUsuario }, { estado: [_EstadosPedido.Aprovado, _EstadosPedido.Pendiente] }]);
       
       return res.status(200).json(pedidos);
     } catch (e) {
