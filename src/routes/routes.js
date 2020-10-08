@@ -72,6 +72,7 @@ module.exports = app => {
   app.get("/api/productos/buscar/paginado", validadorBuscarProductosPaginado, productoController.buscarProductosPaginado)
   app.get("/api/productos/tienda/paginado", validadorProductosPorTiendaPaginado, productoController.obtenerProductosPorTiendaPaginado)
   app.get("/api/productos/tienda/:id", validadorObtenerPorId, productoController.obtenerProductosPorTienda)
+  app.get("/api/productos/pedido/:id", validadorObtenerPorId, productoController.obtenerProductosPorPedido)
   app.get("/api/producto/:id", validadorObtenerPorId, productoController.obtenerProducto)
   app.post("/api/producto", validadorCrearProducto, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ productoController.crearProducto)
   app.post("/api/producto/recursos", validadorRecursosProducto, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ productoController.cargarRecursosProducto)

@@ -38,6 +38,15 @@ module.exports = {
       res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
+  async obtenerProductosPorPedido(req, res) {
+    try {
+      const idPedido = req.params.id;
+      let productos = await productoService.obtenerProductosPorPedido(idPedido);
+      return res.status(200).json(productos);
+    } catch (e) {
+      res.status(500).send({ code: 500, mesaage: `${e}` });
+    }
+  },
   async obtenerProductosPaginado(req, res) {
     try {
 

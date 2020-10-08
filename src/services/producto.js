@@ -445,6 +445,22 @@ const service = {
       throw error;
     }
   },
+  async obtenerProductosPorPedido(idPedido) {
+    try {
+      const idsProductos = await DetallePedido.findAll({
+        attributes: ["IdProducto"],
+        where: { IdPedido: idPedido },
+        raw: true,
+      });
+
+      const productos = await this.obtenerProductosPorParametros([{ id: idsProductos }]);
+
+      return productos;
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
+  },
   async contarProductoPorParametros(parametrosWhere) {
     try {
       if(!parametrosWhere) return await Producto.count();
