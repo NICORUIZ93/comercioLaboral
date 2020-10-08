@@ -59,7 +59,7 @@ module.exports = {
 
       const result = await envioService.actualizarEstadoEnvio(body);
 
-      return result;
+      return res.status(200).json(result);
     } catch (e) {
       console.log(e);
       return res.status(500).send({ code: 500, mesaage: `${e}` });
