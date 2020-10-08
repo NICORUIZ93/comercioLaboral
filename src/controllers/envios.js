@@ -67,8 +67,8 @@ module.exports = {
     try {
       let body = req.body;
       body.estado = _EstadosEnvio.Enviado;
-      
-      const result = this.actualizarEstadoEnvio(body, res);
+
+      const result = await this.actualizarEstadoEnvio(body, res);
 
       return result;
     } catch (e) {
