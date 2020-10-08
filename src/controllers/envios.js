@@ -43,19 +43,8 @@ module.exports = {
   },
   async actualizarEstadoEnvio(req, res) {
     try {
-      const { idPedido, estado } = req.body;
 
-      const estadoActual = await envioService.obtenerUltimoEstadoEnvio({
-        idPedido: idPedido,
-      });
-      console.log("estado actual");
-      console.log(estadoActual);
-      const estadoSiguiente = estadoActual + 1;
-
-      if (estado != estadoSiguiente)
-        throw Error("El estado al que trata de actualizar no es correcto");
-
-      const nuevoEnvio = await envioService.crearEnvio(req.body);
+      const nuevoEnvio = await envioService.actualizarEstadoEnvio(req.body);
 
       return res.status(200).json(nuevoEnvio);
     } catch (e) {
@@ -68,7 +57,7 @@ module.exports = {
       let body = req.body;
       body.estado = _EstadosEnvio.Enviado;
 
-      const result = await this.actualizarEstadoEnvio(body, res);
+      const result = await envioService.actualizarEstadoEnvio(body);
 
       return result;
     } catch (e) {

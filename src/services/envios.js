@@ -46,9 +46,32 @@ const service = {
       return `Error ${error}`;
     }
   },
-  async actualizarEnvio(Envio) {
+  async actualizarEstadoEnvio(envio) {
     try {
-      const resultadoUpdate = await Envio.update(Envio, {
+
+      const { idPedido, estado } = envio;
+
+      const estadoActual = await this.obtenerUltimoEstadoEnvio({
+        idPedido: idPedido,
+      });
+
+      console.log("estado actual");
+      console.log(estadoActual);
+      const estadoSiguiente = estadoActual + 1;
+
+      if (estado != estadoSiguiente)
+        throw Error("El estado al que trata de actualizar no es correcto");
+
+      const nuevoEnvio = await this.crearEnvio(envio);
+
+      return nuevoEnvio;
+    } catch (error) {
+      return `Error ${error}`;
+    }
+  },
+  async actualizarEnvio(envio) {
+    try {
+      const resultadoUpdate = await Envio.update(envio, {
         where: {
           id: Envio.id,
         },
