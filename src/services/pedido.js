@@ -180,7 +180,7 @@ const service = {
           [Op.and]: parametrosWhere,
         },
         include: [
-          Tienda, Usuario, Envio, { model:DetallePago, as: 'DetallesPago' }, { model: DetallePedido, as: 'Detalle' }
+          Tienda, Usuario, { model:Envio, as: 'EstadosEnvio' }, { model:DetallePago, as: 'DetallesPago' }, { model: DetallePedido, as: 'Detalle' }
         ],
         order: [
           ['createdAt', 'DESC']
