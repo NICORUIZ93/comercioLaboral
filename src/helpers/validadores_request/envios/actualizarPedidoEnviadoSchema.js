@@ -1,11 +1,14 @@
 const Joi = require("joi");
 
-const crearEnvioSchema = (req, res, next) => {
+const actualizarPedidoEnviadoSchema = (req, res, next) => {
   // define base schema rules
   const reglasSchema = {
     idPedido: Joi.number().integer().required(),
-    estado: Joi.number().integer().required(),
-    idTienda: Joi.number().integer().required()
+    idTienda: Joi.number().integer().required(),
+    fotoGuia: Joi.string().empty("").required(),
+    transportadora: Joi.string().empty("").required(),
+    numeroGuia: Joi.string().empty("").required(),
+    comentarios: Joi.string().empty("").required(),
   };
 
   // create schema object with rules
@@ -31,4 +34,4 @@ const crearEnvioSchema = (req, res, next) => {
   }
 };
 
-module.exports.crearEnvioSchema = crearEnvioSchema;
+module.exports.actualizarPedidoEnviadoSchema = actualizarPedidoEnviadoSchema;

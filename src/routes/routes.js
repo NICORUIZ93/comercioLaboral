@@ -25,7 +25,7 @@ const { validadorCrearMensaje, validadorEliminarMensaje } = require("../helpers/
 const { validadorobtenerUrlArchivo } = require("../helpers/validadores_request/archivo");
 const { validadorObtenerPreferencia } = require("../helpers/validadores_request/mercadopago");
 const { validadorCrearCalificacion, validadorEliminarCalificacion, validadorObtenerCalificacionTienda } = require("../helpers/validadores_request/calificacionTienda");
-const { validadorCrearEnvio } = require("../helpers/validadores_request/envios");
+const { validadorCrearEnvio, validadorActualizarPedidoEnviado } = require("../helpers/validadores_request/envios");
 
 
 
@@ -123,4 +123,5 @@ module.exports = app => {
   //Rutas Envios
   app.get("/api/envio/:id",/*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ enviosController.obtenerEnvio)
   app.post("/api/envio/estado", validadorCrearEnvio, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ enviosController.actualizarEstadoEnvio)
+  app.post("/api/envio/estado/enviado", validadorActualizarPedidoEnviado, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ enviosController.actualizarEstadoEnvio)
 }

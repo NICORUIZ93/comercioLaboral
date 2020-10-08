@@ -24,7 +24,12 @@ module.exports = (sequelize, DataTypes) => {
   Envio.init({
     idPedido: DataTypes.INTEGER,
     idTienda: DataTypes.INTEGER,
-    estado: DataTypes.INTEGER
+    estado: DataTypes.INTEGER,
+    fotoGuia: DataTypes.STRING,
+    transportadora: DataTypes.STRING,
+    numeroGuia: DataTypes.STRING,
+    comentarios: DataTypes.TEXT
+
   }, {
     sequelize,
     modelName: 'Envio',

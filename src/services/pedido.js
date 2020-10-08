@@ -4,6 +4,7 @@ const Usuario = require("../db/models").Usuario;
 const Tienda = require("../db/models").Tienda;
 const DetallePedido = require("../db/models").DetallePedido;
 const DetallePago = require("../db/models").DetallePago;
+const Envio = require("../db/models").Envio;
 var sequelize = require("../db/models").sequelize;
 const { Op } = require("sequelize");
 const _Rol = require("../constants/roles");
@@ -179,7 +180,7 @@ const service = {
           [Op.and]: parametrosWhere,
         },
         include: [
-          Tienda, Usuario, { model:DetallePago, as: 'DetallesPago' }, { model: DetallePedido, as: 'Detalle' }
+          Tienda, Usuario, Envio, { model:DetallePago, as: 'DetallesPago' }, { model: DetallePedido, as: 'Detalle' }
         ],
         order: [
           ['createdAt', 'DESC']
