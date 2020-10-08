@@ -1,8 +1,7 @@
-const { envioService } = require( "../services/envios");
+const { envioService } = require("../services/envios");
 const _EstadosEnvio = require("../constants/estadosEnvio");
 
 module.exports = {
-
   async obtenerEnviosPorTienda(req, res) {
     try {
       const idTienda = req.params.id;
@@ -16,7 +15,7 @@ module.exports = {
     try {
       const idProducto = req.params.id;
       const Envio = await envioService.obtenerEnviosPorProducto(idProducto);
-      
+
       return res.status(200).json(Envio);
     } catch (e) {
       return res.status(500).send({ code: 500, mesaage: `${e}` });
@@ -26,7 +25,7 @@ module.exports = {
     try {
       const id = req.params.id;
       const Envio = await envioService.obtenerEnvio(id);
-      
+
       return res.status(200).json(Envio);
     } catch (e) {
       return res.status(500).send({ code: 500, mesaage: `${e}` });
@@ -34,11 +33,9 @@ module.exports = {
   },
   async crearEnvio(req, res) {
     try {
-
       const nuevoEnvio = await envioService.crearEnvio(req.body);
 
       return res.status(200).json(nuevoEnvio);
-
     } catch (e) {
       console.log(e);
       return res.status(500).send({ code: 500, mesaage: `${e}` });
@@ -46,20 +43,34 @@ module.exports = {
   },
   async actualizarEstadoEnvio(req, res) {
     try {
-
       const { idPedido, estado } = req.body;
 
-      const estadoActual = await envioService.obtenerUltimoEstadoEnvio({ idPedido: idPedido });
+      const estadoActual = await envioService.obtenerUltimoEstadoEnvio({
+        idPedido: idPedido,
+      });
       console.log("estado actual");
       console.log(estadoActual);
       const estadoSiguiente = estadoActual + 1;
 
-      if(estado != estadoSiguiente) throw Error('El estado al que trata de actualizar no es correcto');
+      if (estado != estadoSiguiente)
+        throw Error("El estado al que trata de actualizar no es correcto");
 
       const nuevoEnvio = await envioService.crearEnvio(req.body);
 
       return res.status(200).json(nuevoEnvio);
+    } catch (e) {
+      console.log(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
+    }
+  },
+  async actualizarEstadoAEnviado(req, res) {
+    try {
+      let body = req.body;
+      body.estado = _EstadosEnvio.Enviado;
+      
+      const result = this.actualizarEstadoEnvio(body, res);
 
+      return result;
     } catch (e) {
       console.log(e);
       return res.status(500).send({ code: 500, mesaage: `${e}` });
@@ -67,22 +78,13 @@ module.exports = {
   },
   async eliminarEnvio(req, res) {
     try {
-
       const idEnvio = req.params.id;
       const nuevoEnvio = await envioService.eliminarEnvio(idEnvio);
 
       return res.status(200).json(nuevoEnvio);
-
     } catch (e) {
       console.log(e);
       return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
-  }
-
-
+  },
 };
-
-
-
-
-

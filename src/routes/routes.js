@@ -123,5 +123,5 @@ module.exports = app => {
   //Rutas Envios
   app.get("/api/envio/:id",/*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ enviosController.obtenerEnvio)
   app.post("/api/envio/estado", validadorCrearEnvio, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ enviosController.actualizarEstadoEnvio)
-  app.post("/api/envio/estado/enviado", validadorActualizarPedidoEnviado, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ enviosController.actualizarEstadoEnvio)
+  app.post("/api/envio/estado/enviado", validadorActualizarPedidoEnviado, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ enviosController.actualizarEstadoAEnviado)
 }
