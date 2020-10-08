@@ -7,7 +7,8 @@ const service = {
 
       return ciudades;
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async crearBanner(nuevoBanner) {
@@ -16,7 +17,8 @@ const service = {
 
       return resultadocreate;
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async obtenerBanner(idBanner) {
@@ -27,7 +29,8 @@ const service = {
 
       return banner;
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async actualizarBanner(banner) {
@@ -40,7 +43,8 @@ const service = {
 
       return resultadoUpdate;
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async eliminarBanner(idBanner) {
@@ -53,7 +57,8 @@ const service = {
 
       return resultadoDestroy;
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
 };

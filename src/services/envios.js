@@ -7,7 +7,8 @@ const service = {
 
       return ciudades;
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async crearEnvio(nuevoEnvio) {
@@ -16,7 +17,8 @@ const service = {
 
       return resultadocreate;
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async obtenerEnvio(idEnvio) {
@@ -25,7 +27,8 @@ const service = {
 
       return Envio;
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async obtenerUltimoEstadoEnvio(parametrosWhere) {
@@ -43,7 +46,8 @@ const service = {
       console.log(ultimoEstado);
       return ultimoEstado;
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async actualizarEstadoEnvio(envio) {
@@ -66,7 +70,8 @@ const service = {
 
       return nuevoEnvio;
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async actualizarEnvio(envio) {
@@ -79,7 +84,8 @@ const service = {
 
       return resultadoUpdate;
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
   async eliminarEnvio(idEnvio) {
@@ -92,7 +98,8 @@ const service = {
 
       return resultadoDestroy;
     } catch (error) {
-      return `Error ${error}`;
+      console.log(`${error}`);
+      throw error;
     }
   },
 };
