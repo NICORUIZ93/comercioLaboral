@@ -46,7 +46,7 @@ module.exports = {
   async obtenerComprasPorTienda(req, res) {
     try {
       const idTienda = req.params.id;
-      const pedidos = await pedidoService.obtenerPedidosPorParametros([{ '$Tienda.id$': idTienda }, { confirmado: true }]);
+      const pedidos = await pedidoService.obtenerPedidosPorParametros([{ '$Tienda.id$': idTienda , confirmado: true}]);
       
       return res.status(200).json(pedidos);
     } catch (e) {
