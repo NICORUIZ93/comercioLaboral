@@ -14,7 +14,7 @@ const service = {
     try {
       const pedidos = await Pedido.findAll({
         include: [
-          Tienda, Usuario, { model:DetallePago, as: 'DetallesPago' }, { model: DetallePedido, as: 'Detalle' }
+          Tienda, Usuario, { model:Envio, as: 'EstadosEnvio' }, { model:DetallePago, as: 'DetallesPago' }, { model: DetallePedido, as: 'Detalle' }
         ],
         order: [
           ['createdAt', 'DESC']
@@ -109,7 +109,7 @@ const service = {
     try {
       const pedido = (await Pedido.findByPk(idPedido, {
         include: [
-          Tienda, Usuario, { model:DetallePago, as: 'DetallesPago' }, { model: DetallePedido, as: 'Detalle' }
+          Tienda, Usuario, { model:Envio, as: 'EstadosEnvio' }, { model:DetallePago, as: 'DetallesPago' }, { model: DetallePedido, as: 'Detalle' }
         ],
         order: [
           ['createdAt', 'DESC']
@@ -159,7 +159,7 @@ const service = {
           [Op.or]: parametrosWhere,
         },
         include: [
-          Tienda, Usuario, { model:DetallePago, as: 'DetallesPago' }, { model: DetallePedido, as: 'Detalle' }
+          Tienda, Usuario, { model:Envio, as: 'EstadosEnvio' }, { model:DetallePago, as: 'DetallesPago' }, { model: DetallePedido, as: 'Detalle' }
         ],
         order: [
           ['createdAt', 'DESC']
@@ -181,27 +181,6 @@ const service = {
         },
         include: [
           Tienda, Usuario, { model:Envio, as: 'EstadosEnvio' }, { model:DetallePago, as: 'DetallesPago' }, { model: DetallePedido, as: 'Detalle' }
-        ],
-        order: [
-          ['createdAt', 'DESC']
-        ],
-      });
-
-      return pedidos;
-      
-    } catch (error) {
-      console.log(`${error}`);
-      throw error;
-    }
-  },
-   async obtenerPedidosPorParametros(parametrosWhere) {
-    try {
-      const pedidos = await Pedido.findAll({
-        where: {
-          [Op.and]: parametrosWhere,
-        },
-        include: [
-          Tienda, Usuario, { model:DetallePago, as: 'DetallesPago' }, { model: DetallePedido, as: 'Detalle' }
         ],
         order: [
           ['createdAt', 'DESC']
