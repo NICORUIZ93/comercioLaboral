@@ -457,7 +457,7 @@ const service = {
 
       const productosConCantidad = (await this.obtenerProductosPorParametros([{ id: idsProductos }])).map(p => { 
         const producto = productos.find(producto => producto.IdProducto === p.id);
-        const { Tiendas, ...productoSinTienda } = p.dataValue;
+        const { Tiendas, ...productoSinTienda } = p.dataValues;
         return { producto: productoSinTienda, cantidad: producto.cantidad }
        });
 
