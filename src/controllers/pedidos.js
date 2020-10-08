@@ -32,6 +32,16 @@ module.exports = {
       return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
+  async obtenerComprasPorUsuario(req, res) {
+    try {
+      const idUsuario = req.params.id;
+      const pedidos = await pedidoService.obtenerPedidosPorParametros([{ IdUsuario: idUsuario }, { confirmado: true }]);
+      
+      return res.status(200).json(pedidos);
+    } catch (e) {
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
+    }
+  },
   async obtenerComprasPorTienda(req, res) {
     try {
       const idTienda = req.params.id;

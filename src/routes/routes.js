@@ -108,6 +108,7 @@ module.exports = app => {
   app.get("/api/pedidos", pedidoController.obtenerPedidos)
   app.get("/api/pedidos/tienda/:id", validadorObtenerPorId, pedidoController.obtenerPedidosPorTienda)
   app.get("/api/compras/tienda/:id", validadorObtenerPorId, pedidoController.obtenerComprasPorTienda)
+  app.get("/api/compras/usuario/:id", validadorObtenerPorId, pedidoController.obtenerComprasPorUsuario)
   app.get("/api/pedido/estado/:id", obtenerPorUuidSchema, pedidoController.obtenerEstadoPedido)
 
   //Rutas Calificacion tienda
