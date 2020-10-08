@@ -447,15 +447,20 @@ const service = {
   },
   async obtenerProductosPorPedido(idPedido) {
     try {
-      const idsProductos = await DetallePedido.findAll({
-        attributes: ["IdProducto"],
+      const productos = await DetallePedido.findAll({
+        attributes: ["IdProducto","cantidad"],
         where: { IdPedido: idPedido },
         raw: true,
       });
 
-      const productos = await this.obtenerProductosPorParametros([{ id: idsProductos }]);
+      const idsProductos = productos.map(producto => { return producto.IdProducto });
 
-      return productos;
+      const productosConCantidad = (await this.obtenerProductosPorParametros([{ id: idsProductos }])).map(p => { 
+        const producto = productos.find(producto => producto.IdProducto === p.id);
+        return { producto: p, cantidad: producto.cantidad }
+       });
+
+      return productosConCantidad;
     } catch (error) {
       console.log(`${error}`);
       throw error;
