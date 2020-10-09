@@ -72,7 +72,7 @@ const service = {
         throw Error("El estado al que trata de actualizar no es correcto");
 
       const estadoPedido = estado === _EstadosEnvio.Enviado ? _EstadosEnvio._Enviado : _EstadosEnvio._Recibido;
-      await pedidoService.actualizarPedido({ estadoPedido: estadoPedido }, idPedido);
+      await pedidoService.actualizarPedido({ estadoEnvio: estadoPedido }, idPedido);
 
       const nuevoEnvio = await this.crearEnvio(envio);
 
