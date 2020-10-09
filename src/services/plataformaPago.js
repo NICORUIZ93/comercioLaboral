@@ -228,6 +228,7 @@ class Mercadopago {
         idTienda,
         uuid,
         estado: "pending",
+        estadoEnvio: _EstadosEnvio._Preparando,
         valorComision
       };
 

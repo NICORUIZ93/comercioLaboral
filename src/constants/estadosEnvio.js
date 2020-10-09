@@ -1,7 +1,7 @@
 module.exports = {
-    Preparando: 'En Preparanción',
-    Enviado: 'Enviado',
-    Recibido: 'Recibido',
+    _Preparando: 'En Preparanción',
+    _Enviado: 'Enviado',
+    _Recibido: 'Recibido',
     Preparando: 1,
     Enviado: 2,
     Recibido: 3

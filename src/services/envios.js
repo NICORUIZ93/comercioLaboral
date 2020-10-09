@@ -1,4 +1,6 @@
 const Envio = require("../db/models").Envio;
+const _EstadosEnvio = require("../constants/estadosEnvio");
+const { pedidoService } = require("./pedido");
 
 const service = {
   async obtenerEnvios() {
@@ -54,6 +56,9 @@ const service = {
     try {
 
       const { idPedido, estado } = envio;
+      const estadosEnvio = [_EstadosEnvio.Preparando, _EstadosEnvio.Enviado, _EstadosEnvio.Recibido];
+
+      if(!estadosEnvio.includes(estado)) throw Error("El estado al que trata de actualizar no es correcto");
 
       const estadoActual = await this.obtenerUltimoEstadoEnvio({
         idPedido: idPedido,
@@ -65,6 +70,9 @@ const service = {
 
       if (estado != estadoSiguiente)
         throw Error("El estado al que trata de actualizar no es correcto");
+
+      const estadoPedido = estado === _EstadosEnvio.Enviado ? _EstadosEnvio._Enviado : _EstadosEnvio._Recibido;
+      await pedidoService.actualizarPedido({ estadoPedido: estadoPedido }, idPedido);
 
       const nuevoEnvio = await this.crearEnvio(envio);
 
