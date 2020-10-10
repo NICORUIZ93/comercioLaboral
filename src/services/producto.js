@@ -3,6 +3,7 @@ const DetallePedido = require("../db/models").DetallePedido;
 const TiendaProducto = require("../db/models").TiendaProducto;
 const Categoria = require("../db/models").Categoria;
 const Tienda = require("../db/models").Tienda;
+const Pedido = require("../db/models").Pedido;
 const Recurso = require("../db/models").Recurso;
 const ProductoRecurso = require("../db/models").ProductoRecurso;
 var sequelize = require("../db/models").sequelize;
@@ -448,17 +449,19 @@ const service = {
   async obtenerProductosPorPedido(idPedido) {
     try {
       const productos = await DetallePedido.findAll({
-        attributes: ["IdProducto","cantidad"],
+        attributes: ["IdProducto","cantidad", "valor"],
         where: { IdPedido: idPedido },
         raw: true,
       });
+
+      const pedido = await Pedido.findByPk(idPedido, {  attributes: ["IdTienda","valorTotal"] });
 
       const idsProductos = productos.map(producto => { return producto.IdProducto });
 
       const productosConCantidad = (await this.obtenerProductosPorParametros([{ id: idsProductos }])).map(p => { 
         const producto = productos.find(producto => producto.IdProducto === p.id);
         const { Tiendas, ...productoSinTienda } = p.dataValues;
-        return { producto: productoSinTienda, cantidad: producto.cantidad }
+        return { producto: productoSinTienda, cantidad: producto.cantidad, valorTotal: producto.valor, IdTienda: pedido.IdTienda }
        });
 
       return productosConCantidad;
