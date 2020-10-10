@@ -85,7 +85,7 @@ const service = {
           return {
             IdPedido: pedidoCreado.id,
             IdProducto: dp.id,
-            valor: dp.unit_price,
+            valor: dp.valorTotal,
             descuento: 0,
             impuestos: 0,
             cantidad: dp.quantity
