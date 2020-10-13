@@ -12,6 +12,7 @@ const service = {
   async obtenerTiendas() {
     try {
       const tiendas = await Tienda.findAll({
+        where: { estado: true },
         include: [
           {
             model: Recurso,
@@ -37,6 +38,7 @@ const service = {
   async obtenerTienda(idTienda) {
     try {
       const tienda = await Tienda.findByPk(idTienda, {
+        where: { estado: true },
         include: [
           {
             model: UsuariosTienda,
@@ -90,7 +92,7 @@ const service = {
   async obtenerTiendaPorUsuario(idUsuario) {
     try {
       const tienda = await UsuariosTienda.findOne({
-        where: { IdUsuario: idUsuario },
+        where: { IdUsuario: idUsuario,'$Tiendas.estado$': true },
         include: [Tienda],
         order: [
           ['createdAt', 'ASC']

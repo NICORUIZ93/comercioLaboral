@@ -61,7 +61,7 @@ const service = {
       const productos = await productoService.obtenerProductosPorTienda(idTienda);
       const productosSinStock = productos.filter(producto => { return producto.cantidad === 0 });
       const empleados = (await tiendaService.obtenerTienda(idTienda)).empleados;
-      const pedidos = await pedidoService.obtenerPedidosPorParametros([{ IdTienda: idTienda }]);
+      const pedidos = await pedidoService.obtenerPedidosPorParametros([{ IdTienda: idTienda, confirmado: true }]);
       const mensajes = await mensajeService.obtenerMensajesPorParametros([{ IdTienda: idTienda }]);
 
       const totalProductos = productos ? productos.length : 0;

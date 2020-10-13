@@ -14,6 +14,7 @@ const service = {
   async obtenerProductos() {
     try {
       const productos = await Producto.findAll({
+        where: { '$Tiendas.estado$': true },
         include: [
           Tienda,
           {
@@ -54,7 +55,7 @@ const service = {
   async obtenerProductosPorTienda(idTienda) {
     try {
       const productos = await Producto.findAll({
-        where: { '$Tiendas.id$': idTienda },
+        where: { '$Tiendas.id$': idTienda, '$Tiendas.estado$': true },
         include: [
           Tienda,
           {
@@ -97,6 +98,7 @@ const service = {
       const productos = await Producto.findAll({
         where: {
           [Op.or]: parametrosWhere,
+          '$Tiendas.estado$': true
         },
         include: [
           Tienda,
@@ -134,6 +136,7 @@ const service = {
       const productos = await Producto.findAndCountAll({
         limit,
         offset,
+        where: { '$Tiendas.estado$': true },
         include: [
           Tienda,
           {
@@ -181,6 +184,7 @@ const service = {
       const productos = await Producto.findAndCountAll({
         limit,
         offset,
+        where: { '$Tiendas.estado$': true },
         include: [
           Tienda,
           {
@@ -232,6 +236,7 @@ const service = {
       const productos = await Producto.findAndCountAll({
         limit,
         offset,
+        where: { '$Tiendas.estado$': true },
         include: [
           Tienda,
           {
@@ -290,6 +295,7 @@ const service = {
   async obtenerProducto(idProducto) {
     try {
       const producto = await Producto.findByPk(idProducto, {
+        where: { '$Tiendas.estado$': true },
         include: [
           Tienda,
           {
