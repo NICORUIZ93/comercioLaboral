@@ -189,7 +189,7 @@ const service = {
         include: [
           {
             model: Tienda,
-            where: { estado:true }
+            where: { IdTienda:idTienda, estado:true }
           },
           {
             model: Categoria,
@@ -223,11 +223,13 @@ const service = {
         return producto;
       });
 
+      /*
       productos.rows = porductosFiltrados.filter(
         (f) => f.IdTienda === parseInt(idTienda)
       );
       productos.count = productos.rows.length;
-
+      */
+     
       return paginador.paginarDatos(productos, pagina, limit);
     } catch (error) {
       throw error;
