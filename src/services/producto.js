@@ -136,9 +136,11 @@ const service = {
       const productos = await Producto.findAndCountAll({
         limit,
         offset,
-        where: { '$Tiendas.estado$': true },
         include: [
-          Tienda,
+          {
+            model: Tienda,
+            where: { estado:true }
+          },
           {
             model: Categoria,
             as: "Categoria",
@@ -187,7 +189,8 @@ const service = {
         include: [
           {
             model: Tienda,
-            duplicating:false
+            duplicating:false,
+            where: { estado:true }
           },
           {
             model: Categoria,
@@ -238,9 +241,11 @@ const service = {
       const productos = await Producto.findAndCountAll({
         limit,
         offset,
-        where: { '$Tiendas.estado$': true },
         include: [
-          Tienda,
+          {
+            model: Tienda,
+            where: { estado:true }
+          },
           {
             model: Categoria,
             as: "Categoria",
