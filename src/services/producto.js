@@ -180,11 +180,10 @@ const service = {
   async obtenerProductosPorTiendaPaginado(idTienda, paginacion) {
     try {
       const { limit, offset, pagina } = paginacion;
-
+        //where: { '$Tienda.estado$': true },
       const productos = await Producto.findAndCountAll({
         limit,
         offset,
-        where: { '$Tienda.estado$': true },
         include: [
           {
             model: Tienda,
