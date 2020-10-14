@@ -189,7 +189,6 @@ const service = {
         include: [
           {
             model: Tienda,
-            duplicating:false,
             where: { estado:true }
           },
           {
