@@ -223,6 +223,8 @@ const service = {
         return producto;
       });
 
+      productos.rows = porductosFiltrados;
+
       /*
       productos.rows = porductosFiltrados.filter(
         (f) => f.IdTienda === parseInt(idTienda)
