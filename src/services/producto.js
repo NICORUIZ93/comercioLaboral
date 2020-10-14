@@ -95,7 +95,7 @@ const service = {
   },
   async obtenerProductosPorParametros(parametrosWhere) {
     try {
-      const productos = await Producto.findAll({
+      let productos = await Producto.findAll({
         where: {
           [Op.or]: parametrosWhere,
           '$Tiendas.estado$': true
@@ -133,7 +133,7 @@ const service = {
   },
   async obtenerProductosPaginado(page, limit, offset) {
     try {
-      const productos = await Producto.findAndCountAll({
+      let productos = await Producto.findAndCountAll({
         limit,
         offset,
         include: [
@@ -183,7 +183,7 @@ const service = {
     try {
       const { limit, offset, pagina } = paginacion;
         //where: { '$Tienda.estado$': true },
-      const productos = await Producto.findAndCountAll({
+      let productos = await Producto.findAndCountAll({
         limit,
         offset,
         include: [
@@ -214,7 +214,7 @@ const service = {
         ],
         order: [["createdAt", "ASC"]],
       });
-/*
+
       const porductosFiltrados = productos.rows.map((p) => {
         const { Tiendas, ...producto } = p.dataValues;
         producto.IdTienda = Tiendas[0].id;
@@ -225,7 +225,7 @@ const service = {
 
       productos.rows = porductosFiltrados;
 
-      
+      /*
       productos.rows = porductosFiltrados.filter(
         (f) => f.IdTienda === parseInt(idTienda)
       );
