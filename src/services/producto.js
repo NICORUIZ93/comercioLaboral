@@ -214,7 +214,7 @@ const service = {
         ],
         order: [["createdAt", "ASC"]],
       });
-
+/*
       const porductosFiltrados = productos.rows.map((p) => {
         const { Tiendas, ...producto } = p.dataValues;
         producto.IdTienda = Tiendas[0].id;
@@ -225,7 +225,7 @@ const service = {
 
       productos.rows = porductosFiltrados;
 
-      /*
+      
       productos.rows = porductosFiltrados.filter(
         (f) => f.IdTienda === parseInt(idTienda)
       );
@@ -286,7 +286,7 @@ const service = {
         },
         order: [["createdAt", "ASC"]],
       });
-/*
+
       const porductosFiltrados = productos.rows.map((p) => {
         const { Tiendas, ...producto } = p.dataValues;
         producto.IdTienda = Tiendas[0].id;
@@ -296,7 +296,7 @@ const service = {
       });
 
       productos.rows = porductosFiltrados;
-*/
+
       return paginador.paginarDatos(productos, pagina, limit);
     } catch (error) {
       throw error;
