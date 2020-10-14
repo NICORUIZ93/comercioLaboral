@@ -186,7 +186,10 @@ const service = {
         offset,
         where: { '$Tienda.estado$': true },
         include: [
-          Tienda,
+          {
+            model: Tienda,
+            duplicating:false
+          },
           {
             model: Categoria,
             as: "Categoria",
