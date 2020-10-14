@@ -136,7 +136,7 @@ const service = {
       let productos = await Producto.findAndCountAll({
         limit,
         offset,
-        subQuery=false,
+        subQuery:false,
         include: [
           {
             model: Tienda,
@@ -187,7 +187,7 @@ const service = {
       let productos = await Producto.findAndCountAll({
         limit,
         offset,
-        subQuery=false,
+        subQuery:false,
         include: [
           {
             model: Tienda,
