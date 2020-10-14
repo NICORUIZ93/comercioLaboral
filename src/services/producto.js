@@ -137,7 +137,6 @@ const service = {
         limit,
         offset,
         subQuery:false,
-        distinct: true,
         include: [
           {
             model: Tienda,
@@ -189,7 +188,6 @@ const service = {
         limit,
         offset,
         subQuery:false,
-        distinct: true,
         include: [
           {
             model: Tienda,
