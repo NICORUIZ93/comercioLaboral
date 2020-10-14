@@ -184,7 +184,7 @@ const service = {
       const productos = await Producto.findAndCountAll({
         limit,
         offset,
-        where: { '$Tiendas.estado$': true },
+        where: { '$Tienda.estado$': true },
         include: [
           Tienda,
           {
