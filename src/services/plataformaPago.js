@@ -225,6 +225,7 @@ class Mercadopago {
       const autorizacion = await axios.post(
         "https://api.mercadopago.com/oauth/token",
         {
+          client_id: process.env.MP_CLIENT_ID_TEST,
           client_secret: process.env.MP_CLIENT_SECRET_TEST,
           grant_type: "refresh_token",
           refresh_token: refreshToken
