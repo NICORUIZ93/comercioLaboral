@@ -3,7 +3,9 @@ const Rol = require('../constants/roles');
 //Controladores
 const usuarioController = require("../controllers/usuario");
 const productoController = require("../controllers/producto");
+const productosTiendaActivaController = require("../controllers/productosTiendaActiva");
 const tiendaController = require("../controllers/tienda")
+const tiendasActivasController = require("../controllers/tiendasActivas")
 const cargarArchivosController = require("../controllers/cargarArchivos")
 const autorizacion = require("../services/autorizacion");
 const categoriaController = require("../controllers/categoria")
@@ -64,6 +66,11 @@ module.exports = app => {
   app.put("/api/tienda", validadorActualizarTienda, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ tiendaController.actualizarTienda)
   app.delete("/api/tienda/:id", validadorEliminarTienda, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ tiendaController.eliminarTienda)
 
+  //Rutas TIendas solo activas
+  app.get("/api/activa/tiendas", tiendasActivasController.obtenerTiendas)
+  app.get("/api/activa/tienda/:id", validadorObtenerPorId, tiendasActivasController.obtenerTienda)
+  app.get("/api/activa/tienda/porIdUsuario/:id", validadorObtenerPorId, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ tiendasActivasController.obtenerTiendaPorUsuario)
+
   //Rutas Productos
   app.get("/api/productos", productoController.obtenerProductos)
   app.get("/api/productos/masvendidos", productoController.obtenerProductosMasVendidos)
@@ -78,6 +85,18 @@ module.exports = app => {
   app.post("/api/producto/recursos", validadorRecursosProducto, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ productoController.cargarRecursosProducto)
   app.put("/api/producto", validadorActualizarProducto, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ productoController.actualizarProducto)
   app.delete("/api/producto/:id", validadorEliminarProducto, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ productoController.eliminarProducto)
+
+
+  //Rutas productos solo de tiendas activas
+  app.get("/api/activa/productos", productosTiendaActivaController.obtenerProductos)
+  app.get("/api/activa/productos/masvendidos", productosTiendaActivaController.obtenerProductosMasVendidos)
+  app.get("/api/activa/productos/oferta", productosTiendaActivaController.obtenerProductosOferta)
+  app.get("/api/activa/productos/paginado", validadorObtenerProductosPaginado, productosTiendaActivaController.obtenerProductosPaginado)
+  app.get("/api/activa/productos/buscar/paginado", validadorBuscarProductosPaginado, productosTiendaActivaController.buscarProductosPaginado)
+  app.get("/api/activa/productos/tienda/paginado", validadorProductosPorTiendaPaginado, productosTiendaActivaController.obtenerProductosPorTiendaPaginado)
+  app.get("/api/activa/productos/tienda/:id", validadorObtenerPorId, productosTiendaActivaController.obtenerProductosPorTienda)
+  app.get("/api/activa/productos/pedido/:id", validadorObtenerPorId, productosTiendaActivaController.obtenerProductosPorPedido)
+  app.get("/api/activa/producto/:id", validadorObtenerPorId, productosTiendaActivaController.obtenerProducto)
 
   //Rutas Categorias
   app.get("/api/categorias", categoriaController.obtenerCategorias)

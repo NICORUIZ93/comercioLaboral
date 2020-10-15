@@ -15,6 +15,7 @@ const actualizarTiendaSchema = (req, res, next) => {
     idCiudad: Joi.number().integer(),
     idDepartamento: Joi.number().integer(),
     porcentajeComision: Joi.number(),
+    verificado: Joi.boolean()
   };
 
 

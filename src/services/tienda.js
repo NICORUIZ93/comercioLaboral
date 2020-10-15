@@ -9,10 +9,10 @@ const { Op } = require("sequelize");
 const Mercadopago  = require( "./plataformaPago");
 
 const service = {
-  async obtenerTiendas() {
+  async obtenerTiendas(estadoTienda = false) {
     try {
       const tiendas = await Tienda.findAll({
-        where: { estado: true },
+        where: { estado: estadoTienda },
         include: [
           {
             model: Recurso,
@@ -35,10 +35,10 @@ const service = {
     }
   },
 
-  async obtenerTienda(idTienda) {
+  async obtenerTienda(idTienda, estadoTienda = false) {
     try {
       const tienda = await Tienda.findByPk(idTienda, {
-        where: { estado: true },
+        where: { estado: estadoTienda },
         include: [
           {
             model: UsuariosTienda,
@@ -89,10 +89,10 @@ const service = {
       throw error;
     }
   },
-  async obtenerTiendaPorUsuario(idUsuario) {
+  async obtenerTiendaPorUsuario(idUsuario, estadoTienda = false) {
     try {
       const tienda = await UsuariosTienda.findOne({
-        where: { IdUsuario: idUsuario,'$Tiendas.estado$': true },
+        where: { IdUsuario: idUsuario,'$Tiendas.estado$': estadoTienda },
         include: [Tienda],
         order: [
           ['createdAt', 'ASC']

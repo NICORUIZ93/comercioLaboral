@@ -66,7 +66,11 @@ module.exports = (sequelize, DataTypes) => {
     publicKeyMP: DataTypes.STRING,
     estado: {
       type:DataTypes.BOOLEAN,
-      defaultValue: true
+      defaultValue: false
+    },
+    verificado: {
+      type:DataTypes.BOOLEAN,
+      defaultValue: false
     }
   }, {
     sequelize,

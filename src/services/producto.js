@@ -11,10 +11,10 @@ const paginador = require("../helpers/paginacion/paginador");
 const { Op } = require("sequelize");
 
 const service = {
-  async obtenerProductos() {
+  async obtenerProductos(estadoTienda = false) {
     try {
       const productos = await Producto.findAll({
-        where: { '$Tiendas.estado$': true },
+        where: { '$Tiendas.estado$': estadoTienda },
         include: [
           Tienda,
           {
@@ -52,10 +52,10 @@ const service = {
       throw error;
     }
   },
-  async obtenerProductosPorTienda(idTienda) {
+  async obtenerProductosPorTienda(idTienda, estadoTienda = false) {
     try {
       const productos = await Producto.findAll({
-        where: { '$Tiendas.id$': idTienda, '$Tiendas.estado$': true },
+        where: { '$Tiendas.id$': idTienda, '$Tiendas.estado$': estadoTienda },
         include: [
           Tienda,
           {
@@ -93,12 +93,12 @@ const service = {
       throw error;
     }
   },
-  async obtenerProductosPorParametros(parametrosWhere) {
+  async obtenerProductosPorParametros(parametrosWhere, estadoTienda = false) {
     try {
       let productos = await Producto.findAll({
         where: {
           [Op.or]: parametrosWhere,
-          '$Tiendas.estado$': true
+          '$Tiendas.estado$': estadoTienda
         },
         include: [
           Tienda,
@@ -131,7 +131,7 @@ const service = {
       throw error;
     }
   },
-  async obtenerProductosPaginado(page, limit, offset) {
+  async obtenerProductosPaginado(page, limit, offset, estadoTienda = false) {
     try {
       let productos = await Producto.findAndCountAll({
         limit,
@@ -140,7 +140,7 @@ const service = {
         include: [
           {
             model: Tienda,
-            where: { estado:true }
+            where: { estado: estadoTienda }
           },
           {
             model: Categoria,
@@ -180,7 +180,7 @@ const service = {
       throw error;
     }
   },
-  async obtenerProductosPorTiendaPaginado(idTienda, paginacion) {
+  async obtenerProductosPorTiendaPaginado(idTienda, paginacion, estadoTienda = false) {
     try {
       const { limit, offset, pagina } = paginacion;
         //where: { '$Tienda.estado$': true },
@@ -191,7 +191,7 @@ const service = {
         include: [
           {
             model: Tienda,
-            where: { id:idTienda, estado:true }
+            where: { id:idTienda, estado:estadoTienda }
           },
           {
             model: Categoria,
@@ -239,7 +239,7 @@ const service = {
       throw error;
     }
   },
-  async buscarProductosPaginado(busqueda, paginacion) {
+  async buscarProductosPaginado(busqueda, paginacion, estadoTienda = false) {
     try {
       const { limit, offset, pagina } = paginacion;
 
@@ -249,7 +249,7 @@ const service = {
         include: [
           {
             model: Tienda,
-            where: { estado:true }
+            where: { estado: estadoTienda }
           },
           {
             model: Categoria,
@@ -304,10 +304,10 @@ const service = {
       throw error;
     }
   },
-  async obtenerProducto(idProducto) {
+  async obtenerProducto(idProducto, estadoTienda = false) {
     try {
       const producto = await Producto.findByPk(idProducto, {
-        where: { '$Tiendas.estado$': true },
+        where: { '$Tiendas.estado$': estadoTienda },
         include: [
           Tienda,
           {
