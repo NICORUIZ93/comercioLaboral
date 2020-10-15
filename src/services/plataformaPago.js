@@ -220,6 +220,43 @@ class Mercadopago {
     }
   }
 
+  static async refescarTokenVendedor(refreshToken) {
+    try {
+      const autorizacion = await axios.post(
+        "https://api.mercadopago.com/oauth/token",
+        {
+          client_secret: process.env.MP_CLIENT_SECRET_TEST,
+          grant_type: "refresh_token",
+          refresh_token: refreshToken
+        }
+      );
+
+      return autorizacion.data;
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
+  }
+
+  
+  static async obtenerSaldo(userId, accessToken) {
+    try {
+      const saldo = await axios.get(
+        `https://api.mercadopago.com/users/${userId}/mercadopago_account/balance`,
+        {
+          headers: {
+            'Authorization': `Bearer ${accessToken}`
+          }
+        }
+      );
+
+      return saldo.data;
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
+  }
+
   async guardarPedidoSinConfirmar(usuario, productos, idTienda, uuid, valorComision) {
     try {
       const pedido = {

@@ -71,7 +71,9 @@ module.exports = (sequelize, DataTypes) => {
     verificado: {
       type:DataTypes.BOOLEAN,
       defaultValue: false
-    }
+    },
+    userIdMP: DataTypes.BIGINT,
+    refreshTokenMP: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Tienda',

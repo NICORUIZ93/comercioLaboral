@@ -96,6 +96,19 @@ module.exports = {
       return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
+  async obtenerSaldoMP(req, res) {
+    try {
+
+      const idTienda = req.params.id;
+      const tienda = await tiendaService.obtenerSaldo(idTienda);
+
+      return res.status(200).json(tienda);
+
+    } catch (e) {
+      console.log(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
+    }
+  },
 };
 
 

@@ -205,12 +205,14 @@ const service = {
   async activarTienda(idTienda, codigoMp) {
     try {
       const tienda = (await Tienda.findByPk(idTienda)).dataValues;
-      const data = await obtenerTokenVendedor(codigoMp);
+      const data = await Mercadopago.obtenerTokenVendedor(codigoMp);
 
       tienda.codigoMP = codigoMp;
       tienda.tokenMP = data.access_token;
       tienda.estado = true;
       tienda.publicKeyMP = data.public_key;
+      tienda.userIdMP = data.user_id;
+      tienda.refreshTokenMP = data.refresh_token;
       
       const resultadoUpdate = await Tienda.update(tienda, {
         where: {
@@ -219,6 +221,41 @@ const service = {
       });
 
       return resultadoUpdate;
+
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
+  },
+  async refrescarAutorizacionMP(idTienda) {
+    try {
+      const tienda = (await Tienda.findByPk(idTienda)).dataValues;
+      const data = await Mercadopago.refescarTokenVendedor(tienda.refreshTokenMP);
+
+      tienda.tokenMP = data.access_token;
+      tienda.publicKeyMP = data.public_key;
+      tienda.userIdMP = data.user_id;
+      tienda.refreshTokenMP = data.refresh_token;
+      
+      const resultadoUpdate = await Tienda.update(tienda, {
+        where: {
+          id: tienda.id,
+        },
+      });
+
+      return resultadoUpdate;
+
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
+  },
+  async obtenerSaldo(idTienda) {
+    try {
+      const tienda = (await Tienda.findByPk(idTienda)).dataValues;
+      const data = await Mercadopago.obtenerSaldo(tienda.userIdMP, tienda.tokenMP);
+
+      return data;
 
     } catch (error) {
       console.log(`${error}`);
@@ -288,24 +325,6 @@ const obtenerPromedioCalificaciones = async (calificaciones) => {
   }
 };
 
- const obtenerTokenVendedor = async (codigoMP) => {
-  try {
-    const autorizacion = await axios.post(
-      "https://api.mercadopago.com/oauth/token",
-      {
-        client_id: process.env.MP_CLIENT_ID_TEST,
-        client_secret: process.env.MP_CLIENT_SECRET_TEST,
-        grant_type: "authorization_code",
-        code: codigoMP,
-        redirect_uri: process.env.MP_REDIRECT_URI_TEST,
-      }
-    );
 
-    return autorizacion.data;
-  } catch (error) {
-    console.log(`${error}`);
-    throw error;
-  }
-}
 
 module.exports.tiendaService = service;
