@@ -109,6 +109,19 @@ module.exports = {
       return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
+  async actualizarAutorizacion(req, res) {
+    try {
+
+      const idTienda = req.params.id;
+      const resultado = await tiendaService.refrescarAutorizacionMP(idTienda);
+
+      return res.status(200).json(resultado);
+
+    } catch (e) {
+      console.log(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
+    }
+  },
 };
 
 

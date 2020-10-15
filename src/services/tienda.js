@@ -255,7 +255,10 @@ const service = {
       const tienda = (await Tienda.findByPk(idTienda)).dataValues;
       const data = await Mercadopago.obtenerSaldo(tienda.userIdMP, tienda.tokenMP);
 
-      return data;
+      return { 
+        montoTotal: data.total_amount, 
+        montoAutorizadoParaRetirar: data.available_balance 
+      };
 
     } catch (error) {
       console.log(`${error}`);

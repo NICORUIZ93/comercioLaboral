@@ -66,6 +66,7 @@ module.exports = app => {
   app.put("/api/tienda", validadorActualizarTienda, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ tiendaController.actualizarTienda)
   app.delete("/api/tienda/:id", validadorEliminarTienda, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ tiendaController.eliminarTienda)
   app.get("/api/tienda/saldoMP/:id", validadorObtenerPorId, tiendaController.obtenerSaldoMP)
+  app.get("/api/tienda/refescarAutorizacion/:id", validadorObtenerPorId, tiendaController.actualizarAutorizacion)
 
   //Rutas TIendas solo activas
   app.get("/api/activa/tiendas", tiendasActivasController.obtenerTiendas)
