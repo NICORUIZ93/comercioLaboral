@@ -54,7 +54,12 @@ module.exports = (sequelize, DataTypes) => {
     estado: {
       type:DataTypes.BOOLEAN,
       defaultValue: true
-    }
+    },
+    feria: {
+      type:DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    valorFeria: DataTypes.DECIMAL
   }, {
     sequelize,
     modelName: 'Producto',

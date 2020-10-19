@@ -15,9 +15,6 @@ module.exports = {
       roles = [roles];
     }
 
-    console.log("env variable" + process.env.JWT_SECRET);
-    console.log("env variable secret" + _jwtSecret);
-
     return [
       jwtExpress({ secret: _jwtSecret, algorithms: ["HS256"] }),
 
@@ -67,9 +64,6 @@ module.exports = {
         });
       }
 
-      console.log("token:", token);
-
-      
       return res
         .status(200)
         .json({ token: token, expiresIn: jwtExpirySeconds, usuario: usuarioSinContrasena });

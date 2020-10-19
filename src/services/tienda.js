@@ -11,8 +11,15 @@ const Mercadopago  = require( "./plataformaPago");
 const service = {
   async obtenerTiendas(estadoTienda = false) {
     try {
+            
+      const whereCondition = estadoTienda ? {
+        estado: estadoTienda
+      } :
+      {};
+
+
       const tiendas = await Tienda.findAll({
-        where: { estado: estadoTienda },
+        where: whereCondition,
         include: [
           {
             model: Recurso,
@@ -37,8 +44,13 @@ const service = {
 
   async obtenerTienda(idTienda, estadoTienda = false) {
     try {
+      const whereCondition = estadoTienda ? {
+        estado: estadoTienda
+      } :
+      {};
+
       const tienda = await Tienda.findByPk(idTienda, {
-        where: { estado: estadoTienda },
+        where: whereCondition,
         include: [
           {
             model: UsuariosTienda,
@@ -91,8 +103,13 @@ const service = {
   },
   async obtenerTiendaPorUsuario(idUsuario, estadoTienda = false) {
     try {
+      const whereCondition = estadoTienda ? {
+        IdUsuario: idUsuario,'$Tiendas.estado$': estadoTienda
+      } :
+      {IdUsuario: idUsuario};
+
       const tienda = await UsuariosTienda.findOne({
-        where: { IdUsuario: idUsuario,'$Tiendas.estado$': estadoTienda },
+        where: whereCondition,
         include: [Tienda],
         order: [
           ['createdAt', 'ASC']

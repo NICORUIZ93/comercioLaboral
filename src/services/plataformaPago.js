@@ -133,10 +133,7 @@ class Mercadopago {
         const cantidadProductos = parseInt(
           datos.productos.find((p) => p.id === producto.id).cantidad
         );
-        const valorProduto = producto.oferta
-          ? producto.valorOferta
-          : producto.valor;
-        const valorProdutos = valorProduto * cantidadProductos;
+        const valorProduto = obtenerValorProducto(producto);
 
         return {
           id: producto.id,
@@ -228,7 +225,7 @@ class Mercadopago {
           client_id: process.env.MP_CLIENT_ID_TEST,
           client_secret: process.env.MP_CLIENT_SECRET_TEST,
           grant_type: "refresh_token",
-          refresh_token: refreshToken
+          refresh_token: refreshToken,
         }
       );
 
@@ -239,15 +236,14 @@ class Mercadopago {
     }
   }
 
-  
   static async obtenerSaldo(userId, accessToken) {
     try {
       const saldo = await axios.get(
         `https://api.mercadopago.com/users/${userId}/mercadopago_account/balance`,
         {
           headers: {
-            'Authorization': `Bearer ${accessToken}`
-          }
+            Authorization: `Bearer ${accessToken}`,
+          },
         }
       );
 
@@ -258,7 +254,13 @@ class Mercadopago {
     }
   }
 
-  async guardarPedidoSinConfirmar(usuario, productos, idTienda, uuid, valorComision) {
+  async guardarPedidoSinConfirmar(
+    usuario,
+    productos,
+    idTienda,
+    uuid,
+    valorComision
+  ) {
     try {
       const pedido = {
         usuario,
@@ -267,7 +269,7 @@ class Mercadopago {
         uuid,
         estado: "pending",
         estadoEnvio: _EstadosEnvio._Preparando,
-        valorComision
+        valorComision,
       };
 
       await pedidoService.crearPedidoMercadoPago(pedido);
@@ -292,6 +294,15 @@ const calcularValorComision = async (productos, comision) => {
   const porcentajeComision = comision / 100;
   const valorComision = porcentajeComision * valorTotalProductos;
   return parseFloat(valorComision);
+};
+
+const obtenerValorProducto = async (producto) => {
+  const valorProducto = producto.feria
+    ? producto.valorFeria
+    : producto.oferta
+    ? producto.valorOferta
+    : producto.valor;
+  return parseFloat(valorProducto);
 };
 
 const procesarCambioEnPedido = async (pedido, cambiosEnPedido) => {
@@ -330,7 +341,10 @@ const actualizarStockTienda = async (pedido) => {
           { IdTienda: pedido.IdTienda, IdProducto: producto.IdProducto }
         );
 
-        await productoService.actualizarProductoPorId({ cantidad: stock }, producto.IdProducto);
+        await productoService.actualizarProductoPorId(
+          { cantidad: stock },
+          producto.IdProducto
+        );
       }
     }
   } catch (error) {
@@ -342,8 +356,11 @@ const actualizarStockTienda = async (pedido) => {
 const iniciarProcesoDeEnvio = async (pedido) => {
   try {
     console.log(`iniciarProcesoDeEnvio`);
-   await envioService.crearEnvio({idPedido: pedido.id, idTienda: pedido.IdTienda, estado: _EstadosEnvio.Preparando });
-
+    await envioService.crearEnvio({
+      idPedido: pedido.id,
+      idTienda: pedido.IdTienda,
+      estado: _EstadosEnvio.Preparando,
+    });
   } catch (error) {
     console.log(`${error}`);
     throw error;
