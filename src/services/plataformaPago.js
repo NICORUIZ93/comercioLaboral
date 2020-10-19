@@ -133,7 +133,7 @@ class Mercadopago {
         const cantidadProductos = parseInt(
           datos.productos.find((p) => p.id === producto.id).cantidad
         );
-        const valorProduto = await obtenerValorProducto(producto);
+        const valorProduto = obtenerValorProducto(producto);
 
         return {
           id: producto.id,
@@ -296,7 +296,7 @@ const calcularValorComision = async (productos, comision) => {
   return parseFloat(valorComision);
 };
 
-const obtenerValorProducto = async (producto) => {
+const obtenerValorProducto = (producto) => {
   const valorProducto = producto.feria
     ? producto.valorFeria
     : producto.oferta
