@@ -145,8 +145,8 @@ class Mercadopago {
           category_id: `${producto.IdCategoria}`,
           quantity: cantidadProductos,
           currency_id: "COP",
-          unit_price: parseFloat(valorProduto),
-          valorTotal: parseFloat(valorProduto),
+          unit_price: valorProduto,
+          valorTotal: valorProduto,
         };
       });
 
@@ -304,7 +304,7 @@ const obtenerValorProducto = async (producto) => {
     : producto.valor;
     console.log('es feria?' + producto.feria);
     console.log('valor feria: '+ producto.valorFeria);
-    console.log('valorProducto'+ parseFloat(valorProducto));
+    console.log('valorProducto' + parseFloat(valorProducto));
   return parseFloat(valorProducto);
 };
 
