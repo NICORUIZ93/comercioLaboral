@@ -133,7 +133,7 @@ class Mercadopago {
         const cantidadProductos = parseInt(
           datos.productos.find((p) => p.id === producto.id).cantidad
         );
-        const valorProduto = obtenerValorProducto(producto);
+        const valorProduto = await obtenerValorProducto(producto);
 
         return {
           id: producto.id,
