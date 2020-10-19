@@ -302,6 +302,9 @@ const obtenerValorProducto = async (producto) => {
     : producto.oferta
     ? producto.valorOferta
     : producto.valor;
+    console.log('es feria?' + producto.feria);
+    console.log('valor feria: '+ producto.valorFeria);
+    console.log('valorProducto'+ parseFloat(valorProducto));
   return parseFloat(valorProducto);
 };
 
