@@ -146,7 +146,7 @@ class Mercadopago {
           quantity: cantidadProductos,
           currency_id: "COP",
           unit_price: parseFloat(valorProduto),
-          valorTotal: parseFloat(valorProdutos),
+          valorTotal: parseFloat(valorProduto),
         };
       });
 
