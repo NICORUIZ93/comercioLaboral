@@ -91,4 +91,4 @@ const service = {
   },
 };
 
-module.exports.FeriaService = service;
+module.exports.feriaService = service;
