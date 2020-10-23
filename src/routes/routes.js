@@ -16,6 +16,8 @@ const pedidoController = require("../controllers/pedidos")
 const calificacionTiendaController = require("../controllers/calificacionTienda")
 const estadisticasController = require("../controllers/estadisticas")
 const enviosController = require("../controllers/envios")
+const feriaController = require("../controllers/feria")
+const notificacionController = require("../controllers/notificacion")
 
 //Validadores
 const { validadorObtenerPorId, obtenerPorUuidSchema } = require("../helpers/validadores_request/genericos");
@@ -28,6 +30,8 @@ const { validadorobtenerUrlArchivo } = require("../helpers/validadores_request/a
 const { validadorObtenerPreferencia } = require("../helpers/validadores_request/mercadopago");
 const { validadorCrearCalificacion, validadorEliminarCalificacion, validadorObtenerCalificacionTienda } = require("../helpers/validadores_request/calificacionTienda");
 const { validadorCrearEnvio, validadorActualizarPedidoEnviado } = require("../helpers/validadores_request/envios");
+const { validadorActualizarFeria, validadorAsociarTiendasAFeria, validadorCargarFeria, validadorCrearFeria, validadorObtenerFeria } = require("../helpers/validadores_request/feria");
+const { validadorCrearNotificacion } = require("../helpers/validadores_request/notificacion");
 
 
 
@@ -146,4 +150,19 @@ module.exports = app => {
   app.get("/api/envio/:id",/*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ enviosController.obtenerEnvio)
   app.post("/api/envio/estado", validadorCrearEnvio, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ enviosController.actualizarEstadoEnvio)
   app.post("/api/envio/estado/enviado", validadorActualizarPedidoEnviado, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ enviosController.actualizarEstadoAEnviado)
+
+  //Rutas Feria
+  app.put("/api/feria", validadorActualizarFeria, feriaController.actualizarFeria)
+  app.post("/api/feria/asociarTiendas", validadorAsociarTiendasAFeria, feriaController.asociarTiendasAFeria)
+  app.post("/api/feria/cargarProductos", validadorCargarFeria, feriaController.cargarProductosAFeria)
+  app.post("/api/feria", validadorCrearFeria, feriaController.crearFeria)
+  app.get("/api/feria/:id", validadorObtenerPorId, feriaController.obtenerFeria)
+  app.get("/api/ferias", feriaController.obtenerFerias)
+  app.get("/api/feriax/activa", feriaController.obtenerFeriaActiva)
+  app.get("/api/feriax/test", feriaController.enviar)
+
+  //Rutas Notificaciones
+  app.post("/api/notificacion/confirmar/:id", obtenerPorUuidSchema, notificacionController.confirmarNotificacion)
+  app.post("/api/notificacion", validadorCrearNotificacion, notificacionController.crearNotificacion)
+
 }

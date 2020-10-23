@@ -432,12 +432,23 @@ const service = {
       throw error;
     }
   },
-  async actualizarProducto(producto) {
+  async actualizarProducto(producto, id) {
     try {
       const resultadoUpdate = await Producto.update(producto, {
         where: {
-          id: producto.id,
+          id: id,
         },
+      });
+
+      return resultadoUpdate;
+    } catch (error) {
+      return `Error ${error}`;
+    }
+  },
+  async actualizarProductoPorParametros(producto, parametros) {
+    try {
+      const resultadoUpdate = await Producto.update(producto, {
+        where: parametros,
       });
 
       return resultadoUpdate;
