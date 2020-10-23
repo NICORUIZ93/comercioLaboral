@@ -277,7 +277,7 @@ const notifcar = async (tema) => {
     if (notificacion) {
       if (notificacion.recibida) return;
     } else {
-      await notificacionService.enviarNotificacion(tema, {});
+      await notificacionService.enviarNotificacion(tema, {}, "moviles");
     }
   } catch (error) {
     throw error;
