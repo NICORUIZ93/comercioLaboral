@@ -6,10 +6,10 @@ const { Op } = require("sequelize");
 const service = {
   configurar() {
     try {
-      var serviceAccount = require("../files/pushapiv1-firebase-adminsdk-iqg5e-e408b97e71.json");
+      var serviceAccount = require(process.env.GOOGLE_APPLICATION_CREDENTIALS);
       admin.initializeApp({
         credential: admin.credential.cert(serviceAccount),
-        databaseURL: "https://pushapiv1.firebaseio.com",
+        databaseURL: "https://lamejorferia-32065.firebaseio.com",
       });
     } catch (error) {
       console.log(`${error}`);
