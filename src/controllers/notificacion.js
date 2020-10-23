@@ -1,4 +1,4 @@
-const { notificacionService } = require( "../services/notificaciones");
+const notificacionService = require( "../services/notificaciones");
 
 module.exports = {
 
@@ -29,7 +29,7 @@ module.exports = {
     try {
 
       const { tema, data, topic} = req.body;
-      const nuevaNotificacion = await notificacionService.enviarNotificacion(tema, data, topic);
+      const nuevaNotificacion = await new notificacionService().enviarNotificacion(tema, data, topic);
 
       return res.status(200).json(nuevaNotificacion);
 

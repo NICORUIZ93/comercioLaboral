@@ -3,8 +3,10 @@ const Notificacion = require("../db/models").Notificacion;
 const { v4: uuidv4 } = require("uuid");
 const { Op } = require("sequelize");
 
-const service = {
-  configurar() {
+
+class NotificacionService {
+
+  constructor() {
     try {
       var serviceAccount = require(process.env.GOOGLE_APPLICATION_CREDENTIALS);
       admin.initializeApp({
@@ -15,8 +17,9 @@ const service = {
       console.log(`${error}`);
       throw error;
     }
-  },
-  async obtenerNotificaciones() {
+  }
+
+  static async obtenerNotificaciones(id) {
     try {
       const notificaciones = await Notificacion.findAll();
 
@@ -25,8 +28,9 @@ const service = {
       console.log(`${error}`);
       throw error;
     }
-  },
-  async obtenerNotificacionPorParametros(parametrosWhere) {
+  }
+
+  static async obtenerNotificacionPorParametros(parametrosWhere) {
     try {
       const notificacion = await Notificacion.findOne({
         where: {
@@ -39,11 +43,11 @@ const service = {
       console.log(`${error}`);
       throw error;
     }
-  },
+  }
+
   async enviarNotificacion(tema, data, topic="todos") {
     try {
-      this.configurar();
-
+  
       const uuidNotificacion = uuidv4();
 
       await Notificacion.create({
@@ -69,8 +73,9 @@ const service = {
       console.log(`${error}`);
       throw error;
     }
-  },
-  async confirmarNotificacion(uuid) {
+  }
+
+  static async confirmarNotificacion(uuid) {
     try {
 
       const resultadoUpdate = await Notificacion.update({ recibida: true }, {
@@ -85,7 +90,9 @@ const service = {
       console.log(`${error}`);
       throw error;
     }
-  },
-};
+  }
 
-module.exports.notificacionService = service;
+}
+
+
+module.exports = NotificacionService;

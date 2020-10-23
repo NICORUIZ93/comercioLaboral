@@ -3,7 +3,7 @@ const Tienda = require("../db/models").Tienda;
 const Recurso = require("../db/models").Recurso;
 const TiendaFeria = require("../db/models").TiendaFeria;
 const { productoService } = require("./producto");
-const { notificacionService } = require("./notificaciones");
+const notificacionService = require("./notificaciones");
 const _temasNotificacion = require("../constants/temasNotificacion");
 var sequelize = require("../db/models").sequelize;
 const { Op } = require("sequelize");
@@ -277,7 +277,7 @@ const notifcar = async (tema) => {
     if (notificacion) {
       if (notificacion.recibida) return;
     } else {
-      await notificacionService.enviarNotificacion(tema, {}, "moviles");
+      await new notificacionService().enviarNotificacion(tema, {}, "moviles");
     }
   } catch (error) {
     throw error;
