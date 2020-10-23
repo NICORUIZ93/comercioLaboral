@@ -3,16 +3,17 @@ const Notificacion = require("../db/models").Notificacion;
 const { v4: uuidv4 } = require("uuid");
 const { Op } = require("sequelize");
 
-
 class NotificacionService {
-
   constructor() {
     try {
-      var serviceAccount = require(process.env.GOOGLE_APPLICATION_CREDENTIALS);
-      admin.initializeApp({
-        credential: admin.credential.cert(serviceAccount),
-        databaseURL: "https://lamejorferia-32065.firebaseio.com",
-      });
+      if (admin.apps.length === 0) {
+        var serviceAccount = require(process.env
+          .GOOGLE_APPLICATION_CREDENTIALS);
+        admin.initializeApp({
+          credential: admin.credential.cert(serviceAccount),
+          databaseURL: "https://lamejorferia-32065.firebaseio.com",
+        });
+      }
     } catch (error) {
       console.log(`${error}`);
       throw error;
@@ -35,7 +36,7 @@ class NotificacionService {
       const notificacion = await Notificacion.findOne({
         where: {
           [Op.or]: parametrosWhere,
-        }
+        },
       });
 
       return notificacion;
@@ -45,30 +46,28 @@ class NotificacionService {
     }
   }
 
-  async enviarNotificacion(tema, data, topic="todos") {
+  async enviarNotificacion(tema, data, topic = "todos") {
     try {
-  
       const uuidNotificacion = uuidv4();
 
       await Notificacion.create({
         tema: tema,
         guid: uuidNotificacion,
-        recibida: false
+        recibida: false,
       });
 
-      const datosSerialized = JSON.stringify({data});
+      const datosSerialized = JSON.stringify({ data });
 
       var message = {
         data: {
           uuid: uuidNotificacion,
-          datos: datosSerialized
+          datos: datosSerialized,
         },
-        topic: topic
+        topic: topic,
       };
-      
+
       const response = await admin.messaging().send(message);
       console.log("repuesta del mensaje: " + response);
-
     } catch (error) {
       console.log(`${error}`);
       throw error;
@@ -77,22 +76,21 @@ class NotificacionService {
 
   static async confirmarNotificacion(uuid) {
     try {
-
-      const resultadoUpdate = await Notificacion.update({ recibida: true }, {
-        where: {
-          uuid: uuid,
-        },
-      });
+      const resultadoUpdate = await Notificacion.update(
+        { recibida: true },
+        {
+          where: {
+            uuid: uuid,
+          },
+        }
+      );
 
       return resultadoUpdate;
-
     } catch (error) {
       console.log(`${error}`);
       throw error;
     }
   }
-
 }
-
 
 module.exports = NotificacionService;
