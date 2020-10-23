@@ -158,7 +158,7 @@ module.exports = app => {
   app.post("/api/feria", validadorCrearFeria, feriaController.crearFeria)
   app.get("/api/feria/:id", validadorObtenerPorId, feriaController.obtenerFeria)
   app.get("/api/ferias", feriaController.obtenerFerias)
-  app.get("/api/feriax/activa", feriaController.obtenerFeriaActiva)
+  app.get("/api/feriaActiva", feriaController.obtenerFeriaActiva)
   app.get("/api/feriax/test", feriaController.enviar)
 
   //Rutas Notificaciones
