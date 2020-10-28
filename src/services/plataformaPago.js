@@ -337,8 +337,12 @@ const actualizarStockTienda = async (pedido) => {
     );
 
     for (const producto of productos) {
+      console.log('recorriendo productos' + producto.IdProducto);
+      console.log('producto stock anterior ' + producto.stock);
       if (producto.stock > 0) {
+        console.log('producto stock anterior mayor a 0 ' + producto.stock);
         const stock = producto.stock - 1;
+        console.log('producto stock nuevo  ' + stock);
         await tiendaProductoService.actualizarTiendaProducto(
           { stock },
           { IdTienda: pedido.IdTienda, IdProducto: producto.IdProducto }
