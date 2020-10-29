@@ -339,9 +339,10 @@ const actualizarStockTienda = async (pedido) => {
     for (const producto of productos) {
       console.log('recorriendo productos' + producto.IdProducto);
       console.log('producto stock anterior ' + producto.stock);
-      if (producto.stock > 0) {
+      if (producto.stock <= 0) throw Error(`No existe suficiente stock del producto solicitado, solo hay ${producto.stock} unidades disponibles.`);
         const cantidadComprada = pedido.Detalle.find(p => p.IdProducto === producto.IdProducto).cantidad;
         console.log('producto stock anterior mayor a 0 ' + producto.stock);
+        if(producto.stock < cantidadComprada) throw Error(`No existe suficiente stock del producto solicitado, solo hay ${producto.stock} unidades disponibles.`);
         const stock = producto.stock - cantidadComprada;
         console.log('producto stock nuevo  ' + stock);
         await tiendaProductoService.actualizarTiendaProducto(
@@ -353,7 +354,7 @@ const actualizarStockTienda = async (pedido) => {
           { cantidad: stock },
           producto.IdProducto
         );
-      }
+      
     }
   } catch (error) {
     console.log(`${error}`);
