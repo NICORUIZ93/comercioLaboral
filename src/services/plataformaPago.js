@@ -340,8 +340,9 @@ const actualizarStockTienda = async (pedido) => {
       console.log('recorriendo productos' + producto.IdProducto);
       console.log('producto stock anterior ' + producto.stock);
       if (producto.stock > 0) {
+        const cantidadComprada = pedido.Detalle.find(p => p.IdProducto === producto.IdProducto).cantidad;
         console.log('producto stock anterior mayor a 0 ' + producto.stock);
-        const stock = producto.stock - 1;
+        const stock = producto.stock - cantidadComprada;
         console.log('producto stock nuevo  ' + stock);
         await tiendaProductoService.actualizarTiendaProducto(
           { stock },

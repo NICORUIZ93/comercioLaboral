@@ -62,7 +62,7 @@ const service = {
             transaction
           });
         
-        const valorTotal = productos.reduce((a, b) => a + b.valorTotal, 0);
+        const valorTotal = productos.reduce((a, b) => a + (b.valorTotal * b.quantity), 0);
         
         const pedido = {
           IdTienda: idTienda,
