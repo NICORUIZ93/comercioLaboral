@@ -22,7 +22,8 @@ module.exports = (sequelize, DataTypes) => {
     estado: {
       type:DataTypes.BOOLEAN,
       defaultValue: true
-    }
+    },
+    imagen: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Categoria',

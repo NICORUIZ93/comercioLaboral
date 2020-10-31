@@ -10,6 +10,7 @@ module.exports = {
           estado: true,
           createdAt: new Date(),
           updatedAt: new Date(),
+          imagen: "https://firebasestorage.googleapis.com/v0/b/lamejorferia-32065.appspot.com/o/img%2Fcasa.png?alt=media&token=493e6267-c8d4-49ab-bebb-e81dabd3eebf"
         },
         {
           id:2,
@@ -31,6 +32,7 @@ module.exports = {
           estado: true,
           createdAt: new Date(),
           updatedAt: new Date(),
+          imagen: "https://firebasestorage.googleapis.com/v0/b/lamejorferia-32065.appspot.com/o/img%2Ftren-de-juguete.png?alt=media&token=efa628eb-28d4-4da4-8d12-94206834ba27"
         },
         {
           id:5,
@@ -38,6 +40,7 @@ module.exports = {
           estado: true,
           createdAt: new Date(),
           updatedAt: new Date(),
+          imagen: "https://firebasestorage.googleapis.com/v0/b/lamejorferia-32065.appspot.com/o/img%2Fmoda.png?alt=media&token=34f5ab66-367d-4891-9dbb-ec5e1ac279bd"
         },
         {
           id:6,
@@ -85,6 +88,7 @@ module.exports = {
           estado: true,
           createdAt: new Date(),
           updatedAt: new Date(),
+          imagen: "https://firebasestorage.googleapis.com/v0/b/lamejorferia-32065.appspot.com/o/img%2Flicor.png?alt=media&token=1e901ec7-8153-48a3-8915-b12de9038142"
         },
         {
           id:12,
@@ -92,6 +96,7 @@ module.exports = {
           estado: true,
           createdAt: new Date(),
           updatedAt: new Date(),
+          imagen: "https://firebasestorage.googleapis.com/v0/b/lamejorferia-32065.appspot.com/o/img%2Fordenador-portatil.png?alt=media&token=e4427e59-8898-4e94-b1a4-feaad9f4c12c"
         },
         {
           id:13,
@@ -123,6 +128,7 @@ module.exports = {
           estado: true,
           createdAt: new Date(),
           updatedAt: new Date(),
+          imagen: "https://firebasestorage.googleapis.com/v0/b/lamejorferia-32065.appspot.com/o/img%2Fdiamante.png?alt=media&token=63635ef1-4516-4643-bd42-14bae852b4b8"
         },
         {
           id:17,
@@ -130,6 +136,7 @@ module.exports = {
           estado: true,
           createdAt: new Date(),
           updatedAt: new Date(),
+          imagen: "https://firebasestorage.googleapis.com/v0/b/lamejorferia-32065.appspot.com/o/img%2Ffutbol.png?alt=media&token=374a9d08-e320-46c9-84f1-ab5d7b263724"
         },
         {
           id:18,
@@ -138,6 +145,7 @@ module.exports = {
           estado: true,
           createdAt: new Date(),
           updatedAt: new Date(),
+          imagen: "https://firebasestorage.googleapis.com/v0/b/lamejorferia-32065.appspot.com/o/img%2Felectrodomesticos.png?alt=media&token=f1f60bc4-02e2-47aa-b2eb-99eeba4b06bb"
         },
         {
           id:19,
@@ -145,6 +153,7 @@ module.exports = {
           estado: true,
           createdAt: new Date(),
           updatedAt: new Date(),
+          url: "https://firebasestorage.googleapis.com/v0/b/lamejorferia-32065.appspot.com/o/img%2Ftrato-de-perro.png?alt=media&token=64c7ccd6-e5ed-48a1-8d3c-f9a40e343e64"
         },
         {
           id:20,
