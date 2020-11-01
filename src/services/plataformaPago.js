@@ -173,9 +173,8 @@ class Mercadopago {
 
       if (!datos.esMovil) {
         preference.back_urls = {
-          success: "https://localhost:3000/success",
-          pending: "https://localhost:3000.com/pending",
-          failure: "https://localhost:3000.com/error",
+          success: "https://lamejorferia-32065.web.app/aprobado",
+          failure: "https://lamejorferia-32065.web.app/rejected",
         };
         preference.auto_return = "approved";
       }
