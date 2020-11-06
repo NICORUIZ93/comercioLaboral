@@ -10,7 +10,6 @@ const _EstadosEnvio = require("../constants/estadosEnvio");
 class Mercadopago {
   constructor(token) {
     mercadopago.configure({
-      //sandbox: true,
       access_token: token,
     });
   }
@@ -152,7 +151,6 @@ class Mercadopago {
 
       const payer = {
         name: comprador.nombre,
-
         surname: comprador.apellido,
         email: comprador.correo,
         date_created: comprador.fechaCreacion,
