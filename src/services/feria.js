@@ -128,6 +128,8 @@ const service = {
         })
       ).get({ plain: true });
 
+      if(!feria) throw Exception('No existen ferias activas');
+      
       const tiendaFeria = await TiendaFeria.findAll({
         where: {
           idFeria: feria.id,

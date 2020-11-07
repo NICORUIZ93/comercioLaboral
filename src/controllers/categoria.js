@@ -11,6 +11,15 @@ module.exports = {
       return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
+  async obtenerCategoriasActivas(req, res) {
+    try {
+      const categorias = await categoriaService.obtenerCategoriasActivas();
+      return res.status(200).json(categorias);
+    } catch (e) {
+      console.log(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
+    }
+  },
   async obtenerCategoria(req, res) {
     try {
       const idCategoria  = req.params.id;

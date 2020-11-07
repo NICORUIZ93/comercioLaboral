@@ -106,6 +106,7 @@ module.exports = app => {
 
   //Rutas Categorias
   app.get("/api/categorias", categoriaController.obtenerCategorias)
+  app.get("/api/categorias/activas", categoriaController.obtenerCategoriasActivas)
   app.get("/api/categoria/:id", validadorObtenerPorId, categoriaController.obtenerCategoria)
   app.post("/api/categoria", validadorCrearCategoria, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ categoriaController.crearCategoria)
   app.put("/api/categoria", validadorActualizarCategoria, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ categoriaController.actualizarCategoria)

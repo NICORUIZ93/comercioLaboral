@@ -15,7 +15,19 @@ const service = {
       throw error;
     }
   },
-  
+  async obtenerCategoriasActivas() {
+    try {
+      const categorias = await Categoria.findAll({
+        where: { IdPadre: { [Op.is]: null }, estado: true },
+        include: [{ model: Categoria, as: "SubCategorias" }],
+      });
+      return categorias;
+
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
+  },
   async obtenerCategoria(idCategoria) {
     try {
 
