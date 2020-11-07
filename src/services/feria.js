@@ -120,16 +120,15 @@ const service = {
   },
   async obtenerFeriaActiva() {
     try {
-      let feria = (
+      let feria = 
         await Feria.findOne({
           where: {
             activa: true,
           },
-        })
-      ).get({ plain: true });
+        });
 
       if(!feria) throw Exception('No existen ferias activas');
-      
+
       const tiendaFeria = await TiendaFeria.findAll({
         where: {
           idFeria: feria.id,
