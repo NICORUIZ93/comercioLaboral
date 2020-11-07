@@ -127,7 +127,7 @@ const service = {
           },
         });
 
-      if(!feria) throw Exception('No existen ferias activas');
+      if(!feria) throw Error('No existen ferias activas');
 
       const tiendaFeria = await TiendaFeria.findAll({
         where: {
