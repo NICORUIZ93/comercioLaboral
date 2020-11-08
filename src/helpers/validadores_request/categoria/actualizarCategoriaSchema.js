@@ -5,6 +5,7 @@ const actualizarCategoriaSchema = (req, res, next) => {
   const reglasSchema = {
     id: Joi.number().integer().required(),
     nombre: Joi.string().empty("").required(),
+    imagen: Joi.string().empty("").required(),
     IdPadre: Joi.number().integer().allow(null),
     estado:Joi.boolean()
   };

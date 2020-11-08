@@ -4,6 +4,7 @@ const crearCategoriaSchema = (req, res, next) => {
   // define base schema rules
   const reglasSchema = {
     nombre: Joi.string().empty("").required(),
+    imagen: Joi.string().empty("").required(),
     IdPadre: Joi.number().integer().allow(null),
     estado:Joi.boolean()
   };
