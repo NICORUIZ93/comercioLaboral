@@ -17,6 +17,15 @@ module.exports = (sequelize, DataTypes) => {
         otherKey: "idTienda",
       });
 
+      /*
+      this.belongsToMany(models.Producto, {
+        through: models.Feriaproductos,
+        foreignKey: "idTienda",
+        otherKey: "idProducto"
+      });
+*/
+      this.hasMany(models.Feriaproductos, { foreignKey: "idFeria" });
+
     }
   };
   Feria.init({

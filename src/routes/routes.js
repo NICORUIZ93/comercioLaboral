@@ -22,7 +22,7 @@ const notificacionController = require("../controllers/notificacion")
 //Validadores
 const { validadorObtenerPorId, obtenerPorUuidSchema } = require("../helpers/validadores_request/genericos");
 const { validadorCrearUsuario, validadorActualizarUsuario, validadorEliminarUsuario, validadorcrearUsuariosMasivo } = require("../helpers/validadores_request/usuario");
-const { validadorCrearProducto, validadorActualizarProducto, validadorEliminarProducto, validadorObtenerProductosPaginado, validadorBuscarProductosPaginado, validadorRecursosProducto, validadorProductosPorTiendaPaginado } = require("../helpers/validadores_request/producto");
+const { validadorCrearProducto, validadorActualizarProducto, validadorEliminarProducto, validadorObtenerProductosPaginado, validadorBuscarProductosPaginado, validadorRecursosProducto, validadorProductosPorTiendaPaginado, validadorObtenerProductosTiendaFeria } = require("../helpers/validadores_request/producto");
 const { validadorCrearTienda, validadorActualizarTienda, validadorEliminarTienda, validadorRecursosTienda, validadorActivarTienda } = require("../helpers/validadores_request/tienda");
 const { validadorCrearCategoria, validadorActualizarCategoria, validadorEliminarCategoria } = require("../helpers/validadores_request/categoria");
 const { validadorCrearMensaje, validadorEliminarMensaje } = require("../helpers/validadores_request/mensaje");
@@ -30,7 +30,7 @@ const { validadorobtenerUrlArchivo } = require("../helpers/validadores_request/a
 const { validadorObtenerPreferencia } = require("../helpers/validadores_request/mercadopago");
 const { validadorCrearCalificacion, validadorEliminarCalificacion, validadorObtenerCalificacionTienda } = require("../helpers/validadores_request/calificacionTienda");
 const { validadorCrearEnvio, validadorActualizarPedidoEnviado } = require("../helpers/validadores_request/envios");
-const { validadorActualizarFeria, validadorAsociarTiendasAFeria, validadorCargarFeria, validadorCrearFeria, validadorObtenerFeria } = require("../helpers/validadores_request/feria");
+const { validadorActualizarFeria, validadorAsociarTiendasAFeria, validadorCargarFeria, validadorCrearFeria, validadorObtenerFeria, validadorEliminarTiendaDeFeria } = require("../helpers/validadores_request/feria");
 const { validadorCrearNotificacion } = require("../helpers/validadores_request/notificacion");
 
 
@@ -81,6 +81,7 @@ module.exports = app => {
   app.get("/api/productos", productoController.obtenerProductos)
   app.get("/api/productos/masvendidos", productoController.obtenerProductosMasVendidos)
   app.get("/api/productos/oferta", productoController.obtenerProductosOferta)
+  app.get("/api/productos/tienda/feria", validadorObtenerProductosTiendaFeria, productoController.obtenerProductosPorTiendaFeria)
   app.get("/api/productos/paginado", validadorObtenerProductosPaginado, productoController.obtenerProductosPaginado)
   app.get("/api/productos/buscar/paginado", validadorBuscarProductosPaginado, productoController.buscarProductosPaginado)
   app.get("/api/productos/tienda/paginado", validadorProductosPorTiendaPaginado, productoController.obtenerProductosPorTiendaPaginado)
@@ -91,6 +92,7 @@ module.exports = app => {
   app.post("/api/producto/recursos", validadorRecursosProducto, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ productoController.cargarRecursosProducto)
   app.put("/api/producto", validadorActualizarProducto, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ productoController.actualizarProducto)
   app.delete("/api/producto/:id", validadorEliminarProducto, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ productoController.eliminarProducto)
+  
 
 
   //Rutas productos solo de tiendas activas
@@ -155,9 +157,11 @@ module.exports = app => {
   //Rutas Feria
   app.put("/api/feria", validadorActualizarFeria, feriaController.actualizarFeria)
   app.post("/api/feria/asociarTiendas", validadorAsociarTiendasAFeria, feriaController.asociarTiendasAFeria)
+  app.post("/api/feria/eliminarTienda", validadorEliminarTiendaDeFeria, feriaController.eliminarTiendaDeFeria)
   app.post("/api/feria/cargarProductos", validadorCargarFeria, feriaController.cargarProductosAFeria)
   app.post("/api/feria", validadorCrearFeria, feriaController.crearFeria)
   app.get("/api/feria/:id", validadorObtenerPorId, feriaController.obtenerFeria)
+  app.get("/api/feria/porIdTienda/:id", validadorObtenerPorId, feriaController.obtenerFeriaPorTienda)
   app.get("/api/ferias", feriaController.obtenerFerias)
   app.get("/api/feriaActiva", feriaController.obtenerFeriaActiva)
   app.get("/api/feriax/test", feriaController.enviar)

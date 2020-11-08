@@ -39,6 +39,15 @@ module.exports = (sequelize, DataTypes) => {
         otherKey: "IdRecurso",
       });
 
+      /*
+      this.belongsToMany(models.Feria, {
+        through: models.Feriaproductos,
+        foreignKey: "idProducto",
+        otherKey: "idTienda",
+        as: 'Feria'
+      });
+*/
+      this.hasMany(models.Feriaproductos, { foreignKey: "idProducto" });
     }
   };
   Producto.init({

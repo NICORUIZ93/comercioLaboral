@@ -1,7 +1,9 @@
 const Feria = require("../db/models").Feria;
 const Tienda = require("../db/models").Tienda;
+const Producto = require("../db/models").Producto;
 const Recurso = require("../db/models").Recurso;
 const TiendaFeria = require("../db/models").TiendaFeria;
+const Feriaproductos = require("../db/models").Feriaproductos;
 const { productoService } = require("./producto");
 const notificacionService = require("./notificaciones");
 const _temasNotificacion = require("../constants/temasNotificacion");
@@ -14,6 +16,35 @@ const service = {
       const ferias = await Feria.findAll();
 
       return ferias;
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
+  },
+  async obtenerFeriaPorTienda(idTienda) {
+    try {
+
+      const feria = await TiendaFeria.findAll({
+        where: {
+          idTienda: idTienda,
+          estado: true,
+          '$Ferium.activa$': true
+        },
+        include: [
+          {
+            model: Feria,
+            attributes: [
+              "activa"            
+            ]
+          },
+        ],
+        attributes: ["idFeria"],
+      });
+
+      if(!feria) throw Error('La tienda no esta asociada a ningúna feria');
+
+      return { idFeria: feria.idFeria };
+
     } catch (error) {
       console.log(`${error}`);
       throw error;
@@ -40,24 +71,53 @@ const service = {
       throw error;
     }
   },
-  async cargarFeria(productos, urlVideo, idTienda) {
+  async eliminarTiendaDeFeria(idTienda, idFeria) {
     try {
-      for (producto of productos) {
-        await productoService.actualizarProductoPorId(
-          { feria: true, valorFeria: producto.valor },
-          producto.id
-        );
-      }
-      if (urlVideo) {
-        await TiendaFeria.update(
-          { urlVideo: urlVideo },
-          {
+      let resultado = await TiendaFeria.update({ estado: false }, {
+        where: {
+          idTienda,
+          idFeria
+        }
+      });
+
+      return resultado;
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
+  },
+  async cargarFeria(productos, urlVideo, idTienda, idFeria) {
+    try {
+      const nuevosProductosFeria = [];
+
+      await sequelize.transaction(async (transaction) => {
+
+        for (producto of productos) {
+         await Producto.update({ feria: true, valorFeria: producto.valor }, {
             where: {
-              idTienda: idTienda,
+              id: producto.id,
             },
-          }
-        );
-      }
+            transaction
+          });
+
+          nuevosProductosFeria.push({ idFeria, idProducto: producto.id, idTienda });
+        }
+        
+        await Feriaproductos.bulkCreate(nuevosProductosFeria, { transaction });
+
+        if (urlVideo) {
+          await TiendaFeria.update(
+            { urlVideo: urlVideo },
+            {
+              where: {
+                idTienda: idTienda,
+              },
+              transaction
+            }
+          );
+        }
+
+      });
 
       return true;
     } catch (error) {
@@ -72,6 +132,7 @@ const service = {
       const tiendaFeria = await TiendaFeria.findAll({
         where: {
           idFeria: feria.id,
+          estado: true,
         },
         include: [
           {
@@ -132,6 +193,7 @@ const service = {
       const tiendaFeria = await TiendaFeria.findAll({
         where: {
           idFeria: feria.id,
+          estado: true,
         },
         include: [
           {
@@ -254,6 +316,13 @@ const service = {
         await notifcar(_temasNotificacion.FinFeria);
         if (feria.activa) {
           await this.actualizarFeria({ activa: false }, feria.id);
+
+          await TiendaFeria.update({ estado: false }, {
+            where: {
+              idFeria: feria.id
+            }
+          });
+
           await productoService.actualizarProductoPorParametros(
             { feria: false },
             { feria: true }

@@ -1,17 +1,10 @@
 const Joi = require("joi");
 
-const cargarFeriaSchema = (req, res, next) => {
+const eliminarTiendaDeFeriaSchema = (req, res, next) => {
   // define base schema rules
   const reglasSchema = {
-    urlVideo: Joi.string().empty("").required(),
     idTienda: Joi.number().integer().required(),
-    idFeria: Joi.number().integer().required(),
-    productos: Joi.array().items(
-      Joi.object({
-        valor: Joi.number().integer().required(),
-        id: Joi.number().integer().required()
-      })
-    ).min(1).required()
+    idFeria: Joi.number().integer().required()
   };
   // create schema object with rules
   const schema = Joi.object(reglasSchema);
@@ -37,4 +30,4 @@ const cargarFeriaSchema = (req, res, next) => {
   }
 };
 
-module.exports.cargarFeriaSchema = cargarFeriaSchema;
+module.exports.eliminarTiendaDeFeriaSchema = eliminarTiendaDeFeriaSchema;

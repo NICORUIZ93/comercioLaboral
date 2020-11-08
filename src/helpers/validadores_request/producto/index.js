@@ -3,6 +3,7 @@ const validadorActualizarProducto = require("../producto/actualizarProductoSchem
 const validadorEliminarProducto = require("../producto/eliminarProductoSchema").eliminarProductoSchema; 
 const validadorObtenerProducto = require("../producto/obtenerProductoSchema").obtenerProductoSchema;
 const validadorObtenerProductosPaginado = require("../producto/obtenerProductosPaginadoSchema").obtenerProductosPaginadoSchema;
+const validadorObtenerProductosTiendaFeria = require("../producto/obtenerProductosTiendaFeriaSchema").obtenerProductosTiendaFeriaSchema;
 const validadorBuscarProductosPaginado = require("../producto/buscarProductosPaginadoSchema").buscarProductosPaginadoSchema;
 const validadorRecursosProducto = require("../producto/cargarRecursosProductoSchema").cargarRecursosProductoSchema;
 const validadorProductosPorTiendaPaginado = require("../producto/obtenerProductosPorTiendaPaginadoSchema").obtenerProductosPorTiendaPaginadoSchema;
@@ -15,5 +16,6 @@ module.exports = {
     validadorObtenerProductosPaginado,
     validadorBuscarProductosPaginado,
     validadorRecursosProducto,
-    validadorProductosPorTiendaPaginado
+    validadorProductosPorTiendaPaginado,
+    validadorObtenerProductosTiendaFeria
 }

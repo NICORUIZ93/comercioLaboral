@@ -1,6 +1,8 @@
 const Producto = require("../db/models").Producto;
 const DetallePedido = require("../db/models").DetallePedido;
 const TiendaProducto = require("../db/models").TiendaProducto;
+const TiendaFeria = require("../db/models").TiendaFeria;
+const Feriaproductos = require("../db/models").Feriaproductos;
 const Categoria = require("../db/models").Categoria;
 const Tienda = require("../db/models").Tienda;
 const Pedido = require("../db/models").Pedido;
@@ -104,6 +106,45 @@ const service = {
         //producto.Recurso = Recursos[0];
         return producto;
       });
+    } catch (error) {
+      throw error;
+    }
+  },
+  async obtenerProductosTiendaFeria(idTienda, idFeria) {
+    try {
+
+      const productos = await Feriaproductos.findAll({
+        where: { idTienda, idFeria },
+        include: [
+          {
+            model: Producto,
+            include: [
+              {
+                model: Recurso,
+                as: "Recursos",
+                attributes: [
+                  "id",
+                  "nombre",
+                  "key",
+                  "extension",
+                  "url",
+                  "prioridad",
+                ],
+                through: {
+                  attributes: [],
+                },
+              }
+            ]
+          }
+    
+        ],
+        order: [["createdAt", "DESC"]],
+      });
+
+      return productos.map(prod => {
+        return prod.Producto;
+      });
+      
     } catch (error) {
       throw error;
     }

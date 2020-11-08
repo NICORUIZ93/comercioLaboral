@@ -14,6 +14,17 @@ module.exports = {
       return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
+  async obtenerFeriaPorTienda(req, res) {
+    try {
+      const idTienda = req.params.id;
+      const feria = await feriaService.obtenerFeriaPorTienda(idTienda);
+      
+      return res.status(200).json(feria);
+    } catch (e) {
+      console.log(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
+    }
+  },
   async obtenerFeriaActiva(req, res) {
     try {
       const feria = await feriaService.obtenerFeriaActiva();
@@ -57,11 +68,22 @@ module.exports = {
       return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
+  async eliminarTiendaDeFeria(req, res) {
+    try {
+      const { idTienda, idFeria } = req.body;
+      const feria = await feriaService.eliminarTiendaDeFeria(idTienda, idFeria);
+      
+      return res.status(200).json(feria);
+    } catch (e) {
+      console.log(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
+    }
+  },
   async cargarProductosAFeria(req, res) {
     try {
-      const { productos, urlVideo, idTienda } = req.body;
+      const { productos, urlVideo, idTienda, idFeria } = req.body;
       
-      const feria = await feriaService.cargarFeria(productos, urlVideo, idTienda);
+      const feria = await feriaService.cargarFeria(productos, urlVideo, idTienda, idFeria);
       
       return res.status(200).json(feria);
     } catch (e) {
