@@ -127,7 +127,11 @@ const service = {
   },
   async obtenerFeria(idFeria) {
     try {
-      let feria = (await Feria.findByPk(idFeria, {})).get({ plain: true });
+      let feria = await Feria.findByPk(idFeria, {});
+
+      if(!feria) throw Error('No existen ferias activas');
+
+      feria = feria.dataValues;
 
       const tiendaFeria = await TiendaFeria.findAll({
         where: {
@@ -168,8 +172,9 @@ const service = {
       });
 
       feria.tiendas = tiendaFeria.map((tiendaf) => {
-        let tienda = tiendaf.Tienda;
-        tienda.video = tiendaf.urlVideo;
+        const tiendav = tiendaf.dataValues;
+        let tienda = tiendav.Tienda.dataValues;
+        tienda.video = tiendav.urlVideo;
         return tienda;
       });
 
@@ -190,6 +195,8 @@ const service = {
 
       if(!feria) throw Error('No existen ferias activas');
 
+      feria = feria.dataValues;
+
       const tiendaFeria = await TiendaFeria.findAll({
         where: {
           idFeria: feria.id,
@@ -229,8 +236,9 @@ const service = {
       });
 
       feria.tiendas = tiendaFeria.map((tiendaf) => {
-        let tienda = tiendaf.Tienda;
-        tienda.video = tiendaf.urlVideo;
+        const tiendav = tiendaf.dataValues;
+        let tienda = tiendav.Tienda.dataValues;
+        tienda.video = tiendav.urlVideo;
         return tienda;
       });
 
