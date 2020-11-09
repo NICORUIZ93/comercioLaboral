@@ -24,7 +24,7 @@ const service = {
   async obtenerFeriaPorTienda(idTienda) {
     try {
 
-      const feria = await TiendaFeria.findAll({
+      const feria = await TiendaFeria.findOne({
         where: {
           idTienda: idTienda,
           estado: true,
