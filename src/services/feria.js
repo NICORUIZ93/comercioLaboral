@@ -50,6 +50,7 @@ const service = {
       throw error;
     }
   },
+  
   async crearFeria(nuevaFeria) {
     try {
       nuevaFeria.activa = false;

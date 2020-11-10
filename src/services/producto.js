@@ -149,6 +149,45 @@ const service = {
       throw error;
     }
   },
+  async obtenerProductosFeria(idFeria) {
+    try {
+
+      const productos = await Feriaproductos.findAll({
+        where: { idFeria },
+        include: [
+          {
+            model: Producto,
+            include: [
+              {
+                model: Recurso,
+                as: "Recursos",
+                attributes: [
+                  "id",
+                  "nombre",
+                  "key",
+                  "extension",
+                  "url",
+                  "prioridad",
+                ],
+                through: {
+                  attributes: [],
+                },
+              }
+            ]
+          }
+    
+        ],
+        order: [["createdAt", "DESC"]],
+      });
+
+      return productos.map(prod => {
+        return prod.Producto;
+      });
+      
+    } catch (error) {
+      throw error;
+    }
+  },
   async obtenerProductosPorParametros(parametrosWhere, estadoTienda = false) {
     try {
 
