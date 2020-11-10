@@ -101,10 +101,12 @@ const service = {
             transaction
           });
 
-          nuevosProductosFeria.push({ idFeria, idProducto: producto.id, idTienda });
+          const nuevoProducto = { idFeria, idProducto: producto.id, idTienda };
+          const existe = await Feriaproductos.findOne({where: nuevoProducto});
+          if(existe) Feriaproductos.update(nuevoProducto, { where: nuevoProducto, transaction });
+          else await Feriaproductos.create(nuevoProducto, { transaction });
+   
         }
-        
-        await Feriaproductos.bulkCreate(nuevosProductosFeria, { transaction });
 
         if (urlVideo) {
           await TiendaFeria.update(
