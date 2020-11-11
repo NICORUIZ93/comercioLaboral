@@ -103,7 +103,7 @@ const service = {
 
           const nuevoProducto = { idFeria, idProducto: producto.id, idTienda };
           const existe = await Feriaproductos.findOne({where: nuevoProducto});
-          if(existe) Feriaproductos.update(nuevoProducto, { where: nuevoProducto, transaction });
+          if(existe) await Feriaproductos.update(nuevoProducto, { where: nuevoProducto, transaction });
           else await Feriaproductos.create(nuevoProducto, { transaction });
    
         }
