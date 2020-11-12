@@ -15,11 +15,11 @@ const { Op } = require("sequelize");
 const service = {
   async obtenerProductos(estadoTienda = false) {
     try {
-
-      const whereCondition = estadoTienda ? {
-        '$Tiendas.estado$': true
-      } :
-      {};
+      const whereCondition = estadoTienda
+        ? {
+            "$Tiendas.estado$": true,
+          }
+        : {};
 
       const productos = await Producto.findAll({
         where: whereCondition,
@@ -62,14 +62,14 @@ const service = {
   },
   async obtenerProductosPorTienda(idTienda, estadoTienda = false) {
     try {
-
-      const whereCondition = estadoTienda ? {
-        '$Tiendas.id$': idTienda,
-        '$Tiendas.estado$': true
-      } :
-      {
-        '$Tiendas.id$': idTienda
-      };
+      const whereCondition = estadoTienda
+        ? {
+            "$Tiendas.id$": idTienda,
+            "$Tiendas.estado$": true,
+          }
+        : {
+            "$Tiendas.id$": idTienda,
+          };
 
       const productos = await Producto.findAll({
         where: whereCondition,
@@ -112,7 +112,6 @@ const service = {
   },
   async obtenerProductosTiendaFeria(idTienda, idFeria) {
     try {
-
       const productos = await Feriaproductos.findAll({
         where: { idTienda, idFeria },
         include: [
@@ -133,25 +132,22 @@ const service = {
                 through: {
                   attributes: [],
                 },
-              }
-            ]
-          }
-    
+              },
+            ],
+          },
         ],
         order: [["createdAt", "DESC"]],
       });
 
-      return productos.map(prod => {
+      return productos.map((prod) => {
         return prod.Producto;
       });
-      
     } catch (error) {
       throw error;
     }
   },
   async obtenerProductosFeria(idFeria) {
     try {
-
       const productos = await Feriaproductos.findAll({
         where: { idFeria },
         include: [
@@ -172,32 +168,30 @@ const service = {
                 through: {
                   attributes: [],
                 },
-              }
-            ]
-          }
-    
+              },
+            ],
+          },
         ],
         order: [["createdAt", "DESC"]],
       });
 
-      return productos.map(prod => {
+      return productos.map((prod) => {
         return prod.Producto;
       });
-      
     } catch (error) {
       throw error;
     }
   },
   async obtenerProductosPorParametros(parametrosWhere, estadoTienda = false) {
     try {
-
-      const whereCondition = estadoTienda ? {
-        [Op.or]: parametrosWhere,
-        '$Tiendas.estado$': true
-      } :
-      {
-        [Op.or]: parametrosWhere
-      };
+      const whereCondition = estadoTienda
+        ? {
+            [Op.or]: parametrosWhere,
+            "$Tiendas.estado$": true,
+          }
+        : {
+            [Op.or]: parametrosWhere,
+          };
 
       let productos = await Producto.findAll({
         where: whereCondition,
@@ -234,20 +228,20 @@ const service = {
   },
   async obtenerProductosPaginado(page, limit, offset, estadoTienda = false) {
     try {
-
-      const whereCondition = estadoTienda ? {
-        estado: estadoTienda
-      } :
-      {};
+      const whereCondition = estadoTienda
+        ? {
+            estado: estadoTienda,
+          }
+        : {};
 
       let productos = await Producto.findAndCountAll({
         limit,
         offset,
-        subQuery:false,
+        subQuery: false,
         include: [
           {
             model: Tienda,
-            where: whereCondition
+            where: whereCondition,
           },
           {
             model: Categoria,
@@ -287,27 +281,32 @@ const service = {
       throw error;
     }
   },
-  async obtenerProductosPorTiendaPaginado(idTienda, paginacion, estadoTienda = false) {
+  async obtenerProductosPorTiendaPaginado(
+    idTienda,
+    paginacion,
+    estadoTienda = false
+  ) {
     try {
       const { limit, offset, pagina } = paginacion;
 
-      const whereCondition = estadoTienda ? {
-        id:idTienda,
-        estado: estadoTienda
-      } :
-      {
-        id:idTienda
-      };
+      const whereCondition = estadoTienda
+        ? {
+            id: idTienda,
+            estado: estadoTienda,
+          }
+        : {
+            id: idTienda,
+          };
 
-        //where: { '$Tienda.estado$': true },
+      //where: { '$Tienda.estado$': true },
       let productos = await Producto.findAndCountAll({
         limit,
         offset,
-        subQuery:false,
+        subQuery: false,
         include: [
           {
             model: Tienda,
-            where: whereCondition
+            where: whereCondition,
           },
           {
             model: Categoria,
@@ -359,10 +358,11 @@ const service = {
     try {
       const { limit, offset, pagina } = paginacion;
 
-      const whereCondition = estadoTienda ? {
-        estado: estadoTienda
-      } :
-      {};
+      const whereCondition = estadoTienda
+        ? {
+            estado: estadoTienda,
+          }
+        : {};
 
       const productos = await Producto.findAndCountAll({
         limit,
@@ -370,7 +370,7 @@ const service = {
         include: [
           {
             model: Tienda,
-            where: whereCondition
+            where: whereCondition,
           },
           {
             model: Categoria,
@@ -427,13 +427,11 @@ const service = {
   },
   async obtenerProducto(idProducto, estadoTienda = false) {
     try {
-
-      
-      const whereCondition = estadoTienda ? {
-        '$Tiendas.estado$': estadoTienda
-      } :
-      {};
-
+      const whereCondition = estadoTienda
+        ? {
+            "$Tiendas.estado$": estadoTienda,
+          }
+        : {};
 
       const producto = await Producto.findByPk(idProducto, {
         where: whereCondition,
@@ -498,6 +496,16 @@ const service = {
           },
           { transaction: t }
         );
+
+        await Categoria.update(
+          { estado: true },
+          {
+            where: {
+              id: nuevoProducto.IdCategoria,
+            },
+            transaction: t,
+          }
+        );
       });
 
       if (nuevoProducto.imagenes) {
@@ -551,13 +559,35 @@ const service = {
   },
   async eliminarProducto(idProducto) {
     try {
-      const resultadoDestroy = await Producto.destroy({
-        where: {
-          id: idProducto,
-        },
+      const producto = await producto.findByPk(idProducto);
+      const idCategoria = producto.IdCategoria;
+
+      await sequelize.transaction(async (transation) => {
+        await Producto.destroy({
+          where: {
+            id: idProducto,
+          },
+          transation,
+        });
+
+        const hayProducto = await Producto.findOne({
+          where: { IdCategoria: idCategoria },
+        });
+
+        if (!hayProducto) {
+          await Categoria.update(
+            { estado: false },
+            {
+              where: {
+                id: idCategoria,
+              },
+              transaction,
+            }
+          );
+        }
       });
 
-      return resultadoDestroy;
+      return true;
     } catch (error) {
       throw error;
     }
@@ -586,17 +616,26 @@ const service = {
       const productos = await DetallePedido.findAll({
         limit: 10,
         group: ["IdProducto"],
-        attributes: ["IdProducto", [sequelize.fn("COUNT", "IdProducto"), "count"]],
+        attributes: [
+          "IdProducto",
+          [sequelize.fn("COUNT", "IdProducto"), "count"],
+        ],
         order: [[sequelize.literal("count"), "DESC"]],
         raw: true,
       });
 
-      const idProductos = productos.map(producto => { return producto.IdProducto });
+      const idProductos = productos.map((producto) => {
+        return producto.IdProducto;
+      });
 
-      const masVendidos = (await this.obtenerProductosPorParametros([{ id: idProductos }])).map(p => { 
-        const producto = productos.find(producto => producto.IdProducto === p.id);
-        return { producto: p, cantidad: producto.count }
-       });
+      const masVendidos = (
+        await this.obtenerProductosPorParametros([{ id: idProductos }])
+      ).map((p) => {
+        const producto = productos.find(
+          (producto) => producto.IdProducto === p.id
+        );
+        return { producto: p, cantidad: producto.count };
+      });
 
       return masVendidos;
     } catch (error) {
@@ -607,20 +646,33 @@ const service = {
   async obtenerProductosPorPedido(idPedido) {
     try {
       const productos = await DetallePedido.findAll({
-        attributes: ["IdProducto","cantidad", "valor"],
+        attributes: ["IdProducto", "cantidad", "valor"],
         where: { IdPedido: idPedido },
         raw: true,
       });
 
-      const pedido = await Pedido.findByPk(idPedido, {  attributes: ["IdTienda","valorTotal"] });
+      const pedido = await Pedido.findByPk(idPedido, {
+        attributes: ["IdTienda", "valorTotal"],
+      });
 
-      const idsProductos = productos.map(producto => { return producto.IdProducto });
+      const idsProductos = productos.map((producto) => {
+        return producto.IdProducto;
+      });
 
-      const productosConCantidad = (await this.obtenerProductosPorParametros([{ id: idsProductos }])).map(p => { 
-        const producto = productos.find(producto => producto.IdProducto === p.id);
+      const productosConCantidad = (
+        await this.obtenerProductosPorParametros([{ id: idsProductos }])
+      ).map((p) => {
+        const producto = productos.find(
+          (producto) => producto.IdProducto === p.id
+        );
         const { Tiendas, ...productoSinTienda } = p.dataValues;
-        return { producto: productoSinTienda, cantidad: producto.cantidad, valorTotal: producto.valor, IdTienda: pedido.IdTienda }
-       });
+        return {
+          producto: productoSinTienda,
+          cantidad: producto.cantidad,
+          valorTotal: producto.valor,
+          IdTienda: pedido.IdTienda,
+        };
+      });
 
       return productosConCantidad;
     } catch (error) {
@@ -630,12 +682,12 @@ const service = {
   },
   async contarProductoPorParametros(parametrosWhere) {
     try {
-      if(!parametrosWhere) return await Producto.count();
-      
+      if (!parametrosWhere) return await Producto.count();
+
       const numeroDeProductos = await Producto.count({
         where: {
           [Op.or]: parametrosWhere,
-        }
+        },
       });
 
       return numeroDeProductos;
