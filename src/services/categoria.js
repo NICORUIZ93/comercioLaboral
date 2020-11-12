@@ -18,7 +18,7 @@ const service = {
   async obtenerCategoriasActivas() {
     try {
       const categorias = await Categoria.findAll({
-        where: { IdPadre: { [Op.is]: null }, estado: true, "$SubCategorias.estado": true },
+        where: { IdPadre: { [Op.is]: null }, estado: true, "$SubCategorias.estado$": true },
         include: [{ model: Categoria, as: "SubCategorias" }],
       });
       return categorias;
