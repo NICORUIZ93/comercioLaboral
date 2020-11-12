@@ -23,9 +23,10 @@ const service = {
       });
 
       const categoriasFiltradas = categorias.map(cat => {
-        const subCategoriasActivas = cat.SubCategorias.filter(c => c.estado);
-        cat.SubCategorias = subCategoriasActivas;
-        return cat;
+        const categoriaClon = cat.dataValues;
+        const subCategoriasActivas = categoriaClon.SubCategorias.filter(c => c.estado);
+        categoriaClon.SubCategorias = subCategoriasActivas;
+        return categoriaClon;
       });
 
       return categoriasFiltradas;
