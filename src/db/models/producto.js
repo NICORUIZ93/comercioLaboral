@@ -60,6 +60,10 @@ module.exports = (sequelize, DataTypes) => {
     oferta: DataTypes.BOOLEAN,
     valorOferta: DataTypes.DECIMAL,
     calificacion: DataTypes.DECIMAL,
+    porMayor: DataTypes.BOOLEAN,
+    valorPorMayor: DataTypes.DECIMAL,
+    tags: DataTypes.TEXT,
+    caracteristicas: DataTypes.TEXT,
     estado: {
       type:DataTypes.BOOLEAN,
       defaultValue: true

@@ -11,6 +11,10 @@ const actualizarProductoSchema = (req, res, next) => {
     cantidad: Joi.number().integer().required(),
     maxFotos: Joi.number(),
     oferta: Joi.boolean(),
+    porMayor:Joi.boolean(),
+    valorPorMayor: Joi.number().integer().required(),
+    tags: Joi.string().empty("").required(), 
+    caracteristicas: Joi.string().empty("").required(),
     estado:Joi.boolean()
   };
 

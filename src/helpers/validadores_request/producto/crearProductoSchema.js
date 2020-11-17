@@ -12,6 +12,10 @@ const crearProductoSchema = (req, res, next) => {
     maxFotos: Joi.number(),
     oferta:Joi.boolean(),
     estado:Joi.boolean(),
+    porMayor:Joi.boolean(),
+    valorPorMayor: Joi.number().integer().required(),
+    tags: Joi.string().empty("").required(), 
+    caracteristicas: Joi.string().empty("").required(),
     imagenes: Joi.array().items(
       Joi.object({
         url: Joi.string().empty(""),
