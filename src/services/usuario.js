@@ -55,6 +55,38 @@ const service = {
       throw error;
     }
   },
+  async obtenerVendedoresPorTienda(idTienda) {
+    try {
+      const usuarios = await Usuario.findAll({
+        attributes: { exclude: ["contrasena"] },
+        where: {
+          "$UsuariosTienda.IdTienda$":idTienda,
+          "$UsuariosTienda.esAdministrador$": false
+        },
+        include: [
+          {
+            model: UsuariosTienda,
+            attributes: ["IdTienda", "esAdministrador"],
+          },
+          Rol,
+          {
+            model: Recurso,
+            as: "Foto",
+            attributes: ["id", "nombre", "key", "extension", "url"],
+          },
+        ],
+        order: [
+          ['createdAt', 'DESC']
+        ],
+      });
+
+      return usuarios;
+      
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
+  },
   async obtenerUsuario(idUsuario) {
     try {
       const usuario = (
@@ -88,6 +120,7 @@ const service = {
       }
 
       const { imagen, ...usuarioSinImagen } = usuario;
+      const { IdFoto, ...usuarioSinFoto } = usuario;
 
       if (imagen) {
         recurso = await recursosService.crearRecursoTabla({
@@ -96,12 +129,12 @@ const service = {
       }
 
       if (recurso) {
-        usuario.IdFoto = recurso.id;
+        usuarioSinFoto.IdFoto = recurso.id;
       }
 
-      usuario.activo = true;
+      usuarioSinFoto.activo = true;
 
-      const resultadocreate = (await Usuario.create(usuario)).get({
+      const resultadocreate = (await Usuario.create(usuarioSinFoto)).get({
         plain: true,
       });
 

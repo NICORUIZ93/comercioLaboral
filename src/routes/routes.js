@@ -56,6 +56,7 @@ module.exports = app => {
   app.get("/api/usuario/:id", validadorObtenerPorId, /*autorizacion.autorizar(Rol.Administrador),*/ usuarioController.obtenerUsuario)
   app.post("/api/usuario", validadorCrearUsuario, usuarioController.crearUsuario)
   app.post("/api/usuarios/empleados", validadorcrearUsuariosMasivo, usuarioController.crearEmpleadosMasivo)
+  app.get("/api/usuarios/tienda/empleados/:id", validadorObtenerPorId, usuarioController.obtenerVendedoresPorTienda)
   app.put("/api/usuario", validadorActualizarUsuario, /*autorizacion.autorizar(Rol.Administrador),*/ usuarioController.actualizarUsuario)
   //app.delete("/api/usuario/:id", validadorEliminarUsuario, /*autorizacion.autorizar(Rol.Administrador),*/ usuarioController.eliminarUsuario)
   app.delete("/api/usuario/:id", validadorEliminarUsuario, /*autorizacion.autorizar(Rol.Administrador),*/ usuarioController.eliminarUsuarioLogico)

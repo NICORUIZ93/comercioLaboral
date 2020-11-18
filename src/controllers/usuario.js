@@ -22,7 +22,8 @@ module.exports = {
   },
   async obtenerVendedoresPorTienda(req, res) {
     try {
-      const usuarios = await usuarioService.obtenerUsuariosPorParametros([{ activo: true }]);
+      const idTienda = req.params.id;
+      const usuarios = await usuarioService.obtenerVendedoresPorTienda(idTienda);
       return res.status(200).json(usuarios);
     } catch (e) {
       console.log(e.message);
