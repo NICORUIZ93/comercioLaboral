@@ -6,6 +6,7 @@ const { envioService } = require("./envios");
 const { tiendaProductoService } = require("./tiendaProducto");
 const { v4: uuidv4 } = require("uuid");
 const _EstadosEnvio = require("../constants/estadosEnvio");
+const _TipoProducto = require("../constants/banderaTipoProducto");
 
 class Mercadopago {
   constructor(token) {
@@ -132,7 +133,10 @@ class Mercadopago {
         const cantidadProductos = parseInt(
           datos.productos.find((p) => p.id === producto.id).cantidad
         );
-        const valorProduto = obtenerValorProducto(producto);
+        const tipoValor = parseInt(
+          datos.productos.find((p) => p.id === producto.id).tipo
+        );
+        const valorProduto = obtenerValorProducto(producto, tipoValor);
 
         return {
           id: producto.id,
@@ -171,7 +175,7 @@ class Mercadopago {
 
       if (!datos.esMovil) {
         preference.back_urls = {
-          success: process.env.MP_PAGE_TRANSACTION_SUCCESS, 
+          success: process.env.MP_PAGE_TRANSACTION_SUCCESS,
           failure: process.env.MP_PAGE_TRANSACTION_FAULIRE,
         };
         preference.auto_return = "approved";
@@ -293,16 +297,19 @@ const calcularValorComision = async (productos, comision) => {
   return parseFloat(valorComision);
 };
 
-const obtenerValorProducto = (producto) => {
-  const valorProducto = producto.feria
-    ? producto.valorFeria
-    : producto.oferta
-    ? producto.valorOferta
-    : producto.valor;
-    console.log('es feria?' + producto.feria);
-    console.log('valor feria: '+ producto.valorFeria);
-    console.log('valorProducto' + parseFloat(valorProducto));
-  return parseFloat(valorProducto);
+const obtenerValorProducto = (producto, tipoValor) => {
+  switch (tipoValor) {
+    case _TipoProducto.Normal:
+      return parseFloat(producto.valor);
+    case _TipoProducto.Oferta:
+      return parseFloat(producto.valorOferta);
+    case _TipoProducto.Feria:
+      return parseFloat(producto.valorFeria);
+    case _TipoProducto.Mayorista:
+      return parseFloat(producto.valorPorMayor);
+    default:
+      return parseFloat(producto.valor);;
+  }
 };
 
 const procesarCambioEnPedido = async (pedido, cambiosEnPedido) => {
@@ -334,24 +341,31 @@ const actualizarStockTienda = async (pedido) => {
     );
 
     for (const producto of productos) {
-      console.log('recorriendo productos' + producto.IdProducto);
-      console.log('producto stock anterior ' + producto.stock);
-      if (producto.stock <= 0) throw Error(`No existe suficiente stock del producto solicitado, solo hay ${producto.stock} unidades disponibles.`);
-        const cantidadComprada = pedido.Detalle.find(p => p.IdProducto === producto.IdProducto).cantidad;
-        console.log('producto stock anterior mayor a 0 ' + producto.stock);
-        if(producto.stock < cantidadComprada) throw Error(`No existe suficiente stock del producto solicitado, solo hay ${producto.stock} unidades disponibles.`);
-        const stock = producto.stock - cantidadComprada;
-        console.log('producto stock nuevo  ' + stock);
-        await tiendaProductoService.actualizarTiendaProducto(
-          { stock },
-          { IdTienda: pedido.IdTienda, IdProducto: producto.IdProducto }
+      console.log("recorriendo productos" + producto.IdProducto);
+      console.log("producto stock anterior " + producto.stock);
+      if (producto.stock <= 0)
+        throw Error(
+          `No existe suficiente stock del producto solicitado, solo hay ${producto.stock} unidades disponibles.`
         );
+      const cantidadComprada = pedido.Detalle.find(
+        (p) => p.IdProducto === producto.IdProducto
+      ).cantidad;
+      console.log("producto stock anterior mayor a 0 " + producto.stock);
+      if (producto.stock < cantidadComprada)
+        throw Error(
+          `No existe suficiente stock del producto solicitado, solo hay ${producto.stock} unidades disponibles.`
+        );
+      const stock = producto.stock - cantidadComprada;
+      console.log("producto stock nuevo  " + stock);
+      await tiendaProductoService.actualizarTiendaProducto(
+        { stock },
+        { IdTienda: pedido.IdTienda, IdProducto: producto.IdProducto }
+      );
 
-        await productoService.actualizarProductoPorId(
-          { cantidad: stock },
-          producto.IdProducto
-        );
-      
+      await productoService.actualizarProductoPorId(
+        { cantidad: stock },
+        producto.IdProducto
+      );
     }
   } catch (error) {
     console.log(`${error}`);

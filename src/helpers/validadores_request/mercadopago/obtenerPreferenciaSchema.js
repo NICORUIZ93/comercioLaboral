@@ -26,7 +26,8 @@ const obtenerPreferenciaSchema = (req, res, next) => {
     productos: Joi.array().items(
       Joi.object({
         id: Joi.number().integer(),
-        cantidad: Joi.number().integer()
+        cantidad: Joi.number().integer(),
+        tipo: Joi.number().integer(),
       })
     )
   };
