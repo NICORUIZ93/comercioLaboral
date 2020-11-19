@@ -559,7 +559,7 @@ const service = {
   },
   async eliminarProducto(idProducto) {
     try {
-      const producto = await producto.findByPk(idProducto);
+      const producto = await Producto.findByPk(idProducto);
       const idCategoria = producto.IdCategoria;
 
       await sequelize.transaction(async (transation) => {
