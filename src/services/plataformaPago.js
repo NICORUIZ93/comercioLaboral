@@ -141,7 +141,7 @@ class Mercadopago {
         return {
           id: producto.id,
           title: producto.nombre,
-          description: producto.descripcion,
+          description: producto.descripcion.length > 255 ? producto.descripcion.substring(0,255) : producto.descripcion,
           picture_url: producto.Recursos[0].url
             ? producto.Recursos[0].url
             : null,
@@ -308,7 +308,7 @@ const obtenerValorProducto = (producto, tipoValor) => {
     case _TipoProducto.Mayorista:
       return parseFloat(producto.valorPorMayor);
     default:
-      return parseFloat(producto.valor);;
+      return parseFloat(producto.valor);
   }
 };
 
