@@ -570,6 +570,13 @@ const service = {
           transation,
         });
 
+        await TiendaProducto.destroy({
+          where: {
+            IdProducto: idProducto,
+          },
+          transation
+        });
+
         const hayProducto = await Producto.findOne({
           where: { IdCategoria: idCategoria },
         });

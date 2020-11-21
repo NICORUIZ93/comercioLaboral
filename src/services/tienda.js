@@ -2,6 +2,7 @@ const Tienda = require("../db/models").Tienda;
 const UsuariosTienda = require("../db/models").UsuariosTienda;
 const Usuario = require("../db/models").Usuario;
 const TiendaRecurso = require("../db/models").TiendaRecurso;
+const TiendaProducto = require("../db/models").TiendaProducto;
 const Recurso = require("../db/models").Recurso;
 var sequelize = require("../db/models").sequelize;
 const _Rol = require("../constants/roles");
@@ -189,10 +190,22 @@ const service = {
   },
   async eliminarTienda(idTienda) {
     try {
-      const resultadoDestroy = await Tienda.destroy({
-        where: {
-          id: idTienda,
-        },
+     
+      await sequelize.transaction(async (t) => {
+
+        await Tienda.destroy({
+          where: {
+            id: idTienda,
+          },
+          transaction: t,
+        });
+
+       await TiendaProducto.destroy({
+          where: {
+            IdTienda: idTienda,
+          },
+        });
+     
       });
 
       return resultadoDestroy;

@@ -9,7 +9,6 @@ const service = {
         include: [{ model: Categoria, as: "SubCategorias" }],
       });
       return categorias;
-
     } catch (error) {
       console.log(`${error}`);
       throw error;
@@ -22,15 +21,16 @@ const service = {
         include: [{ model: Categoria, as: "SubCategorias" }],
       });
 
-      const categoriasFiltradas = categorias.map(cat => {
+      const categoriasFiltradas = categorias.map((cat) => {
         const categoriaClon = cat.dataValues;
-        const subCategoriasActivas = categoriaClon.SubCategorias.filter(c => c.estado);
+        const subCategoriasActivas = categoriaClon.SubCategorias.filter(
+          (c) => c.estado
+        );
         categoriaClon.SubCategorias = subCategoriasActivas;
         return categoriaClon;
       });
 
       return categoriasFiltradas;
-
     } catch (error) {
       console.log(`${error}`);
       throw error;
@@ -38,13 +38,11 @@ const service = {
   },
   async obtenerCategoria(idCategoria) {
     try {
-
       const categoria = await Categoria.findByPk(idCategoria, {
-        include: [{ model: Categoria, as: "SubCategorias" }]
+        include: [{ model: Categoria, as: "SubCategorias" }],
       });
 
       return categoria;
-
     } catch (error) {
       console.log(`${error}`);
       throw error;
@@ -52,11 +50,11 @@ const service = {
   },
   async crearCategoria(nuevaCategoria) {
     try {
-             
-      const resultadocreate = (await Categoria.create(nuevaCategoria)).get({plain:true});
+      const resultadocreate = (await Categoria.create(nuevaCategoria)).get({
+        plain: true,
+      });
 
       return resultadocreate;
-
     } catch (error) {
       console.log(`${error}`);
       throw error;
@@ -64,15 +62,13 @@ const service = {
   },
   async actualizarCategoria(categoria) {
     try {
-             
-    const resultadoUpdate = (await Categoria.update(categoria, {
+      const resultadoUpdate = await Categoria.update(categoria, {
         where: {
-          id: categoria.id
-        }
-      }));
+          id: categoria.id,
+        },
+      });
 
       return resultadoUpdate;
-
     } catch (error) {
       console.log(`${error}`);
       throw error;
@@ -80,21 +76,25 @@ const service = {
   },
   async eliminarCategoria(idCategoria) {
     try {
-             
+      /*
     const resultadoDestroy = (await Categoria.destroy({
         where: {
           id: idCategoria
         }
       }));
+    */
 
-      return resultadoDestroy;
-
+      const resultadoUpdate = await Categoria.update({estado: false}, {
+        where: {
+          id: idCategoria,
+        },
+      });
+      return resultadoUpdate;
     } catch (error) {
       console.log(`${error}`);
       throw error;
     }
   },
-  
-}
+};
 
 module.exports.categoriaService = service;
