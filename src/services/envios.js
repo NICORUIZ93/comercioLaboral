@@ -98,13 +98,16 @@ const service = {
   },
   async eliminarEnvio(idEnvio) {
     try {
+      /*
       const resultadoDestroy = await Envio.destroy({
         where: {
           id: idEnvio,
         },
       });
-
+      
       return resultadoDestroy;
+      */
+     return true;
     } catch (error) {
       console.log(`${error}`);
       throw error;

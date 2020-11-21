@@ -6,7 +6,7 @@ const service = {
     try {
       const categorias = await Categoria.findAll({
         where: { IdPadre: { [Op.is]: null } },
-        include: [{ model: Categoria, as: "SubCategorias" }],
+        include: [{ model: Categoria, as: "SubCategorias", required: false }],
       });
       return categorias;
     } catch (error) {
@@ -18,7 +18,7 @@ const service = {
     try {
       const categorias = await Categoria.findAll({
         where: { IdPadre: { [Op.is]: null }, estado: true },
-        include: [{ model: Categoria, as: "SubCategorias" }],
+        include: [{ model: Categoria, as: "SubCategorias", required: false }],
       });
 
       const categoriasFiltradas = categorias.map((cat) => {

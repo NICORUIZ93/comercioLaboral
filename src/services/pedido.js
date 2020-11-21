@@ -14,11 +14,13 @@ const service = {
     try {
       const pedidos = await Pedido.findAll({
         include: [
-          Tienda, Usuario, { model:Envio, as: 'EstadosEnvio' }, { model:DetallePago, as: 'DetallesPago' }, { model: DetallePedido, as: 'Detalle' }
+          Tienda,
+          Usuario,
+          { model: Envio, as: "EstadosEnvio", required: false },
+          { model: DetallePago, as: "DetallesPago", required: false },
+          { model: DetallePedido, as: "Detalle", required: false },
         ],
-        order: [
-          ['createdAt', 'DESC']
-        ],
+        order: [["createdAt", "DESC"]],
       });
 
       return pedidos;
@@ -39,12 +41,11 @@ const service = {
   },
   async crearPedidoMercadoPago(nuevoPedido) {
     try {
-      const { usuario, productos, idTienda, uuid,  valorComision } = nuevoPedido;
+      const { usuario, productos, idTienda, uuid, valorComision } = nuevoPedido;
 
       //let pedidoCreado = {};
 
       await sequelize.transaction(async (transaction) => {
-
         const usuarioACrear = {
           nombre: usuario.nombre,
           apellido: usuario.apellido,
@@ -52,18 +53,20 @@ const service = {
           dni: usuario.identificacion.numero,
           telefono: parseInt(usuario.telefono.numero),
           direccion: usuario.direccion.direccion,
-          IdRol: _Rol.CompradorID
+          IdRol: _Rol.CompradorID,
         };
 
-        const [user, created] = 
-          await Usuario.findOrCreate({
-            where: { correo: usuarioACrear.correo },
-            defaults: usuarioACrear,
-            transaction
-          });
-        
-        const valorTotal = productos.reduce((a, b) => a + (b.valorTotal * b.quantity), 0);
-        
+        const [user, created] = await Usuario.findOrCreate({
+          where: { correo: usuarioACrear.correo },
+          defaults: usuarioACrear,
+          transaction,
+        });
+
+        const valorTotal = productos.reduce(
+          (a, b) => a + b.valorTotal * b.quantity,
+          0
+        );
+
         const pedido = {
           IdTienda: idTienda,
           IdUsuario: user.id,
@@ -72,14 +75,16 @@ const service = {
           uuid: uuid,
           valorTotal: valorTotal,
           valorComisionMarket: valorComision,
-          valorTotalConComison: valorTotal - valorComision
+          valorTotalConComison: valorTotal - valorComision,
           //Detalle: detallesPedido,
         };
 
         //pedidoCreado = await Pedido.create(pedido, { include: [{ association: Pedido.Detalle , as: 'Detalle'}], transaction });
-        const pedidoCreado = (await Pedido.create(pedido, { transaction })).get({
-          plain: true,
-        });
+        const pedidoCreado = (await Pedido.create(pedido, { transaction })).get(
+          {
+            plain: true,
+          }
+        );
 
         const detallesPedido = productos.map((dp) => {
           return {
@@ -88,15 +93,13 @@ const service = {
             valor: dp.valorTotal,
             descuento: 0,
             impuestos: 0,
-            cantidad: dp.quantity
+            cantidad: dp.quantity,
           };
         });
-        
+
         await DetallePedido.bulkCreate(detallesPedido, {
           transaction,
         });
-        
-       
       });
 
       //return pedidoCreado;
@@ -107,14 +110,18 @@ const service = {
   },
   async obtenerPedido(idPedido) {
     try {
-      const pedido = (await Pedido.findByPk(idPedido, {
-        include: [
-          Tienda, Usuario, { model:Envio, as: 'EstadosEnvio' }, { model:DetallePago, as: 'DetallesPago' }, { model: DetallePedido, as: 'Detalle' }
-        ],
-        order: [
-          ['createdAt', 'DESC']
-        ],
-      })).get({ plain: true });
+      const pedido = (
+        await Pedido.findByPk(idPedido, {
+          include: [
+            Tienda,
+            Usuario,
+            { model: Envio, as: "EstadosEnvio", required: false },
+            { model: DetallePago, as: "DetallesPago", required: false },
+            { model: DetallePedido, as: "Detalle", required: false },
+          ],
+          order: [["createdAt", "DESC"]],
+        })
+      ).get({ plain: true });
 
       return pedido;
     } catch (error) {
@@ -124,7 +131,7 @@ const service = {
   },
   async actualizarPedido(pedido, id) {
     try {
-      console.log('actualizarPedido #' + id);
+      console.log("actualizarPedido #" + id);
       const resultadoUpdate = await Pedido.update(pedido, {
         where: {
           id: id,
@@ -133,20 +140,23 @@ const service = {
 
       return resultadoUpdate;
     } catch (error) {
-      console.log('error en actualizarPedido');
+      console.log("error en actualizarPedido");
       console.log(`${error}`);
       throw error;
     }
   },
   async eliminarPedido(idPedido) {
     try {
+      /*
       const resultadoDestroy = await Pedido.destroy({
         where: {
           id: idPedido,
         },
       });
-
+      
       return resultadoDestroy;
+      */
+      return true;
     } catch (error) {
       console.log(`${error}`);
       throw error;
@@ -159,15 +169,16 @@ const service = {
           [Op.or]: parametrosWhere,
         },
         include: [
-          Tienda, Usuario, { model:Envio, as: 'EstadosEnvio' }, { model:DetallePago, as: 'DetallesPago' }, { model: DetallePedido, as: 'Detalle' }
+          Tienda,
+          Usuario,
+          { model: Envio, as: "EstadosEnvio", required: false },
+          { model: DetallePago, as: "DetallesPago", required: false },
+          { model: DetallePedido, as: "Detalle", required: false },
         ],
-        order: [
-          ['createdAt', 'DESC']
-        ],
+        order: [["createdAt", "DESC"]],
       });
 
       return pedido;
-      
     } catch (error) {
       console.log(`${error}`);
       throw error;
@@ -180,15 +191,16 @@ const service = {
           [Op.or]: parametrosWhere,
         },
         include: [
-          Tienda, Usuario, { model:Envio, as: 'EstadosEnvio' }, { model:DetallePago, as: 'DetallesPago' }, { model: DetallePedido, as: 'Detalle' }
+          Tienda,
+          Usuario,
+          { model: Envio, as: "EstadosEnvio", required: false },
+          { model: DetallePago, as: "DetallesPago", required: false },
+          { model: DetallePedido, as: "Detalle", required: false },
         ],
-        order: [
-          ['createdAt', 'DESC']
-        ],
+        order: [["createdAt", "DESC"]],
       });
 
       return pedidos;
-      
     } catch (error) {
       console.log(`${error}`);
       throw error;
@@ -196,14 +208,12 @@ const service = {
   },
   async guardarDetallePago(detalle, idPedido) {
     try {
-
       const [DetallePagos, created] = await DetallePago.findOrCreate({
-        where: { idPedido: idPedido, estado: detalle.estado  },
-        defaults: detalle
+        where: { idPedido: idPedido, estado: detalle.estado },
+        defaults: detalle,
       });
 
       return created;
-      
     } catch (error) {
       console.log(`${error}`);
       throw error;

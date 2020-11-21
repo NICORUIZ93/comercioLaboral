@@ -220,13 +220,23 @@ const service = {
   },
   async eliminarUsuario(idUsuario) {
     try {
+      /*
       const resultadoDestroy = await Usuario.destroy({
         where: {
           id: idUsuario,
         },
       });
-
+      
       return resultadoDestroy;
+      */
+     const resultadoUpdate = await Usuario.update({activo: false}, {
+      where: {
+        id: usuario.id,
+      },
+    });
+
+    return resultadoUpdate;
+
     } catch (error) {
       console.log(`${error}`);
       throw error;

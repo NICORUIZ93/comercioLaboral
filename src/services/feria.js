@@ -35,7 +35,8 @@ const service = {
             model: Feria,
             attributes: [
               "activa"            
-            ]
+            ],
+            required: false
           },
         ],
         attributes: ["idFeria"],
@@ -151,6 +152,7 @@ const service = {
               "telefono",
               "descripcion",
             ],
+            required: false,
             include: [
               {
                 model: Recurso,
@@ -167,6 +169,7 @@ const service = {
                 through: {
                   attributes: [],
                 },
+                required: false
               },
             ],
           },
@@ -231,8 +234,10 @@ const service = {
                 through: {
                   attributes: [],
                 },
+                required: false
               },
             ],
+            required: false
           },
         ],
         attributes: ["idTienda", "urlVideo"],

@@ -29,6 +29,7 @@ const service = {
             model: Categoria,
             as: "Categoria",
             attributes: ["id", "nombre"],
+            required: false,
           },
           {
             model: Recurso,
@@ -44,6 +45,7 @@ const service = {
             through: {
               attributes: [],
             },
+            required: false,
           },
         ],
         order: [["createdAt", "DESC"]],
@@ -51,8 +53,10 @@ const service = {
 
       return productos.map((p) => {
         const { Tiendas, ...producto } = p.dataValues;
-        producto.IdTienda = Tiendas[0].id;
-        producto.NombreTienda = Tiendas[0].nombre;
+        if (Tiendas.length > 0) {
+          producto.IdTienda = Tiendas[0].id;
+          producto.NombreTienda = Tiendas[0].nombre;
+        }
         //producto.Recurso = Recursos[0];
         return producto;
       });
@@ -79,6 +83,7 @@ const service = {
             model: Categoria,
             as: "Categoria",
             attributes: ["id", "nombre"],
+            required: false,
           },
           {
             model: Recurso,
@@ -94,6 +99,7 @@ const service = {
             through: {
               attributes: [],
             },
+            required: false,
           },
         ],
         order: [["createdAt", "DESC"]],
@@ -101,8 +107,10 @@ const service = {
 
       return productos.map((p) => {
         const { Tiendas, ...producto } = p.dataValues;
-        producto.IdTienda = Tiendas[0].id;
-        producto.NombreTienda = Tiendas[0].nombre;
+        if (Tiendas.length > 0) {
+          producto.IdTienda = Tiendas[0].id;
+          producto.NombreTienda = Tiendas[0].nombre;
+        }
         //producto.Recurso = Recursos[0];
         return producto;
       });
@@ -269,8 +277,10 @@ const service = {
 
       const porductosFiltrados = productos.rows.map((p) => {
         const { Tiendas, ...producto } = p.dataValues;
-        producto.IdTienda = Tiendas[0].id;
-        producto.NombreTienda = Tiendas[0].nombre;
+        if (Tiendas.length > 0) {
+          producto.IdTienda = Tiendas[0].id;
+          producto.NombreTienda = Tiendas[0].nombre;
+        }
         //producto.Recurso = Recursos[0];
         return producto;
       });
@@ -334,8 +344,10 @@ const service = {
 
       const porductosFiltrados = productos.rows.map((p) => {
         const { Tiendas, ...producto } = p.dataValues;
-        producto.IdTienda = Tiendas[0].id;
-        producto.NombreTienda = Tiendas[0].nombre;
+        if (Tiendas.length > 0) {
+          producto.IdTienda = Tiendas[0].id;
+          producto.NombreTienda = Tiendas[0].nombre;
+        }
         //producto.Recurso = Recursos[0];
         return producto;
       });
@@ -412,8 +424,10 @@ const service = {
 
       const porductosFiltrados = productos.rows.map((p) => {
         const { Tiendas, ...producto } = p.dataValues;
-        producto.IdTienda = Tiendas[0].id;
-        producto.NombreTienda = Tiendas[0].nombre;
+        if (Tiendas.length > 0) {
+          producto.IdTienda = Tiendas[0].id;
+          producto.NombreTienda = Tiendas[0].nombre;
+        }
         //producto.Recurso = Recursos[0];
         return producto;
       });
@@ -463,8 +477,11 @@ const service = {
       if (!producto) throw Error("No existe el producto indicado");
 
       const { Tiendas, ...productoFiltrado } = producto.dataValues;
-      productoFiltrado.IdTienda = Tiendas[0].id;
-      productoFiltrado.NombreTienda = Tiendas[0].nombre;
+      if (Tiendas.length > 0) {
+        productoFiltrado.IdTienda = Tiendas[0].id;
+        productoFiltrado.NombreTienda = Tiendas[0].nombre;
+      }
+
       //productoFiltrado.Recurso = Recursos[0];
 
       return productoFiltrado;
@@ -574,7 +591,7 @@ const service = {
           where: {
             IdProducto: idProducto,
           },
-          transation
+          transation,
         });
 
         const hayProducto = await Producto.findOne({
