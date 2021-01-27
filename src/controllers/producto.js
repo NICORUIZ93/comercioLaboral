@@ -172,6 +172,20 @@ module.exports = {
       console.log(e);
       return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
+  },
+  async eliminarRecursoProducto(req, res) {
+    try {
+
+      const { idProducto, idRecurso } = req.query;
+
+      const respuesta = await productoService.eliminarRecursoProducto(idProducto, idRecurso);
+
+      return res.status(200).json(respuesta);
+
+    } catch (e) {
+      console.log(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
+    }
   }
 
 };

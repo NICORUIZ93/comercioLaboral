@@ -635,6 +635,25 @@ const service = {
       throw error;
     }
   },
+  async eliminarRecursoProducto(idProducto, idRecurso) {
+    try {
+      let respuesta = "";
+
+      const producto = await Producto.findByPk(idProducto);
+      if (!producto) throw Error("el producto no existe");
+
+      if (recurso) {
+        respuesta = await eliminarRecursoProducto(
+          idRecurso,
+          idProducto
+        );
+      }
+
+      return respuesta;
+    } catch (error) {
+      throw error;
+    }
+  },
   async obtenerProductosMasVendidos() {
     try {
       const productos = await DetallePedido.findAll({
@@ -746,6 +765,34 @@ const agregarRecursosProducto = async (recursos, IdProducto) => {
     });
 
     return recursosCreados;
+  } catch (error) {
+    throw error;
+  }
+};
+
+const eliminarRecursoProducto = async (IdRecurso, IdProducto) => {
+  try {
+
+    await sequelize.transaction(async (transaction) => {
+
+      await ProductoRecurso.destroy({
+        where: {
+          IdProducto: idProducto,
+          IdRecurso: IdRecurso
+        },
+        transation,
+      });
+
+      await Recurso.destroy({
+        where: {
+          IdRecurso: IdRecurso
+        },
+        transation,
+      });
+
+    });
+
+    return `Recurso ${recurso} del producto ${IdProducto} eliminado exitosamente`;
   } catch (error) {
     throw error;
   }

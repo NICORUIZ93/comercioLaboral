@@ -83,12 +83,12 @@ const service = {
       throw error;
     }
   },
-  async eliminarRecurso(idUsuario) {
+  async eliminarRecurso(id) {
     try {
              
-    const resultadoDestroy = (await Usuario.destroy({
+    const resultadoDestroy = (await Recurso.destroy({
         where: {
-          id: idUsuario
+          id: id
         }
       }));
 
