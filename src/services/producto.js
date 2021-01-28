@@ -792,7 +792,7 @@ const eliminarRecursoProducto = async (idRecurso, idProducto) => {
 
     });
 
-    return `Recurso ${recurso} del producto ${IdProducto} eliminado exitosamente`;
+    return `Recurso ${idRecurso} del producto ${idProducto} eliminado exitosamente`;
   } catch (error) {
     throw error;
   }
