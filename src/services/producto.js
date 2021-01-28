@@ -785,7 +785,7 @@ const eliminarRecursoProducto = async (idRecurso, idProducto) => {
 
       await Recurso.destroy({
         where: {
-          IdRecurso: idRecurso
+          id: idRecurso
         },
         transaction,
       });
