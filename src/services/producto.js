@@ -770,7 +770,7 @@ const agregarRecursosProducto = async (recursos, IdProducto) => {
   }
 };
 
-const eliminarRecursoProducto = async (IdRecurso, IdProducto) => {
+const eliminarRecursoProducto = async (idRecurso, idProducto) => {
   try {
 
     await sequelize.transaction(async (transaction) => {
@@ -778,16 +778,16 @@ const eliminarRecursoProducto = async (IdRecurso, IdProducto) => {
       await ProductoRecurso.destroy({
         where: {
           IdProducto: idProducto,
-          IdRecurso: IdRecurso
+          IdRecurso: idRecurso
         },
-        transation,
+        transaction,
       });
 
       await Recurso.destroy({
         where: {
-          IdRecurso: IdRecurso
+          IdRecurso: idRecurso
         },
-        transation,
+        transaction,
       });
 
     });
