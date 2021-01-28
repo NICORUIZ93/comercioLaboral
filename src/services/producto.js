@@ -642,7 +642,7 @@ const service = {
       const producto = await Producto.findByPk(idProducto);
       if (!producto) throw Error("el producto no existe");
 
-      if (recurso) {
+      if (idRecurso) {
         respuesta = await eliminarRecursoProducto(
           idRecurso,
           idProducto
