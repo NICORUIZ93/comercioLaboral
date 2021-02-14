@@ -97,8 +97,6 @@ module.exports = app => {
   app.delete("/api/producto/:id", validadorEliminarProducto, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ productoController.eliminarProducto)
   
   
-
-
   //Rutas productos solo de tiendas activas
   app.get("/api/activa/productos", productosTiendaActivaController.obtenerProductos)
   app.get("/api/activa/productos/masvendidos", productosTiendaActivaController.obtenerProductosMasVendidos)

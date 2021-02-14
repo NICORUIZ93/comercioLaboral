@@ -138,12 +138,14 @@ class Mercadopago {
         );
         const valorProduto = obtenerValorProducto(producto, tipoValor);
 
+        var recurso = producto.Recursos.length > 0 ? producto.Recursos[0] : null;
+
         return {
           id: producto.id,
           title: producto.nombre,
           description: producto.descripcion.length > 255 ? producto.descripcion.substring(0,255) : producto.descripcion,
-          picture_url: producto.Recursos[0].url
-            ? producto.Recursos[0].url
+          picture_url: recurso
+            ? recurso.url
             : null,
           category_id: `${producto.IdCategoria}`,
           quantity: cantidadProductos,
