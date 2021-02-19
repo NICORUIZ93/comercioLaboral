@@ -94,12 +94,16 @@ class Mercadopago {
       const { id, init_point, sandbox_init_point } = prefenreciaMp.response;
       console.log("la preferencia");
       console.log(prefenreciaMp);
+
       await this.guardarPedidoSinConfirmar(
         datos.comprador,
         preferencia.items,
         datos.idTienda,
         preferencia.external_reference,
-        preferencia.marketplace_fee
+        preferencia.marketplace_fee,
+        datos.idCiudad,
+        datos.ciudad,
+        datos.direccion
       );
 
       return {
@@ -107,7 +111,10 @@ class Mercadopago {
         init_point,
         sandbox_init_point,
         uuid: preferencia.external_reference,
+        ciudad: datos.ciudad,
+        direccion: datos.direccion
       };
+
     } catch (error) {
       console.log(`${error}`);
       throw error;
@@ -262,7 +269,10 @@ class Mercadopago {
     productos,
     idTienda,
     uuid,
-    valorComision
+    valorComision,
+    idCiudad,
+    ciudad,
+    direccion
   ) {
     try {
       const pedido = {
@@ -273,6 +283,9 @@ class Mercadopago {
         estado: "pending",
         estadoEnvio: _EstadosEnvio._Preparando,
         valorComision,
+        idCiudad,
+        ciudad,
+        direccion
       };
 
       await pedidoService.crearPedidoMercadoPago(pedido);

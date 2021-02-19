@@ -48,6 +48,9 @@ module.exports = (sequelize, DataTypes) => {
     idPago:DataTypes.STRING,
     valorComisionMarket: DataTypes.DECIMAL,
     valorTotalConComison: DataTypes.DECIMAL,
+    ciudad: DataTypes.STRING,
+    idCiudad: DataTypes.INTEGER,
+    direccion: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Pedido',

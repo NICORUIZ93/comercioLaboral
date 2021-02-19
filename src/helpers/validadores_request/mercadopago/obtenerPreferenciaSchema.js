@@ -19,7 +19,9 @@ const obtenerPreferenciaSchema = (req, res, next) => {
       }),
       direccion: Joi.object({
         direccion: Joi.string().empty(""),
-        codigoPostal: Joi.string().empty("")
+        codigoPostal: Joi.string().empty(""),
+        idCiudad: Joi.number(),
+        ciudad: Joi.string().empty("")
       })
     }),
     idTienda: Joi.number().integer().required(),

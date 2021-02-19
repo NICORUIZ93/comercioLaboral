@@ -41,7 +41,7 @@ const service = {
   },
   async crearPedidoMercadoPago(nuevoPedido) {
     try {
-      const { usuario, productos, idTienda, uuid, valorComision } = nuevoPedido;
+      const { usuario, productos, idTienda, uuid, valorComision, idCiudad, ciudad, direccion } = nuevoPedido;
 
       //let pedidoCreado = {};
 
@@ -70,19 +70,19 @@ const service = {
         const pedido = {
           IdTienda: idTienda,
           IdUsuario: user.id,
-          valorTotal: 0,
           confirmado: false,
           uuid: uuid,
           valorTotal: valorTotal,
           valorComisionMarket: valorComision,
           valorTotalConComison: valorTotal - valorComision,
-          //Detalle: detallesPedido,
+          idCiudad,
+          ciudad,
+          direccion
         };
 
-        //pedidoCreado = await Pedido.create(pedido, { include: [{ association: Pedido.Detalle , as: 'Detalle'}], transaction });
         const pedidoCreado = (await Pedido.create(pedido, { transaction })).get(
           {
-            plain: true,
+            plain: true
           }
         );
 
@@ -102,12 +102,12 @@ const service = {
         });
       });
 
-      //return pedidoCreado;
     } catch (error) {
       console.log(`${error}`);
       throw error;
     }
   },
+
   async obtenerPedido(idPedido) {
     try {
       const pedido = (
