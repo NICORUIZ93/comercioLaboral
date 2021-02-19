@@ -100,10 +100,7 @@ class Mercadopago {
         preferencia.items,
         datos.idTienda,
         preferencia.external_reference,
-        preferencia.marketplace_fee,
-        datos.idCiudad,
-        datos.ciudad,
-        datos.direccion
+        preferencia.marketplace_fee
       );
 
       return {
@@ -111,8 +108,8 @@ class Mercadopago {
         init_point,
         sandbox_init_point,
         uuid: preferencia.external_reference,
-        ciudad: datos.ciudad,
-        direccion: datos.direccion
+        ciudad: datos.comprador.direccion.ciudad,
+        direccion: datos.comprador.direccion.direccion
       };
 
     } catch (error) {
@@ -269,10 +266,7 @@ class Mercadopago {
     productos,
     idTienda,
     uuid,
-    valorComision,
-    idCiudad,
-    ciudad,
-    direccion
+    valorComision
   ) {
     try {
       const pedido = {
@@ -282,10 +276,7 @@ class Mercadopago {
         uuid,
         estado: "pending",
         estadoEnvio: _EstadosEnvio._Preparando,
-        valorComision,
-        idCiudad,
-        ciudad,
-        direccion
+        valorComision
       };
 
       await pedidoService.crearPedidoMercadoPago(pedido);

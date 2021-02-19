@@ -41,7 +41,7 @@ const service = {
   },
   async crearPedidoMercadoPago(nuevoPedido) {
     try {
-      const { usuario, productos, idTienda, uuid, valorComision, idCiudad, ciudad, direccion } = nuevoPedido;
+      const { usuario, productos, idTienda, uuid, valorComision } = nuevoPedido;
 
       //let pedidoCreado = {};
 
@@ -75,9 +75,9 @@ const service = {
           valorTotal: valorTotal,
           valorComisionMarket: valorComision,
           valorTotalConComison: valorTotal - valorComision,
-          idCiudad,
-          ciudad,
-          direccion
+          idCiudad: usuario.direccion.idCiudad,
+          ciudad: usuario.direccion.ciudad,
+          direccion: usuario.direccion.direccion
         };
 
         const pedidoCreado = (await Pedido.create(pedido, { transaction })).get(
