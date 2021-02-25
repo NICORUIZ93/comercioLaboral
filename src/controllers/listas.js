@@ -5,7 +5,6 @@ module.exports = {
 
   async obtenerLista(req, res) {
     try {
-      //const idLista = req.params.id;
       const lista = await listasService.obtenerLista(1);
       
       return res.status(200).json(lista);
@@ -16,7 +15,6 @@ module.exports = {
   },
   async obtenerListaCiudades(req, res) {
     try {
-      //const idLista = req.params.id;
       const lista = await listasService.obtenerListaCiudades();
       
       return res.status(200).json(lista);
@@ -27,7 +25,6 @@ module.exports = {
   },
   async obtenerListaBancos(req, res) {
     try {
-      //const idLista = req.params.id;
       const lista = await listasService.obtenerListaBancos();
       
       return res.status(200).json(lista);
@@ -49,7 +46,6 @@ module.exports = {
   },
   async obtenerListaDepartamentos(req, res) {
     try {
-      //const idLista = req.params.id;
       const lista = await listasService.obtenerListaDepartamentos();
       
       return res.status(200).json(lista);

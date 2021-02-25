@@ -1,5 +1,4 @@
 const Pedido = require("../db/models").Pedido;
-const Producto = require("../db/models").Producto;
 const Usuario = require("../db/models").Usuario;
 const Tienda = require("../db/models").Tienda;
 const DetallePedido = require("../db/models").DetallePedido;
@@ -42,8 +41,6 @@ const service = {
   async crearPedidoMercadoPago(nuevoPedido) {
     try {
       const { usuario, productos, idTienda, uuid, valorComision } = nuevoPedido;
-
-      //let pedidoCreado = {};
 
       await sequelize.transaction(async (transaction) => {
         const usuarioACrear = {

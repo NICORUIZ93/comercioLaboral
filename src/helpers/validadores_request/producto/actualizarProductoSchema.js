@@ -12,7 +12,7 @@ const actualizarProductoSchema = (req, res, next) => {
     maxFotos: Joi.number(),
     oferta: Joi.boolean(),
     porMayor:Joi.boolean(),
-    valorPorMayor: Joi.number().integer().required(),
+    valorPorMayor: Joi.number().integer(),
     tags: Joi.string().empty("").required(), 
     caracteristicas: Joi.string().empty("").required(),
     estado:Joi.boolean()
@@ -21,6 +21,12 @@ const actualizarProductoSchema = (req, res, next) => {
   if (req.body.oferta) {
     if(req.body.oferta === true){
       reglasSchema.valorOferta = Joi.number().required();
+    }
+  }
+
+  if (req.body.porMayor) {
+    if(req.body.porMayor === true){
+      reglasSchema.valorPorMayor = Joi.number().required();
     }
   }
 
