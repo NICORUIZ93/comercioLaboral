@@ -13,9 +13,7 @@ const nodemailer = require("nodemailer");
 const service = {
   async obtenerTiendas(estadoTienda = false) {
     try {
-
-      await enviarEmailCreacionTienda("lmeneses.dev@gmail.com");
-
+  
       const whereCondition = estadoTienda ? {
         estado: estadoTienda
       } :
