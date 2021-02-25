@@ -13,7 +13,7 @@ const crearProductoSchema = (req, res, next) => {
     oferta:Joi.boolean(),
     estado:Joi.boolean(),
     porMayor:Joi.boolean(),
-    valorPorMayor: Joi.number().integer().required(),
+    valorPorMayor: Joi.number().integer(),
     tags: Joi.string().empty("").required(), 
     caracteristicas: Joi.string().empty("").required(),
     imagenes: Joi.array().items(
@@ -27,6 +27,13 @@ const crearProductoSchema = (req, res, next) => {
   if (req.body.oferta) {
     if(req.body.oferta === true){
       reglasSchema.valorOferta = Joi.number().required();
+    }
+  }
+
+  
+  if (req.body.porMayor) {
+    if(req.body.porMayor === true){
+      reglasSchema.valorPorMayor = Joi.number().required();
     }
   }
 
