@@ -135,8 +135,8 @@ module.exports = {
 
   async actualizarProducto(req, res) {
     try {
-
-      const nuevoProducto = await productoService.actualizarProducto(req.body);
+      const { id, ...producto } = req.body;
+      const nuevoProducto = await productoService.actualizarProducto(producto, id);
 
       return res.status(200).json({ code: 200, mesaage: 'producto actualizado' });
 
