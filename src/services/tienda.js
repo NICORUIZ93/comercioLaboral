@@ -8,16 +8,18 @@ var sequelize = require("../db/models").sequelize;
 const _Rol = require("../constants/roles");
 const { Op } = require("sequelize");
 const Mercadopago  = require( "./plataformaPago");
+const nodemailer = require("nodemailer");
 
 const service = {
   async obtenerTiendas(estadoTienda = false) {
     try {
-            
+
+      await enviarEmailCreacionTienda("lmeneses.dev@gmail.com");
+
       const whereCondition = estadoTienda ? {
         estado: estadoTienda
       } :
       {};
-
 
       const tiendas = await Tienda.findAll({
         where: whereCondition,
@@ -168,6 +170,8 @@ const service = {
           nuevaTienda.imagenes
         );
       }
+
+      await enviarEmailCreacionTienda(usuarioQueCreaTienda.correo);
 
       return resultadoNuevaTienda;
     } catch (error) {
@@ -358,6 +362,38 @@ const obtenerPromedioCalificaciones = async (calificaciones) => {
   }
 };
 
+
+const enviarEmailCreacionTienda = async (correoReceptor) => {
+  try {
+
+    // create reusable transporter object using the default SMTP transport
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'cuenta.comerquio@gmail.com',
+        pass: 'comerquio.pass.s3' // naturally, replace both with your real credentials or an application-specific password
+      }
+    });
+  
+    // send mail with defined transport object
+    let info = await transporter.sendMail({
+      from: '"Comerquio" <cuenta.comerquio@gmail.com>', // sender address
+      to: correoReceptor, // list of receivers
+      subject: "Notificación de tienda creada - Comerquio", // Subject line
+      html: "<b>Felicitaciones su tienda ha sido creada exitosamente en Comerquio, no olvide activar su tienda.</b>", // html body
+    });
+  
+    console.log("Message sent: %s", info.messageId);
+    // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+  
+    // Preview only available when sending through an Ethereal account
+    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+    // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+
+  } catch (error) {
+    console.log(`${error}`);
+  }
+};
 
 
 module.exports.tiendaService = service;
