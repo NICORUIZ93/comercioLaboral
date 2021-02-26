@@ -136,10 +136,12 @@ class Mercadopago {
         const cantidadProductos = parseInt(
           datos.productos.find((p) => p.id === producto.id).cantidad
         );
+        /*
         const tipoValor = parseInt(
           datos.productos.find((p) => p.id === producto.id).tipo
         );
-        const valorProduto = obtenerValorProducto(producto, tipoValor);
+        */
+        const valorProduto = obtenerValorProducto(producto, cantidadProductos);
 
         var recurso =
           producto.Recursos.length > 0 ? producto.Recursos[0] : null;
@@ -304,9 +306,9 @@ const calcularValorComision = async (productos, comision) => {
   return parseFloat(valorComision);
 };
 
-const obtenerValorProducto = (producto, tipoValor) => {
-  if (tipoValor) {
-    
+const obtenerValorProducto = (producto, cantidadUnidades) => {
+  /*if (tipoValor) {
+
     switch (tipoValor) {
       case _TipoProducto.Normal:
         return parseFloat(producto.valor);
@@ -320,12 +322,15 @@ const obtenerValorProducto = (producto, tipoValor) => {
         return parseFloat(producto.valor);
     }
   } else {
-    if (producto.feria) return parseFloat(producto.valorFeria);
-    if (producto.Oferta) return parseFloat(producto.valorOferta);
-    if (producto.porMayor) return parseFloat(producto.valorPorMayor);
+    */
 
-    return parseFloat(producto.valor);
+  if (producto.porMayor) {
+    if (cantidadUnidades >= 12) return parseFloat(producto.valorPorMayor);
   }
+  if (producto.feria) return parseFloat(producto.valorFeria);
+  if (producto.Oferta) return parseFloat(producto.valorOferta);
+
+  return parseFloat(producto.valor);
 };
 
 const procesarCambioEnPedido = async (pedido, cambiosEnPedido) => {
