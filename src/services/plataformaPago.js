@@ -109,9 +109,8 @@ class Mercadopago {
         sandbox_init_point,
         uuid: preferencia.external_reference,
         ciudad: datos.comprador.direccion.ciudad,
-        direccion: datos.comprador.direccion.direccion
+        direccion: datos.comprador.direccion.direccion,
       };
-
     } catch (error) {
       console.log(`${error}`);
       throw error;
@@ -142,15 +141,17 @@ class Mercadopago {
         );
         const valorProduto = obtenerValorProducto(producto, tipoValor);
 
-        var recurso = producto.Recursos.length > 0 ? producto.Recursos[0] : null;
+        var recurso =
+          producto.Recursos.length > 0 ? producto.Recursos[0] : null;
 
         return {
           id: producto.id,
           title: producto.nombre,
-          description: producto.descripcion.length > 255 ? producto.descripcion.substring(0,255) : producto.descripcion,
-          picture_url: recurso
-            ? recurso.url
-            : null,
+          description:
+            producto.descripcion.length > 255
+              ? producto.descripcion.substring(0, 255)
+              : producto.descripcion,
+          picture_url: recurso ? recurso.url : null,
           category_id: `${producto.IdCategoria}`,
           quantity: cantidadProductos,
           currency_id: "COP",
@@ -276,7 +277,7 @@ class Mercadopago {
         uuid,
         estado: "pending",
         estadoEnvio: _EstadosEnvio._Preparando,
-        valorComision
+        valorComision,
       };
 
       await pedidoService.crearPedidoMercadoPago(pedido);
@@ -304,17 +305,26 @@ const calcularValorComision = async (productos, comision) => {
 };
 
 const obtenerValorProducto = (producto, tipoValor) => {
-  switch (tipoValor) {
-    case _TipoProducto.Normal:
-      return parseFloat(producto.valor);
-    case _TipoProducto.Oferta:
-      return parseFloat(producto.valorOferta);
-    case _TipoProducto.Feria:
-      return parseFloat(producto.valorFeria);
-    case _TipoProducto.Mayorista:
-      return parseFloat(producto.valorPorMayor);
-    default:
-      return parseFloat(producto.valor);
+  if (tipoValor) {
+    
+    switch (tipoValor) {
+      case _TipoProducto.Normal:
+        return parseFloat(producto.valor);
+      case _TipoProducto.Oferta:
+        return parseFloat(producto.valorOferta);
+      case _TipoProducto.Feria:
+        return parseFloat(producto.valorFeria);
+      case _TipoProducto.Mayorista:
+        return parseFloat(producto.valorPorMayor);
+      default:
+        return parseFloat(producto.valor);
+    }
+  } else {
+    if (producto.feria) return parseFloat(producto.valorFeria);
+    if (producto.Oferta) return parseFloat(producto.valorOferta);
+    if (producto.porMayor) return parseFloat(producto.valorPorMayor);
+
+    return parseFloat(producto.valor);
   }
 };
 
