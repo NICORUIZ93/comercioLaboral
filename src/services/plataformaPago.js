@@ -136,11 +136,7 @@ class Mercadopago {
         const cantidadProductos = parseInt(
           datos.productos.find((p) => p.id === producto.id).cantidad
         );
-        /*
-        const tipoValor = parseInt(
-          datos.productos.find((p) => p.id === producto.id).tipo
-        );
-        */
+
         const valorProduto = obtenerValorProducto(producto, cantidadProductos);
 
         var recurso =
@@ -307,28 +303,12 @@ const calcularValorComision = async (productos, comision) => {
 };
 
 const obtenerValorProducto = (producto, cantidadUnidades) => {
-  /*if (tipoValor) {
-
-    switch (tipoValor) {
-      case _TipoProducto.Normal:
-        return parseFloat(producto.valor);
-      case _TipoProducto.Oferta:
-        return parseFloat(producto.valorOferta);
-      case _TipoProducto.Feria:
-        return parseFloat(producto.valorFeria);
-      case _TipoProducto.Mayorista:
-        return parseFloat(producto.valorPorMayor);
-      default:
-        return parseFloat(producto.valor);
-    }
-  } else {
-    */
 
   if (producto.porMayor) {
     if (cantidadUnidades >= 12) return parseFloat(producto.valorPorMayor);
   }
   if (producto.feria) return parseFloat(producto.valorFeria);
-  if (producto.Oferta) return parseFloat(producto.valorOferta);
+  if (producto.oferta) return parseFloat(producto.valorOferta);
 
   return parseFloat(producto.valor);
 };
