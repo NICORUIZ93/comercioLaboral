@@ -8,7 +8,9 @@ const validadorBuscarProductosPaginado = require("../producto/buscarProductosPag
 const validadorRecursosProducto = require("../producto/cargarRecursosProductoSchema").cargarRecursosProductoSchema;
 const validadorProductosPorTiendaPaginado = require("../producto/obtenerProductosPorTiendaPaginadoSchema").obtenerProductosPorTiendaPaginadoSchema; 
 const validadorEliminarRecursoProducto = require("../producto/eliminarRecursoProductoSchema").eliminarRecursoProductoSchema;
-
+const validadorCalificacionProducto = require("../producto/calificacionProductoSchema").calificacionProductoSchema;
+const validadorObtenerCalificacionProducto = require('../producto/obtenerCalificacionProductoSchema').obtenerCalificacionProductoSchema;
+const validarObtenerPromedioProducto = require('../producto/obtenerPromedioProductoSchema').obtenerPromedioProductoSchema;
 module.exports = {
     validadorCrearProducto,
     validadorActualizarProducto,
@@ -19,5 +21,8 @@ module.exports = {
     validadorRecursosProducto,
     validadorProductosPorTiendaPaginado,
     validadorObtenerProductosTiendaFeria,
-    validadorEliminarRecursoProducto
+    validadorEliminarRecursoProducto,
+    validadorCalificacionProducto,
+    validadorObtenerCalificacionProducto,
+    validarObtenerPromedioProducto
 }

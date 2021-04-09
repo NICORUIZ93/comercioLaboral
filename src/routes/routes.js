@@ -18,11 +18,12 @@ const estadisticasController = require("../controllers/estadisticas")
 const enviosController = require("../controllers/envios")
 const feriaController = require("../controllers/feria")
 const notificacionController = require("../controllers/notificacion")
+const calificacionProductoController = require('../controllers/calificacionProducto')
 
 //Validadores
 const { validadorObtenerPorId, obtenerPorUuidSchema } = require("../helpers/validadores_request/genericos");
 const { validadorCrearUsuario, validadorActualizarUsuario, validadorEliminarUsuario, validadorcrearUsuariosMasivo } = require("../helpers/validadores_request/usuario");
-const { validadorCrearProducto, validadorActualizarProducto, validadorEliminarProducto, validadorObtenerProductosPaginado, validadorBuscarProductosPaginado, validadorRecursosProducto, validadorProductosPorTiendaPaginado, validadorObtenerProductosTiendaFeria, validadorEliminarRecursoProducto} = require("../helpers/validadores_request/producto");
+const { validadorCrearProducto, validadorActualizarProducto, validadorEliminarProducto, validadorObtenerProductosPaginado, validadorBuscarProductosPaginado, validadorRecursosProducto, validadorProductosPorTiendaPaginado, validadorObtenerProductosTiendaFeria, validadorEliminarRecursoProducto , validadorCalificacionProducto,validadorObtenerCalificacionProducto,validarObtenerPromedioProducto } = require("../helpers/validadores_request/producto");
 const { validadorCrearTienda, validadorActualizarTienda, validadorEliminarTienda, validadorRecursosTienda, validadorActivarTienda } = require("../helpers/validadores_request/tienda");
 const { validadorCrearCategoria, validadorActualizarCategoria, validadorEliminarCategoria } = require("../helpers/validadores_request/categoria");
 const { validadorCrearMensaje, validadorEliminarMensaje } = require("../helpers/validadores_request/mensaje");
@@ -95,8 +96,11 @@ module.exports = app => {
   app.put("/api/producto", validadorActualizarProducto, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ productoController.actualizarProducto)
   app.delete("/api/producto/recurso", validadorEliminarRecursoProducto, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ productoController.eliminarRecursoProducto)
   app.delete("/api/producto/:id", validadorEliminarProducto, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ productoController.eliminarProducto)
+  app.post("/api/producto/calificacion", validadorCalificacionProducto, calificacionProductoController.calificacionProducto)
+  app.get("/api/producto/calificaciones/:id", validadorObtenerCalificacionProducto, calificacionProductoController.obtenercalificacionesProductos)
+  app.get("/api/producto/calificacion/:id", validarObtenerPromedioProducto, calificacionProductoController.obtenerPromedioProducto)
   
-  
+
   //Rutas productos solo de tiendas activas
   app.get("/api/activa/productos", productosTiendaActivaController.obtenerProductos)
   app.get("/api/activa/productos/masvendidos", productosTiendaActivaController.obtenerProductosMasVendidos)
@@ -107,6 +111,8 @@ module.exports = app => {
   app.get("/api/activa/productos/tienda/:id", validadorObtenerPorId, productosTiendaActivaController.obtenerProductosPorTienda)
   app.get("/api/activa/productos/pedido/:id", validadorObtenerPorId, productosTiendaActivaController.obtenerProductosPorPedido)
   app.get("/api/activa/producto/:id", validadorObtenerPorId, productosTiendaActivaController.obtenerProducto)
+  
+
 
   //Rutas Categorias
   app.get("/api/categorias", categoriaController.obtenerCategorias)
