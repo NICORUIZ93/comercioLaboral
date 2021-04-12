@@ -19,12 +19,13 @@ const enviosController = require("../controllers/envios")
 const feriaController = require("../controllers/feria")
 const notificacionController = require("../controllers/notificacion")
 const calificacionProductoController = require('../controllers/calificacionProducto')
+const respuestaTiendaController = require('../controllers/respuestaTienda')
 
 //Validadores
 const { validadorObtenerPorId, obtenerPorUuidSchema } = require("../helpers/validadores_request/genericos");
 const { validadorCrearUsuario, validadorActualizarUsuario, validadorEliminarUsuario, validadorcrearUsuariosMasivo } = require("../helpers/validadores_request/usuario");
 const { validadorCrearProducto, validadorActualizarProducto, validadorEliminarProducto, validadorObtenerProductosPaginado, validadorBuscarProductosPaginado, validadorRecursosProducto, validadorProductosPorTiendaPaginado, validadorObtenerProductosTiendaFeria, validadorEliminarRecursoProducto , validadorCalificacionProducto,validadorObtenerCalificacionProducto,validarObtenerPromedioProducto } = require("../helpers/validadores_request/producto");
-const { validadorCrearTienda, validadorActualizarTienda, validadorEliminarTienda, validadorRecursosTienda, validadorActivarTienda } = require("../helpers/validadores_request/tienda");
+const { validadorCrearTienda, validadorActualizarTienda, validadorEliminarTienda, validadorRecursosTienda, validadorActivarTienda , validadorRespuestaTienda ,validadorRespuestas} = require("../helpers/validadores_request/tienda");
 const { validadorCrearCategoria, validadorActualizarCategoria, validadorEliminarCategoria } = require("../helpers/validadores_request/categoria");
 const { validadorCrearMensaje, validadorEliminarMensaje } = require("../helpers/validadores_request/mensaje");
 const { validadorobtenerUrlArchivo } = require("../helpers/validadores_request/archivo");
@@ -73,7 +74,8 @@ module.exports = app => {
   app.delete("/api/tienda/:id", validadorEliminarTienda, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ tiendaController.eliminarTienda)
   app.get("/api/tienda/saldoMP/:id", validadorObtenerPorId, tiendaController.obtenerSaldoMP)
   app.get("/api/tienda/refescarAutorizacion/:id", validadorObtenerPorId, tiendaController.actualizarAutorizacion)
-
+  app.post("/api/tiendas/respuesta" , validadorRespuestaTienda , respuestaTiendaController.respuestaTienda )
+  app.get('/api/tiendas/respuestas/:id' , validadorRespuestas , respuestaTiendaController.respuestas)
   //Rutas TIendas solo activas
   app.get("/api/activa/tiendas", tiendasActivasController.obtenerTiendas)
   app.get("/api/activa/tienda/:id", validadorObtenerPorId, tiendasActivasController.obtenerTienda)
