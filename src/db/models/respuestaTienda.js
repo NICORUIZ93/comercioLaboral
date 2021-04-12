@@ -23,7 +23,6 @@ module.exports = (sequelize, DataTypes) => {
   };
   respuestaTienda.init({
     id_calificacion: DataTypes.INTEGER,
-    id_tienda: DataTypes.INTEGER,
     id_producto : DataTypes.INTEGER,
     id_usuario_respuesta : DataTypes.INTEGER,
     respuesta: DataTypes.STRING
