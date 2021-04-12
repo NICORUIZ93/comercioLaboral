@@ -34,7 +34,7 @@ const service = {
         let resul = [];
         for (let i = 0; i <= cl.length-1; i++) {
           const usu = await Usuario.findAll({
-            attributes: { exclude: ["contrasena"] },
+            attributes: ['id','nombre'],
             where: {
               'id': cl[i]['IdUsuario'],
             }
