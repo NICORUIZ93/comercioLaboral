@@ -4,7 +4,6 @@ const respuestaTiendaSchema = (req, res, next) => {
   // define base schema rules
   const reglasSchema = {
     id_calificacion : Joi.number().integer().required(),
-    id_tienda : Joi.number().integer().required(),
     id_producto : Joi.number().integer().required(),
     id_usuario_respuesta : Joi.number().integer().required(),
     respuesta : Joi.string().empty("").required(),
