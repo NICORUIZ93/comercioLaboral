@@ -52,7 +52,7 @@ const service = {
           resul[i] = {
             id : cl[i]['id'],
             id_producto : cl[i]['IdProducto'],
-            id_usuario : (JSON.parse(JSON.stringify(usu)))['nombre'],
+            id_usuario : (JSON.parse(JSON.stringify(usu)))[i]['nombre'],
             calificacion : cl[i]['calificacion'],
             comentario : cl[i]['comentario'],
             respuestas : { "datos" : JSON.parse(JSON.stringify(respuesta))},
