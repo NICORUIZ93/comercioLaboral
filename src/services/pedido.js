@@ -218,7 +218,7 @@ const service = {
   },
   async pedidosUltimos() {
     try {
-      const pedidos  = await DetallePago.findAll({
+      const pedidos  = await Pedido.findAll({
          where : {
            'confirmado' : true
          },
