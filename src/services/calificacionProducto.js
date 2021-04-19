@@ -10,9 +10,22 @@ const service = {
     
     async calificacionProductos(nuevaCalificacion) {
       try {
-        let resultadocreate = await calificacionProductos.create(
-          nuevaCalificacion
-        );
+        const usu = await Usuario.findAll({
+          attributes: ['id','nombre'],
+          where: {
+            'id': nuevaCalificacion.IdUsuario,
+          }
+        });
+        let vid = JSON.parse(JSON.stringify(usu))
+        let resultadocreate = "";
+        if (vid != undefined) {
+           resultadocreate = await calificacionProductos.create(
+            nuevaCalificacion
+          );
+        }else {
+            resultadocreate = "No existe el usuario"
+        }
+    
   
         return resultadocreate;
       } catch (error) {
