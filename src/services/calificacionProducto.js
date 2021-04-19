@@ -17,6 +17,7 @@ const service = {
           }
         });
         let vid = (JSON.parse(JSON.stringify(usu)))
+        console.log(vid)
         let resultadocreate = "";
         if (vid != undefined) {
            resultadocreate = await calificacionProductos.create(
