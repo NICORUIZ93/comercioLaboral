@@ -124,6 +124,24 @@ const service = {
       throw error;
     }
   },
+  async ultimasTiendas() {
+    try {
+      const tienda = await Tienda.findAll({
+          where : {
+            'estado' : true
+          },
+          limit : 5,
+          order: [
+            ['createdAt', 'DESC']
+          ]
+      });
+
+      return tienda;
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
+  },
   async crearTienda(idUsuario, nuevaTienda, esAdministrador = false) {
     try {
       let resultadoNuevaTienda;

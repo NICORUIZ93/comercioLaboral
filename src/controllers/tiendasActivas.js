@@ -29,6 +29,14 @@ module.exports = {
     } catch (e) {
       return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
+  },
+  async ultimas(req, res) {
+    try {
+      const ultimasT = await tiendaService.ultimasTiendas();
+      return res.status(200).json(ultimasT);
+    } catch (e) {
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
+    }
   }
   
 };

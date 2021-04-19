@@ -80,6 +80,7 @@ module.exports = app => {
   app.get("/api/activa/tiendas", tiendasActivasController.obtenerTiendas)
   app.get("/api/activa/tienda/:id", validadorObtenerPorId, tiendasActivasController.obtenerTienda)
   app.get("/api/activa/tienda/porIdUsuario/:id", validadorObtenerPorId, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ tiendasActivasController.obtenerTiendaPorUsuario)
+  app.get('/api/tiendas/ultimas' , tiendasActivasController.ultimas )
 
   //Rutas Productos
   app.get("/api/productos", productoController.obtenerProductos)
