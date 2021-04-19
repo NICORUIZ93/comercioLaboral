@@ -73,6 +73,14 @@ module.exports = {
       return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
+  async ultimosPedidos(req, res) {
+    try {
+      const pedidos = await pedidoService.pedidosUltimos();
+      return res.status(200).json(pedidos);
+    } catch (e) {
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
+    }
+  }
   
 };
 

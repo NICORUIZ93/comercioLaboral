@@ -216,6 +216,24 @@ const service = {
       throw error;
     }
   },
+  async pedidosUltimos() {
+    try {
+      const pedidos  = await DetallePago.findAll({
+         where : {
+           'confirmado' : true
+         },
+         limit : 5,
+         order: [
+          ['createdAt', 'DESC']
+        ]
+      });
+
+      return pedidos;
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
+  },
 };
 
 module.exports.pedidoService = service;

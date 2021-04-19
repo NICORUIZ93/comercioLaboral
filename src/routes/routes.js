@@ -150,6 +150,7 @@ module.exports = app => {
   app.get("/api/compras/tienda/:id", validadorObtenerPorId, pedidoController.obtenerComprasPorTienda)
   app.get("/api/compras/usuario/:id", validadorObtenerPorId, pedidoController.obtenerComprasPorUsuario)
   app.get("/api/pedido/estado/:id", obtenerPorUuidSchema, pedidoController.obtenerEstadoPedido)
+  app.get('/api/pedidos/confirmados/ultimos', pedidoController.ultimosPedidos)
 
   //Rutas Calificacion tienda
   app.get("/api/calificacion/tienda/:id", validadorObtenerCalificacionTienda,/*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ calificacionTiendaController.obtenerCalificacionesPorTienda)
