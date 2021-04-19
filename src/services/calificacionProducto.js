@@ -19,7 +19,7 @@ const service = {
         let vid = (JSON.parse(JSON.stringify(usu)))
         console.log(vid)
         let resultadocreate = "";
-        if (vid != undefined) {
+        if (vid != []) {
            resultadocreate = await calificacionProductos.create(
             nuevaCalificacion
           );
