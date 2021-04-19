@@ -16,7 +16,7 @@ const service = {
             'id': nuevaCalificacion.IdUsuario,
           }
         });
-        let vid = JSON.parse(JSON.stringify(usu))
+        let vid = (JSON.parse(JSON.stringify(usu)))['nombre']
         let resultadocreate = "";
         if (vid != undefined) {
            resultadocreate = await calificacionProductos.create(
