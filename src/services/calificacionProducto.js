@@ -17,7 +17,7 @@ const service = {
           }
         });
         let resultadocreate = "";
-        if ((JSON.parse(JSON.stringify(usu)))[0]['nombre'] != undefined) {
+        if ((JSON.parse(JSON.stringify(usu)))[0] != undefined) {
            resultadocreate = await calificacionProductos.create(
             nuevaCalificacion
           );
