@@ -739,6 +739,23 @@ const service = {
       throw error;
     }
   },
+  async ultimosProductos() {
+    try {
+      
+      const numeroDeProductos = await Producto.findAll({
+        limit: 10,
+        order: [
+          ['createdAt', 'DESC']
+        ]
+      });
+
+      return numeroDeProductos;
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
+  },
+
 };
 
 //Privados

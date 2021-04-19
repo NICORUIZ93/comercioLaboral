@@ -101,6 +101,14 @@ module.exports = {
       res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
+  async obtenerUltimosProducto(req, res) {
+    try {
+      const productoU = await productoService.ultimosProductos();
+      return res.status(200).json(productoU);
+    } catch (e) {
+      res.status(500).send({ code: 500, mesaage: `${e}` });
+    }
+  },
 
 };
 
