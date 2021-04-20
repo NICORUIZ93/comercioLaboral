@@ -1,4 +1,5 @@
 const Rol = require('../constants/roles');
+const path = require('path')
 const multer = require('multer')
 let storage = multer.diskStorage({
   destination: (req, file, cb) => {
