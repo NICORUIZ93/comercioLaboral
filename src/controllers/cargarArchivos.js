@@ -25,15 +25,6 @@ module.exports = {
       return res.status(500).send(e);
     }
   },
-  async cargaStorage(req, res) {
-    try {
-      const storagee = await cargarArchivosService.storage(req);
-      return res.status(200).json(storagee);
-
-    } catch (e) {
-      return res.status(500).send(e);
-    }
-  },
   async obtenerUrlRecurso(req, res) {
     try {
 

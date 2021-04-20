@@ -1,4 +1,10 @@
 const Rol = require('../constants/roles');
+const admin = require('firebase-admin');
+const serviceAccount = require('../files/lamejorferia-32065-firebase-adminsdk-m4ddl-4823e442cf.json');
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
+
 const path = require('path')
 const multer = require('multer')
 let storage = multer.diskStorage({
@@ -58,7 +64,19 @@ module.exports = app => {
   app.post("/api/archivos", cargarArchivosController.cargarArchivos)
   app.post("/api/archivos/modelo", cargarArchivosController.cargarArchivosPorModelo)
   app.get("/api/archivos/url", validadorobtenerUrlArchivo, cargarArchivosController.obtenerUrlRecurso)
-  app.get('/api/cargar/' , upload.single('file') , cargarArchivosController.cargaStorage  )
+  app.get('/api/cargar/' , upload.single('file') , async function (req,res,next){
+    console.log(`Storange location ${req.hostname}/${req.file.path}`);
+    try {
+      const bucket = admin.storage().bucket('gs://lamejorferia-32065.appspot.com')
+      let storageRef = await admin.storage().bucket('gs://lamejorferia-32065.appspot.com').upload('./archivos/' + req.file.originalname, { resumable: true, public: true });
+      console.log(storageRef)
+      let file = bucket.file(req.file.originalname)
+      const publicUrl = file.publicUrl()
+      res.status(200).json(publicUrl)
+    } catch (error) {
+      res.status(500).json(error)
+    }
+  })
 
   //Login
   app.post("/api/login", autorizacion.login)
