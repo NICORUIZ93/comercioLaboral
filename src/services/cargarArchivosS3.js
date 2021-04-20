@@ -78,7 +78,7 @@ const service = {
       });
     });
   },
-  async cargaStorage(req) {
+  async storage(req) {
 
     const bucket =   admin.storage().bucket('gs://lamejorferia-32065.appspot.com')
     let storageRef = await admin.storage().bucket('gs://lamejorferia-32065.appspot.com').upload('./archivos/' + req.file.originalname, { resumable: true, public: true });
@@ -86,7 +86,7 @@ const service = {
     let file = bucket.file(req.file.originalname)
     const publicUrl = file.publicUrl()
     console.log(publicUrl)
-    return storageRef['metadata']['mediaLink']
+    return publicUrl
 
   },
 };

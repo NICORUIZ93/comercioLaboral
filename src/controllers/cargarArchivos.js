@@ -27,7 +27,7 @@ module.exports = {
   },
   async cargaStorage(req, res) {
     try {
-      const storage = await cargarArchivosService.cargaStorage(req);
+      const storage = await cargarArchivosService.storage(req);
       return res.status(200).json(storage);
 
     } catch (e) {
