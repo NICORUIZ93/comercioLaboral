@@ -86,10 +86,10 @@ const service = {
       console.log(storageRef)
       let file = bucket.file(req.file.originalname)
       const publicUrl = file.publicUrl()
-      console.log(publicUrl)
+      console.log(file)
       return publicUrl
     } catch (error) {
-        return error  
+      return error
     }
 
   },
