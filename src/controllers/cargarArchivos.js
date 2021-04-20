@@ -1,11 +1,11 @@
-const { recursosService } = require( "../services/recursos");
-const { cargarArchivosService } = require( "../services/cargarArchivosS3");
+const { recursosService } = require("../services/recursos");
+const { cargarArchivosService } = require("../services/cargarArchivosS3");
 
 module.exports = {
 
   async cargarArchivos(req, res) {
     try {
-      
+
       const respuestaCargue = await recursosService.crearRecurso(req, res);
 
       return res.status(200).json(respuestaCargue);
@@ -16,10 +16,19 @@ module.exports = {
   },
   async cargarArchivosPorModelo(req, res) {
     try {
-      
+
       const respuestaCargue = await recursosService.crearRecursoPorModelo(req, res);
 
       return res.status(200).json(respuestaCargue);
+
+    } catch (e) {
+      return res.status(500).send(e);
+    }
+  },
+  async cargaStorage(req, res) {
+    try {
+      const storage = await cargarArchivosService.cargaStorage(req);
+      return res.status(200).json(storage);
 
     } catch (e) {
       return res.status(500).send(e);
@@ -35,7 +44,7 @@ module.exports = {
         return {
           url: await cargarArchivosService.obtenerUrlRecurso(archivo.key, archivo.type),
           key: archivo.key,
-          type : archivo.type
+          type: archivo.type
         }
       }));
 
@@ -45,7 +54,7 @@ module.exports = {
       return res.status(500).send(e);
     }
   },
-  
+
 };
 
 

@@ -2,6 +2,7 @@ const aws = require("aws-sdk");
 const multer = require("multer");
 const multerS3 = require("multer-s3");
 const util = require("util");
+const admin = require('firebase-admin');
 
 const s3Bucket = new aws.S3({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -71,6 +72,20 @@ const service = {
         resolve(url);
       });
     });
+  },
+  async cargaStorage(req) {
+    const serviceAccount = require('../files/lamejorferia-32065-firebase-adminsdk-m4ddl-4823e442cf.json');
+    admin.initializeApp({
+      credential: admin.credential.cert(serviceAccount)
+    });
+    const db = admin;
+    const bucket =   db.storage().bucket('gs://lamejorferia-32065.appspot.com')
+    let storageRef = await admin.storage().bucket('gs://lamejorferia-32065.appspot.com').upload('../../archivos/' + req.file.originalname, { resumable: true, public: true });
+    console.log(storageRef)
+    let file = bucket.file(req.file.originalname)
+    const publicUrl = file.publicUrl()
+    return publicUrl
+
   },
 };
 

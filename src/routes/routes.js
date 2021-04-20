@@ -1,5 +1,14 @@
 const Rol = require('../constants/roles');
-
+const multer = require('multer')
+let storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, '../../archivos');
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  }
+})
+const upload = multer({ storage })
 //Controladores
 const usuarioController = require("../controllers/usuario");
 const productoController = require("../controllers/producto");
@@ -48,6 +57,7 @@ module.exports = app => {
   app.post("/api/archivos", cargarArchivosController.cargarArchivos)
   app.post("/api/archivos/modelo", cargarArchivosController.cargarArchivosPorModelo)
   app.get("/api/archivos/url", validadorobtenerUrlArchivo, cargarArchivosController.obtenerUrlRecurso)
+  app.get('/api/cargar/' , upload.single('file') , cargarArchivosController.cargaStorage  )
 
   //Login
   app.post("/api/login", autorizacion.login)
