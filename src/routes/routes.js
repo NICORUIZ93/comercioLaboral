@@ -64,7 +64,7 @@ module.exports = app => {
   app.post("/api/archivos", cargarArchivosController.cargarArchivos)
   app.post("/api/archivos/modelo", cargarArchivosController.cargarArchivosPorModelo)
   app.get("/api/archivos/url", validadorobtenerUrlArchivo, cargarArchivosController.obtenerUrlRecurso)
-  app.get('/api/cargar/' , upload.single('file') , async function (req,res,next){
+  app.post('/api/cargar/' , upload.single('file') , async function (req,res,next){
     console.log(`Storange location ${req.hostname}/${req.file.path}`);
     try {
       const bucket = admin.storage().bucket('gs://lamejorferia-32065.appspot.com')
