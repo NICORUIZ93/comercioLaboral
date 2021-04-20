@@ -86,7 +86,7 @@ const service = {
     let file = bucket.file(req.file.originalname)
     const publicUrl = file.publicUrl()
     console.log(publicUrl)
-    return publicUrl
+    return storageRef
 
   },
 };
