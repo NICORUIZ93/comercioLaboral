@@ -150,9 +150,10 @@ const service = {
   ,
   async crearEmpleadoTienda(nuevoUsuario) {
     try {
+      /*
       let usuario = { ...nuevoUsuario };
       let recurso;
-
+      */
       if (nuevoUsuario.contrasena) {
         usuario.contrasena = bcrypt.hashSync(nuevoUsuario.contrasena, 10);
         usuario.IdRol = _Rol.VendedorID;
