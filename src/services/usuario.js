@@ -3,7 +3,7 @@ const Usuario = require("../db/models").Usuario;
 const Rol = require("../db/models").Rol;
 const Recurso = require("../db/models").Recurso;
 const UsuariosTienda = require("../db/models").UsuariosTienda;
-const vT = require('../db/models/empleadosTiendas').empleadosTiendas;
+const empleadosTiendas = require('../db/models/empleadosTiendas').empleadosTiendas;
 const { Op } = require("sequelize");
 const _Rol = require("../constants/roles");
 const { recursosService } = require("../services/recursos");
@@ -174,7 +174,7 @@ const service = {
 
       usuarioSinFoto.activo = true;
       */
-      const resultadocreate = await vT.create(nuevoUsuario);
+      const resultadocreate = await empleadosTiendas.create(nuevoUsuario);
        
       //const { contrasena, ...usuarioSinContrasena } = resultadocreate;
 
