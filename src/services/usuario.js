@@ -158,6 +158,16 @@ const service = {
      
 
       let cu = await this.crearUsuario(nuevoUsuario);
+      
+      let resultadov = await empleadosTiendas.findAll({
+         where: {
+            'correo' : nuevoUsuario.correo
+         }
+      });
+
+      if (resultadov) {
+        throw Error("El empleado ya existe");
+      }
 
       console.log(cu)
       let resultadocreate = await empleadosTiendas.create(nuevoUsuario);
