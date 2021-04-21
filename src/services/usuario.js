@@ -174,7 +174,7 @@ const service = {
 
       usuarioSinFoto.activo = true;
       */
-      const resultadocreate = await empleadosTiendas.create(nuevoUsuario);
+      let resultadocreate = await empleadosTiendas.create(nuevoUsuario);
        
       //const { contrasena, ...usuarioSinContrasena } = resultadocreate;
 
