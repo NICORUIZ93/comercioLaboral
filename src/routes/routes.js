@@ -69,11 +69,11 @@ module.exports = app => {
     try {
       const bucket = admin.storage().bucket('gs://lamejorferia-32065.appspot.com')
       let storageRef = await admin.storage().bucket('gs://lamejorferia-32065.appspot.com').upload('./archivos/' + req.file.originalname, { resumable: true, public: true });
-      console.log(req.file.originalname)
-      console.log(storageRef)
-      let file = bucket.file(req.file.originalname)
-      let publicUrl = file.publicUrl()
-      res.json(publicUrl)
+      //console.log(req.file.originalname)
+      //console.log(storageRef)
+      //let file = bucket.file(req.file.originalname)
+      //let publicUrl = file.publicUrl()
+      res.json(storageRef)
     } catch (error) {
       res.status(500).json(error)
     }
