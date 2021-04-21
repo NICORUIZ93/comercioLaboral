@@ -8,7 +8,6 @@ const crearEmpleadoSchema = (req, res, next) => {
     apellido: Joi.string().empty(""),
     correo: Joi.string().email().empty("").required(),
     dni: Joi.string().empty(""),
-    contrasena : Joi.string().empty("").required(),
     telefono: Joi.number().integer(),
     direccion: Joi.string().min(6).empty(""),
     IdRol: 2,
