@@ -9,7 +9,7 @@ const path = require('path')
 const multer = require('multer')
 let storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, './archivos');
+    cb(null, 'archivos/');
   },
   filename: (req, file, cb) => {
     cb(null, file.originalname);
@@ -68,7 +68,7 @@ module.exports = app => {
     console.log(`Storange location ${req.hostname}/${req.file.path}`);
     try {
       const bucket = admin.storage().bucket('gs://lamejorferia-32065.appspot.com')
-      let storageRef = await admin.storage().bucket('gs://lamejorferia-32065.appspot.com').upload('./archivos/' + req.file.originalname, { resumable: true, public: true });
+      let storageRef = await admin.storage().bucket('gs://lamejorferia-32065.appspot.com').upload('archivos/' + req.file.originalname, { resumable: true, public: true });
       //console.log(req.file.originalname)
       //console.log(storageRef)
       //let file = bucket.file(req.file.originalname)
