@@ -322,7 +322,8 @@ const service = {
   },
   async empleadosTienda(req) {
     try {
-      const e = await empleadosTiendas.count({
+      const e = await empleadosTiendas.findAll({
+        attributes: { exclude: ["contrasena"] },
         where: {
           'idTienda' : req.params.id
         }
