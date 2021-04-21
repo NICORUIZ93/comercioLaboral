@@ -73,8 +73,7 @@ module.exports = app => {
       console.log(storageRef)
       let file = bucket.file(req.file.originalname)
       let publicUrl = file.publicUrl()
-      console.log(publicUrl + "publicrl")
-      res.status(200).json(publicUrl)
+      res.json(publicUrl)
     } catch (error) {
       res.status(500).json(error)
     }
