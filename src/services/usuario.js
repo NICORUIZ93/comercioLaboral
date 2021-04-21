@@ -174,13 +174,11 @@ const service = {
 
       usuarioSinFoto.activo = true;
       */
-      const resultadocreate = (await vT.create(usuarioSinFoto)).get({
-        plain: true,
-      });
+      const resultadocreate = await vT.create(nuevoUsuario);
        
-      const { contrasena, ...usuarioSinContrasena } = resultadocreate;
+      //const { contrasena, ...usuarioSinContrasena } = resultadocreate;
 
-      return usuarioSinContrasena;
+      return resultadocreate;
     } catch (error) {
       console.log(`${error}`);
       throw error;
