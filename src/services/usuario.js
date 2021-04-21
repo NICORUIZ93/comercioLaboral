@@ -155,8 +155,8 @@ const service = {
       let recurso;
       */
       if (nuevoUsuario.contrasena) {
-        usuario.contrasena = bcrypt.hashSync(nuevoUsuario.contrasena, 10);
-        usuario.IdRol = _Rol.VendedorID;
+        nuevoUsuario.contrasena = bcrypt.hashSync(nuevoUsuario.contrasena, 10);
+        nuevoUsuario.IdRol = _Rol.VendedorID;
       }
       /*
       const { imagen, ...usuarioSinImagen } = usuario;
