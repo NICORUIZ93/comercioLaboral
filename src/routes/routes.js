@@ -94,6 +94,7 @@ module.exports = app => {
   app.delete("/api/usuario/:id", validadorEliminarUsuario, /*autorizacion.autorizar(Rol.Administrador),*/ usuarioController.eliminarUsuarioLogico)
   app.post('/api/usuarios/registro/empleados' , validadorCrearEmpleadoTienda , usuarioController.crearEmpleado )
   app.get('/api/tienda/empleados/:id', usuarioController.empleadosTienda )
+  app.get('/api/tienda/empleado/:id' , usuarioController.empleado)
 
   //Rutas Tiendas
   app.get("/api/tiendas", tiendaController.obtenerTiendas)

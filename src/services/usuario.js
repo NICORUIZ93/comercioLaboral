@@ -335,6 +335,21 @@ const service = {
       throw error;
     }
   },
+  async empleadoId(req) {
+    try {
+      const e = await empleadosTiendas.findAll({
+        attributes: { exclude: ["contrasena"] },
+        where: {
+          'id' : req.params.id
+        }
+      });
+
+      return e;
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
+  },
 };
 
 module.exports.usuarioService = service;
