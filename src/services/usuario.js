@@ -150,34 +150,17 @@ const service = {
   ,
   async crearEmpleadoTienda(nuevoUsuario) {
     try {
-      /*
-      let usuario = { ...nuevoUsuario };
-      let recurso;
-      */
+     
       if (nuevoUsuario.contrasena) {
         nuevoUsuario.contrasena = bcrypt.hashSync(nuevoUsuario.contrasena, 10);
         nuevoUsuario.IdRol = _Rol.VendedorID;
       }
-      /*
-      const { imagen, ...usuarioSinImagen } = usuario;
-      const { IdFoto, ...usuarioSinFoto } = usuario;
+     
 
-      if (imagen) {
-        recurso = await recursosService.crearRecursoTabla({
-          url: imagen,
-        });
-      }
+      let cu = await this.crearUsuario(nuevoUsuario);
 
-      if (recurso) {
-        usuarioSinFoto.IdFoto = recurso.id;
-      }
-
-      usuarioSinFoto.activo = true;
-      */
-     console.log(nuevoUsuario)
+      console.log(cu)
       let resultadocreate = await empleadosTiendas.create(nuevoUsuario);
-       
-      //const { contrasena, ...usuarioSinContrasena } = resultadocreate;
 
       return resultadocreate;
     } catch (error) {
