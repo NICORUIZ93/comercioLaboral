@@ -93,6 +93,7 @@ module.exports = app => {
   //app.delete("/api/usuario/:id", validadorEliminarUsuario, /*autorizacion.autorizar(Rol.Administrador),*/ usuarioController.eliminarUsuario)
   app.delete("/api/usuario/:id", validadorEliminarUsuario, /*autorizacion.autorizar(Rol.Administrador),*/ usuarioController.eliminarUsuarioLogico)
   app.post('/api/usuarios/registro/empleados' , validadorCrearEmpleadoTienda , usuarioController.crearEmpleado )
+  app.get('/api/tienda/empleados/:id', usuarioController.empleadosTienda )
 
   //Rutas Tiendas
   app.get("/api/tiendas", tiendaController.obtenerTiendas)

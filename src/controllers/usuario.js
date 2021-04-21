@@ -89,6 +89,7 @@ module.exports = {
       res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
+  
   async crearEmpleadosMasivo(req, res) {
     try {
       const usuariosACrear = req.body.usuarios;
@@ -143,6 +144,16 @@ module.exports = {
       const idUsuario = req.params.id;
       await usuarioService.eliminarUsuarioLogico(idUsuario);
       return res.status(200).json({ code: 200, mesaage: 'usuario eliminado (desactivado)' });
+    } catch (e) {
+      console.log(e);
+      res.status(500).send({ code: 500, mesaage: `${e}` });
+    }
+  },
+  async empleadosTienda(req, res) {
+    try {
+      
+      let empleados = await usuarioService.empleadosTienda(req)
+      res.status(200).json(empleados)
     } catch (e) {
       console.log(e);
       res.status(500).send({ code: 500, mesaage: `${e}` });

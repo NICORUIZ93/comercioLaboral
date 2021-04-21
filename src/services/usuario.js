@@ -320,6 +320,20 @@ const service = {
       throw error;
     }
   },
+  async empleadosTienda(req) {
+    try {
+      const e = await empleadosTiendas.count({
+        where: {
+          'idTienda' : req.params.id
+        }
+      });
+
+      return e;
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
+  },
 };
 
 module.exports.usuarioService = service;
