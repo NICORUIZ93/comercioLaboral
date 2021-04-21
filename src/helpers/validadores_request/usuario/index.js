@@ -3,6 +3,7 @@ const validadorActualizarUsuario = require("../usuario/actualizarUsuarioSchema")
 const validadorEliminarUsuario = require("../usuario/eliminarUsuarioSchema").eliminarUsuarioSchema;
 const validadorObtenerUsuario = require("../usuario/obtenerUsuarioSchema").obtenerUsuarioSchema;
 const validadorcrearUsuariosMasivo = require("../usuario/crearUsuariosMasivoSchema").crearUsuariosMasivoSchema;
+const validadorCrearEmpleadoTienda = require('./crearEmpleadoSchema').crearEmpleadoSchema;
 
 
 module.exports = {
@@ -10,5 +11,6 @@ module.exports = {
     validadorActualizarUsuario,
     validadorEliminarUsuario,
     validadorObtenerUsuario,
-    validadorcrearUsuariosMasivo
+    validadorcrearUsuariosMasivo,
+    validadorCrearEmpleadoTienda
 }

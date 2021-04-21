@@ -3,6 +3,7 @@ const Usuario = require("../db/models").Usuario;
 const Rol = require("../db/models").Rol;
 const Recurso = require("../db/models").Recurso;
 const UsuariosTienda = require("../db/models").UsuariosTienda;
+const vT = require('../db/models/empleadosTienda').vendedoresTiendas
 const { Op } = require("sequelize");
 const _Rol = require("../constants/roles");
 const { recursosService } = require("../services/recursos");
@@ -145,7 +146,46 @@ const service = {
       console.log(`${error}`);
       throw error;
     }
-  },
+  }
+  ,
+  async crearEmpleadoTienda(nuevoUsuario) {
+    try {
+      let usuario = { ...nuevoUsuario };
+      let recurso;
+
+      if (nuevoUsuario.contrasena) {
+        usuario.contrasena = bcrypt.hashSync(nuevoUsuario.contrasena, 10);
+        usuario.IdRol = _Rol.VendedorID;
+      }
+
+      const { imagen, ...usuarioSinImagen } = usuario;
+      const { IdFoto, ...usuarioSinFoto } = usuario;
+
+      if (imagen) {
+        recurso = await recursosService.crearRecursoTabla({
+          url: imagen,
+        });
+      }
+
+      if (recurso) {
+        usuarioSinFoto.IdFoto = recurso.id;
+      }
+
+      usuarioSinFoto.activo = true;
+
+      const resultadocreate = (await vT.create(usuarioSinFoto)).get({
+        plain: true,
+      });
+
+      const { contrasena, ...usuarioSinContrasena } = resultadocreate;
+
+      return usuarioSinContrasena;
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
+  }
+  ,
   async crearEmpleadosMasivo(idTienda, nuevosUsuarios) {
     try {
       let nuevosUsuariosConRecurso = [];

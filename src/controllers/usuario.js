@@ -65,6 +65,30 @@ module.exports = {
       res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
+  async crearEmpleado(req, res) {
+    try {
+      const existeElUsuario = await usuarioService.obtenerUsuarioPorParametros([
+        { correo: req.body.correo },
+      ]);
+
+      console.log(existeElUsuario);
+
+      if (existeElUsuario) {
+        throw Error("El usuario ya existe");
+      }
+
+      if (req.body.IdRol === Rol.AdministradorID) {
+        throw Error("Rol invalido");
+      }
+
+      const nuevoUsuario = await usuarioService.crearEmpleadoTienda(req.body);
+
+      return res.status(200).json(nuevoUsuario);
+    } catch (e) {
+      console.log(e);
+      res.status(500).send({ code: 500, mesaage: `${e}` });
+    }
+  },
   async crearEmpleadosMasivo(req, res) {
     try {
       const usuariosACrear = req.body.usuarios;

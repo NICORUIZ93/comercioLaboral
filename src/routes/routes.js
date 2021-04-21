@@ -39,7 +39,7 @@ const respuestaTiendaController = require('../controllers/respuestaTienda')
 
 //Validadores
 const { validadorObtenerPorId, obtenerPorUuidSchema } = require("../helpers/validadores_request/genericos");
-const { validadorCrearUsuario, validadorActualizarUsuario, validadorEliminarUsuario, validadorcrearUsuariosMasivo } = require("../helpers/validadores_request/usuario");
+const { validadorCrearUsuario, validadorActualizarUsuario, validadorEliminarUsuario, validadorcrearUsuariosMasivo, validadorCrearEmpleadoTienda } = require("../helpers/validadores_request/usuario");
 const { validadorCrearProducto, validadorActualizarProducto, validadorEliminarProducto, validadorObtenerProductosPaginado, validadorBuscarProductosPaginado, validadorRecursosProducto, validadorProductosPorTiendaPaginado, validadorObtenerProductosTiendaFeria, validadorEliminarRecursoProducto , validadorCalificacionProducto,validadorObtenerCalificacionProducto,validarObtenerPromedioProducto } = require("../helpers/validadores_request/producto");
 const { validadorCrearTienda, validadorActualizarTienda, validadorEliminarTienda, validadorRecursosTienda, validadorActivarTienda , validadorRespuestaTienda ,validadorRespuestas} = require("../helpers/validadores_request/tienda");
 const { validadorCrearCategoria, validadorActualizarCategoria, validadorEliminarCategoria } = require("../helpers/validadores_request/categoria");
@@ -72,7 +72,7 @@ module.exports = app => {
       console.log(storageRef)
       let file = bucket.file(req.file.originalname)
       const publicUrl = file.publicUrl()
-      res.status(200).json(storageRef)
+      res.status(200).json(publicUrl)
     } catch (error) {
       res.status(500).json(error)
     }
@@ -91,6 +91,7 @@ module.exports = app => {
   app.put("/api/usuario", validadorActualizarUsuario, /*autorizacion.autorizar(Rol.Administrador),*/ usuarioController.actualizarUsuario)
   //app.delete("/api/usuario/:id", validadorEliminarUsuario, /*autorizacion.autorizar(Rol.Administrador),*/ usuarioController.eliminarUsuario)
   app.delete("/api/usuario/:id", validadorEliminarUsuario, /*autorizacion.autorizar(Rol.Administrador),*/ usuarioController.eliminarUsuarioLogico)
+  app.post('api/usuarios/empleado' , validadorCrearEmpleadoTienda , usuarioController.crearEmpleado )
 
   //Rutas Tiendas
   app.get("/api/tiendas", tiendaController.obtenerTiendas)
