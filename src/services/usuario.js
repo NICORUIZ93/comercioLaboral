@@ -157,7 +157,7 @@ const service = {
         usuario.contrasena = bcrypt.hashSync(nuevoUsuario.contrasena, 10);
         usuario.IdRol = _Rol.VendedorID;
       }
-
+      /*
       const { imagen, ...usuarioSinImagen } = usuario;
       const { IdFoto, ...usuarioSinFoto } = usuario;
 
@@ -172,11 +172,11 @@ const service = {
       }
 
       usuarioSinFoto.activo = true;
-
+      */
       const resultadocreate = (await vT.create(usuarioSinFoto)).get({
         plain: true,
       });
-
+       
       const { contrasena, ...usuarioSinContrasena } = resultadocreate;
 
       return usuarioSinContrasena;
