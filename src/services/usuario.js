@@ -8,6 +8,7 @@ const { Op } = require("sequelize");
 const _Rol = require("../constants/roles");
 const { recursosService } = require("../services/recursos");
 var sequelize = require("../db/models").sequelize;
+const nodemailer = require("nodemailer");
 
 const service = {
   async obtenerUsuarios() {
