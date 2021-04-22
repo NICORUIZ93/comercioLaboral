@@ -368,7 +368,7 @@ const service = {
       let info = await transporter.sendMail({
         from: '"Comerzio" <no.reply.comerzio@gmail.com>', // sender address
         to: correoReceptor.body.correo, // list of receivers
-        subject: "Registro  - Comerquio", // Subject line
+        subject: "Registro  - Comerzio", // Subject line
         html: "<b>Bienvenido a comerzio , Ingrese al siguiente link para registrarse En comerzio .</b>", // html body
       });
     
