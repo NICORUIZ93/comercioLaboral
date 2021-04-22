@@ -353,20 +353,20 @@ const service = {
   },
   async emailRegistroEmpleado (correoReceptor){
     try {
-      console.log(process.env.EMAIL_SENDER)
-      console.log(process.env.EMAIL_SENDER_PSW)
+       let u = "no.reply.comerzio@gmail.com";
+       let p = "Imdsas2021.*";
       // create reusable transporter object using the default SMTP transport
       const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user: process.env.EMAIL_SENDER,
-          pass: process.env.EMAIL_SENDER_PSW // naturally, replace both with your real credentials or an application-specific password
+          user: u,
+          pass: p // naturally, replace both with your real credentials or an application-specific password
         }
       });
     
       // send mail with defined transport object
       let info = await transporter.sendMail({
-        from: '"Comerquio" <cuenta.comerquio@gmail.com>', // sender address
+        from: '"Comerzio" <no.reply.comerzio@gmail.com>', // sender address
         to: correoReceptor.body.correo, // list of receivers
         subject: "Registro  - Comerquio", // Subject line
         html: "<b>Bienvenido a comerzio , Ingrese al siguiente link para registrarse En comerzio .</b>", // html body
