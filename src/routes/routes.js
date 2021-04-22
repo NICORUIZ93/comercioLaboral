@@ -95,6 +95,7 @@ module.exports = app => {
   app.post('/api/usuarios/registro/empleados' , validadorCrearEmpleadoTienda , usuarioController.crearEmpleado )
   app.get('/api/tienda/empleados/:id', usuarioController.empleadosTienda )
   app.get('/api/tienda/empleado/:id' , usuarioController.empleado)
+  app.post('/api/empleado/registro/email' , usuarioController.emailEmpleado)
 
   //Rutas Tiendas
   app.get("/api/tiendas", tiendaController.obtenerTiendas)

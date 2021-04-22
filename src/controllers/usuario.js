@@ -169,4 +169,14 @@ module.exports = {
       res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
+  async emailEmpleado(req, res) {
+    try {
+      
+      let empleado = await usuarioService.emailRegistroEmpleado(req)
+      res.status(200).json(empleado)
+    } catch (e) {
+      console.log(e);
+      res.status(500).send({ code: 500, mesaage: `${e}` });
+    }
+  },
 };
