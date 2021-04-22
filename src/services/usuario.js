@@ -353,7 +353,8 @@ const service = {
   },
   async emailRegistroEmpleado (correoReceptor){
     try {
-  
+      console.log(process.env.EMAIL_SENDER)
+      console.log(process.env.EMAIL_SENDER_PSW)
       // create reusable transporter object using the default SMTP transport
       const transporter = nodemailer.createTransport({
         service: 'gmail',
