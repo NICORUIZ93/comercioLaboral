@@ -359,8 +359,8 @@ const service = {
       const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user: process.env.EMAIL_SENDER,
-          pass: process.env.EMAIL_SENDER_PSW // naturally, replace both with your real credentials or an application-specific password
+          user: "dilanm@intermediosdigitales.com.co",
+          pass: "Imdsas2021.*" // naturally, replace both with your real credentials or an application-specific password
         }
       });
     
