@@ -5,6 +5,7 @@ const { Op } = require("sequelize");
 const Pedido = require("../db/models").Pedido;
 const Producto = require("../db/models").Producto;
 const TiendaProducto = require('../db/models').TiendaProducto;
+const axios = require('axios')
 
 class NotificacionService {
   constructor() {
@@ -117,12 +118,16 @@ class NotificacionService {
          }
       })
       let tp = JSON.parse(JSON.stringify(tiendaproducto))
+      let resultado = [];
+      var i =0;
       for (const key in tp) {
-         console.log(tp[key])
-      }
-      let resultado = {
-        "Nuevo pedido" : pedidos,
-        "stock bajo" : tiendaproducto
+         console.log(tp[key]['IdProducto'])
+         let peticion = await axios.get(`https://secure-atoll-67302.herokuapp.com/api/producto/${tp[key]['IdProducto']}`)
+         resultado[i] = {
+          "Nuevo pedido" : pedidos,
+          "stock bajo" : peticion.data
+        }
+        i++;  
       }
 
 
