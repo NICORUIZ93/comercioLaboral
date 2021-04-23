@@ -216,5 +216,6 @@ module.exports = app => {
   app.post("/api/notificacion/confirmar/:id", obtenerPorUuidSchema, notificacionController.confirmarNotificacion)
   app.post("/api/notificacion", validadorCrearNotificacion, notificacionController.crearNotificacion)
   app.get('/api/notificacion/tienda/:IdTienda' , notificacionController.notificacionTienda )
+  app.get('/api/notificacion/usuario/:IdUsuario' , notificacionController.notificacionUsuario)
 
 }
