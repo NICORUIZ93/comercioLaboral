@@ -139,6 +139,50 @@ class NotificacionService {
       throw error;
     }
   }
+  static async notificacionUsuario(req) {
+    try {
+      let productos_promocion = await Producto.findAll({
+        where : {
+           'oferta' : true
+        },
+        limit : 10,
+        order: [
+          ['createdAt', 'DESC']
+        ]
+      })
+
+      let productos_nuevos = await Producto.findAll({
+        limit : 10,
+        order: [
+          ['createdAt', 'DESC']
+        ]
+      })
+
+      let ultimo_pedido = await Pedido.findAll({
+        attributes: ['IdTienda'],
+        where : {
+          'IdUsuario' : req.params.IdUsuario
+        },
+        limit : 1,
+        order: [
+          ['createdAt', 'DESC']
+        ]
+      })
+      let ultima_tienda = JSON.parse(JSON.stringify(ultimo_pedido))
+      let peticion = await axios.get(`https://secure-atoll-67302.herokuapp.com/api/productos/tienda/${ultima_tienda[0]['IdTienda']}`)
+      
+      
+      let resul = {
+         "Nuevas promociones" : productos_promocion,
+         "Productos nuevos" : productos_nuevos,
+         "Novedades tienda ultima compra" : peticion.data
+      }
+      return resul
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
+  }
 }
 
 
