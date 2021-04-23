@@ -116,8 +116,10 @@ class NotificacionService {
             } 
          }
       })
-      
-      
+      let tp = JSON.parse(JSON.stringify(tiendaproducto))
+      for (const key in tp) {
+         console.log(key)
+      }
       let resultado = {
         "Nuevo pedido" : pedidos,
         "stock bajo" : tiendaproducto
