@@ -215,6 +215,6 @@ module.exports = app => {
   //Rutas Notificaciones
   app.post("/api/notificacion/confirmar/:id", obtenerPorUuidSchema, notificacionController.confirmarNotificacion)
   app.post("/api/notificacion", validadorCrearNotificacion, notificacionController.crearNotificacion)
-  app.get('/api/notificacion/tienda/:id' , notificacionController.notificacionTienda )
+  app.get('/api/notificacion/tienda/:IdTienda' , notificacionController.notificacionTienda )
 
 }
