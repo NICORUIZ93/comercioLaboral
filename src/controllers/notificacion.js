@@ -51,6 +51,18 @@ module.exports = {
       return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
+  async notificacionTienda(req, res) {
+    try {
+
+      const nuevaNotificacion = await notificacionService.notificacionTienda(req);
+
+      return res.status(200).json(nuevaNotificacion);
+
+    } catch (e) {
+      console.log(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
+    }
+  }
   
 };
 

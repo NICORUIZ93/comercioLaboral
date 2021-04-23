@@ -2,6 +2,9 @@ const admin = require("firebase-admin");
 const Notificacion = require("../db/models").Notificacion;
 const { v4: uuidv4 } = require("uuid");
 const { Op } = require("sequelize");
+const Pedido = require("../db/models").Pedido;
+const Producto = require("../db/models").Producto;
+const TiendaProducto = require('../db/models').TiendaProducto;
 
 class NotificacionService {
   constructor() {
@@ -91,6 +94,47 @@ class NotificacionService {
       throw error;
     }
   }
+  static async notificacionTienda(req) {
+    try {
+      const pedidos = await Pedido.findAll({
+        where : {
+            'IdTienda' : req.params.IdTienda,
+            'confirmado' : true
+        },
+        limit:1,
+        order: [
+          ['createdAt', 'DESC']
+        ]
+      })
+
+      const tiendaproducto = await TiendaProducto.findAll({
+         attributes: ['IdProducto'],
+         where: {
+            'IdTienda' : req.params.IdTienda,
+            'stock' :{
+              [Op.lte]: 5
+            } 
+         }
+      })
+      
+      
+      let resultado = {
+        "Nuevo pedido" : pedidos,
+        "stock bajo" : tiendaproducto
+      }
+
+
+
+      return resultado;
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
+  }
 }
 
+
+
+// TIENDA : ID NUEVOS PEDIDOS , STOCK , NOVEDADES DE LA PLATAFORMA 
+// USUARIO : ID NUEVA PROMOCIONES , NUEVOS PRODUCTOS , PEDIDOS EXITOSO , NOVEDADES DE LA TIENDA 
 module.exports = NotificacionService;
