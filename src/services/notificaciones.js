@@ -118,7 +118,7 @@ class NotificacionService {
       })
       let tp = JSON.parse(JSON.stringify(tiendaproducto))
       for (const key in tp) {
-         console.log(key)
+         console.log(tp[key])
       }
       let resultado = {
         "Nuevo pedido" : pedidos,
