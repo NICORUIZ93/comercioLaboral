@@ -118,16 +118,17 @@ class NotificacionService {
          }
       })
       let tp = JSON.parse(JSON.stringify(tiendaproducto))
-      let resultado = [];
+      let producto = [];
       var i =0;
       for (const key in tp) {
-         console.log(tp[key]['IdProducto'])
          let peticion = await axios.get(`https://secure-atoll-67302.herokuapp.com/api/producto/${tp[key]['IdProducto']}`)
-         resultado[i] = {
-          "Nuevo pedido" : pedidos,
-          "stock bajo" : peticion.data
-        }
+         producto[i] = peticion.data
         i++;  
+      }
+
+      let resultado = {
+          "Nuevo pedido" : pedidos,
+          "Stock bajo" : producto
       }
 
 
