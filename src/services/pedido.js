@@ -74,7 +74,7 @@ const service = {
           valorComisionMarket: valorComision,
           valorTotalConComison: valorTotal - valorComision,
           valorcomisionmarketmasmp : valorComisionMarket + valorComision,
-          totalTienda : valorTotal - (valorComision + valorComisionMarket),
+          totalTienda : valorTotal - valorComision,
           idCiudad: usuario.direccion.idCiudad,
           ciudad: usuario.direccion.ciudad,
           direccion: usuario.direccion.direccion
