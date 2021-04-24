@@ -122,8 +122,9 @@ const service = {
           order: [["createdAt", "DESC"]],
         })
       ).get({ plain: true });
-
-      return pedido;
+      let pe = JSON.parse(JSON.stringify(pedido))
+      console.log(pe)
+      return {pedido  };
     } catch (error) {
       console.log(`${error}`);
       throw error;
