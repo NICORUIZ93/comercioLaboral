@@ -60,7 +60,8 @@ const service = {
         });
 
         const valorTotal = productos.reduce(
-          (a, b) => a + b.valorTotal * b.quantity,
+          (a, b) => a + 
+          b.valorTotal * b.quantity,
           0
         );
 
@@ -72,6 +73,8 @@ const service = {
           valorTotal: valorTotal,
           valorComisionMarket: valorComision,
           valorTotalConComison: valorTotal - valorComision,
+          valorcomisionmarketmasmp : valorComisionMarket + valorComision,
+          totalTienda : valorTotal - (valorComision + valorComisionMarket),
           idCiudad: usuario.direccion.idCiudad,
           ciudad: usuario.direccion.ciudad,
           direccion: usuario.direccion.direccion
