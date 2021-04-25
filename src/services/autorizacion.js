@@ -162,14 +162,15 @@ module.exports = {
   async verificar_codigo(req,res){
       try {
         let codigo = req.params.codigo;
-        let verificacion =await codigosRestablecimiento.findAll({
+        let verificacion = await codigosRestablecimiento.findAll({
           where: {
             'codigo': parseInt(codigo)
           }
         });
-  
-        if (verificacion) {
+        if ((JSON.parse(JSON.stringify(verificacion)))[0] != undefined) {
           res.status(200).json("Codigo valido")
+        }else{
+          res.status(500).json("Codigo no valido") 
         } 
       } catch (error) {
          res.status(500).json("Codigo no valido" + error)
