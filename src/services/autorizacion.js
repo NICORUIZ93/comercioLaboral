@@ -112,13 +112,13 @@ module.exports = {
 
   },
   async correo_cambio(req, res) {
-    let { correo } = req.body
-    let numero = Math.floor(Math.random() * (9999 - 1000)) + 1000;
-    let new_code = await codigosRestablecimiento.create({ codigo: numero })
-    console.log(new_code)
     try {
       let u = "no.reply.comerzio@gmail.com";
       let p = "Imdsas2021.*";
+      let { correo } = req.body
+      let numero = Math.floor(Math.random() * (9999 - 1000)) + 1000;
+      let new_code = await codigosRestablecimiento.create({ codigo: numero })
+      console.log(new_code)
       // create reusable transporter object using the default SMTP transport
       const transporter = nodemailer.createTransport({
         service: 'gmail',
