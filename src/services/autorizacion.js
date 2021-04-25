@@ -98,10 +98,14 @@ module.exports = {
           message: "Authentication failed",
         });
       }
+      
+      nueva = bcrypt.hashSync(nueva, 10);
+
+      let update = await Usuario.update({ constrasena : nueva } , {where: {'correo' : correo}})
 
       return res
       .status(200)
-      .json(usuario)
+      .json(update)
 
 
       
