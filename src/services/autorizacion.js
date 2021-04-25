@@ -161,7 +161,7 @@ module.exports = {
   },
   async verificar_codigo(req,res){
       try {
-        let {codigo} = req.params.codigo;
+        let codigo = req.params.codigo;
         let verificacion =await codigosRestablecimiento.findAll({
           where: {
             'codigo': codigo
