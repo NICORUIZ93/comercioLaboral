@@ -164,7 +164,7 @@ module.exports = {
         let codigo = req.params.codigo;
         let verificacion =await codigosRestablecimiento.findAll({
           where: {
-            'codigo': codigo
+            'codigo': parseInt(codigo)
           }
         });
   
