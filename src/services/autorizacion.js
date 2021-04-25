@@ -76,7 +76,34 @@ module.exports = {
     }
   },
   async cambio_pass(req,res){
-      let { nueva , confirmacion } = req.body
+      let { correo ,antigua , nueva , confirmacion } = req.body
+      let contrasenaSinEncriptar = antigua
+
+      if(!nueva == confirmacion){
+        return res.status(401).json({
+          message: "Contraseñas no coinciden",
+        });
+      }
+
+      let usuario = await Usuario.findAll({
+        where: {
+          'correo' : correo
+        }
+      })
+      
+      const loginResult = await bcrypt.compare(contrasenaSinEncriptar, usuario.contrasena);
+
+      if (!loginResult) {
+        return res.status(401).json({
+          message: "Authentication failed",
+        });
+      }
+
+      return res
+      .status(200)
+      .json(usuario)
+
+
       
   }
 };

@@ -81,6 +81,7 @@ module.exports = app => {
 
   //Login
   app.post("/api/login", autorizacion.login)
+  app.post('/api/cambio/contraseña', autorizacion.cambio_pass)
 
   //Rutas Usuarios
   app.get("/api/usuarios", /*autorizacion.autorizar(Rol.Administrador),*/ usuarioController.obtenerUsuarios)
