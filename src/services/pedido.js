@@ -124,7 +124,7 @@ const service = {
       ).get({ plain: true });
       //let pe = JSON.parse(JSON.stringify(pedido))
       //console.log(pe)
-      return {pedido  };
+      return pedido;
     } catch (error) {
       console.log(`${error}`);
       throw error;
