@@ -77,36 +77,42 @@ module.exports = {
     }
   },
   async cambio_pass(req, res) {
-    let { correo, antigua, nueva, confirmacion } = req.body
-    let contrasenaSinEncriptar = antigua
+    try {
+      let { correo, antigua, nueva, confirmacion } = req.body
+      let contrasenaSinEncriptar = antigua
 
-    if (!nueva == confirmacion) {
-      return res.status(401).json({
-        message: "Contraseñas no coinciden",
-      });
-    }
-
-    let usuario = await Usuario.findAll({
-      where: {
-        'correo': correo
+      if (!nueva == confirmacion) {
+        return res.status(401).json({
+          message: "Contraseñas no coinciden",
+        });
       }
-    })
 
-    const loginResult = await bcrypt.compare(contrasenaSinEncriptar, usuario.contrasena);
+      let usuario = await Usuario.findAll({
+        where: {
+          'correo': correo
+        }
+      })
 
-    if (!loginResult) {
-      return res.status(401).json({
-        message: "Authentication failed",
-      });
+      const loginResult = await bcrypt.compare(contrasenaSinEncriptar, usuario.contrasena);
+
+      if (!loginResult) {
+        return res.status(401).json({
+          message: "Authentication failed",
+        });
+      }
+
+      nueva = bcrypt.hashSync(nueva, 10);
+
+      let update = await Usuario.update({ constrasena: nueva }, { where: { 'correo': correo } })
+
+      return res
+        .status(200)
+        .json({message: "Contraseña cambiada",update})
+    } catch (error) {
+      return res
+        .status(500)
+        .json(error)
     }
-
-    nueva = bcrypt.hashSync(nueva, 10);
-
-    let update = await Usuario.update({ constrasena: nueva }, { where: { 'correo': correo } })
-
-    return res
-      .status(200)
-      .json(update)
 
 
 
@@ -159,23 +165,44 @@ module.exports = {
       res.json(error)
     }
   },
-  async verificar_codigo(req,res){
-      try {
-        let codigo = req.params.codigo;
-        let verificacion = await codigosRestablecimiento.findAll({
-          where: {
-            'codigo': parseInt(codigo)
-          }
+  async verificar_codigo(req, res) {
+    try {
+      let codigo = req.params.codigo;
+      let verificacion = await codigosRestablecimiento.findAll({
+        where: {
+          'codigo': parseInt(codigo)
+        }
+      });
+      if ((JSON.parse(JSON.stringify(verificacion)))[0] != undefined) {
+        res.status(200).json("Codigo valido")
+      } else {
+        res.status(500).json("Codigo no valido")
+      }
+    } catch (error) {
+      res.status(500).json("Codigo no valido" + error)
+    }
+
+
+  },
+  async restablecimiento(req, res) {
+    try {
+      let { correo, nueva, confirmacion } = req.body;
+
+      if (!nueva == confirmacion) {
+        return res.status(401).json({
+          message: "Contraseñas no coinciden",
         });
-        if ((JSON.parse(JSON.stringify(verificacion)))[0] != undefined) {
-          res.status(200).json("Codigo valido")
-        }else{
-          res.status(500).json("Codigo no valido") 
-        } 
-      } catch (error) {
-         res.status(500).json("Codigo no valido" + error)
       }
 
+      nueva = bcrypt.hashSync(nueva, 10);
+      let update = await Usuario.update({ constrasena: nueva }, { where: { 'correo': correo } })
+      res.status(200).json({
+        message: "Contraseña cambiada",
+        update
+      });
+    } catch (error) {
+       res.status(500).json(error)
+    }
 
   }
 };
