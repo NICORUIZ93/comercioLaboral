@@ -75,6 +75,10 @@ module.exports = {
       });
     }
   },
+  async cambio_pass(req,res){
+      let { nueva , confirmacion } = req.body
+      
+  }
 };
 
 const generarToken = (correo, rol) => {
