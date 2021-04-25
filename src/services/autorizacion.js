@@ -158,6 +158,24 @@ module.exports = {
       console.log(`${error}`);
       res.json(error)
     }
+  },
+  async verificar_codigo(req,res){
+      try {
+        let {codigo} = req.params.codigo;
+        let verificacion =await codigosRestablecimiento.findAll({
+          where: {
+            'codigo': codigo
+          }
+        });
+  
+        if (verificacion) {
+          res.status(200).json("Codigo valido")
+        } 
+      } catch (error) {
+         res.status(500).json("Codigo no valido" + error)
+      }
+
+
   }
 };
 
