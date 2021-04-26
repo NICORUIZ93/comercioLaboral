@@ -139,9 +139,14 @@ const service = {
       const resultadocreate = (await Usuario.create(usuarioSinFoto)).get({
         plain: true,
       });
-
+      // aca
       const { contrasena, ...usuarioSinContrasena } = resultadocreate;
-
+      const progreso = await Usuario.update({ 'progreso': 1 }, {
+        where: {
+          'correo': nuevoUsuario.correo
+        }
+      })
+      console.log(progreso)
       return usuarioSinContrasena;
     } catch (error) {
       console.log(`${error}`);
@@ -172,7 +177,14 @@ const service = {
 
       console.log(cu)
       let resultadocreate = await empleadosTiendas.create(nuevoUsuario);
-
+      //aca
+      const ut = (await UsuariosTienda.findAll({ where : { 'IdTienda' : nuevoUsuario.idTienda ,'esAdministrador' : true } })).dataValues;
+      const progreso = await Usuario.update({ 'progreso': 4 }, {
+        where: {
+          'id': ut.IdUsuario
+        }
+      })
+      console.log(progreso)
       return resultadocreate;
     } catch (error) {
       console.log(`${error}`);

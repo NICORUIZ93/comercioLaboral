@@ -63,6 +63,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       defaultValue: true
     },
+    progreso: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Usuario',

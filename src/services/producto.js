@@ -1,6 +1,8 @@
 const Producto = require("../db/models").Producto;
 const DetallePedido = require("../db/models").DetallePedido;
 const TiendaProducto = require("../db/models").TiendaProducto;
+const UsuariosTienda = require("../db/models").UsuariosTienda;
+const Usuario = require("../db/models").Usuario;
 const TiendaFeria = require("../db/models").TiendaFeria;
 const Feriaproductos = require("../db/models").Feriaproductos;
 const Categoria = require("../db/models").Categoria;
@@ -531,7 +533,14 @@ const service = {
           nuevoProducto.imagenes
         );
       }
-
+      // aca
+      const ut = (await UsuariosTienda.findAll({ where : { 'IdTienda' : idTienda ,'esAdministrador' : true } })).dataValues;
+      const progreso = await Usuario.update({ 'progreso': 5 }, {
+        where: {
+          'id': ut.IdUsuario
+        }
+      })
+      console.log(progreso)
       return resultadoNuevoProducto;
     } catch (error) {
       throw error;
