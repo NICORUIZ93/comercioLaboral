@@ -98,7 +98,9 @@ module.exports = {
       if ((JSON.parse(JSON.stringify(usuario)))[0] != undefined) {
         let u = JSON.parse(JSON.stringify(usuario))
         if (u[0]['contrasena'] == null) {
-          res.status(200).json("Su contraseña se encuentra en null")
+          nueva = bcrypt.hashSync(nueva, 10);
+          let update = await Usuario.update({ constrasena: nueva }, { where: { 'correo': correo } })
+          res.status(200).json("contraseña cambiada")
         } else {
           const loginResult = await bcrypt.compare(contrasenaSinEncriptar, u[0]['contrasena']);
 
