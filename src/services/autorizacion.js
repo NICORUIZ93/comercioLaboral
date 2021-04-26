@@ -92,22 +92,30 @@ module.exports = {
           'correo': correo
         }
       })
-      console.log(usuario.contrasena)
-      const loginResult = await bcrypt.compare(contrasenaSinEncriptar, usuario.contrasena);
 
-      if (!loginResult) {
-        return res.status(401).json({
-          message: "Authentication failed",
-        });
+      if ((JSON.parse(JSON.stringify(usuario)))[0] != undefined) {
+        let u = JSON.parse(JSON.stringify(usuario))
+        const loginResult = await bcrypt.compare(contrasenaSinEncriptar, u[0]['contrasena']);
+
+        if (!loginResult) {
+          return res.status(401).json({
+            message: "Authentication failed",
+          });
+        }
+        nueva = bcrypt.hashSync(nueva, 10);
+
+        let update = await Usuario.update({ constrasena: nueva }, { where: { 'correo': correo } })
+
+        return res
+          .status(200)
+          .json({ message: "Contraseña cambiada", update })
+
+      } else {
+        return res
+          .status(200)
+          .json({ message: "Usuario no encontrado" })
       }
 
-      nueva = bcrypt.hashSync(nueva, 10);
-
-      let update = await Usuario.update({ constrasena: nueva }, { where: { 'correo': correo } })
-
-      return res
-        .status(200)
-        .json({message: "Contraseña cambiada",update})
     } catch (error) {
       return res
         .status(500)
@@ -201,7 +209,7 @@ module.exports = {
         update
       });
     } catch (error) {
-       res.status(500).json(error)
+      res.status(500).json(error)
     }
 
   }
