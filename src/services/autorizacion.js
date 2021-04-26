@@ -99,8 +99,12 @@ module.exports = {
         let u = JSON.parse(JSON.stringify(usuario))
         if (u[0]['contrasena'] == null) {
           nueva = bcrypt.hashSync(nueva, 10);
-          let update = await Usuario.update({ constrasena: nueva }, { where: { 'correo': correo } })
-          res.status(200).json("contraseña cambiada")
+          let update = await Usuario.update({ 'contrasena': nueva }, {
+            where: {
+              'correo': correo
+            }
+          })
+          res.status(200).json("contraseña cambiada" + update)
         } else {
           const loginResult = await bcrypt.compare(contrasenaSinEncriptar, u[0]['contrasena']);
 
@@ -111,7 +115,11 @@ module.exports = {
           }
           nueva = bcrypt.hashSync(nueva, 10);
 
-          let update = await Usuario.update({ constrasena: nueva }, { where: { 'correo': correo } })
+          let update = await Usuario.update({ 'contrasena': nueva }, {
+            where: {
+              'correo': correo
+            }
+          })
 
           return res
             .status(200)
