@@ -92,7 +92,9 @@ module.exports = {
           'correo': correo
         }
       })
-
+      console.log(req.body)
+      console.log((JSON.parse(JSON.stringify(usuario)))[0])
+      
       if ((JSON.parse(JSON.stringify(usuario)))[0] != undefined) {
         let u = JSON.parse(JSON.stringify(usuario))
         const loginResult = await bcrypt.compare(contrasenaSinEncriptar, u[0]['contrasena']);
