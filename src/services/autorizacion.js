@@ -104,7 +104,7 @@ module.exports = {
               'correo': correo
             }
           })
-          res.status(200).json("contraseña cambiada" + update)
+          res.status(200).json({mensaje : "contraseña cambiada" , update})
         } else {
           const loginResult = await bcrypt.compare(contrasenaSinEncriptar, u[0]['contrasena']);
 
@@ -219,7 +219,11 @@ module.exports = {
       }
 
       nueva = bcrypt.hashSync(nueva, 10);
-      let update = await Usuario.update({ constrasena: nueva }, { where: { 'correo': correo } })
+      let update = await Usuario.update({ 'contrasena': nueva }, {
+        where: {
+          'correo': correo
+        }
+      })
       res.status(200).json({
         message: "Contraseña cambiada",
         update
