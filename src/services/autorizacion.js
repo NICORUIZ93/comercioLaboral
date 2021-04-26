@@ -92,7 +92,7 @@ module.exports = {
           'correo': correo
         }
       })
-
+      console.log(usuario.contrasena)
       const loginResult = await bcrypt.compare(contrasenaSinEncriptar, usuario.contrasena);
 
       if (!loginResult) {
