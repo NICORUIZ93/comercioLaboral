@@ -302,6 +302,20 @@ const service = {
       throw error;
     }
   },
+  async procesoRegistro(idUsuario) {
+    try {
+      const resultadoUpdate = await Usuario.update({ activo: false }, {
+        where: {
+          id: idUsuario,
+        },
+      });
+
+      return resultadoUpdate;
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
+  },
   async obtenerUsuarioPorParametros(parametrosWhere) {
     try {
       const usuario = await Usuario.findOne({

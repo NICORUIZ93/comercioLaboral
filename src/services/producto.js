@@ -748,19 +748,55 @@ const service = {
       throw error;
     }
   },
-  async ultimosProductos() {
+  async ultimosProductos(estadoTienda = false) {
     try {
-      
-      const numeroDeProductos = await Producto.findAll({
-        limit: 10,
-        order: [
-          ['createdAt', 'DESC']
-        ]
+      const whereCondition = estadoTienda
+        ? {
+            "$Tiendas.estado$": true,
+          }
+        : {};
+
+      const productos = await Producto.findAll({
+        where: whereCondition,
+        limit : 10,
+        include: [
+          Tienda,
+          {
+            model: Categoria,
+            as: "Categoria",
+            attributes: ["id", "nombre"],
+            required: false,
+          },
+          {
+            model: Recurso,
+            as: "Recursos",
+            attributes: [
+              "id",
+              "nombre",
+              "key",
+              "extension",
+              "url",
+              "prioridad",
+            ],
+            through: {
+              attributes: [],
+            },
+            required: false,
+          },
+        ],
+        order: [["createdAt", "DESC"]],
       });
 
-      return numeroDeProductos;
+      return productos.map((p) => {
+        const { Tiendas, ...producto } = p.dataValues;
+        if (Tiendas.length > 0) {
+          producto.IdTienda = Tiendas[0].id;
+          producto.NombreTienda = Tiendas[0].nombre;
+        }
+        //producto.Recurso = Recursos[0];
+        return producto;
+      });
     } catch (error) {
-      console.log(`${error}`);
       throw error;
     }
   },
