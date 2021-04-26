@@ -304,13 +304,14 @@ const service = {
   },
   async procesoRegistro(idUsuario) {
     try {
-      const resultadoUpdate = await Usuario.update({ activo: false }, {
+      const resultado = await Usuario.findAll({
+        attributes: ['progreso'],
         where: {
           id: idUsuario,
         },
       });
 
-      return resultadoUpdate;
+      return resultado;
     } catch (error) {
       console.log(`${error}`);
       throw error;

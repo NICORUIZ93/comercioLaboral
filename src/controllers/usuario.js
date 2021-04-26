@@ -179,4 +179,14 @@ module.exports = {
       res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
+  async progreso(req, res) {
+    try {
+      
+      let p = await usuarioService.procesoRegistro(req.params.id)
+      res.status(200).json(p)
+    } catch (e) {
+      console.log(e);
+      res.status(500).send({ code: 500, mesaage: `${e}` });
+    }
+  },
 };

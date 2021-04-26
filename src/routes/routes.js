@@ -100,6 +100,7 @@ module.exports = app => {
   app.get('/api/tienda/empleados/:id', usuarioController.empleadosTienda )
   app.get('/api/tienda/empleado/:id' , usuarioController.empleado)
   app.post('/api/empleado/registro/email' , usuarioController.emailEmpleado)
+  app.get('/api/progreso/registro/:id' , usuarioController.progreso)
 
   //Rutas Tiendas
   app.get("/api/tiendas", tiendaController.obtenerTiendas)
