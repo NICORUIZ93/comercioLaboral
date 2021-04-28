@@ -443,7 +443,7 @@ const service = {
      //     'id': ut.IdUsuario
      //   }
      // })
-      console.log(ut.IdUsuario)
+      //console.log(ut.IdUsuario)
       return ut;
     } catch (error) {
       console.log(`${error}`);
