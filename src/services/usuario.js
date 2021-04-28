@@ -393,7 +393,7 @@ const service = {
       let p = "Imdsas2021.*";
       let numero = Math.floor(Math.random() * (9999 - 1000)) + 1000;
       console.log(correoReceptor.body.IdTienda)
-      let new_code = await codigosRestablecimiento.create({ 'codigo': numero, 'Idienda': correoReceptor.body.IdTienda })
+      let new_code = await codigosRestablecimiento.create({ 'codigo': numero, 'IdTienda': correoReceptor.body.IdTienda })
       console.log(new_code)
       // create reusable transporter object using the default SMTP transport
       const transporter = nodemailer.createTransport({
