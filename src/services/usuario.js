@@ -51,7 +51,7 @@ const service = {
       });
 
       return usuarios;
-      
+
     } catch (error) {
       console.log(`${error}`);
       throw error;
@@ -62,7 +62,7 @@ const service = {
       const usuarios = await Usuario.findAll({
         attributes: { exclude: ["contrasena"] },
         where: {
-          "$UsuariosTienda.IdTienda$":idTienda,
+          "$UsuariosTienda.IdTienda$": idTienda,
           "$UsuariosTienda.esAdministrador$": false
         },
         include: [
@@ -83,7 +83,7 @@ const service = {
       });
 
       return usuarios;
-      
+
     } catch (error) {
       console.log(`${error}`);
       throw error;
@@ -156,36 +156,44 @@ const service = {
   ,
   async crearEmpleadoTienda(nuevoUsuario) {
     try {
-     
+
       if (nuevoUsuario.contrasena) {
         nuevoUsuario.contrasena = bcrypt.hashSync(nuevoUsuario.contrasena, 10);
         nuevoUsuario.IdRol = _Rol.VendedorID;
       }
-     
 
-      let cu = await this.crearUsuario(nuevoUsuario);
-      
       let resultadov = await empleadosTiendas.findAll({
-         where: {
-            'correo' : nuevoUsuario.correo
-         }
+        where: {
+          'correo': nuevoUsuario.correo
+        }
       });
 
       if (resultadov) {
         throw Error("El empleado ya existe");
       }
-
-      console.log(cu)
-      let resultadocreate = await empleadosTiendas.create(nuevoUsuario);
-      //aca
-      const ut = (await UsuariosTienda.findAll({ where : { 'IdTienda' : nuevoUsuario.idTienda ,'esAdministrador' : true } })).dataValues;
-      const progreso = await Usuario.update({ 'progreso': 4 }, {
+      let codigo = await codigosRestablecimiento.findAll({
         where: {
-          'id': ut.IdUsuario
+          'codigo': nuevoUsuario.codigo
         }
       })
-      console.log(progreso)
-      return resultadocreate;
+      if ((JSON.parse(JSON.stringify(codigo)))[0] != undefined) {
+        let id = (JSON.parse(JSON.stringify(codigo)))[0]['IdTienda']
+        nuevoUsuario.idTienda = id
+        let cu = await this.crearUsuario(nuevoUsuario);
+        let resultadocreate = await empleadosTiendas.create(nuevoUsuario);
+        //aca
+        //const ut = (await UsuariosTienda.findAll({ where: { 'IdTienda': nuevoUsuario.idTienda, 'esAdministrador': true } })).dataValues;
+        //const progreso = await Usuario.update({ 'progreso': 4 }, {
+        //  where: {
+        //    'id': ut.IdUsuario
+        //  }
+        //})
+        //console.log(progreso)
+        return resultadocreate;
+      } else {
+        throw Error("El codigo no es valido");
+      }
+
     } catch (error) {
       console.log(`${error}`);
       throw error;
@@ -226,11 +234,11 @@ const service = {
         );
 
         const nuevosUsuariosTienda = resultadoCreateNuevosEmpleados.map(nuevoEmpleado => {
-          
+
           return {
             IdUsuario: nuevoEmpleado.id,
             IdTienda: idTienda,
-            esAdministrador : false,
+            esAdministrador: false,
           };
 
         });
@@ -275,13 +283,13 @@ const service = {
       
       return resultadoDestroy;
       */
-     const resultadoUpdate = await Usuario.update({activo: false}, {
-      where: {
-        id: usuario.id,
-      },
-    });
+      const resultadoUpdate = await Usuario.update({ activo: false }, {
+        where: {
+          id: usuario.id,
+        },
+      });
 
-    return resultadoUpdate;
+      return resultadoUpdate;
 
     } catch (error) {
       console.log(`${error}`);
@@ -334,8 +342,8 @@ const service = {
   },
   async contarUsuarioPorParametros(parametrosWhere) {
     try {
-      if(!parametrosWhere) return await Usuario.count();
-      
+      if (!parametrosWhere) return await Usuario.count();
+
       const numeroDeUsuarios = await Usuario.count({
         where: {
           [Op.and]: parametrosWhere,
@@ -353,7 +361,7 @@ const service = {
       const e = await empleadosTiendas.findAll({
         attributes: { exclude: ["contrasena"] },
         where: {
-          'idTienda' : req.params.id
+          'idTienda': req.params.id
         }
       });
 
@@ -368,7 +376,7 @@ const service = {
       const e = await empleadosTiendas.findAll({
         attributes: { exclude: ["contrasena"] },
         where: {
-          'id' : req.params.id
+          'id': req.params.id
         }
       });
 
@@ -378,10 +386,13 @@ const service = {
       throw error;
     }
   },
-  async emailRegistroEmpleado (correoReceptor){
+  async emailRegistroEmpleado(correoReceptor) {
     try {
-       let u = "no.reply.comerzio@gmail.com";
-       let p = "Imdsas2021.*";
+      let u = "no.reply.comerzio@gmail.com";
+      let p = "Imdsas2021.*";
+      let numero = Math.floor(Math.random() * (9999 - 1000)) + 1000;
+      let new_code = await codigosRestablecimiento.create({ codigo: numero, Idienda: correoReceptor.body.IdTienda })
+
       // create reusable transporter object using the default SMTP transport
       const transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -390,22 +401,33 @@ const service = {
           pass: p // naturally, replace both with your real credentials or an application-specific password
         }
       });
-    
+
       // send mail with defined transport object
       let info = await transporter.sendMail({
         from: '"Comerzio" <no.reply.comerzio@gmail.com>', // sender address
         to: correoReceptor.body.correo, // list of receivers
         subject: "Registro  - Comerzio", // Subject line
-        html: "<b>Bienvenido a comerzio , Ingrese al siguiente link para registrarse En comerzio .</b>", // html body
+        html: `
+        <h1> Comerzio</h1> <br></br>
+        <h2> Codigo comerzio para registro</h2> <br></br>
+        <h2> ${numero} </h2>
+        `, // html body
       });
-    
+
       console.log("Message sent: %s", info.messageId);
       // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
-    
+
       // Preview only available when sending through an Ethereal account
       console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
       // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
-  
+      setTimeout(async function () {
+        await codigosRestablecimiento.destroy({
+          where: {
+            'codigo': numero
+          }
+        });
+      }, 1200000)
+      return "correo enviado"
     } catch (error) {
       console.log(`${error}`);
     }

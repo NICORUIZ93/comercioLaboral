@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
   };
   codigosRestablecimiento.init({
     codigo: DataTypes.INTEGER,
+    IdTienda :DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'codigosRestablecimiento',

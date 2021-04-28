@@ -13,7 +13,8 @@ const crearEmpleadoSchema = (req, res, next) => {
     IdRol: 2,
     idTienda : Joi.number().integer().required(),
     IdFoto: Joi.number().integer(),
-    imagen: Joi.string().empty("") 
+    imagen: Joi.string().empty(""),
+    codigo: Joi.number().integer() 
   };
 
 
