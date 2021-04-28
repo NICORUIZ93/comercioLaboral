@@ -186,14 +186,14 @@ const service = {
           nuevaTienda.imagenes
         );
       }
-      // aca
-      await enviarEmailCreacionTienda(usuarioQueCreaTienda.correo);
-      const progreso = await Usuario.update({ 'progreso': 2 }, {
-        where: {
-          'id': idUsuario
-        }
-      })
-      console.log(progreso)
+      //aca
+      //await enviarEmailCreacionTienda(usuarioQueCreaTienda.correo);
+      //const progreso = await Usuario.update({ 'progreso': 2 }, {
+      //  where: {
+      //    'id': idUsuario
+      //  }
+      //})
+      //console.log(progreso)
       return resultadoNuevaTienda;
     } catch (error) {
       console.log(`${error}`);
@@ -275,13 +275,13 @@ const service = {
         },
       });
       //aca
-      const ut = (await UsuariosTienda.findAll({ where : { 'IdTienda' : idTienda } })).dataValues;
-      const progreso = await Usuario.update({ 'progreso': 3 }, {
-        where: {
-          'id': ut.IdUsuario
-        }
-      })
-      console.log(progreso)
+      //const ut = (await UsuariosTienda.findAll({ where : { 'IdTienda' : idTienda } })).dataValues;
+      //const progreso = await Usuario.update({ 'progreso': 3 }, {
+      //  where: {
+      //    'id': ut.IdUsuario
+      //  }
+      //})
+      //console.log(progreso)
 
       return resultadoUpdate;
 

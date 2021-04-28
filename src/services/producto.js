@@ -533,14 +533,14 @@ const service = {
           nuevoProducto.imagenes
         );
       }
-      // aca
-      const ut = (await UsuariosTienda.findAll({ where : { 'IdTienda' : idTienda ,'esAdministrador' : true } })).dataValues;
-      const progreso = await Usuario.update({ 'progreso': 5 }, {
-        where: {
-          'id': ut.IdUsuario
-        }
-      })
-      console.log(progreso)
+      //aca
+      //const ut = (await UsuariosTienda.findAll({ where : { 'IdTienda' : idTienda ,'esAdministrador' : true } })).dataValues;
+      //const progreso = await Usuario.update({ 'progreso': 5 }, {
+      //  where: {
+      //    'id': ut.IdUsuario
+      //7  }
+      //})
+      //console.log(progreso)
       return resultadoNuevoProducto;
     } catch (error) {
       throw error;
