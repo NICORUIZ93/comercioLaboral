@@ -79,6 +79,9 @@ module.exports = app => {
     }
   })
 
+  //Prueba
+  app.post('/api/prueba' , usuarioController.Pruebas)
+
   //Login
   app.post("/api/login", autorizacion.login)
   app.put('/api/cambio/contrasena', autorizacion.cambio_pass)

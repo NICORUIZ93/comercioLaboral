@@ -433,7 +433,23 @@ const service = {
     } catch (error) {
       console.log(`${error}`);
     }
-  }
+  },
+  async pruebas(req) {
+    try {
+      //aca
+      const ut = (await UsuariosTienda.findAll({ where: { 'IdTienda': req.body.idTienda, 'esAdministrador': true } })).dataValues;
+     // const progreso = await Usuario.update({ 'progreso': 4 }, {
+     //   where: {
+     //     'id': ut.IdUsuario
+     //   }
+     // })
+      console.log(ut.IdUsuario)
+      return ut.IdUsuario;
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
+  },
 };
 
 module.exports.usuarioService = service;
