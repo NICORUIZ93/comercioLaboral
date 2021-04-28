@@ -533,14 +533,27 @@ const service = {
           nuevoProducto.imagenes
         );
       }
-      //aca
-      //const ut = (await UsuariosTienda.findAll({ where : { 'IdTienda' : idTienda ,'esAdministrador' : true } })).dataValues;
-      //const progreso = await Usuario.update({ 'progreso': 5 }, {
-      //  where: {
-      //    'id': ut.IdUsuario
-      //7  }
-      //})
-      //console.log(progreso)
+      // aca
+      const ut = await UsuariosTienda.findAll({ where: { 'IdTienda': idTienda, 'esAdministrador': true } });
+      if ((JSON.parse(JSON.stringify(ut)))[0] != undefined) {
+        let consultaProgreso = await Usuario.findAll({ where: { 'id': (JSON.parse(JSON.stringify(ut)))[0]['IdUsuario'] } })
+        if ((JSON.parse(JSON.stringify(consultaProgreso)))[0] != undefined) {
+          if (!(JSON.parse(JSON.stringify(consultaProgreso)))[0]['progreso'] >= 7) {
+            const progreso = await Usuario.update({ 'progreso': 6 }, {
+              where: {
+                'id': (JSON.parse(JSON.stringify(ut)))[0]['IdUsuario']
+              }
+            })
+            console.log(progreso)
+          } else {
+            console.log("Registro completo")
+          }
+        } else {
+           console.log("No se encontro progreso")
+        }
+      } else {
+        return "No existe tienda"
+      }
       return resultadoNuevoProducto;
     } catch (error) {
       throw error;

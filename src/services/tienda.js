@@ -186,14 +186,25 @@ const service = {
           nuevaTienda.imagenes
         );
       }
-      //aca
-      //await enviarEmailCreacionTienda(usuarioQueCreaTienda.correo);
-      //const progreso = await Usuario.update({ 'progreso': 2 }, {
-      //  where: {
-      //    'id': idUsuario
-      //  }
-      //})
-      //console.log(progreso)
+    
+      await enviarEmailCreacionTienda(usuarioQueCreaTienda.correo);
+
+      // Progreso
+      let consultaProgreso = await Usuario.findAll({ where: { 'id': idUsuario } })
+      if ((JSON.parse(JSON.stringify(consultaProgreso)))[0] != undefined) {
+        if (!(JSON.parse(JSON.stringify(consultaProgreso)))[0]['progreso'] >= 7) {
+          const progreso = await Usuario.update({ 'progreso': 3 }, {
+            where: {
+              'id': (JSON.parse(JSON.stringify(consultaProgreso)))[0]['id']
+            }
+          })
+          console.log(progreso)
+        } else {
+          console.log('Registro completado')
+        }
+      } else {
+         console.log("Error al registrar el progreso")
+      }
       return resultadoNuevaTienda;
     } catch (error) {
       console.log(`${error}`);
@@ -275,13 +286,26 @@ const service = {
         },
       });
       //aca
-      //const ut = (await UsuariosTienda.findAll({ where : { 'IdTienda' : idTienda } })).dataValues;
-      //const progreso = await Usuario.update({ 'progreso': 3 }, {
-      //  where: {
-      //    'id': ut.IdUsuario
-      //  }
-      //})
-      //console.log(progreso)
+      const ut = await UsuariosTienda.findAll({ where: { 'IdTienda': idTienda, 'esAdministrador': true } });
+        if ((JSON.parse(JSON.stringify(ut)))[0] != undefined) {
+          let consultaProgreso = await Usuario.findAll({ where: { 'id': (JSON.parse(JSON.stringify(ut)))[0]['IdUsuario'] } })
+          if ((JSON.parse(JSON.stringify(consultaProgreso)))[0] != undefined) {
+            if (!(JSON.parse(JSON.stringify(consultaProgreso)))[0]['progreso'] >= 7) {
+              const progreso = await Usuario.update({ 'progreso': 7 }, {
+                where: {
+                  'id': (JSON.parse(JSON.stringify(ut)))[0]['IdUsuario']
+                }
+              })
+              console.log(progreso)
+            } else {
+              console.log("Registro completo")
+            }
+          } else {
+             console.log("No se encontro progreso")
+          }
+        } else {
+          return "No existe tienda"
+        }
 
       return resultadoUpdate;
 
@@ -394,19 +418,20 @@ const obtenerPromedioCalificaciones = async (calificaciones) => {
 
 const enviarEmailCreacionTienda = async (correoReceptor) => {
   try {
-
+    let u = "no.reply.comerzio@gmail.com";
+    let p = "Imdsas2021.*";
     // create reusable transporter object using the default SMTP transport
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: process.env.EMAIL_SENDER,
-        pass: process.env.EMAIL_SENDER_PSW // naturally, replace both with your real credentials or an application-specific password
+        user: u,
+        pass: p // naturally, replace both with your real credentials or an application-specific password
       }
     });
   
     // send mail with defined transport object
     let info = await transporter.sendMail({
-      from: '"Comerquio" <cuenta.comerquio@gmail.com>', // sender address
+      from: '"Comerzio" <no.reply.comerzio@gmail.com>', // sender address
       to: correoReceptor, // list of receivers
       subject: "Notificación de tienda creada - Comerquio", // Subject line
       html: "<b>Felicitaciones su tienda ha sido creada exitosamente en Comerquio, no olvide activar su tienda.</b>", // html body

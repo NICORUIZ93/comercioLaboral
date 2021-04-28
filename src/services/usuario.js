@@ -142,12 +142,23 @@ const service = {
       });
       //aca
       const { contrasena, ...usuarioSinContrasena } = resultadocreate;
-      //const progreso = await Usuario.update({ 'progreso': 1 }, {
-      //  where: {
-      //    'correo': nuevoUsuario.correo
-      //  }
-      //})
-      //console.log(progreso)
+      // Progreso
+      let consultaProgreso = await Usuario.findAll({ where: { 'correo': nuevoUsuario.correo } })
+      if ((JSON.parse(JSON.stringify(consultaProgreso)))[0] != undefined) {
+        if (!(JSON.parse(JSON.stringify(consultaProgreso)))[0]['progreso'] >= 7) {
+          const progreso = await Usuario.update({ 'progreso': 1 }, {
+            where: {
+              'id': (JSON.parse(JSON.stringify(consultaProgreso)))[0]['id']
+            }
+          })
+          console.log(progreso)
+        } else {
+          console.log('Registro completado')
+        }
+      } else {
+        console.log("Error al registrar el progreso")
+      }
+
       return usuarioSinContrasena;
     } catch (error) {
       console.log(`${error}`);
@@ -183,13 +194,26 @@ const service = {
         let cu = await this.crearUsuario(nuevoUsuario);
         let resultadocreate = await empleadosTiendas.create(nuevoUsuario);
         //aca
-        //const ut = (await UsuariosTienda.findAll({ where: { 'IdTienda': nuevoUsuario.idTienda, 'esAdministrador': true } })).dataValues;
-        //const progreso = await Usuario.update({ 'progreso': 4 }, {
-        //  where: {
-        //    'id': ut.IdUsuario
-        //  }
-        //})
-        //console.log(progreso)
+        const ut = await UsuariosTienda.findAll({ where: { 'IdTienda': nuevoUsuario.idTienda, 'esAdministrador': true } });
+        if ((JSON.parse(JSON.stringify(ut)))[0] != undefined) {
+          let consultaProgreso = await Usuario.findAll({ where: { 'id': (JSON.parse(JSON.stringify(ut)))[0]['IdUsuario'] } })
+          if ((JSON.parse(JSON.stringify(consultaProgreso)))[0] != undefined) {
+            if (!(JSON.parse(JSON.stringify(consultaProgreso)))[0]['progreso'] >= 7) {
+              const progreso = await Usuario.update({ 'progreso': 4 }, {
+                where: {
+                  'id': (JSON.parse(JSON.stringify(ut)))[0]['IdUsuario']
+                }
+              })
+              console.log(progreso)
+            } else {
+              console.log("Registro completo")
+            }
+          } else {
+             console.log("No se encontro progreso")
+          }
+        } else {
+          return "No existe tienda"
+        }
         return resultadocreate;
       } else {
         throw Error("El codigo no es valido");
@@ -438,12 +462,25 @@ const service = {
     try {
       //aca
       const ut = await UsuariosTienda.findAll({ where: { 'IdTienda': req.body.idTienda, 'esAdministrador': true } });
-     // const progreso = await Usuario.update({ 'progreso': 4 }, {
-     //   where: {
-     //     'id': ut.IdUsuario
-     //   }
-     // })
-      //console.log(ut.IdUsuario)
+      if ((JSON.parse(JSON.stringify(ut)))[0] != undefined) {
+        let consultaProgreso = await Usuario.findAll({ where: { 'id': (JSON.parse(JSON.stringify(ut)))[0]['IdUsuario'] } })
+        if ((JSON.parse(JSON.stringify(consultaProgreso)))[0] != undefined) {
+          if ((JSON.parse(JSON.stringify(consultaProgreso)))[0]['progreso'] >= 7) {
+            //AQUI RETURN
+          } else {
+            const progreso = await Usuario.update({ 'progreso': 4 }, {
+              where: {
+                'id': (JSON.parse(JSON.stringify(ut)))[0]['IdUsuario']
+              }
+            })
+            console.log(progreso)
+          }
+        } else {
+
+        }
+      } else {
+        return "No existe tienda"
+      }
       return (JSON.parse(JSON.stringify(ut)))[0];
     } catch (error) {
       console.log(`${error}`);
