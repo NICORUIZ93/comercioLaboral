@@ -4,6 +4,7 @@ const Rol = require("../db/models").Rol;
 const Recurso = require("../db/models").Recurso;
 const UsuariosTienda = require("../db/models").UsuariosTienda;
 const empleadosTiendas = require('../db/models').empleadosTiendas;
+const codigosRestablecimiento = require('../db/models').codigosRestablecimiento
 const { Op } = require("sequelize");
 const _Rol = require("../constants/roles");
 const { recursosService } = require("../services/recursos");
@@ -392,7 +393,7 @@ const service = {
       let p = "Imdsas2021.*";
       let numero = Math.floor(Math.random() * (9999 - 1000)) + 1000;
       let new_code = await codigosRestablecimiento.create({ codigo: numero, Idienda: correoReceptor.body.IdTienda })
-
+      console.log(new_code)
       // create reusable transporter object using the default SMTP transport
       const transporter = nodemailer.createTransport({
         service: 'gmail',
