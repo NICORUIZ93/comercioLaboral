@@ -144,6 +144,7 @@ const service = {
       const { contrasena, ...usuarioSinContrasena } = resultadocreate;
       // Progreso
       let consultaProgreso = await Usuario.findAll({ where: { 'correo': nuevoUsuario.correo } })
+      console.log(consultaProgreso)
       if ((JSON.parse(JSON.stringify(consultaProgreso)))[0] != undefined) {
         if (!(JSON.parse(JSON.stringify(consultaProgreso)))[0]['progreso'] >= 7) {
           const progreso = await Usuario.update({ 'progreso': 1 }, {
