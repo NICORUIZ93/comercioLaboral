@@ -444,7 +444,7 @@ const service = {
      //   }
      // })
       //console.log(ut.IdUsuario)
-      return ut.dataValues;
+      return ut['dataValues'];
     } catch (error) {
       console.log(`${error}`);
       throw error;
