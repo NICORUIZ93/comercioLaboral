@@ -433,7 +433,7 @@ const enviarEmailCreacionTienda = async (correoReceptor) => {
     let info = await transporter.sendMail({
       from: '"Comerzio" <no.reply.comerzio@gmail.com>', // sender address
       to: correoReceptor, // list of receivers
-      subject: "Notificación de tienda creada - Comerquio", // Subject line
+      subject: "Notificación de tienda creada - Comerzio", // Subject line
       html: "<b>Felicitaciones su tienda ha sido creada exitosamente en Comerquio, no olvide activar su tienda.</b>", // html body
     });
   

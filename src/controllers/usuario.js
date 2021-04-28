@@ -182,7 +182,7 @@ module.exports = {
   async progreso(req, res) {
     try {
       
-      let p = await usuarioService.procesoRegistro(req.params.id)
+      let p = await usuarioService.procesoRegistro(req)
       res.status(200).json(p)
     } catch (e) {
       console.log(e);

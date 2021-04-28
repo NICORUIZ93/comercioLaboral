@@ -335,12 +335,12 @@ const service = {
       throw error;
     }
   },
-  async procesoRegistro(idUsuario) {
+  async procesoRegistro(req) {
     try {
       const resultado = await Usuario.findAll({
         attributes: ['progreso'],
         where: {
-          id: idUsuario,
+          'correo': req.body.correo,
         },
       });
 
