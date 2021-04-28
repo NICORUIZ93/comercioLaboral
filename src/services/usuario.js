@@ -339,13 +339,34 @@ const service = {
   async procesoRegistro(req) {
     try {
       const resultado = await Usuario.findAll({
-        attributes: ['progreso'],
+        attributes: ['id','progreso'],
         where: {
           'correo': req.body.correo,
         },
       });
+      if ((JSON.parse(JSON.stringify(resultado)))[0] != undefined) {
+        let progreso = (JSON.parse(JSON.stringify(resultado)))[0]['progreso']
+        const tienda = await UsuariosTienda.findAll({
+          attributes: ['IdUsuario','IdTienda'],
+          where: {
+            'IdUsuario': (JSON.parse(JSON.stringify(resultado)))[0]['id'],
+          },
+        });
+        if ((JSON.parse(JSON.stringify(tienda)))[0] != undefined) {
+          return {
+            progreso : progreso,
+            IdTienda : (JSON.parse(JSON.stringify(tienda)))[0]['IdTienda']
+          }
+        } else {
+          return {
+            progreso : progreso,
+            IdTienda : "No se a completado el paso 2"
+          }
+        }
 
-      return resultado;
+      } else {
+        return "No se encontro el usuario"
+      }
     } catch (error) {
       console.log(`${error}`);
       throw error;
