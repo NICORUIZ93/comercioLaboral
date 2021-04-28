@@ -146,15 +146,15 @@ const service = {
       let consultaProgreso = await Usuario.findAll({ where: { 'correo': nuevoUsuario.correo } })
       console.log(consultaProgreso)
       if ((JSON.parse(JSON.stringify(consultaProgreso)))[0] != undefined) {
-        if (!(JSON.parse(JSON.stringify(consultaProgreso)))[0]['progreso'] >= 7) {
+        if ((JSON.parse(JSON.stringify(consultaProgreso)))[0]['progreso'] >= 7) {
+          console.log('Registro completado')
+        } else if((JSON.parse(JSON.stringify(consultaProgreso)))[0]['progreso'] == null || (JSON.parse(JSON.stringify(consultaProgreso)))[0]['progreso'] <=6){
           const progreso = await Usuario.update({ 'progreso': 1 }, {
             where: {
               'id': (JSON.parse(JSON.stringify(consultaProgreso)))[0]['id']
             }
           })
           console.log(progreso)
-        } else {
-          console.log('Registro completado')
         }
       } else {
         console.log("Error al registrar el progreso")
@@ -199,15 +199,15 @@ const service = {
         if ((JSON.parse(JSON.stringify(ut)))[0] != undefined) {
           let consultaProgreso = await Usuario.findAll({ where: { 'id': (JSON.parse(JSON.stringify(ut)))[0]['IdUsuario'] } })
           if ((JSON.parse(JSON.stringify(consultaProgreso)))[0] != undefined) {
-            if (!(JSON.parse(JSON.stringify(consultaProgreso)))[0]['progreso'] >= 7) {
+            if ((JSON.parse(JSON.stringify(consultaProgreso)))[0]['progreso'] >= 7) {
+              console.log("Registro completo")
+            } else if((JSON.parse(JSON.stringify(consultaProgreso)))[0]['progreso'] == null || (JSON.parse(JSON.stringify(consultaProgreso)))[0]['progreso']<=6) {
               const progreso = await Usuario.update({ 'progreso': 4 }, {
                 where: {
                   'id': (JSON.parse(JSON.stringify(ut)))[0]['IdUsuario']
                 }
               })
               console.log(progreso)
-            } else {
-              console.log("Registro completo")
             }
           } else {
              console.log("No se encontro progreso")
