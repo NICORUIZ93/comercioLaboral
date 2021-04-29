@@ -1,680 +1,512 @@
 
 async function bodyEmail ( id,usuario,mensaje ){
 
-	let body = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<title>[SUBJECT]</title>
-	<style type="text/css">
-
-@media screen and (max-width: 600px) {
-    table[class="container"] {
-        width: 95% !important;
-    }
-}
-
-	#outlook a {padding:0;}
-		body{width:100% !important; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; margin:0; padding:0;background-color: slategray;}
-		.ExternalClass {width:100%;}
-		.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;}
-		#backgroundTable {margin:0; padding:0; width:100% !important; line-height: 100% !important;}
-		img {outline:none; text-decoration:none; -ms-interpolation-mode: bicubic;}
-		a img {border:none;}
-		.image_fix {display:block;}
-		p {margin: 1em 0;}
-		h1, h2, h3, h4, h5, h6 {color: black !important;}
-
-		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {color: blue !important;}
-
-		h1 a:active, h2 a:active,  h3 a:active, h4 a:active, h5 a:active, h6 a:active {
-			color: red !important; 
-		 }
-
-		h1 a:visited, h2 a:visited,  h3 a:visited, h4 a:visited, h5 a:visited, h6 a:visited {
-			color: purple !important; 
-		}
-
-		table td {border-collapse: collapse;}
-
-		table { border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; }
-
-		a {color: #000;}
-
-		@media only screen and (max-device-width: 480px) {
-
-			a[href^="tel"], a[href^="sms"] {
-						text-decoration: none;
-						color: black; /* or whatever your want */
-						pointer-events: none;
-						cursor: default;
-					}
-
-			.mobile_link a[href^="tel"], .mobile_link a[href^="sms"] {
-						text-decoration: default;
-						color: orange !important; /* or whatever your want */
-						pointer-events: auto;
-						cursor: default;
-					}
-		}
-
-
-		@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-			a[href^="tel"], a[href^="sms"] {
-						text-decoration: none;
-						color: blue; /* or whatever your want */
-						pointer-events: none;
-						cursor: default;
-					}
-
-			.mobile_link a[href^="tel"], .mobile_link a[href^="sms"] {
-						text-decoration: default;
-						color: orange !important;
-						pointer-events: auto;
-						cursor: default;
-					}
-		}
-
-		@media only screen and (-webkit-min-device-pixel-ratio: 2) {
-			/* Put your iPhone 4g styles in here */
-		}
-
-		@media only screen and (-webkit-device-pixel-ratio:.75){
-			/* Put CSS for low density (ldpi) Android layouts in here */
-		}
-		@media only screen and (-webkit-device-pixel-ratio:1){
-			/* Put CSS for medium density (mdpi) Android layouts in here */
-		}
-		@media only screen and (-webkit-device-pixel-ratio:1.5){
-			/* Put CSS for high density (hdpi) Android layouts in here */
-		}
-		/* end Android targeting */
-		h2{
-			color:#181818;
-			font-family:Helvetica, Arial, sans-serif;
-			font-size:22px;
-			line-height: 22px;
-			font-weight: normal;
-		}
-		a.link1{
-
-		}
-		a.link2{
-			color:#fff;
-			text-decoration:none;
-			font-family:Helvetica, Arial, sans-serif;
-			font-size:16px;
-			color:#fff;border-radius:4px;
-		}
-		p{
-			color:#555;
-			font-family:Helvetica, Arial, sans-serif;
-			font-size:16px;
-			line-height:160%;
-		}
-		body{
-			background-color: slategray;
-		}
-	</style>
-
-<script type="colorScheme" class="swatch active">
-  {
-    "name":"Default",
-    "bgBody":"ffffff",
-    "link":"fff",
-    "color":"555555",
-    "bgItem":"ffffff",
-    "title":"181818"
-  }
-</script>
-
-</head>
-<body>
-	<!-- Wrapper/Container Table: Use a wrapper table to control the width and the background color consistently of your email. Use this approach instead of setting attributes on the body tag. -->
-	<table cellpadding="0" width="100%" cellspacing="0" border="0" id="backgroundTable" class='bgBody'>
-	<tr>
-		<td>
-	<table cellpadding="0" width="620" class="container" align="center" cellspacing="0" border="0">
-	<tr>
-		<td>
-		<!-- Tables are the most common way to format your email consistently. Set your table widths inside cells and in most cases reset cellpadding, cellspacing, and border to zero. Use nested tables as a way to space effectively in your message. -->
-		
-
-		<table cellpadding="0" cellspacing="0" border="0" align="center" width="600" class="container">
-			<tr>
-				<td class='movableContentContainer bgItem'>
-
-					<div class='movableContent'>
-						<table cellpadding="0" cellspacing="0" border="0" align="center" width="600" class="container">
-							<tr height="40">
-								<td width="200">&nbsp;</td>
-								<td width="200">&nbsp;</td>
-								<td width="200">&nbsp;</td>
-							</tr>
-							<tr>
-								<td width="200" valign="top">&nbsp;</td>
-								<td width="200" valign="top" align="center">
-									<div class="contentEditableContainer contentImageEditable">
-					                	<div class="contentEditable" align='center' >
-					                  		<img src="https://firebasestorage.googleapis.com/v0/b/lamejorferia-32065.appspot.com/o/ComerZioBlack.png?alt=media&token=b642b3c6-18a5-4b3d-bac4-47b3bd3ae71d" width="155" height="155"  alt='Logo'  data-default="placeholder" />
-					                	</div>
-					              	</div>
-								</td>
-								<td width="200" valign="top">&nbsp;</td>
-							</tr>
-							<tr height="25">
-								<td width="200">&nbsp;</td>
-								<td width="200">&nbsp;</td>
-								<td width="200">&nbsp;</td>
-							</tr>
-						</table>
-					</div>
-
-					<div class='movableContent'>
-						<table cellpadding="0" cellspacing="0" border="0" align="center" width="600" class="container">
-							<tr>
-								<td width="100%" colspan="3" align="center" style="padding-bottom:10px;padding-top:25px;">
-									<div class="contentEditableContainer contentTextEditable">
-					                	<div class="contentEditable" align='center' >
-					                  		<h2 > SOPORTE COMERZIO </h2>
-					                	</div>
-					              	</div>
-								</td>
-							</tr>
-							<tr>
-								<td width="100">&nbsp;</td>
-								<td width="400" align="center">
-									<div class="contentEditableContainer contentTextEditable">
-					                	<div class="contentEditable" align='left' >
-					                  		<p > ${id}- ${usuario} ,
-					                  			<br/>
-					                  			<br/>
-												${mensaje}.</p>
-					                	</div>
-					              	</div>
-								</td>
-								<td width="100">&nbsp;</td>
-							</tr>
-						</table>
-					</div>
-
-
-					<div class='movableContent'>
-						<table cellpadding="0" cellspacing="0" border="0" align="center" width="600" class="container">
-							<tr>
-								<td width="100%" colspan="2" style="padding-top:65px;">
-									<hr style="height:1px;border:none;color:#333;background-color:#ddd;" />
-								</td>
-							</tr>
-							<tr>
-								<td width="60%" height="70" valign="middle" style="padding-bottom:20px;">
-									<div class="contentEditableContainer contentTextEditable">
-					                	<div class="contentEditable" align='left' >
-					                  		<span style="font-size:13px;color:#181818;font-family:Helvetica, Arial, sans-serif;line-height:200%;">Sent to [email] by [CLIENTS.COMPANY_NAME]</span>
-											<br/>
-											<span style="font-size:11px;color:#555;font-family:Helvetica, Arial, sans-serif;line-height:200%;">[CLIENTS.ADDRESS] | [CLIENTS.PHONE]</span>
-											<br/>
-											<span style="font-size:13px;color:#181818;font-family:Helvetica, Arial, sans-serif;line-height:200%;">
-											<a target='_blank' href="[FORWARD]" style="text-decoration:none;color:#555">Forward to a friend</a>
-											</span>
-											<br/>
-											<span style="font-size:13px;color:#181818;font-family:Helvetica, Arial, sans-serif;line-height:200%;">
-											<a target='_blank' href="[UNSUBSCRIBE]" style="text-decoration:none;color:#555">click here to unsubscribe</a></span>
-					                	</div>
-					              	</div>
-								</td>
-								<td width="40%" height="70" align="right" valign="top" align='right' style="padding-bottom:20px;">
-									<table width="100%" border="0" cellspacing="0" cellpadding="0" align='right'>
-										<tr>
-											<td width='57%'></td>
-											<td valign="top" width='34'>
-												<div class="contentEditableContainer contentFacebookEditable" style='display:inline;'>
-							                        <div class="contentEditable" >
-							                            <img src="images/facebook.png" data-default="placeholder" data-max-width='30' data-customIcon="true" width='30' height='30' alt='facebook' style='margin-right:40x;'>
-							                        </div>
-							                    </div>
-											</td>
-											<td valign="top" width='34'>
-												<div class="contentEditableContainer contentTwitterEditable" style='display:inline;'>
-							                      <div class="contentEditable" >
-							                        <img src="images/twitter.png" data-default="placeholder" data-max-width='30' data-customIcon="true" width='30' height='30' alt='twitter' style='margin-right:40x;'>
-							                      </div>
-							                    </div>
-											</td>
-											<td valign="top" width='34'>
-												<div class="contentEditableContainer contentImageEditable" style='display:inline;'>
-							                      <div class="contentEditable" >
-							                        <a target='_blank' href="#" data-default="placeholder"  style="text-decoration:none;">
-														<img src="images/pinterest.png" width="30" height="30" data-max-width="30" alt='pinterest' style='margin-right:40x;' />
-													</a>
-							                      </div>
-							                    </div>
-											</td>
-										</tr>
-									</table>
-								</td>
-							</tr>
-						</table>
-					</div>
-
-
-				</td>
-			</tr>
-		</table>
-
-		
-		
-
-	</td></tr></table>
+	let body = `<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 	
-		</td>
-	</tr>
-	</table>
-	<!-- End of wrapper table -->
+	<head>
+	  <!--[if gte mso 9]>
+	<xml>
+	  <o:OfficeDocumentSettings>
+		<o:AllowPNG/>
+		<o:PixelsPerInch>96</o:PixelsPerInch>
+	  </o:OfficeDocumentSettings>
+	</xml>
+	<![endif]-->
+	  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <meta name="x-apple-disable-message-reformatting">
+	  <!--[if !mso]><!-->
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	  <!--<![endif]-->
+	  <title></title>
 	
-<!--Default Zone
-
-    <div class="customZone" data-type="image">
-        <div class="movableContent">
-        	<table cellpadding="0" cellspacing="0" border="0" align="center" width="600">        		
-				<tr><td colspan='3' height='30'></td></tr>
-				<tr>
-					<td width="50">&nbsp;</td>
-					<td width="500" colspan="3" align="center" style="padding-bottom:10px;padding-top:25px;">
-						<div class="contentEditableContainer contentImageEditable">
-			                <div class="contentEditable">
-			                   <img src="/applications/Mail_Interface/3_3/modules/User_Interface/core/v31_campaigns/images/neweditor/default/temp_img_1.png" data-default="placeholder" data-max-width="500">
-			                </div>
-			            </div>
-					</td>
-					<td width="50">&nbsp;</td>
-				</tr>
-			</table>
-        </div>
-    </div>
-
-    <div class="customZone" data-type="text">
-        <div class='movableContent'>
-			<table cellpadding="0" cellspacing="0" border="0" align="center" width="600">
-				<tr><td colspan='3' height='30'></td></tr>
-				<tr>
-					<td width="50">&nbsp;</td>
-					<td width="500"  align="center" style="padding-bottom:10px;padding-top:25px;">
-						<div class="contentEditableContainer contentTextEditable" >
-	                        <div class="contentEditable" >
-	                            
-								<h2 >Make sure you’re recognizable</h2>
-	                        </div>
-	                    </div>
-					</td>
-					<td width="50">&nbsp;</td>
-				</tr>
-				<tr>
-					<td width="50">&nbsp;</td>
-					<td width="500" align="center">
-						<div class="contentEditableContainer contentTextEditable" >
-	                        <div class="contentEditable" >
-	                            <p >
-								<p>Include both the name of the person who’s sending the email as well as the name of the company, and even better: send using your own domain.</p>
-								</p>
-	                        </div>
-	                    </div>
-						
-					</td>
-					<td width="50">&nbsp;</td>
-				</tr>
-				<tr><td colspan="3" height='30'></td></tr>
-				<tr>
-					<td width="50">&nbsp;</td>
-					<td width="500" align="center" >
-						<table cellpadding="0" cellspacing="0" border="0" align="center" width="400" height="50">
-							<tr>
-								<td bgcolor="#ED006F" align="center" style="border-radius:4px;" width="400" height="50">
-									<div class="contentEditableContainer contentTextEditable" >
-				                        <div class="contentEditable" style='text-align:center;'>
-				                            <a target='_blank' href="[CLIENTS.WEBSITE]" class='link2'>Read the 3 rules of email marketing sender etiquette</a>
-				                        </div>
-				                    </div>
+	  <style type="text/css">
+		a {
+		  color: #0000ee;
+		  text-decoration: underline;
+		}
+		
+		@media only screen and (min-width: 620px) {
+		  .u-row {
+			width: 600px !important;
+		  }
+		  .u-row .u-col {
+			vertical-align: top;
+		  }
+		  .u-row .u-col-100 {
+			width: 600px !important;
+		  }
+		}
+		
+		@media (max-width: 620px) {
+		  .u-row-container {
+			max-width: 100% !important;
+			padding-left: 0px !important;
+			padding-right: 0px !important;
+		  }
+		  .u-row .u-col {
+			min-width: 320px !important;
+			max-width: 100% !important;
+			display: block !important;
+		  }
+		  .u-row {
+			width: calc(100% - 40px) !important;
+		  }
+		  .u-col {
+			width: 100% !important;
+		  }
+		  .u-col>div {
+			margin: 0 auto;
+		  }
+		}
+		
+		body {
+		  margin: 0;
+		  padding: 0;
+		}
+		
+		table,
+		tr,
+		td {
+		  vertical-align: top;
+		  border-collapse: collapse;
+		}
+		
+		p {
+		  margin: 0;
+		}
+		
+		.ie-container table,
+		.mso-container table {
+		  table-layout: fixed;
+		}
+		
+		* {
+		  line-height: inherit;
+		}
+		
+		a[x-apple-data-detectors='true'] {
+		  color: inherit !important;
+		  text-decoration: none !important;
+		}
+	  </style>
+	
+	
+	
+	  <!--[if !mso]><!-->
+	  <link href="https://fonts.googleapis.com/css?family=Cabin:400,700" rel="stylesheet" type="text/css">
+	  <!--<![endif]-->
+	
+	</head>
+	
+	<body class="clean-body" style="margin: 0;padding: 0;-webkit-text-size-adjust: 100%;background-color: #f9f9f9">
+	  <!--[if IE]><div class="ie-container"><![endif]-->
+	  <!--[if mso]><div class="mso-container"><![endif]-->
+	  <table style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 320px;Margin: 0 auto;background-color: #f9f9f9;width:100%" cellpadding="0" cellspacing="0">
+		<tbody>
+		  <tr style="vertical-align: top">
+			<td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
+			  <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td align="center" style="background-color: #f9f9f9;"><![endif]-->
+	
+	
+			  <div class="u-row-container" style="padding: 0px;background-color: transparent">
+				<div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;">
+				  <div style="border-collapse: collapse;display: table;width: 100%;background-color: transparent;">
+					<!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px;"><tr style="background-color: transparent;"><![endif]-->
+	
+					<!--[if (mso)|(IE)]><td align="center" width="600" style="width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;" valign="top"><![endif]-->
+					<div class="u-col u-col-100" style="max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;">
+					  <div style="width: 100% !important;">
+						<!--[if (!mso)&(!IE)]><!-->
+						<div style="padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;">
+						  <!--<![endif]-->
+	
+						  <table style="font-family:'Cabin',sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+							<tbody>
+							  <tr>
+								<td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:'Cabin',sans-serif;" align="left">
+	
+								  <div style="color: #afb0c7; line-height: 170%; text-align: center; word-wrap: break-word;">
+									<p style="font-size: 14px; line-height: 170%;"><span style="font-size: 14px; line-height: 23.8px;"></span></p>
+								  </div>
+	
 								</td>
-							</tr>
-
-						</table>
-					</td>
-					<td width="50">&nbsp;</td>
-				</tr>
-				<tr><td height="10" colspan="3"></td></tr>
-			</table>
-		</div>
-    </div>
-
-    <div class="customZone" data-type="imageText">
-        <div class="movableContent">
-            <table cellpadding="0" cellspacing="0" border="0" width='600'>
-            	<tr><td colspan="5" height='30'></td></tr>
-                <tr>
-                	<td width='50'></td>
-                    <td valign="top" width='150'>
-                        <div class="contentEditableContainer contentImageEditable">
-                            <div class="contentEditable">
-                                <img src="/applications/Mail_Interface/3_3/modules/User_Interface/core/v31_campaigns/images/neweditor/default/temp_img_1.png" data-default="placeholder" width='150' data-max-width="150">
-                            </div>
-                        </div>
-                    </td>
-                    <td width='20'></td>
-                    <td valign="top"  width='250'>
-                        <div class="contentEditableContainer contentTextEditable">
-                            <div class="contentEditable" style="color:#555;font-family:Helvetica, Arial, sans-serif;font-size:16px;line-height:160%;">
-                                <h2 >This is a subtitle</h2>
-                                <p style="text-align:left;">Etiam bibendum nunc in lacus bibendum porta. Vestibulum nec nulla et eros ornare condimentum. Proin facilisis, dui in mollis blandit. Sed non dui magna, quis tincidunt enim. Morbi vehicula pharetra lacinia.</p>
-                                <p style="text-align:right;"><a target='_blank' href="">Read more</a></p>
-                            </div>
-                        </div>
-                    </td>
-                    <td width='50'></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-
-    <div class="customZone" data-type="Textimage">
-        <div class="movableContent">
-            <table cellpadding="0" cellspacing="0" border="0" width='600'>
-            	<tr><td colspan="5" height='30'></td></tr>
-                <tr>
-                	<td width='50'></td>
-                    <td valign="top" width='230'>
-                        <div class="contentEditableContainer contentTextEditable">
-                            <div class="contentEditable" style="color:#555;font-family:Helvetica, Arial, sans-serif;font-size:16px;line-height:160%;">
-                                <h2 >This is a subtitle</h2>
-                                <p style="text-align:left;">Etiam bibendum nunc in lacus bibendum porta. Vestibulum nec nulla et eros ornare condimentum. Proin facilisis, dui in mollis blandit. Sed non dui magna, quis tincidunt enim. Morbi vehicula pharetra lacinia. </p>
-                                <p style="text-align:right;"><a target='_blank' href="">Read more</a></p>
-                            </div>
-                        </div>
-                    </td>
-                    <td width='20'></td>
-                    <td valign="top" width='150'>
-                        <div class="contentEditableContainer contentImageEditable">
-                            <div class="contentEditable">
-                                <img src="/applications/Mail_Interface/3_3/modules/User_Interface/core/v31_campaigns/images/neweditor/default/temp_img_1.png" data-default="placeholder" width='150' data-max-width="150">
-                            </div>
-                        </div>
-                    </td>
-                    <td width='50'></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-
-    <div class="customZone" data-type="textText">
-        <div class="movableContent">
-            <table cellpadding="0" cellspacing="0" border="0" width='600'>
-            	<tr><td height='30' colspan='5'></td></tr>
-                <tr>
-                	<td width='50'></td>
-                    <td valign="top" width="230">
-                        <div class="contentEditableContainer contentTextEditable">
-                            <div class="contentEditable" style="color:#555;font-family:Helvetica, Arial, sans-serif;font-size:16px;line-height:160%;">
-                                <h2 >This is a subtitle</h2>
-                                <p >Etiam bibendum nunc in lacus bibendum porta. Vestibulum nec nulla et eros ornare condimentum. Proin facilisis, dui in mollis blandit. Sed non dui magna, quis tincidunt enim.</p>
-                                <p style="text-align:right;"><a target='_blank' href="">Read more</a></p>
-                            </div>
-                        </div>
-                    </td>
-                    <td width='40'></td>
-                    <td valign="top" width='230'>
-                        <div class="contentEditableContainer contentTextEditable">
-                            <div class="contentEditable" style="color:#555;font-family:Helvetica, Arial, sans-serif;font-size:16px;line-height:160%;">
-                                <h2 >This is a subtitle</h2>
-                                <p style="text-align:left;">Etiam bibendum nunc in lacus bibendum porta. Vestibulum nec nulla et eros ornare condimentum. Proin facilisis, dui in mollis blandit. Sed non dui magna, quis tincidunt enim.</p>
-                                <p style="text-align:right;"><a target='_blank' href="">Read more</a></p>
-                            </div>
-                        </div>
-                    </td>
-                    <td width='50'></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-
-    <div class="customZone" data-type="qrcode">
-        <div class="movableContent">
-            <table cellpadding="0" cellspacing="0" border="0" width='600'>
-            	<tr><td height='30' colspan='5'></td></tr>
-                <tr>
-                	<td width='50'></td>
-                    <td valign="top" >
-                        <div class="contentQrcodeEditable contentEditableContainer">
-                            <div class="contentEditable">
-                                <img src="/applications/Mail_Interface/3_3/modules/User_Interface/core/v31_campaigns/images/neweditor/default/qr_code.png" width="75" height="75" data-default="placeholder">
-                            </div>
-                        </div>
-                    </td>
-                    <td width='20'></td>
-                    <td valign="top">
-                        <div class="contentEditableContainer contentTextEditable">
-                            <div class="contentEditable" style="color:#555;font-family:Helvetica, Arial, sans-serif;font-size:16px;line-height:160%;">
-                                <h2 >This is a subtitle</h2>
-                                <p style="text-align:left;">Etiam bibendum nunc in lacus bibendum porta. Vestibulum nec nulla et eros ornare condimentum. Proin facilisis, dui in mollis blandit. Sed non dui magna, quis tincidunt enim. Morbi vehicula pharetra lacinia. Cras tincidunt, justo at fermentum feugiat, eros orci accumsan dolor, eu ultricies eros dolor quis sapien. Curabitur in turpis sem, a sodales purus. Pellentesque et risus at mauris aliquet gravida.</p>
-                                <p style="text-align:left;">Integer in elit in tortor posuere molestie non a velit. Pellentesque consectetur, nisi a euismod scelerisque.</p>
-                                <p style="text-align:right;"><a target='_blank' href="">Read more</a></p>
-                            </div>
-                        </div>
-                    </td>
-                    <td width='50'></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-
-    <div class="customZone" data-type="social">
-        <div class="movableContent" align='center'>
-            <table cellpadding="0" cellspacing="0" border="0" width='600'>
-            	<tr><td height='30' colspan='5'></td></tr>
-                <tr>
-                	<td width='50'></td>
-                    <td valign="top" width="230" align='center'>
-                        <div class="contentEditableContainer contentFacebookEditable">
-                            <div class="contentEditable">
-                                <img data-default="placeholder" src="images/facebook.png" data-max-width='60' data-customIcon="true" data-noText="true" width='60' height='60'>
-                            </div>
-                        </div>
-                        <div class="contentEditableContainer contentTextEditable">
-                            <div class="contentEditable" style="color:#555;font-family:Helvetica, Arial, sans-serif;font-size:16px;line-height:160%;">
-                                <h2 >Facebook</h2>
-                                <p>Like us on Facebook to keep up with our news, updates and other discussions.</p>
-                            </div>
-                        </div>
-                    </td>
-                    <td width='40'></td>
-                    <td valign="top" width="230" align='center'>
-                        <div class="contentEditableContainer contentTwitterEditable">
-                            <div class="contentEditable">
-                                <img data-default="placeholder" src="images/twitter.png" data-max-width='60' data-customIcon="true" data-noText="true" width='60' height='60'>
-                            </div>
-                        </div>
-                        <div class="contentEditableContainer contentTextEditable">
-                            <div class="contentEditable" style="color:#555;font-family:Helvetica, Arial, sans-serif;font-size:16px;line-height:160%;">
-                                <h2 >Twitter</h2>
-                                <p>Follow us on twitter to stay up to date with company news and other information.</p>
-                            </div>
-                        </div>
-                    </td>
-                    <td width='50'></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-
-    <div class="customZone" data-type="twitter">
-        <div class="movableContent" align='center'>
-            <table cellpadding="0" cellspacing="0" border="0" width='600'>
-            	<tr><td height='30' colspan='3'></td></tr>
-                <tr>
-                	<td width='50'></td>
-                    <td valign="top" align='center'>
-                        <div class="contentEditableContainer contentTwitterEditable">
-                            <div class="contentEditable">
-                                <img data-default="placeholder" src="images/twitter.png" data-max-width='60' data-customIcon="true" data-noText="true" width='60' height='60'>
-                            </div>
-                        </div>
-                        <div class="contentEditableContainer contentTextEditable">
-                            <div class="contentEditable" style="color:#555;font-family:Helvetica, Arial, sans-serif;font-size:16px;line-height:160%;">
-                                <h2 >Twitter</h2>
-                                <p>Follow us on twitter to stay up to date with company news and other information.</p>
-                            </div>
-                        </div>
-                    </td>
-                    <td width='50'></td>
-                </tr>
-            </table>
-        </div>
-   </div>
-
-    <div class="customZone" data-type="facebook" >
-        <div class="movableContent" align='center'>
-            <table cellpadding="0" cellspacing="0" border="0" width='600'>
-            	<tr><td height='30' colspan='3'></td></tr>
-                <tr>
-                	<td width='50'></td>
-                    <td valign="top" align='center'>
-                        <div class="contentEditableContainer contentFacebookEditable">
-                            <div class="contentEditable">
-                                <img data-default="placeholder" src="images/facebook.png" data-max-width='60' data-customIcon="true" data-noText="true" width='60' height='60'>
-                            </div>
-                        </div>
-                        <div class="contentEditableContainer contentTextEditable">
-                            <div class="contentEditable" style="color:#555;font-family:Helvetica, Arial, sans-serif;font-size:16px;line-height:160%;">
-                                <h2>Facebook</h2>
-                                <p>Like us on Facebook to keep up with our news, updates and other discussions.</p>
-                            </div>
-                        </div>
-                    </td>
-                    <td width='50'></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-
-    <div class="customZone" data-type="gmap">
-        <div class="movableContent">
-            <table cellpadding="0" cellspacing="0" border="0" width='600'>
-                <tr><td height='30' colspan='5'></td></tr>
-                <tr>
-                	<td width='50'></td>
-                    <td valign="top" >
-                        <div class="contentGmapEditable contentEditableContainer">
-                            <div class="contentEditable">
-                                <img src="/applications/Mail_Interface/3_3/modules/User_Interface/core/v31_campaigns/images/neweditor/default/gmap_example.png" width="75" data-default="placeholder">
-                            </div>
-                        </div>
-                    </td>
-                    <td width='20'></td>
-                    <td valign="top">
-                        <div class="contentEditableContainer contentTextEditable">
-                            <div class="contentEditable" style="color:#555;font-family:Helvetica, Arial, sans-serif;font-size:16px;line-height:160%;">
-                                <h2 >This is a subtitle</h2>
-                                <p style="text-align:left;">Etiam bibendum nunc in lacus bibendum porta. Vestibulum nec nulla et eros ornare condimentum. Proin facilisis, dui in mollis blandit. Sed non dui magna, quis tincidunt enim. Morbi vehicula pharetra lacinia. Cras tincidunt, justo at fermentum feugiat, eros orci accumsan dolor, eu ultricies eros dolor quis sapien. Curabitur in turpis sem, a sodales purus. Pellentesque et risus at mauris aliquet gravida.</p>
-                                <p style="text-align:left;">Integer in elit in tortor posuere molestie non a velit. Pellentesque consectetur, nisi a euismod scelerisque.</p>
-                                <p style="text-align:right;"><a target='_blank' href="">Read more</a></p>
-                            </div>
-                        </div>
-                    </td>
-                    <td width='50'></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-
-
-	 <div class="customZone" data-type="colums1v2"><div class='movableContent'>
-          	<table width="600" border="0" cellspacing="0" cellpadding="0" align="center" >
-	            <tr><td height="30" colspan='3'>&nbsp;</td></tr>
-	            <tr>
-	            	<td width='50'></td>
-	              	<td width='500' align="center" valign="top" class="newcontent">
-	                
-	              	</td>
-	              	<td width='50'></td>
-	            </tr>
-          	</table>
-    	</div>
-      </div>
-
-      <div class="customZone" data-type="colums2v2"><div class='movableContent'>
-          <table width="600" border="0" cellspacing="0" cellpadding="0" align="center" >
-	            <tr><td height="30" colspan='3'>&nbsp;</td></tr>
-	            <tr>
-	            	<td width='50'></td>
-	              	<td width='235' align="center" valign="top" class="newcontent">
-	                
-	              	</td>
-					<td width='30'></td>
-	              	<td width='235' align="center" valign="top" class="newcontent">
-	                
-	              	</td>
-	              	<td width='50'></td>
-	            </tr>
-          	</table>
-    	</div>
-      </div>
-
-      <div class="customZone" data-type="colums3v2"><div class='movableContent'>
-         <table width="600" border="0" cellspacing="0" cellpadding="0" align="center" >
-	            <tr><td height="30" colspan='3'>&nbsp;</td></tr>
-	            <tr>
-	            	<td width='50'></td>
-	              	<td width='158' align="center" valign="top" class="newcontent">
-	                
-	              	</td>
-					<td width='12'></td>
-	              	<td width='158' align="center" valign="top" class="newcontent">
-	                
-	              	</td>
-					<td width='12'></td>
-	              	<td width='158' align="center" valign="top" class="newcontent">
-	                
-	              	</td>
-	              	<td width='50'></td>
-	            </tr>
-          	</table>
-    	</div>
-      </div>
-
-      <div class="customZone" data-type="textv2">
-		<div class="contentEditableContainer contentTextEditable" >
-            <div class="contentEditable" >
-                
-				<h2 >Make sure you’re recognizable</h2>
-            </div>
-        </div>
-		<div class="contentEditableContainer contentTextEditable" >
-            <div class="contentEditable" >
-				<p>Include both the name of the person who’s sending the email as well as the name of the company, and even better: send using your own domain.</p>
-            </div>
-        </div>
-		<table cellpadding="0" cellspacing="0" border="0" align="center" width="79%" height="50">
-			<tr>
-				<td bgcolor="#ED006F" align="center" style="border-radius:4px;" width="100%" height="50">
-					<div class="contentEditableContainer contentTextEditable" >
-                        <div class="contentEditable" style='text-align:center;'>
-                            <a target='_blank' href="[CLIENTS.WEBSITE]" class='link2'>Read the 3 rules of email marketing sender etiquette</a>
-                        </div>
-                    </div>
-				</td>
-			</tr>
-		</table>
-      </div>
-
-
-
-
--->
-<!--Default Zone End-->
-
-</body>
-</html>`
+							  </tr>
+							</tbody>
+						  </table>
+	
+						  <!--[if (!mso)&(!IE)]><!-->
+						</div>
+						<!--<![endif]-->
+					  </div>
+					</div>
+					<!--[if (mso)|(IE)]></td><![endif]-->
+					<!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->
+				  </div>
+				</div>
+			  </div>
+	
+	
+	
+			  <div class="u-row-container" style="padding: 0px;background-color: transparent">
+				<div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #ffffff;">
+				  <div style="border-collapse: collapse;display: table;width: 100%;background-color: transparent;">
+					<!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px;"><tr style="background-color: #ffffff;"><![endif]-->
+	
+					<!--[if (mso)|(IE)]><td align="center" width="600" style="background-color: #0654e0;width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;" valign="top"><![endif]-->
+					<div class="u-col u-col-100" style="max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;">
+					  <div style="background-color: #0654e0;width: 100% !important;">
+						<!--[if (!mso)&(!IE)]><!-->
+						<div style="padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;">
+						  <!--<![endif]-->
+	
+						  <table style="font-family:'Cabin',sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+							<tbody>
+							  <tr>
+								<td style="overflow-wrap:break-word;word-break:break-word;padding:20px;font-family:'Cabin',sans-serif;" align="left">
+	
+								  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+									<tr>
+									  <td style="padding-right: 0px;padding-left: 0px;" align="center">
+	
+										<img align="center" border="0" src="https://s3.amazonaws.com/unroll-images-production/projects%2F17853%2F1619735475488-ComerZioBlack.png" alt="Image" title="Image" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 32%;max-width: 179.2px;"
+										  width="179.2" />
+	
+									  </td>
+									</tr>
+								  </table>
+	
+								</td>
+							  </tr>
+							</tbody>
+						  </table>
+	
+						  <!--[if (!mso)&(!IE)]><!-->
+						</div>
+						<!--<![endif]-->
+					  </div>
+					</div>
+					<!--[if (mso)|(IE)]></td><![endif]-->
+					<!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->
+				  </div>
+				</div>
+			  </div>
+	
+	
+	
+			  <div class="u-row-container" style="padding: 0px;background-color: transparent">
+				<div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #003399;">
+				  <div style="border-collapse: collapse;display: table;width: 100%;background-color: transparent;">
+					<!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px;"><tr style="background-color: #003399;"><![endif]-->
+	
+					<!--[if (mso)|(IE)]><td align="center" width="600" style="background-color: #124de0;width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;" valign="top"><![endif]-->
+					<div class="u-col u-col-100" style="max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;">
+					  <div style="background-color: #124de0;width: 100% !important;">
+						<!--[if (!mso)&(!IE)]><!-->
+						<div style="padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;">
+						  <!--<![endif]-->
+	
+						  <table style="font-family:'Cabin',sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+							<tbody>
+							  <tr>
+								<td style="overflow-wrap:break-word;word-break:break-word;padding:40px 10px 10px;font-family:'Cabin',sans-serif;" align="left">
+	
+								  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+									<tr>
+									  <td style="padding-right: 0px;padding-left: 0px;" align="center">
+	
+										<img align="center" border="0" src="https://s3.amazonaws.com/unroll-images-production/projects%2F17853%2F1619735598378-LogoComerzio+%282%29.png" alt="Image" title="Image" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 0%;max-width: 0px;"
+										/>
+	
+									  </td>
+									</tr>
+								  </table>
+	
+								</td>
+							  </tr>
+							</tbody>
+						  </table>
+	
+						  <table style="font-family:'Cabin',sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+							<tbody>
+							  <tr>
+								<td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:'Cabin',sans-serif;" align="left">
+	
+								  <div style="color: #e5eaf5; line-height: 140%; text-align: center; word-wrap: break-word;">
+									<p style="font-size: 14px; line-height: 140%;"><strong> USUARIO : ${usuario} - ID : ${id} </strong></p>
+								  </div>
+	
+								</td>
+							  </tr>
+							</tbody>
+						  </table>
+	
+						  <table style="font-family:'Cabin',sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+							<tbody>
+							  <tr>
+								<td style="overflow-wrap:break-word;word-break:break-word;padding:0px 10px 31px;font-family:'Cabin',sans-serif;" align="left">
+	
+								  <div style="color: #e5eaf5; line-height: 140%; text-align: center; word-wrap: break-word;">
+									<p style="font-size: 14px; line-height: 140%;"><span style="font-size: 28px; line-height: 39.2px;"><strong><span style="line-height: 39.2px; font-size: 28px;"> SOPORTE COMERZIO </span></strong>
+									  </span>
+									</p>
+								  </div>
+	
+								</td>
+							  </tr>
+							</tbody>
+						  </table>
+	
+						  <!--[if (!mso)&(!IE)]><!-->
+						</div>
+						<!--<![endif]-->
+					  </div>
+					</div>
+					<!--[if (mso)|(IE)]></td><![endif]-->
+					<!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->
+				  </div>
+				</div>
+			  </div>
+	
+	
+	
+			  <div class="u-row-container" style="padding: 0px;background-color: transparent">
+				<div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #ffffff;">
+				  <div style="border-collapse: collapse;display: table;width: 100%;background-color: transparent;">
+					<!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px;"><tr style="background-color: #ffffff;"><![endif]-->
+	
+					<!--[if (mso)|(IE)]><td align="center" width="600" style="width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;" valign="top"><![endif]-->
+					<div class="u-col u-col-100" style="max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;">
+					  <div style="width: 100% !important;">
+						<!--[if (!mso)&(!IE)]><!-->
+						<div style="padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;">
+						  <!--<![endif]-->
+	
+						  <table style="font-family:'Cabin',sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+							<tbody>
+							  <tr>
+								<td style="overflow-wrap:break-word;word-break:break-word;padding:33px 55px;font-family:'Cabin',sans-serif;" align="left">
+	
+								  <div style="color: #000000; line-height: 160%; text-align: center; word-wrap: break-word;">
+									<p style="font-size: 14px; line-height: 160%;"><span style="font-size: 22px; line-height: 35.2px;"></span></p>
+									<p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;"> ${mensaje} </span></p>
+								  </div>
+	
+								</td>
+							  </tr>
+							</tbody>
+						  </table>
+	
+		
+	
+						  <table style="font-family:'Cabin',sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+							<tbody>
+							  <tr>
+								<td style="overflow-wrap:break-word;word-break:break-word;padding:33px 55px 60px;font-family:'Cabin',sans-serif;" align="left">
+	
+								  <div style="color: #000000; line-height: 160%; text-align: center; word-wrap: break-word;">
+									<p style="line-height: 160%; font-size: 14px;"><span style="font-size: 18px; line-height: 28.8px;"></span></p>
+									<p style="line-height: 160%; font-size: 14px;"><span style="font-size: 18px; line-height: 28.8px;"></span></p>
+								  </div>
+	
+								</td>
+							  </tr>
+							</tbody>
+						  </table>
+	
+						  <!--[if (!mso)&(!IE)]><!-->
+						</div>
+						<!--<![endif]-->
+					  </div>
+					</div>
+					<!--[if (mso)|(IE)]></td><![endif]-->
+					<!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->
+				  </div>
+				</div>
+			  </div>
+	
+	
+	
+			  <div class="u-row-container" style="padding: 0px;background-color: transparent">
+				<div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #e5eaf5;">
+				  <div style="border-collapse: collapse;display: table;width: 100%;background-color: transparent;">
+					<!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px;"><tr style="background-color: #e5eaf5;"><![endif]-->
+	
+					<!--[if (mso)|(IE)]><td align="center" width="600" style="width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;" valign="top"><![endif]-->
+					<div class="u-col u-col-100" style="max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;">
+					  <div style="width: 100% !important;">
+						<!--[if (!mso)&(!IE)]><!-->
+						<div style="padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;">
+						  <!--<![endif]-->
+	
+						  <table style="font-family:'Cabin',sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+							<tbody>
+							  <tr>
+								<td style="overflow-wrap:break-word;word-break:break-word;padding:41px 55px 18px;font-family:'Cabin',sans-serif;" align="left">
+	
+								  <div style="color: #003399; line-height: 160%; text-align: center; word-wrap: break-word;">
+									<p style="font-size: 14px; line-height: 160%;"><span style="font-size: 20px; line-height: 32px;"><strong>Get in touch</strong></span></p>
+									<p style="font-size: 14px; line-height: 160%;"><span style="font-size: 16px; line-height: 25.6px; color: #000000;">+11 111 333 4444</span></p>
+									<p style="font-size: 14px; line-height: 160%;"><span style="font-size: 16px; line-height: 25.6px; color: #000000;">Info@YourCompany.com</span></p>
+								  </div>
+	
+								</td>
+							  </tr>
+							</tbody>
+						  </table>
+	
+						  <table style="font-family:'Cabin',sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+							<tbody>
+							  <tr>
+								<td style="overflow-wrap:break-word;word-break:break-word;padding:10px 10px 33px;font-family:'Cabin',sans-serif;" align="left">
+	
+								  <div align="center">
+									<div style="display: table; max-width:244px;">
+									  <!--[if (mso)|(IE)]><table width="244" cellpadding="0" cellspacing="0" border="0"><tr><td style="border-collapse:collapse;" align="center"><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse; mso-table-lspace: 0pt;mso-table-rspace: 0pt; width:244px;"><tr><![endif]-->
+	
+	
+									  <!--[if (mso)|(IE)]><td width="32" style="width:32px; padding-right: 17px;" valign="top"><![endif]-->
+									  <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 17px">
+										<tbody>
+										  <tr style="vertical-align: top">
+											<td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
+											  <a href="https://facebook.com/" title="Facebook" target="_blank">
+												<img src="https://cdn.tools.unlayer.com/social/icons/circle-black/facebook.png" alt="Facebook" title="Facebook" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
+											  </a>
+											</td>
+										  </tr>
+										</tbody>
+									  </table>
+									  <!--[if (mso)|(IE)]></td><![endif]-->
+	
+									  <!--[if (mso)|(IE)]><td width="32" style="width:32px; padding-right: 17px;" valign="top"><![endif]-->
+									  <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 17px">
+										<tbody>
+										  <tr style="vertical-align: top">
+											<td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
+											  <a href="https://linkedin.com/" title="LinkedIn" target="_blank">
+												<img src="https://cdn.tools.unlayer.com/social/icons/circle-black/linkedin.png" alt="LinkedIn" title="LinkedIn" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
+											  </a>
+											</td>
+										  </tr>
+										</tbody>
+									  </table>
+									  <!--[if (mso)|(IE)]></td><![endif]-->
+	
+									  <!--[if (mso)|(IE)]><td width="32" style="width:32px; padding-right: 17px;" valign="top"><![endif]-->
+									  <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 17px">
+										<tbody>
+										  <tr style="vertical-align: top">
+											<td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
+											  <a href="https://instagram.com/" title="Instagram" target="_blank">
+												<img src="https://cdn.tools.unlayer.com/social/icons/circle-black/instagram.png" alt="Instagram" title="Instagram" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
+											  </a>
+											</td>
+										  </tr>
+										</tbody>
+									  </table>
+									  <!--[if (mso)|(IE)]></td><![endif]-->
+	
+									  <!--[if (mso)|(IE)]><td width="32" style="width:32px; padding-right: 17px;" valign="top"><![endif]-->
+									  <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 17px">
+										<tbody>
+										  <tr style="vertical-align: top">
+											<td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
+											  <a href="https://youtube.com/" title="YouTube" target="_blank">
+												<img src="https://cdn.tools.unlayer.com/social/icons/circle-black/youtube.png" alt="YouTube" title="YouTube" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
+											  </a>
+											</td>
+										  </tr>
+										</tbody>
+									  </table>
+									  <!--[if (mso)|(IE)]></td><![endif]-->
+	
+									  <!--[if (mso)|(IE)]><td width="32" style="width:32px; padding-right: 0px;" valign="top"><![endif]-->
+									  <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 0px">
+										<tbody>
+										  <tr style="vertical-align: top">
+											<td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
+											  <a href="https://email.com/" title="Email" target="_blank">
+												<img src="https://cdn.tools.unlayer.com/social/icons/circle-black/email.png" alt="Email" title="Email" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
+											  </a>
+											</td>
+										  </tr>
+										</tbody>
+									  </table>
+									  <!--[if (mso)|(IE)]></td><![endif]-->
+	
+	
+									  <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->
+									</div>
+								  </div>
+	
+								</td>
+							  </tr>
+							</tbody>
+						  </table>
+	
+						  <!--[if (!mso)&(!IE)]><!-->
+						</div>
+						<!--<![endif]-->
+					  </div>
+					</div>
+					<!--[if (mso)|(IE)]></td><![endif]-->
+					<!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->
+				  </div>
+				</div>
+			  </div>
+	
+	
+	
+			  <div class="u-row-container" style="padding: 0px;background-color: transparent">
+				<div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #003399;">
+				  <div style="border-collapse: collapse;display: table;width: 100%;background-color: transparent;">
+					<!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px;"><tr style="background-color: #003399;"><![endif]-->
+	
+					<!--[if (mso)|(IE)]><td align="center" width="600" style="width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;" valign="top"><![endif]-->
+					<div class="u-col u-col-100" style="max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;">
+					  <div style="width: 100% !important;">
+						<!--[if (!mso)&(!IE)]><!-->
+						<div style="padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;">
+						  <!--<![endif]-->
+	
+						  <table style="font-family:'Cabin',sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+							<tbody>
+							  <tr>
+								<td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:'Cabin',sans-serif;" align="left">
+	
+								  <div style="color: #fafafa; line-height: 180%; text-align: center; word-wrap: break-word;">
+									<p style="font-size: 14px; line-height: 180%;"><span style="font-size: 16px; line-height: 28.8px;">Copyrights &copy; Company All Rights Reserved</span></p>
+								  </div>
+	
+								</td>
+							  </tr>
+							</tbody>
+						  </table>
+	
+						  <!--[if (!mso)&(!IE)]><!-->
+						</div>
+						<!--<![endif]-->
+					  </div>
+					</div>
+					<!--[if (mso)|(IE)]></td><![endif]-->
+					<!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->
+				  </div>
+				</div>
+			  </div>
+	
+	
+			  <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+			</td>
+		  </tr>
+		</tbody>
+	  </table>
+	  <!--[if mso]></div><![endif]-->
+	  <!--[if IE]></div><![endif]-->
+	</body>
+	
+	</html>`
   return body
 }
 
