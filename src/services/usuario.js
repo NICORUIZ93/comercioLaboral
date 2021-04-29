@@ -480,6 +480,20 @@ const service = {
       console.log(`${error}`);
     }
   },
+  async consultarPermisosEmpleado(req) {
+     try {
+       let consulta = await empleadosTiendas.findAll({
+        attributes: ['billetera','productos' , 'pedidos'],
+        where : {
+          'id' : req.params.id
+        }
+       })
+       return consulta
+     } catch (error) {
+       return error
+     }
+     
+  },
   async pruebas(req) {
     try {
       //aca
