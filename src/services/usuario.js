@@ -499,11 +499,13 @@ const service = {
   },
   async asignarPermisosEmpleado(req) {
     try {
+      console.log(req.body)
       let consulta = await empleadosTiendas.update({ 
         'billetera' : req.body.billetera,
         'productos' : req.body.productos,
         'pedidos' : req.body.pedidos
       }, { where : {  'id' : req.body.IdEmpleado } })
+      console.log(consulta)
       return consulta
     } catch (error) {
       return error
