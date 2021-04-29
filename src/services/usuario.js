@@ -494,6 +494,19 @@ const service = {
      }
      
   },
+  async asignarPermisosEmpleado(req) {
+    try {
+      let consulta = await empleadosTiendas.update({ 
+        'billetera' : req.body.billetera,
+        'productos' : req.body.productos,
+        'pedidos' : req.body.pedidos
+      }, { where : {  'id' : req.body.IdEmpleado } })
+      return consulta
+    } catch (error) {
+      return error
+    }
+    
+ },
   async pruebas(req) {
     try {
       //aca

@@ -199,6 +199,16 @@ module.exports = {
       res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
+  async asignarPermisos(req, res) {
+    try {
+      
+      let p = await usuarioService.asignarPermisosEmpleado(req)
+      res.status(200).json(p)
+    } catch (e) {
+      console.log(e);
+      res.status(500).send({ code: 500, mesaage: `${e}` });
+    }
+  },
   async Pruebas(req, res) {
     try {
       
