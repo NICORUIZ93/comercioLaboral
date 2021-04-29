@@ -271,12 +271,14 @@ const service = {
   },
   async activarTienda(idTienda, codigoMp) {
     try {
-      const tienda = (await Tienda.findByPk(idTienda)).get(
-        {
-          plain: true
-        }
-      );
+      const tienda = (await Tienda.findByPk(idTienda)).dataValues;
       const data = await Mercadopago.obtenerTokenVendedor(codigoMp);
+
+      if ((JSON.parse(JSON.stringify(tienda)))[0] != undefined) {
+        console.log((JSON.parse(JSON.stringify(tienda)))[0])
+      } else {
+        return "Tienda es undefined" 
+      }
 
       tienda.codigoMP = codigoMp;
       tienda.tokenMP = data.access_token;
