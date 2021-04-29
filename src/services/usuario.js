@@ -190,6 +190,9 @@ const service = {
         }
       })
       if ((JSON.parse(JSON.stringify(codigo)))[0] != undefined) {
+        nuevoUsuario.billetera = false;
+        nuevoUsuario.pedidos = true;
+        nuevoUsuario.productos = false
         let id = (JSON.parse(JSON.stringify(codigo)))[0]['IdTienda']
         nuevoUsuario.idTienda = id
         let cu = await this.crearUsuario(nuevoUsuario);

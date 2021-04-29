@@ -15,9 +15,9 @@ const crearEmpleadoSchema = (req, res, next) => {
     IdFoto: Joi.number().integer(),
     imagen: Joi.string().empty(""),
     codigo: Joi.number().integer(),
-    billetera : false,
-    pedidos : true,
-    productos : false 
+    billetera : Joi.boolean(),
+    pedidos : Joi.boolean(),
+    productos : Joi.boolean() 
   };
 
 
