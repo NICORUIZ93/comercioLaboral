@@ -35,6 +35,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false
     },
+    billetera: DataTypes.BOOLEAN,
+    productos: DataTypes.BOOLEAN,
+    pedidos :  DataTypes.BOOLEAN,
   }, {
     sequelize,
     modelName: 'empleadosTiendas',
