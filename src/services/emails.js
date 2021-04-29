@@ -1,4 +1,7 @@
-let body = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+async function bodyEmail ( id,usuario,mensaje ){
+
+	let body = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -172,7 +175,7 @@ let body = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www
 								<td width="100%" colspan="3" align="center" style="padding-bottom:10px;padding-top:25px;">
 									<div class="contentEditableContainer contentTextEditable">
 					                	<div class="contentEditable" align='center' >
-					                  		<h2 >It's been a while...</h2>
+					                  		<h2 > SOPORTE COMERZIO </h2>
 					                	</div>
 					              	</div>
 								</td>
@@ -182,33 +185,14 @@ let body = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www
 								<td width="400" align="center">
 									<div class="contentEditableContainer contentTextEditable">
 					                	<div class="contentEditable" align='left' >
-					                  		<p >Hi [FirstName,there],
+					                  		<p > ${id}- ${usuario} ,
 					                  			<br/>
 					                  			<br/>
-												Click on the link below to update your profile. If you're no longer interested in hearing from us, simply click on unsubscribe below (or ignore this message) and we won't send you any more newsletters.</p>
+												${mensaje}.</p>
 					                	</div>
 					              	</div>
 								</td>
 								<td width="100">&nbsp;</td>
-							</tr>
-						</table>
-						<table cellpadding="0" cellspacing="0" border="0" align="center" width="600" class="container">
-							<tr>
-								<td width="200">&nbsp;</td>
-								<td width="200" align="center" style="padding-top:25px;">
-									<table cellpadding="0" cellspacing="0" border="0" align="center" width="200" height="50">
-										<tr>
-											<td bgcolor="#ED006F" align="center" style="border-radius:4px;" width="200" height="50">
-												<div class="contentEditableContainer contentTextEditable">
-								                	<div class="contentEditable" align='center' >
-								                  		<a target='_blank' href="#" class='link2'>Click here to reset it</a>
-								                	</div>
-								              	</div>
-											</td>
-										</tr>
-									</table>
-								</td>
-								<td width="200">&nbsp;</td>
 							</tr>
 						</table>
 					</div>
@@ -688,5 +672,9 @@ let body = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www
 
 </body>
 </html>`
+  return body
+}
 
-module.exports = { body }
+
+
+module.exports = { bodyEmail }

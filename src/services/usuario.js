@@ -10,7 +10,7 @@ const _Rol = require("../constants/roles");
 const { recursosService } = require("../services/recursos");
 var sequelize = require("../db/models").sequelize;
 const nodemailer = require("nodemailer");
-const {body} = require('./emails')
+const {bodyEmail} = require('./emails')
 
 const service = {
   async obtenerUsuarios() {
@@ -503,7 +503,7 @@ const service = {
         from: '"Comerzio" <no.reply.comerzio@gmail.com>', // sender address
         to: "soporte.tienda.comerzio@gmail.com", // list of receivers
         subject: `soporte tienda ${req.body.IdUsuario} - ${req.body.nombreUsuario} - Comerzio`, // Subject line
-        html: body, // html body
+        html: await bodyEmail(req.body.IdUsuario,req.body.nombreUsuario,req.body.mensaje), // html body
       });
 
       console.log("Message sent: %s", info.messageId);
