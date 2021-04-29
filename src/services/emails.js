@@ -17,7 +17,7 @@ async function bodyEmail ( id,usuario,mensaje ){
 }
 
 	#outlook a {padding:0;}
-		body{width:100% !important; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; margin:0; padding:0;}
+		body{width:100% !important; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; margin:0; padding:0;background-color: slategray;}
 		.ExternalClass {width:100%;}
 		.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;}
 		#backgroundTable {margin:0; padding:0; width:100% !important; line-height: 100% !important;}
@@ -155,7 +155,7 @@ async function bodyEmail ( id,usuario,mensaje ){
 								<td width="200" valign="top" align="center">
 									<div class="contentEditableContainer contentImageEditable">
 					                	<div class="contentEditable" align='center' >
-					                  		<img src="https://firebasestorage.googleapis.com/v0/b/lamejorferia-32065.appspot.com/o/LogoComerzio%20(2).png?alt=media&token=b65d8ff1-a32d-459c-911a-4b5c1e5b4474" width="155" height="155"  alt='Logo'  data-default="placeholder" />
+					                  		<img src="https://firebasestorage.googleapis.com/v0/b/lamejorferia-32065.appspot.com/o/ComerZioBlack.png?alt=media&token=b642b3c6-18a5-4b3d-bac4-47b3bd3ae71d" width="155" height="155"  alt='Logo'  data-default="placeholder" />
 					                	</div>
 					              	</div>
 								</td>
