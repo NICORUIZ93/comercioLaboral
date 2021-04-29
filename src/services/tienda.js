@@ -271,7 +271,11 @@ const service = {
   },
   async activarTienda(idTienda, codigoMp) {
     try {
-      const tienda = (await Tienda.findByPk(idTienda)).dataValues;
+      const tienda = (await Tienda.findByPk(idTienda)).get(
+        {
+          plain: true
+        }
+      );
       const data = await Mercadopago.obtenerTokenVendedor(codigoMp);
 
       tienda.codigoMP = codigoMp;
