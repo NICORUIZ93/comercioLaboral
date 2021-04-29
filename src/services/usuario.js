@@ -489,8 +489,6 @@ const service = {
       let u = "no.reply.comerzio@gmail.com";
       let p = "Imdsas2021.*";
       
-      let new_code = await codigosRestablecimiento.create({ 'codigo': numero, 'IdTienda': correoReceptor.body.IdTienda })
-      console.log(new_code)
       // create reusable transporter object using the default SMTP transport
       const transporter = nodemailer.createTransport({
         service: 'gmail',
