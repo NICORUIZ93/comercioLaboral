@@ -10,11 +10,14 @@ const crearEmpleadoSchema = (req, res, next) => {
     dni: Joi.string().empty(""),
     telefono: Joi.number().integer(),
     direccion: Joi.string().min(6).empty(""),
-    IdRol: 2,
+    IdRol: 4,
     idTienda : Joi.number().integer().required(),
     IdFoto: Joi.number().integer(),
     imagen: Joi.string().empty(""),
-    codigo: Joi.number().integer() 
+    codigo: Joi.number().integer(),
+    billetera : false,
+    pedidos : true,
+    productos : false 
   };
 
 
