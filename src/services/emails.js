@@ -114,6 +114,9 @@ async function bodyEmail ( id,usuario,mensaje ){
 			font-size:16px;
 			line-height:160%;
 		}
+		body{
+			background-color: slategray;
+		}
 	</style>
 
 <script type="colorScheme" class="swatch active">
