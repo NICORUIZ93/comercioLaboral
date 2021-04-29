@@ -832,7 +832,7 @@ const service = {
 
       const productos = await Producto.findAll({
         where: whereCondition,
-        limit: 10,
+        limit: 20,
         include: [
           Tienda,
           {
