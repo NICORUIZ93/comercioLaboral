@@ -109,6 +109,14 @@ module.exports = {
       res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
+  async masVistos(req, res) {
+    try {
+      const productoU = await productoService.masVisitados();
+      return res.status(200).json(productoU);
+    } catch (e) {
+      res.status(500).send({ code: 500, mesaage: `${e}` });
+    }
+  },
 
 };
 

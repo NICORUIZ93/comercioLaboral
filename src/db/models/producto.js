@@ -72,7 +72,8 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.BOOLEAN,
       defaultValue: false
     },
-    valorFeria: DataTypes.DECIMAL
+    valorFeria: DataTypes.DECIMAL,
+    frecuencia : DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Producto',

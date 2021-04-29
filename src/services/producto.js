@@ -19,8 +19,8 @@ const service = {
     try {
       const whereCondition = estadoTienda
         ? {
-            "$Tiendas.estado$": true,
-          }
+          "$Tiendas.estado$": true,
+        }
         : {};
 
       const productos = await Producto.findAll({
@@ -70,12 +70,12 @@ const service = {
     try {
       const whereCondition = estadoTienda
         ? {
-            "$Tiendas.id$": idTienda,
-            "$Tiendas.estado$": true,
-          }
+          "$Tiendas.id$": idTienda,
+          "$Tiendas.estado$": true,
+        }
         : {
-            "$Tiendas.id$": idTienda,
-          };
+          "$Tiendas.id$": idTienda,
+        };
 
       const productos = await Producto.findAll({
         where: whereCondition,
@@ -196,12 +196,12 @@ const service = {
     try {
       const whereCondition = estadoTienda
         ? {
-            [Op.or]: parametrosWhere,
-            "$Tiendas.estado$": true,
-          }
+          [Op.or]: parametrosWhere,
+          "$Tiendas.estado$": true,
+        }
         : {
-            [Op.or]: parametrosWhere,
-          };
+          [Op.or]: parametrosWhere,
+        };
 
       let productos = await Producto.findAll({
         where: whereCondition,
@@ -240,8 +240,8 @@ const service = {
     try {
       const whereCondition = estadoTienda
         ? {
-            estado: estadoTienda,
-          }
+          estado: estadoTienda,
+        }
         : {};
 
       let productos = await Producto.findAndCountAll({
@@ -303,12 +303,12 @@ const service = {
 
       const whereCondition = estadoTienda
         ? {
-            id: idTienda,
-            estado: estadoTienda,
-          }
+          id: idTienda,
+          estado: estadoTienda,
+        }
         : {
-            id: idTienda,
-          };
+          id: idTienda,
+        };
 
       //where: { '$Tienda.estado$': true },
       let productos = await Producto.findAndCountAll({
@@ -374,8 +374,8 @@ const service = {
 
       const whereCondition = estadoTienda
         ? {
-            estado: estadoTienda,
-          }
+          estado: estadoTienda,
+        }
         : {};
 
       const productos = await Producto.findAndCountAll({
@@ -443,10 +443,19 @@ const service = {
   },
   async obtenerProducto(idProducto, estadoTienda = false) {
     try {
+      const consultarProducto = await Producto.findAll({ attributes: ['frecuencia'], where: { 'id': idProducto } })
+      if ((JSON.parse(JSON.stringify(consultarProducto)))[0] != undefined) {
+        const update = await Producto.update({ 'frecuencia': (JSON.parse(JSON.stringify(consultarProducto)))[0]['frecuencia'] + 1 }, {
+          where: { 'id': idProducto }
+        })
+        console.log(update+consultarProducto)
+      } else {
+        console.log("producto undefined")
+      }
       const whereCondition = estadoTienda
         ? {
-            "$Tiendas.estado$": estadoTienda,
-          }
+          "$Tiendas.estado$": estadoTienda,
+        }
         : {};
 
       const producto = await Producto.findByPk(idProducto, {
@@ -534,26 +543,26 @@ const service = {
         );
       }
       // aca
-       const ut = await UsuariosTienda.findAll({ where: { 'IdTienda': idTienda, 'esAdministrador': true } });
-        if ((JSON.parse(JSON.stringify(ut)))[0] != undefined) {
-          let consultaProgreso = await Usuario.findAll({ where: { 'id': (JSON.parse(JSON.stringify(ut)))[0]['IdUsuario'] } })
-          if ((JSON.parse(JSON.stringify(consultaProgreso)))[0] != undefined) {
-            if ((JSON.parse(JSON.stringify(consultaProgreso)))[0]['progreso'] >= 7) {
-              console.log("Registro completo")
-            } else if((JSON.parse(JSON.stringify(consultaProgreso)))[0]['progreso'] == null || (JSON.parse(JSON.stringify(consultaProgreso)))[0]['progreso']<=6) {
-              const progreso = await Usuario.update({ 'progreso': 6 }, {
-                where: {
-                  'id': (JSON.parse(JSON.stringify(ut)))[0]['IdUsuario']
-                }
-              })
-              console.log(progreso)
-            }
-          } else {
-             console.log("No se encontro progreso")
+      const ut = await UsuariosTienda.findAll({ where: { 'IdTienda': idTienda, 'esAdministrador': true } });
+      if ((JSON.parse(JSON.stringify(ut)))[0] != undefined) {
+        let consultaProgreso = await Usuario.findAll({ where: { 'id': (JSON.parse(JSON.stringify(ut)))[0]['IdUsuario'] } })
+        if ((JSON.parse(JSON.stringify(consultaProgreso)))[0] != undefined) {
+          if ((JSON.parse(JSON.stringify(consultaProgreso)))[0]['progreso'] >= 7) {
+            console.log("Registro completo")
+          } else if ((JSON.parse(JSON.stringify(consultaProgreso)))[0]['progreso'] == null || (JSON.parse(JSON.stringify(consultaProgreso)))[0]['progreso'] <= 6) {
+            const progreso = await Usuario.update({ 'progreso': 6 }, {
+              where: {
+                'id': (JSON.parse(JSON.stringify(ut)))[0]['IdUsuario']
+              }
+            })
+            console.log(progreso)
           }
         } else {
-          return "No existe tienda"
+          console.log("No se encontro progreso")
         }
+      } else {
+        return "No existe tienda"
+      }
       return resultadoNuevoProducto;
     } catch (error) {
       throw error;
@@ -765,13 +774,13 @@ const service = {
     try {
       const whereCondition = estadoTienda
         ? {
-            "$Tiendas.estado$": true,
-          }
+          "$Tiendas.estado$": true,
+        }
         : {};
 
       const productos = await Producto.findAll({
         where: whereCondition,
-        limit : 10,
+        limit: 10,
         include: [
           Tienda,
           {
@@ -798,6 +807,58 @@ const service = {
           },
         ],
         order: [["createdAt", "DESC"]],
+      });
+
+      return productos.map((p) => {
+        const { Tiendas, ...producto } = p.dataValues;
+        if (Tiendas.length > 0) {
+          producto.IdTienda = Tiendas[0].id;
+          producto.NombreTienda = Tiendas[0].nombre;
+        }
+        //producto.Recurso = Recursos[0];
+        return producto;
+      });
+    } catch (error) {
+      throw error;
+    }
+  },
+  async masVisitados(estadoTienda = false) {
+    try {
+      const whereCondition = estadoTienda
+        ? {
+          "$Tiendas.estado$": true,
+        }
+        : {};
+
+      const productos = await Producto.findAll({
+        where: whereCondition,
+        limit: 10,
+        include: [
+          Tienda,
+          {
+            model: Categoria,
+            as: "Categoria",
+            attributes: ["id", "nombre"],
+            required: false,
+          },
+          {
+            model: Recurso,
+            as: "Recursos",
+            attributes: [
+              "id",
+              "nombre",
+              "key",
+              "extension",
+              "url",
+              "prioridad",
+            ],
+            through: {
+              attributes: [],
+            },
+            required: false,
+          },
+        ],
+        order: [["frecuencia", "DESC"]],
       });
 
       return productos.map((p) => {

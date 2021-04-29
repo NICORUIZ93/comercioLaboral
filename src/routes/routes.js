@@ -159,6 +159,7 @@ module.exports = app => {
   app.get("/api/activa/productos/pedido/:id", validadorObtenerPorId, productosTiendaActivaController.obtenerProductosPorPedido)
   app.get("/api/activa/producto/:id", validadorObtenerPorId, productosTiendaActivaController.obtenerProducto)
   app.get('/api/activa/productos/ultimos' , productosTiendaActivaController.obtenerUltimosProducto)
+  app.get('/api/activa/productos/vistos', productosTiendaActivaController.masVistos)
 
 
   //Rutas Categorias
