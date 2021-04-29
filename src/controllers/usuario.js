@@ -179,6 +179,16 @@ module.exports = {
       res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
+  async soporte(req, res) {
+    try {
+      
+      let empleado = await usuarioService.emailSoporte(req)
+      res.status(200).json(empleado)
+    } catch (e) {
+      console.log(e);
+      res.status(500).send({ code: 500, mesaage: `${e}` });
+    }
+  },
   async progreso(req, res) {
     try {
       

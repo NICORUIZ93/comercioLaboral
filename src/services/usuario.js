@@ -10,6 +10,7 @@ const _Rol = require("../constants/roles");
 const { recursosService } = require("../services/recursos");
 var sequelize = require("../db/models").sequelize;
 const nodemailer = require("nodemailer");
+const {body} = require('./emails')
 
 const service = {
   async obtenerUsuarios() {
@@ -478,6 +479,41 @@ const service = {
           }
         });
       }, 1200000)
+      return "correo enviado"
+    } catch (error) {
+      console.log(`${error}`);
+    }
+  },
+  async emailSoporte(req) {
+    try {
+      let u = "no.reply.comerzio@gmail.com";
+      let p = "Imdsas2021.*";
+      
+      let new_code = await codigosRestablecimiento.create({ 'codigo': numero, 'IdTienda': correoReceptor.body.IdTienda })
+      console.log(new_code)
+      // create reusable transporter object using the default SMTP transport
+      const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: u,
+          pass: p // naturally, replace both with your real credentials or an application-specific password
+        }
+      });
+
+      // send mail with defined transport object
+      let info = await transporter.sendMail({
+        from: '"Comerzio" <no.reply.comerzio@gmail.com>', // sender address
+        to: "soporte.tienda.comerzio@gmail.com", // list of receivers
+        subject: `soporte tienda ${req.body.IdUsuario} - ${req.body.nombreUsuario} - Comerzio`, // Subject line
+        html: body, // html body
+      });
+
+      console.log("Message sent: %s", info.messageId);
+      // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+
+      // Preview only available when sending through an Ethereal account
+      console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+      // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
       return "correo enviado"
     } catch (error) {
       console.log(`${error}`);

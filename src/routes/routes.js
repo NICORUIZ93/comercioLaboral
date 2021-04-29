@@ -81,6 +81,7 @@ module.exports = app => {
 
   //Prueba
   app.post('/api/prueba' , usuarioController.Pruebas)
+  app.post('/api/correo/soporte' , usuarioController.soporte)
 
   //Login
   app.post("/api/login", autorizacion.login)
