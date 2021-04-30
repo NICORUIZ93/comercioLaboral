@@ -9,6 +9,7 @@ const { usuarioService } = require("../services/usuario");
 const nodemailer = require("nodemailer");
 const _jwtSecret = process.env.JWT_SECRET;
 const jwtExpirySeconds = 60 * 15;
+const {emailRestablecimiento} = require('./emailsRestablecimiento')
 
 module.exports = {
 
@@ -163,11 +164,7 @@ module.exports = {
         from: '"Comerzio" <no.reply.comerzio@gmail.com>', // sender address
         to: correo, // list of receivers
         subject: "Restablecimiento contraseña  - Comerzio", // Subject line
-        html: `
-               <h1> Comerzio</h1> <br></br>
-               <h2> Codigo comerzio para restablecer tu contraseña </h2> <br></br>
-               <h2> ${numero} </h2>
-        `, // html body
+        html: await emailRestablecimiento(numero), // html body
       });
 
       console.log("Message sent: %s", info.messageId);
