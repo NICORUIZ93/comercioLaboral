@@ -4,35 +4,44 @@ const tienda = require('../db/models').Tienda;
 const respuestaTienda = require('../db/models').respuestaTienda
 const { Op } = require("sequelize");
 var sequelize = require("../db/models").sequelize;
-const {malas_palabras} = require('../constants/filtroComentarios')
+const { malas_palabras } = require('../constants/filtroComentarios')
 const service = {
 
 
   async calificacionProductos(nuevaCalificacion) {
     try {
-      var grocerias = malas_palabras 
+      var grocerias = malas_palabras
       for (var i = 0; i < grocerias.length; i++) {
         regex = new RegExp("(^|\\s)" + grocerias[i] + "($|(?=\\s))", "gi")
         nuevaCalificacion.comentario = nuevaCalificacion.comentario.replace(regex, function ($0, $1) { return $1 + "comerzio" });
       }
-      
-      const usu = await Usuario.findAll({
-        attributes: ['id', 'nombre'],
-        where: {
-          'id': nuevaCalificacion.IdUsuario,
+
+      var regex = /(\d+)/g;
+      let filtroNum = parseInt(nuevaCalificacion.comentario.match(regex));
+
+      if (filtroNum > 99) {
+        return "Comentario bloqueado"
+      } else if (filtroNum <= 99 || filtroNum == null) {
+        const usu = await Usuario.findAll({
+          attributes: ['id', 'nombre'],
+          where: {
+            'id': nuevaCalificacion.IdUsuario,
+          }
+        });
+        let resultadocreate = "";
+        if ((JSON.parse(JSON.stringify(usu)))[0] != undefined) {
+          resultadocreate = await calificacionProductos.create(
+            nuevaCalificacion
+          );
+        } else {
+          resultadocreate = "No existe el usuario"
         }
-      });
-      let resultadocreate = "";
-      if ((JSON.parse(JSON.stringify(usu)))[0] != undefined) {
-        resultadocreate = await calificacionProductos.create(
-          nuevaCalificacion
-        );
-      } else {
-        resultadocreate = "No existe el usuario"
+
+
+        return resultadocreate;
       }
 
 
-      return resultadocreate;
     } catch (error) {
       console.log(`${error}`);
       throw error;

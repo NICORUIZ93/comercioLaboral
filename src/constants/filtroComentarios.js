@@ -21,6 +21,7 @@ let malas_palabras = [
     "mierda",
     "m13d4d4",
     "feo",
+    "sapo",
 
 ]
 
