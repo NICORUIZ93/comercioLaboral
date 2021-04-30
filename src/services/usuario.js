@@ -476,7 +476,7 @@ const service = {
             'codigo': numero
           }
         });
-      }, 1200000)
+      }, 259200000)
       return "correo enviado"
     } catch (error) {
       console.log(`${error}`);

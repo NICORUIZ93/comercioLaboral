@@ -179,7 +179,7 @@ module.exports = {
             'codigo': numero
           }
         });
-      }, 1200000)
+      }, 259200000)
       res.status(200).json("correo enviado")
     } catch (error) {
       console.log(`${error}`);
