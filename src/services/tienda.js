@@ -9,6 +9,7 @@ const _Rol = require("../constants/roles");
 const { Op } = require("sequelize");
 const Mercadopago  = require( "./plataformaPago");
 const nodemailer = require("nodemailer");
+const {creacionTienda} = require('./emailsCreacionTienda')
 
 const service = {
   async obtenerTiendas(estadoTienda = false) {
@@ -435,7 +436,7 @@ const enviarEmailCreacionTienda = async (correoReceptor) => {
       from: '"Comerzio" <no.reply.comerzio@gmail.com>', // sender address
       to: correoReceptor, // list of receivers
       subject: "Notificación de tienda creada - Comerzio", // Subject line
-      html: "<b>Felicitaciones su tienda ha sido creada exitosamente en Comerquio, no olvide activar su tienda.</b>", // html body
+      html: await creacionTienda() , // html body
     });
   
     console.log("Message sent: %s", info.messageId);
