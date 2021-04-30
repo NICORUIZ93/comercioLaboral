@@ -288,7 +288,7 @@ async function emailRegistro(numero,nombre){
     
                                   <div style="color: #000000; line-height: 160%; text-align: center; word-wrap: break-word;">
                                     <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 22px; line-height: 35.2px;">Hola, </span></p>
-                                    <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;"> Te acaban de invitar para ser vendedor de la tienda ${nombre} , Tu codigo de registro es el siguiente : </span></p>
+                                    <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">Te acaban de invitar para ser vendedor de la tienda ${nombre}, Tu codigo de registro es el siguiente : </span></p>
                                     <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 22px; line-height: 35.2px;"> ${numero} </span></p>
                                   </div>
     

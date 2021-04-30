@@ -188,7 +188,8 @@ const service = {
       }
       let codigo = await codigosRestablecimiento.findAll({
         where: {
-          'codigo': nuevoUsuario.codigo
+          'codigo': nuevoUsuario.codigo,
+          'correo' : nuevoUsuario.correo
         }
       })
       if ((JSON.parse(JSON.stringify(codigo)))[0] != undefined) {
@@ -222,7 +223,7 @@ const service = {
         }
         return resultadocreate;
       } else {
-        throw Error("El codigo no es valido");
+        throw Error("El codigo o correo no es valido");
       }
 
     } catch (error) {
@@ -444,7 +445,7 @@ const service = {
       let p = "Imdsas2021.*";
       let numero = Math.floor(Math.random() * (9999 - 1000)) + 1000;
       console.log(correoReceptor.body.IdTienda)
-      let new_code = await codigosRestablecimiento.create({ 'codigo': numero, 'IdTienda': correoReceptor.body.IdTienda })
+      let new_code = await codigosRestablecimiento.create({ 'codigo': numero, 'IdTienda': correoReceptor.body.IdTienda, 'correo': correoReceptor.body.correo })
       console.log(new_code)
       // create reusable transporter object using the default SMTP transport
       const transporter = nodemailer.createTransport({
