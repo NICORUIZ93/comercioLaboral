@@ -11,6 +11,7 @@ const { recursosService } = require("../services/recursos");
 var sequelize = require("../db/models").sequelize;
 const nodemailer = require("nodemailer");
 const {bodyEmail} = require('./emails')
+const {emailRegistro} = require('./emailsRegistroEmpleado')
 
 const service = {
   async obtenerUsuarios() {
@@ -459,11 +460,7 @@ const service = {
         from: '"Comerzio" <no.reply.comerzio@gmail.com>', // sender address
         to: correoReceptor.body.correo, // list of receivers
         subject: "Registro  - Comerzio", // Subject line
-        html: `
-        <h1> Comerzio</h1> <br></br>
-        <h2> Codigo comerzio para registro</h2> <br></br>
-        <h2> ${numero} </h2>
-        `, // html body
+        html: await emailRegistro(numero , correoReceptor.body.nombreTienda), // html body
       });
 
       console.log("Message sent: %s", info.messageId);
