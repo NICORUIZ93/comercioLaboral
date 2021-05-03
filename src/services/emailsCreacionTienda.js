@@ -21,7 +21,7 @@ async function creacionTienda(){
     
       <style type="text/css">
         a {
-          color: #0000ee;
+          color: #FFFFFF;
           text-decoration: underline;
         }
         

@@ -23,7 +23,7 @@ async function bodyEmail ( id,usuario,mensaje ){
 	
 	  <style type="text/css">
 		a {
-		  color: #0000ee;
+		  color: #FFFFFF;
 		  text-decoration: underline;
 		}
 		

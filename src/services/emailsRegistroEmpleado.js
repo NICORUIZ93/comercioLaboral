@@ -21,7 +21,7 @@ async function emailRegistro(numero,nombre){
     
       <style type="text/css">
         a {
-          color: #0000ee;
+          color: #FFFFFF;
           text-decoration: underline;
         }
         
