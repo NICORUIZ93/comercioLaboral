@@ -107,6 +107,7 @@ module.exports = app => {
   app.post('/api/progreso/registro' , usuarioController.progreso)
   app.get('/api/consultar/permisos/empleados/:id' , usuarioController.consultarPermisos)
   app.put('/api/asignar/permisos/empleado' , usuarioController.asignarPermisos)
+  app.get('/api/usuario/empleado/:id' , usuarioController.usuarioAEmpleado)
 
   //Rutas Tiendas
   app.get("/api/tiendas", tiendaController.obtenerTiendas)

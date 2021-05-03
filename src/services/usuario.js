@@ -597,6 +597,38 @@ const service = {
       throw error;
     }
   },
+  async usuarioAempleado(req) {
+    try {
+     
+      const idusuario = await Usuario.findAll({
+        where : {
+          'id' : req.params.id
+        }
+      })
+
+      if ((JSON.parse(JSON.stringify(idusuario)))[0] != undefined) {
+        const idempleado = await empleadosTiendas.findAll({
+          where : {
+            'correo' : (JSON.parse(JSON.stringify(idusuario)))[0]['correo']
+          }
+        })
+        if ((JSON.parse(JSON.stringify(idempleado)))[0] != undefined) {
+          return idempleado
+        } else {
+          return "No se encontro el empleado"
+        }
+      } else {
+        return "No se encontro"
+      }
+
+     
+
+
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
+  },
 };
 
 module.exports.usuarioService = service;

@@ -219,6 +219,16 @@ module.exports = {
       res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
+  async usuarioAEmpleado(req, res) {
+    try {
+      
+      let p = await usuarioService.usuarioAempleado(req)
+      res.status(200).json(p)
+    } catch (e) {
+      console.log(e);
+      res.status(500).send({ code: 500, mesaage: `${e}` });
+    }
+  },
   async Pruebas(req, res) {
     try {
       
