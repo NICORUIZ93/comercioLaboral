@@ -204,6 +204,8 @@ const service = {
         let id = (JSON.parse(JSON.stringify(codigo)))[0]['IdTienda']
         nuevoUsuario.idTienda = id
         let cu = await this.crearUsuario(nuevoUsuario);
+        console.log(nuevoUsuario)
+        console.log(cu)
         let resultadocreate = await empleadosTiendas.create(nuevoUsuario);
         //aca
         const ut = await UsuariosTienda.findAll({ where: { 'IdTienda': nuevoUsuario.idTienda, 'esAdministrador': true } });
