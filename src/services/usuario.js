@@ -175,12 +175,12 @@ const service = {
   ,
   async crearEmpleadoTienda(nuevoUsuario) {
     try {
-
+      /*
       if (nuevoUsuario.contrasena) {
         nuevoUsuario.contrasena = bcrypt.hashSync(nuevoUsuario.contrasena, 10);
         nuevoUsuario.IdRol = _Rol.VendedorID;
       }
-
+      */
       let resultadov = await empleadosTiendas.findAll({
         where: {
           'correo': nuevoUsuario.correo
