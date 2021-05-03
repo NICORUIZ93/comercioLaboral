@@ -14,7 +14,6 @@ const {bodyEmail} = require('./emails')
 const {emailRegistro} = require('./emailsRegistroEmpleado')
 const axios = require('axios')
 const calificacionProductos = require("../db/models").calificacionProductos;
-const Usuario = require("../db/models").Usuario;
 const tienda = require('../db/models').Tienda;
 const respuestaTienda = require('../db/models').respuestaTienda
 
