@@ -36,7 +36,7 @@ module.exports = {
         return res.status(500).send({ code: 500, mesaage: `${e}` });
       }
     },
-    async obtenerComentarios(req) {
+    async obtenerComentarios(req, res) {
       try {
         const calificacionProducto = await  calificacionProductos.obtenerComentariosEstado(req);
         
