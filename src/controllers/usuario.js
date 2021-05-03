@@ -220,13 +220,10 @@ module.exports = {
     }
   },
   async Pruebas(req, res) {
-    try {
+   
       
       let p = await usuarioService.pruebas(req)
       res.status(200).json(p)
-    } catch (e) {
-      console.log(e);
-      res.status(500).send({ code: 500, mesaage: `${e}` });
-    }
+      
   },
 };
