@@ -80,7 +80,7 @@ module.exports = app => {
   })
 
   //Prueba
-  app.post('/api/prueba' , usuarioController.Pruebas)
+  app.get('/api/prueba/:id' , usuarioController.Pruebas)
   app.post('/api/correo/soporte' , usuarioController.soporte)
 
   //Login

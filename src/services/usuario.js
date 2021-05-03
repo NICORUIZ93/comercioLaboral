@@ -13,6 +13,10 @@ const nodemailer = require("nodemailer");
 const {bodyEmail} = require('./emails')
 const {emailRegistro} = require('./emailsRegistroEmpleado')
 const axios = require('axios')
+const calificacionProductos = require("../db/models").calificacionProductos;
+const Usuario = require("../db/models").Usuario;
+const tienda = require('../db/models').Tienda;
+const respuestaTienda = require('../db/models').respuestaTienda
 
 const service = {
   async obtenerUsuarios() {
@@ -541,19 +545,51 @@ const service = {
     }
     
  },
-  async pruebas(req) {
+  async pruebas(params) {
     try {
-      let p = await axios({
-        method: 'PUT',
-        url: 'https://secure-atoll-67302.herokuapp.com/api/cambio/contrasena',
-        data: {
-          "correo" : req.body.correo , 
-          "antigua": req.body.antigua , 
-          "nueva" : req.body.nueva , 
-          "confirmacion" : req.body.confirmacion
-        }
+     
+
+      const calificaciones = await calificacionProductos.findAll({
+        where: {
+          [Op.or]: params,
+        },
+        order: [
+          ['createdAt', 'DESC']
+        ]
       });
-      return p.data
+      let cl = JSON.parse(JSON.stringify(calificaciones))
+      let resul = [];
+      for (let i = 0; i <= cl.length - 1; i++) {
+        const usu = await Usuario.findAll({
+          attributes: ['id', 'nombre'],
+          where: {
+            'id': cl[i]['IdUsuario'],
+          }
+        });
+       
+        const respuesta = await respuestaTienda.findAll({
+          where: {
+            'id_calificacion': cl[i]['id'],
+          }
+        });
+
+          console.log(respuesta)
+          resul[i] = {
+            id: cl[i]['id'],
+            id_producto: cl[i]['IdProducto'],
+            usuario: (JSON.parse(JSON.stringify(usu)))[0][i]['nombre'],
+            calificacion: cl[i]['calificacion'],
+            comentario: cl[i]['comentario'],
+            respuestas: { "datos": JSON.parse(JSON.stringify(respuesta)) },
+            createdAt: cl[i]['createdAt'],
+            updatedAt: cl[i]['updatedAt']
+          }   
+      }
+
+      console.log(resul)
+      return resul;
+
+
     } catch (error) {
       console.log(`${error}`);
       throw error;
