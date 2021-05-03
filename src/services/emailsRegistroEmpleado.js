@@ -363,9 +363,9 @@ async function emailRegistro(numero,nombre){
                                 <td style="overflow-wrap:break-word;word-break:break-word;padding:41px 55px 18px;font-family:'Cabin',sans-serif;" align="left">
     
                                   <div style="color: #003399; line-height: 160%; text-align: center; word-wrap: break-word;">
-                                    <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 20px; line-height: 32px;"><strong>Get in touch</strong></span></p>
-                                    <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 16px; line-height: 25.6px; color: #000000;">+11 111 333 4444</span></p>
-                                    <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 16px; line-height: 25.6px; color: #000000;">Info@YourCompany.com</span></p>
+                                  <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 20px; line-height: 32px;"><strong> ComerZio.co </strong></span></p>
+                                  <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 16px; line-height: 25.6px; color: #000000;"> +57 315 55 55 600 </span></p>
+                                  <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 16px; line-height: 25.6px; color: #000000;"> soporte@comerzio.co </span></p>
                                   </div>
     
                                 </td>
@@ -388,7 +388,7 @@ async function emailRegistro(numero,nombre){
                                         <tbody>
                                           <tr style="vertical-align: top">
                                             <td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
-                                              <a href="https://facebook.com/" title="Facebook" target="_blank">
+                                              <a href="https://www.facebook.com/ComerZioCO" title="Facebook" target="_blank">
                                                 <img src="https://cdn.tools.unlayer.com/social/icons/circle-black/facebook.png" alt="Facebook" title="Facebook" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
                                               </a>
                                             </td>
@@ -397,26 +397,13 @@ async function emailRegistro(numero,nombre){
                                       </table>
                                       <!--[if (mso)|(IE)]></td><![endif]-->
     
-                                      <!--[if (mso)|(IE)]><td width="32" style="width:32px; padding-right: 17px;" valign="top"><![endif]-->
-                                      <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 17px">
-                                        <tbody>
-                                          <tr style="vertical-align: top">
-                                            <td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
-                                              <a href="https://linkedin.com/" title="LinkedIn" target="_blank">
-                                                <img src="https://cdn.tools.unlayer.com/social/icons/circle-black/linkedin.png" alt="LinkedIn" title="LinkedIn" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
-                                              </a>
-                                            </td>
-                                          </tr>
-                                        </tbody>
-                                      </table>
-                                      <!--[if (mso)|(IE)]></td><![endif]-->
     
                                       <!--[if (mso)|(IE)]><td width="32" style="width:32px; padding-right: 17px;" valign="top"><![endif]-->
                                       <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 17px">
                                         <tbody>
                                           <tr style="vertical-align: top">
                                             <td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
-                                              <a href="https://instagram.com/" title="Instagram" target="_blank">
+                                              <a href="https://www.instagram.com/comerzioco/" title="Instagram" target="_blank">
                                                 <img src="https://cdn.tools.unlayer.com/social/icons/circle-black/instagram.png" alt="Instagram" title="Instagram" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
                                               </a>
                                             </td>
@@ -430,7 +417,7 @@ async function emailRegistro(numero,nombre){
                                         <tbody>
                                           <tr style="vertical-align: top">
                                             <td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
-                                              <a href="https://youtube.com/" title="YouTube" target="_blank">
+                                              <a href="https://www.youtube.com/channel/UCXMCt7SWEPgp6yvuTLM7c5Q" title="YouTube" target="_blank">
                                                 <img src="https://cdn.tools.unlayer.com/social/icons/circle-black/youtube.png" alt="YouTube" title="YouTube" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
                                               </a>
                                             </td>
@@ -439,19 +426,6 @@ async function emailRegistro(numero,nombre){
                                       </table>
                                       <!--[if (mso)|(IE)]></td><![endif]-->
     
-                                      <!--[if (mso)|(IE)]><td width="32" style="width:32px; padding-right: 0px;" valign="top"><![endif]-->
-                                      <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 0px">
-                                        <tbody>
-                                          <tr style="vertical-align: top">
-                                            <td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
-                                              <a href="https://email.com/" title="Email" target="_blank">
-                                                <img src="https://cdn.tools.unlayer.com/social/icons/circle-black/email.png" alt="Email" title="Email" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
-                                              </a>
-                                            </td>
-                                          </tr>
-                                        </tbody>
-                                      </table>
-                                      <!--[if (mso)|(IE)]></td><![endif]-->
     
     
                                       <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->
@@ -494,7 +468,7 @@ async function emailRegistro(numero,nombre){
                                 <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:'Cabin',sans-serif;" align="left">
     
                                   <div style="color: #fafafa; line-height: 180%; text-align: center; word-wrap: break-word;">
-                                    <p style="font-size: 14px; line-height: 180%;"><span style="font-size: 16px; line-height: 28.8px;">Copyrights &copy; Company All Rights Reserved</span></p>
+                                  <p style="font-size: 14px; line-height: 180%;"><span style="font-size: 16px; line-height: 28.8px;">Copyrights Comerzio.co | Desarrollado por <a href="www.intermediosdigitales.com.co">Inter Medios Digitales</a></span></p>
                                   </div>
     
                                 </td>
