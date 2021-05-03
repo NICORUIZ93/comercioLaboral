@@ -544,7 +544,7 @@ const service = {
   async pruebas(req) {
     try {
       let p = await axios({
-        method: 'put',
+        method: 'PUT',
         url: 'https://secure-atoll-67302.herokuapp.com/api/cambio/contrasena',
         data: {
           "correo" : req.body.correo , 
