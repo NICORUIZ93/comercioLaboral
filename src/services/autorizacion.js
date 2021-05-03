@@ -110,8 +110,8 @@ module.exports = {
           const loginResult = await bcrypt.compare(contrasenaSinEncriptar, u[0]['contrasena']);
 
           if (!loginResult) {
-            return res.status(401).json({
-              message: "Authentication failed",
+            return res.status(500).json({
+              message: "Constraseña antigua incorrecta",
             });
           }
           nueva = bcrypt.hashSync(nueva, 10);
