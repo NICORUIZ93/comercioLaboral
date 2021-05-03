@@ -553,7 +553,7 @@ const service = {
           "confirmacion" : req.body.confirmacion
         }
       });
-      return p
+      return p.data
     } catch (error) {
       console.log(`${error}`);
       throw error;
