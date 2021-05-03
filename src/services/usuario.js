@@ -12,6 +12,7 @@ var sequelize = require("../db/models").sequelize;
 const nodemailer = require("nodemailer");
 const {bodyEmail} = require('./emails')
 const {emailRegistro} = require('./emailsRegistroEmpleado')
+const axios = require('axios')
 
 const service = {
   async obtenerUsuarios() {
@@ -542,28 +543,17 @@ const service = {
  },
   async pruebas(req) {
     try {
-      //aca
-      const ut = await UsuariosTienda.findAll({ where: { 'IdTienda': req.body.idTienda, 'esAdministrador': true } });
-      if ((JSON.parse(JSON.stringify(ut)))[0] != undefined) {
-        let consultaProgreso = await Usuario.findAll({ where: { 'id': (JSON.parse(JSON.stringify(ut)))[0]['IdUsuario'] } })
-        if ((JSON.parse(JSON.stringify(consultaProgreso)))[0] != undefined) {
-          if ((JSON.parse(JSON.stringify(consultaProgreso)))[0]['progreso'] >= 7) {
-            //AQUI RETURN
-          } else {
-            const progreso = await Usuario.update({ 'progreso': 4 }, {
-              where: {
-                'id': (JSON.parse(JSON.stringify(ut)))[0]['IdUsuario']
-              }
-            })
-            console.log(progreso)
-          }
-        } else {
-
+      let p = await axios({
+        method: 'put',
+        url: 'https://secure-atoll-67302.herokuapp.com/api/cambio/contrasena',
+        data: {
+          "correo" : req.body.correo , 
+          "antigua": req.body.antigua , 
+          "nueva" : req.body.nueva , 
+          "confirmacion" : req.body.confirmacion
         }
-      } else {
-        return "No existe tienda"
-      }
-      return (JSON.parse(JSON.stringify(ut)))[0];
+      });
+      return p
     } catch (error) {
       console.log(`${error}`);
       throw error;
