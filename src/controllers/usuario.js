@@ -223,7 +223,7 @@ module.exports = {
     try {
       
       const IdProducto = req.params.id;
-      const calificacionProducto = await  calificacionProductos.obtenerCalificacionesProducto({ IdProducto:IdProducto});
+      const calificacionProducto = await  usuarioService.pruebas({ IdProducto:IdProducto});
       res.json(calificacionProducto)
     } catch (e) {
       console.log(e);
