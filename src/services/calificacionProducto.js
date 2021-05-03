@@ -128,7 +128,7 @@ const service = {
       throw error;
     }
   },
-  async obtenerComentariosRespondidos(req) {
+  async obtenerComentariosEstado(req) {
     try {
       const tiendaProducto = await TiendaProducto.findAll({
         where : {
