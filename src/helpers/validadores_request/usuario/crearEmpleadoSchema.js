@@ -21,7 +21,7 @@ const crearEmpleadoSchema = (req, res, next) => {
 
   // conditional schema rule - only admins can update role
   if (req.body.IdRol) {
-    if (req.body.IdRol === Rol.VendedorID || req.body.IdRol === Rol.EmpleadoID || req.body.IdRol === Rol.CompradorID ) {
+    if (req.body.IdRol === Rol.VendedorID || req.body.IdRol === Rol.EmpleadoID || req.body.IdRol === Rol.CompradorID || req.body.IdRol === undefined || req.body.IdRol === null ) {
       reglasSchema.contrasena = Joi.string().min(6).empty("").required();
       /*
       reglasSchema.confirmarContrasena = Joi.string()
