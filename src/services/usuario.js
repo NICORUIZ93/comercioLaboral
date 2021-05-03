@@ -125,7 +125,7 @@ const service = {
 
       if (nuevoUsuario.contrasena) {
         usuario.contrasena = bcrypt.hashSync(nuevoUsuario.contrasena, 10);
-        usuario.IdRol = _Rol.VendedorID;
+        //usuario.IdRol = _Rol.VendedorID;
       }
 
       const { imagen, ...usuarioSinImagen } = usuario;
@@ -175,12 +175,12 @@ const service = {
   ,
   async crearEmpleadoTienda(nuevoUsuario) {
     try {
-      /*
+      
       if (nuevoUsuario.contrasena) {
         nuevoUsuario.contrasena = bcrypt.hashSync(nuevoUsuario.contrasena, 10);
-        nuevoUsuario.IdRol = _Rol.VendedorID;
+        //nuevoUsuario.IdRol = _Rol.VendedorID;
       }
-      */
+      
       let resultadov = await empleadosTiendas.findAll({
         where: {
           'correo': nuevoUsuario.correo
