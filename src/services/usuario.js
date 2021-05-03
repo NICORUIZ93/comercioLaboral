@@ -542,7 +542,7 @@ const service = {
     
  },
   async pruebas(req) {
-    
+    try {
       let p = await axios({
         method: 'PUT',
         url: 'https://secure-atoll-67302.herokuapp.com/api/cambio/contrasena',
@@ -554,7 +554,10 @@ const service = {
         }
       });
       return p.data
-    
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
   },
 };
 

@@ -110,7 +110,7 @@ module.exports = {
           const loginResult = await bcrypt.compare(contrasenaSinEncriptar, u[0]['contrasena']);
 
           if (!loginResult) {
-            return res.status(500).json({
+            return res.status(200).json({
               message: "Constraseña antigua incorrecta",
             });
           }
