@@ -200,6 +200,7 @@ const service = {
         nuevoUsuario.billetera = false;
         nuevoUsuario.pedidos = true;
         nuevoUsuario.productos = false
+        nuevoUsuario.IdRol = 4
         let id = (JSON.parse(JSON.stringify(codigo)))[0]['IdTienda']
         nuevoUsuario.idTienda = id
         let cu = await this.crearUsuario(nuevoUsuario);
@@ -576,7 +577,7 @@ const service = {
           resul[i] = {
             id: cl[i]['id'],
             id_producto: cl[i]['IdProducto'],
-            usuario: (JSON.parse(JSON.stringify(usu)))[0][i]['nombre'],
+            usuario: (JSON.parse(JSON.stringify(usu)))[0]['nombre'],
             calificacion: cl[i]['calificacion'],
             comentario: cl[i]['comentario'],
             respuestas: { "datos": JSON.parse(JSON.stringify(respuesta)) },
