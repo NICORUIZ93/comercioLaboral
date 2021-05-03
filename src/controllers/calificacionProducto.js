@@ -35,6 +35,16 @@ module.exports = {
         console.log(e);
         return res.status(500).send({ code: 500, mesaage: `${e}` });
       }
+    },
+    async obtenerComentarios(req) {
+      try {
+        const calificacionProducto = await  calificacionProductos.obtenerComentariosEstado(req);
+        
+        return res.status(200).json(calificacionProducto);
+      } catch (e) {
+        console.log(e);
+        return res.status(500).send({ code: 500, mesaage: `${e}` });
+      }
     }
     
     

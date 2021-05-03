@@ -5,6 +5,7 @@ const respuestaTienda = require('../db/models').respuestaTienda
 const { Op } = require("sequelize");
 var sequelize = require("../db/models").sequelize;
 const { malas_palabras } = require('../constants/filtroComentarios')
+const TiendaProducto = require('../db/models').TiendaProducto
 const service = {
 
 
@@ -122,6 +123,25 @@ const service = {
       });
 
       return calificaciones;
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
+  },
+  async obtenerComentariosRespondidos(req) {
+    try {
+      const tiendaProducto = await TiendaProducto.findAll({
+        where : {
+          'IdTienda' : req.params.id
+        }
+      });
+
+      if ((JSON.parse(JSON.stringify(tiendaProducto)))[0] != undefined ) {
+        return (JSON.parse(JSON.stringify(tiendaProducto)))[0]        
+      } else {
+        return "No se encontro"
+      }
+
     } catch (error) {
       console.log(`${error}`);
       throw error;
