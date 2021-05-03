@@ -187,7 +187,7 @@ const service = {
         }
       });
 
-      if (resultadov) {
+      if ((JSON.parse(JSON.stringify(resultadov)))[0] == undefined) {
         throw Error("El empleado ya existe");
       }
       let codigo = await codigosRestablecimiento.findAll({
