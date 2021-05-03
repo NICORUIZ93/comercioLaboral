@@ -16,7 +16,7 @@ const crearEmpleadoSchema = (req, res, next) => {
     billetera : Joi.boolean(),
     pedidos : Joi.boolean(),
     productos : Joi.boolean(),
-    contrasena = Joi.string().min(6).empty("").required() 
+    contrasena : Joi.string().min(6).empty("").required() 
   };
 
 
