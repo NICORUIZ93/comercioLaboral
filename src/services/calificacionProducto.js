@@ -147,9 +147,9 @@ const service = {
          consultaCalificaciones = await axios.get(`https://secure-atoll-67302.herokuapp.com/api/producto/calificaciones/${id}`)
          if ((consultaCalificaciones.data) == undefined ) {
            datos[i] = consultaCalificaciones.data
-         } else if((consultaCalificaciones.data)['respuestas']['datos'] == undefined){
+         } else if(((consultaCalificaciones.data)['respuestas']['datos']) == undefined){
            sin[i] = consultaCalificaciones.data
-         }else if ((consultaCalificaciones.data)['respuestas']['datos'] != undefined){
+         }else if (((consultaCalificaciones.data)['respuestas']['datos']) != undefined){
            con[i] = consultaCalificaciones.data
          }
         }
