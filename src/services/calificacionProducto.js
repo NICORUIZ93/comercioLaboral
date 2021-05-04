@@ -6,6 +6,7 @@ const { Op } = require("sequelize");
 var sequelize = require("../db/models").sequelize;
 const { malas_palabras } = require('../constants/filtroComentarios')
 const TiendaProducto = require('../db/models').TiendaProducto
+const axios = require('axios');
 const service = {
 
 
@@ -135,10 +136,14 @@ const service = {
           'IdTienda' : req.params.id
         }
       });
-
+      let consultaCalificaciones = ""
       if ((JSON.parse(JSON.stringify(tiendaProducto)))[0] != undefined ) {
-
-        return tiendaProducto      
+        for (let i = 0; i < (JSON.parse(JSON.stringify(tiendaProducto))).length -1; i++) {
+           
+         consultaCalificaciones = await axios.get(`https://secure-atoll-67302.herokuapp.com/api/producto/calificaciones/${(JSON.parse(JSON.stringify(tiendaProducto)))[i]['IdProducto']}`)
+          
+        }
+        return consultaCalificaciones      
       } else {
         return "No se encontro"
       }
