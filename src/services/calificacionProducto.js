@@ -139,7 +139,7 @@ const service = {
       let consultaCalificaciones = ""
       if ((JSON.parse(JSON.stringify(tiendaProducto)))[0] != undefined ) {
         for (let i = 0; i < (JSON.parse(JSON.stringify(tiendaProducto))).length -1; i++) {
-           
+         console.log((JSON.parse(JSON.stringify(tiendaProducto)))[i]['IdProducto'])
          consultaCalificaciones = await axios.get(`https://secure-atoll-67302.herokuapp.com/api/producto/calificaciones/${(JSON.parse(JSON.stringify(tiendaProducto)))[i]['IdProducto']}`)
           
         }
