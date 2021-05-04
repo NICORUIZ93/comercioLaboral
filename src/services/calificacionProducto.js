@@ -137,7 +137,8 @@ const service = {
       });
 
       if ((JSON.parse(JSON.stringify(tiendaProducto)))[0] != undefined ) {
-        return (JSON.parse(JSON.stringify(tiendaProducto)))[0]        
+
+        return tiendaProducto      
       } else {
         return "No se encontro"
       }
