@@ -148,9 +148,9 @@ const service = {
          let consulta = consultaCalificaciones.data;
          if (consulta == undefined ) {
            datos[i] = consultaCalificaciones.data
-         } else if( consulta['respuestas'].datos == undefined){
+         } else if( consulta['respuestas'][0] == undefined){
            sin[i] = consultaCalificaciones.data
-         }else if (consulta['respuestas'].datos != undefined){
+         }else if (consulta['respuestas'][0] != undefined){
            con[i] = consultaCalificaciones.data
          }
         }
