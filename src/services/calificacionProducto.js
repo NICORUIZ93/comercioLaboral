@@ -145,11 +145,12 @@ const service = {
          console.log((JSON.parse(JSON.stringify(tiendaProducto)))[i]['IdProducto'])
          let id = parseInt((JSON.parse(JSON.stringify(tiendaProducto)))[i]['IdProducto'])
          consultaCalificaciones = await axios.get(`https://secure-atoll-67302.herokuapp.com/api/producto/calificaciones/${id}`)
-         if ((consultaCalificaciones.data) == undefined ) {
+         let consulta = consultaCalificaciones.data;
+         if (consulta == undefined ) {
            datos[i] = consultaCalificaciones.data
-         } else if((consultaCalificaciones.data)['respuestas'] =! undefined){
+         } else if( consulta['respuesta']['datos'] == undefined){
            sin[i] = consultaCalificaciones.data
-         }else if ((consultaCalificaciones.data)['respuestas']['datos'] == undefined){
+         }else if (consulta['respuestas']['datos'] != undefined){
            con[i] = consultaCalificaciones.data
          }
         }
