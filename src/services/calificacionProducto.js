@@ -149,7 +149,7 @@ const service = {
            datos[i] = consultaCalificaciones.data
          } else if((consultaCalificaciones.data)['respuestas'] =! undefined){
            sin[i] = consultaCalificaciones.data
-         }else if (consultaCalificaciones.data['respuestas']['datos'] == undefined){
+         }else if ((consultaCalificaciones.data)['respuestas']['datos'] == undefined){
            con[i] = consultaCalificaciones.data
          }
         }
