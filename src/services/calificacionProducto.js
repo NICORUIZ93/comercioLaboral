@@ -136,32 +136,21 @@ const service = {
           'IdTienda' : req.params.id
         }
       });
-      let consultaCalificaciones = "";
-      let datos = [];
-      let sin = [];
-      let con = [];
-      if ((JSON.parse(JSON.stringify(tiendaProducto)))[0] != undefined ) {
-        for (let i = 0; i < (JSON.parse(JSON.stringify(tiendaProducto))).length -1; i++) {
-         console.log((JSON.parse(JSON.stringify(tiendaProducto)))[i]['IdProducto'])
-         let id = parseInt((JSON.parse(JSON.stringify(tiendaProducto)))[i]['IdProducto'])
-         consultaCalificaciones = await axios.get(`https://secure-atoll-67302.herokuapp.com/api/producto/calificaciones/${id}`)
-         let consulta = consultaCalificaciones.data;
-         if (consulta == undefined ) {
-           datos[i] = ((JSON.parse(JSON.stringify(tiendaProducto)))[i])
-         } else if( consulta['respuestas'] == undefined){
-           sin[i] = consultaCalificaciones.data
-         }else if (consulta['respuestas'] != undefined){
-           con[i] = consultaCalificaciones.data
-         }
-        }
-        return {
-           "respondidos" : con,
-           "sin responder": sin,
-           "sin comentarios" : datos
-        }    
-      } else {
-        return "No se encontro"
+      console.log(tiendaProducto)
+      let c = [];
+      for (let i = 0; i < (JSON.parse(JSON.stringify(usu))).length -1; i++) {
+        
+        const comentarios = await calificacionProductos.findAll({
+          where : {
+            'IdProducto' : (JSON.parse(JSON.stringify(usu)))[i]
+          }
+        });
+
+        c[i] = comentarios
       }
+
+      return c
+
 
     } catch (error) {
       console.log(`${error}`);
