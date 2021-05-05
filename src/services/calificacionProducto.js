@@ -152,8 +152,8 @@ const service = {
           }
          });
 
-         respondidos[i] = res
-         sinresponder[i] = comentarios
+         respondidos[i] =  JSON.parse(res)
+         sinresponder[i] = JSON.parse(comentarios)
         
       }
       
