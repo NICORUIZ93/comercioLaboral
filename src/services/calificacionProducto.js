@@ -152,8 +152,8 @@ const service = {
           }
          });
 
-         respondidos[i] = res.toJSON()
-         sinresponder[I] = comentarios.toJSON()
+         respondidos[i] = res.dataValues
+         sinresponder[I] = comentarios.dataValues
         
       }
       
