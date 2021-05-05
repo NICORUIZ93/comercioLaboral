@@ -152,15 +152,18 @@ const service = {
           }
          });
          
-         if (res['id'] == undefined) {
-          console.log("okkkk")
+         if (res['id'] != undefined) {
+          respondidos[i] =  JSON.parse(JSON.stringify(res)) 
+         }
+         if (comentarios['id'] != undefined) {
+          sinresponder[i] = JSON.parse(JSON.stringify(comentarios))  
          }
          
          console.log(JSON.parse(JSON.stringify(res)))
          console.log(JSON.parse(JSON.stringify(comentarios)))
         
-         respondidos[i] =  JSON.parse(JSON.stringify(res))
-         sinresponder[i] = JSON.parse(JSON.stringify(comentarios))
+         //respondidos[i] =  JSON.parse(JSON.stringify(res))
+         //sinresponder[i] = JSON.parse(JSON.stringify(comentarios))
         
       }
       
