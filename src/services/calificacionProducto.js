@@ -152,12 +152,8 @@ const service = {
           }
          });
 
-        if ((JSON.parse(JSON.stringify(res)))[i] != undefined) {
-          respondidos[i] = (JSON.parse(JSON.stringify(comentarios)))[i]
-        }
-        if ((JSON.parse(JSON.stringify(comentarios)))[i] != undefined && (JSON.parse(JSON.stringify(res)))[i] == undefined) {
-          sinresponder[i] = (JSON.parse(JSON.stringify(comentarios)))[i]
-        } 
+         respondidos[i] = res
+         sinresponder[i] = comentarios
         
       }
       
