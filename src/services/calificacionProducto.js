@@ -152,7 +152,7 @@ const service = {
           }
          });
 
-         if ((JSON.parse(JSON.stringify(res))) == undefined) {
+         if ((JSON.parse(JSON.stringify(res))) == null) {
            console.log("si undefined")
          }
          respondidos[i] =  JSON.parse(JSON.stringify(res))
