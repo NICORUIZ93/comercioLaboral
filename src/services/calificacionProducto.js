@@ -153,9 +153,9 @@ const service = {
          });
 
          if ((JSON.parse(JSON.stringify(res)))[i] != undefined) {
-          respondidos[i] = res 
+          respondidos[i] = (JSON.parse(JSON.stringify(res)))[i] 
          } else if((JSON.parse(JSON.stringify(comentarios)))[i] != undefined) {
-          sinresponder[i] = comentarios 
+          sinresponder[i] = (JSON.parse(JSON.stringify(comentarios)))[i]
          }
         
       }
