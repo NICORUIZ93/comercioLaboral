@@ -138,7 +138,7 @@ const service = {
       });
       console.log(tiendaProducto)
       let c = [];
-      for (let i = 0; i < (JSON.parse(JSON.stringify(usu))).length -1; i++) {
+      for (let i = 0; i < (JSON.parse(JSON.stringify(tiendaProducto))).length -1; i++) {
         
         const comentarios = await calificacionProductos.findAll({
           where : {
