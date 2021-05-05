@@ -151,15 +151,18 @@ const service = {
             'IdProducto' : (JSON.parse(JSON.stringify(tiendaProducto)))[i]['IdProducto']
           }
          });
-         let vacio = [];
-         if (res.dataValues == null) {
-           console.log("okkkkkk")
+         
+         if (res.dataValues != null) {
+          respondidos[i] =  JSON.parse(JSON.stringify(res))  
+         }
+         if (comentarios.dataValues != null) {
+          sinresponder[i] = JSON.parse(JSON.stringify(comentarios))  
          }
          console.log(JSON.parse(JSON.stringify(res)))
          console.log(JSON.parse(JSON.stringify(comentarios)))
         
-         respondidos[i] =  JSON.parse(JSON.stringify(res))
-         sinresponder[i] = JSON.parse(JSON.stringify(comentarios))
+         //respondidos[i] =  JSON.parse(JSON.stringify(res))
+         //sinresponder[i] = JSON.parse(JSON.stringify(comentarios))
         
       }
       
