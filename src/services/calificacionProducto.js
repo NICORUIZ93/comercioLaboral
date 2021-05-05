@@ -153,7 +153,7 @@ const service = {
          });
 
          respondidos[i] = res.dataValues
-         sinresponder[I] = comentarios.dataValues
+         sinresponder[i] = comentarios.dataValues
         
       }
       
