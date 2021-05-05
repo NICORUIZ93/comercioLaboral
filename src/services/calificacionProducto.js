@@ -152,9 +152,8 @@ const service = {
           }
          });
 
-         if (JSON.parse(JSON.stringify(res))) {
-           console.log("ok")
-         }
+         console.log(JSON.parse(JSON.stringify(res)))
+         console.log(JSON.parse(JSON.stringify(comentarios)))
         
          respondidos[i] =  JSON.parse(JSON.stringify(res))
          sinresponder[i] = JSON.parse(JSON.stringify(comentarios))
