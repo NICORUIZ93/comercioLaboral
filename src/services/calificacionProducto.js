@@ -152,8 +152,8 @@ const service = {
           }
          });
 
-         respondidos[i] = res.dataValues
-         sinresponder[i] = comentarios.dataValues
+         respondidos[i] = res
+         sinresponder[i] = comentarios
         
       }
       
