@@ -10,6 +10,8 @@ const nodemailer = require("nodemailer");
 const { emailsFeria } = require('./emailsFeria')
 const _temasNotificacion = require("../constants/temasNotificacion");
 var sequelize = require("../db/models").sequelize;
+const UsuariosTienda = require('../db/models').UsuariosTienda
+const Usuario = require('../db/models').Usuario
 const { Op } = require("sequelize");
 
 const service = {
@@ -320,6 +322,29 @@ const service = {
     try {
       let u = "no.reply.comerzio@gmail.com";
       let p = "Imdsas2021.*";
+
+      const tienda = await UsuariosTienda.findAll({
+        where : {
+          'IdTienda' : req.body.IdTienda 
+        }
+      })
+
+      let correo = "";
+
+      if ((JSON.parse(JSON.stringify(tienda)))[0] != undefined) {
+        const usuario = await Usuario.findAll({ 
+          where : {
+            'id' : (JSON.parse(JSON.stringify(tienda)))[0]['IdUsuario']
+          }
+         })
+         if ((JSON.parse(JSON.stringify(usuario)))[0] != undefined) {
+           correo = (JSON.parse(JSON.stringify(usuario)))[0]['correo']
+         } else {
+           return "No se encontro un usuario"
+         }
+      } else {
+        return "No se encontro una tienda"
+      }
       
       // create reusable transporter object using the default SMTP transport
       const transporter = nodemailer.createTransport({
@@ -333,7 +358,7 @@ const service = {
       // send mail with defined transport object
       let info = await transporter.sendMail({
         from: '"Comerzio" <no.reply.comerzio@gmail.com>', // sender address
-        to: req.body.correo , // list of receivers
+        to: correo , // list of receivers
         subject: `Invitacion Feria - Comerzio`, // Subject line
         html: await emailsFeria(req.body.nombreFeria,req.body.fechaInicio,req.body.fechaFinal), // html body
       });
