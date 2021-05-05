@@ -151,8 +151,8 @@ const service = {
             'IdProducto' : (JSON.parse(JSON.stringify(tiendaProducto)))[i]['IdProducto']
           }
          });
-
-         if ((JSON.parse(JSON.stringify(res))) === undefined) {
+         let vacio = [];
+         if ((JSON.parse(JSON.stringify(res))) == vacio) {
            console.log("okkkkkk")
          }
          console.log(JSON.parse(JSON.stringify(res)))
