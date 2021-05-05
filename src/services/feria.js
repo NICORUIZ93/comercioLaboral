@@ -56,7 +56,7 @@ const service = {
     try {
       nuevaFeria.activa = false;
       let resultadocreate = await Feria.create(nuevaFeria);
-
+      this.enviarNotificacion();
       return resultadocreate;
     } catch (error) {
       console.log(`${error}`);
