@@ -142,7 +142,7 @@ const service = {
         
         const comentarios = await calificacionProductos.findAll({
           where : {
-            'IdProducto' : (JSON.parse(JSON.stringify(usu)))[i]
+            'IdProducto' : (JSON.parse(JSON.stringify(tiendaProducto)))[i]
           }
         });
 
