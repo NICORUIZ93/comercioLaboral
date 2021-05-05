@@ -152,8 +152,8 @@ const service = {
           }
          });
          
-         if (res == undefined) {
-          console.log("okk")
+         if (true) {
+          console.log(comentarios)
          }
          
          console.log(JSON.parse(JSON.stringify(res)))
