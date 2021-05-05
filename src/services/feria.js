@@ -6,6 +6,8 @@ const TiendaFeria = require("../db/models").TiendaFeria;
 const Feriaproductos = require("../db/models").Feriaproductos;
 const { productoService } = require("./producto");
 const notificacionService = require("./notificaciones");
+const nodemailer = require("nodemailer");
+const { emailsFeria } = require('./emailsFeria')
 const _temasNotificacion = require("../constants/temasNotificacion");
 var sequelize = require("../db/models").sequelize;
 const { Op } = require("sequelize");
@@ -312,6 +314,39 @@ const service = {
     } catch (error) {
       console.log(`${error}`);
       throw error;
+    }
+  },
+  async emailsF(req) {
+    try {
+      let u = "no.reply.comerzio@gmail.com";
+      let p = "Imdsas2021.*";
+      
+      // create reusable transporter object using the default SMTP transport
+      const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: u,
+          pass: p // naturally, replace both with your real credentials or an application-specific password
+        }
+      });
+
+      // send mail with defined transport object
+      let info = await transporter.sendMail({
+        from: '"Comerzio" <no.reply.comerzio@gmail.com>', // sender address
+        to: req.body.correo , // list of receivers
+        subject: `Invitacion Feria - Comerzio`, // Subject line
+        html: await emailsFeria(req.body.nombreFeria,req.body.fechaInicio,req.body.fechaFinal), // html body
+      });
+
+      console.log("Message sent: %s", info.messageId);
+      // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+
+      // Preview only available when sending through an Ethereal account
+      console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+      // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+      return "correo enviado"
+    } catch (error) {
+      console.log(`${error}`);
     }
   },
   async enviarNotificacion() {

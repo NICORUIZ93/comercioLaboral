@@ -119,6 +119,19 @@ module.exports = {
       return res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
+  async emailsFeria(req, res) {
+    try {
+
+      
+      let email = await feriaService.emailsF(req);
+      
+      return res.status(200).json(email);
+
+    } catch (e) {
+      console.log(e);
+      return res.status(500).send({ code: 500, mesaage: `${e}` });
+    }
+  },
 };
 
 

@@ -224,6 +224,7 @@ module.exports = app => {
   app.get("/api/ferias", feriaController.obtenerFerias)
   app.get("/api/feriaActiva", feriaController.obtenerFeriaActiva)
   app.get("/api/feriax/test", feriaController.enviar)
+  app.post('/api/email/feria' , feriaController.emailsFeria)
 
   //Rutas Notificaciones
   app.post("/api/notificacion/confirmar/:id", obtenerPorUuidSchema, notificacionController.confirmarNotificacion)
