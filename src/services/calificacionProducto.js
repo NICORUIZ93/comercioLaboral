@@ -139,7 +139,7 @@ const service = {
       console.log(tiendaProducto)
       let respondidos = [];
       let sinresponder = [];
-      for (let i = 0; i < (JSON.parse(JSON.stringify(tiendaProducto))).length-1; i++) {
+      for (let i = 0; i < (JSON.parse(JSON.stringify(tiendaProducto))).length; i++) {
         const res = await respuestaTienda.findAll({
           where : {
             'id_producto' : (JSON.parse(JSON.stringify(tiendaProducto)))[i]['IdProducto']
