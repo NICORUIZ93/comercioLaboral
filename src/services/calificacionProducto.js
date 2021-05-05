@@ -137,8 +137,34 @@ const service = {
         }
       });
       console.log(tiendaProducto)
+      let respondidos = [];
+      let sinresponder = [];
+      for (let i = 0; i < (JSON.parse(JSON.stringify(tiendaProducto))).length-1; i++) {
+        const res = await respuestaTienda.findAll({
+          where : {
+            'id_producto' : (JSON.parse(JSON.stringify(tiendaProducto)))[i]['IdProducto']
+          }
+        })
 
-      return (JSON.parse(JSON.stringify(tiendaProducto)))
+        const comentarios = await calificacionProductos.findAll({ 
+          where: {
+            'IdProducto' : (JSON.parse(JSON.stringify(tiendaProducto)))[i]['IdProducto']
+          }
+         });
+
+        if ((JSON.parse(JSON.stringify(res)))[i] != undefined) {
+          respondidos[i] = (JSON.parse(JSON.stringify(comentarios)))[i]
+        }
+        if ((JSON.parse(JSON.stringify(comentarios)))[i] != undefined && (JSON.parse(JSON.stringify(res)))[i] == undefined) {
+          sinresponder[i] = (JSON.parse(JSON.stringify(comentarios)))[i]
+        } 
+        
+      }
+      
+      return {
+        "respondidos" : respondidos,
+        "sinresponder": sinresponder
+      }
 
 
     } catch (error) {
