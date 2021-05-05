@@ -152,17 +152,15 @@ const service = {
           }
          });
          
-         if (res.dataValues != null) {
-          respondidos[i] =  JSON.parse(JSON.stringify(res))  
+         if (res == []) {
+          console.log("okk")
          }
-         if (comentarios.dataValues != null) {
-          sinresponder[i] = JSON.parse(JSON.stringify(comentarios))  
-         }
+         
          console.log(JSON.parse(JSON.stringify(res)))
          console.log(JSON.parse(JSON.stringify(comentarios)))
         
-         //respondidos[i] =  JSON.parse(JSON.stringify(res))
-         //sinresponder[i] = JSON.parse(JSON.stringify(comentarios))
+         respondidos[i] =  JSON.parse(JSON.stringify(res))
+         sinresponder[i] = JSON.parse(JSON.stringify(comentarios))
         
       }
       
