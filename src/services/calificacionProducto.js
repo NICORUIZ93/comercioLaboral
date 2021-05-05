@@ -145,8 +145,11 @@ const service = {
             'IdProducto' : (JSON.parse(JSON.stringify(tiendaProducto)))[i]['IdProducto']
           }
         });
-
-        c[i] = (JSON.parse(JSON.stringify(comentarios)))
+        if ((JSON.parse(JSON.stringify(comentarios))) == undefined) {
+           c[i] = (JSON.parse(JSON.stringify(tiendaProducto)))[i]
+        } else {
+          c[i] = (JSON.parse(JSON.stringify(comentarios)))
+        }
       }
 
       return c
