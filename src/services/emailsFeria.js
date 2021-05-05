@@ -323,8 +323,8 @@ async function emailsFeria(nombreFeria, fechaInicio,fechaFinal){
                                 <td style="overflow-wrap:break-word;word-break:break-word;padding:33px 55px 60px;font-family:'Cabin',sans-serif;" align="left">
     
                                   <div style="color: #000000; line-height: 160%; text-align: center; word-wrap: break-word;">
-                                    <p style="line-height: 160%; font-size: 14px;"><span style="font-size: 18px; line-height: 28.8px;">Recuerda,</span></p>
-                                    <p style="line-height: 160%; font-size: 14px;"><span style="font-size: 18px; line-height: 28.8px;">Tienes 72 horas para restablecer tu contraseña.</span></p>
+                                    <p style="line-height: 160%; font-size: 14px;"><span style="font-size: 18px; line-height: 28.8px;"></span></p>
+                                    <p style="line-height: 160%; font-size: 14px;"><span style="font-size: 18px; line-height: 28.8px;"></span></p>
                                   </div>
     
                                 </td>
