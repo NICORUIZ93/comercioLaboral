@@ -146,7 +146,7 @@ const service = {
           }
         });
 
-        c[i] = comentarios
+        c[i] = (JSON.parse(JSON.stringify(comentarios)))
       }
 
       return c
