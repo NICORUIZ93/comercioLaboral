@@ -152,6 +152,9 @@ const service = {
           }
          });
 
+         if (JSON.parse(JSON.stringify(res)) == undefined) {
+           console.log("si undefined")
+         }
          respondidos[i] =  JSON.parse(JSON.stringify(res))
          sinresponder[i] = JSON.parse(JSON.stringify(comentarios))
         
