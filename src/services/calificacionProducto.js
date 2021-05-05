@@ -152,7 +152,7 @@ const service = {
           }
          });
          
-         if (res == []) {
+         if (res == undefined) {
           console.log("okk")
          }
          
