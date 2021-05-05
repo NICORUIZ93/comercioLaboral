@@ -152,6 +152,9 @@ const service = {
           }
          });
 
+         if (JSON.parse(JSON.stringify(res)) == []) {
+           console.log("okkkkkk")
+         }
          console.log(JSON.parse(JSON.stringify(res)))
          console.log(JSON.parse(JSON.stringify(comentarios)))
         
