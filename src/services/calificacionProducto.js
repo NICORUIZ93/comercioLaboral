@@ -152,7 +152,7 @@ const service = {
           }
          });
          let vacio = [];
-         if ((JSON.parse(JSON.stringify(res))) == vacio) {
+         if (res == vacio) {
            console.log("okkkkkk")
          }
          console.log(JSON.parse(JSON.stringify(res)))
