@@ -147,7 +147,7 @@ const service = {
          consultaCalificaciones = await axios.get(`https://secure-atoll-67302.herokuapp.com/api/producto/calificaciones/${id}`)
          let consulta = consultaCalificaciones.data;
          if (consulta == undefined ) {
-           datos[i] = consultaCalificaciones.data
+           datos[i] = ((JSON.parse(JSON.stringify(tiendaProducto)))[i])
          } else if( consulta['respuestas'] == undefined){
            sin[i] = consultaCalificaciones.data
          }else if (consulta['respuestas'] != undefined){
