@@ -152,7 +152,7 @@ const service = {
           }
          });
 
-         if (JSON.parse(JSON.stringify(res)) == []) {
+         if (JSON.parse(JSON.stringify(res))[i]['id'] == undefined) {
            console.log("okkkkkk")
          }
          console.log(JSON.parse(JSON.stringify(res)))
