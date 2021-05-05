@@ -140,17 +140,17 @@ const service = {
       let respondidos = [];
       let sinresponder = [];
       for (let i = 0; i < (JSON.parse(JSON.stringify(tiendaProducto))).length; i++) {
-        const res = await respuestaTienda.findAll({
+        const res = (await respuestaTienda.findAll({
           where : {
             'id_producto' : (JSON.parse(JSON.stringify(tiendaProducto)))[i]['IdProducto']
           }
-        })
+        })).get({ plain: true });
 
-        const comentarios = await calificacionProductos.findAll({ 
+        const comentarios = (await calificacionProductos.findAll({ 
           where: {
             'IdProducto' : (JSON.parse(JSON.stringify(tiendaProducto)))[i]['IdProducto']
           }
-         });
+         })).get({ plain: true });;
          
          if (res['id'] != undefined) {
           respondidos[i] =  JSON.parse(JSON.stringify(res)) 
