@@ -49,7 +49,7 @@ module.exports = {
   async actualizarFeria(req, res) {
     try {
 
-      const feria = await feriaService.actualizarFeria(req.body);
+      const feria = await feriaService.actualizarFeria(req.body, req.body.idFeria);
 
       return res.status(200).json({ code: 200, mesaage: 'feria actualizada' });
 
