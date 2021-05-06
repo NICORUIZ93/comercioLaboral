@@ -290,11 +290,11 @@ const service = {
       throw error;
     }
   },
-  async actualizarFeria(feria, id) {
+  async actualizarFeria(feria) {
     try {
       const resultadoUpdate = await Feria.update(feria, {
         where: {
-          id: id,
+          'id': feria.idFeria,
         },
       });
 

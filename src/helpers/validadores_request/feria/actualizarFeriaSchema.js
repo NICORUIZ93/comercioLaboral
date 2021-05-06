@@ -4,7 +4,7 @@ const actualizarFeriaSchema = (req, res, next) => {
   // define base schema rules
 
   const reglasSchema = {
-    idPedido: Joi.number().integer().required(),
+    idFeria: Joi.number().integer().required(),
     nombre: Joi.string().empty(""),
     fechaInicio: Joi.date(),
     fechaFin: Joi.date(),
