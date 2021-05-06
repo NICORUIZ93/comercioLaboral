@@ -377,7 +377,7 @@ const service = {
   async enviarNotificacion() {
     try {
       const fechaActual = new Date().toISOString().replace(/\T.+/, "");
-
+      console.log(fechaActual)
       let feria = await this.obtenerFeriaPorFecha("fechaInicio", fechaActual);
       if (feria) {
         await notifcar(_temasNotificacion.InicioFeria);
