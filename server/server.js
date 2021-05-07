@@ -23,11 +23,8 @@ io.on("connection", socket => {
 });
 
 server.listen(config.PORT, function () {
-    console.log(`Socket listening on port:${config.PORT}`);
-});
-
-app.listen(config.PORT, function () {
     console.log(`App listening on port:${config.PORT}`);
 });
+
 
 
