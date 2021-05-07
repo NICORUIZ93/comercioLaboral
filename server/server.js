@@ -17,13 +17,12 @@ require("../src/routes/routes")(app)
 
 app.use(errorHandler);
 
-io.on("connection", socket => {
-  let id = socket.id
-  console.log("conexion con" + id)    
-});
-
-
 server.listen(config.PORT, function () {
     console.log(`App listening on port:${config.PORT}`);
 });
+
+io.on("connection", socket => {
+    let id = socket.id
+    console.log("conexion con" + id)    
+  });
 
