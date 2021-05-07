@@ -6,18 +6,15 @@ const socketService = async(io) => {
         usuarios.push(idSocket)
         io.emit('activos' , usuarios)
 
-        function removeItemFromArr ( arr, item ) {
-            var i = arr.indexOf( item );
-         
-            if ( i !== -1 ) {
-                arr.splice( i, 1 );
-            }
-        }
-    
-        io.on("disconnect" , socket => {
-            removeItemFromArr(usuarios , socket.id)
+        socket.on('disconnect', function() {
+            console.log('Got disconnect!');
+      
+            var i = usuarios.indexOf(socket);
+            usuarios.splice(i, 1);
             io.emit('activos' , usuarios)
-        })
+         });
+
+       
     })
 
 
