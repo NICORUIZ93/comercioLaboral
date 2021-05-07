@@ -629,6 +629,29 @@ const service = {
       throw error;
     }
   },
+  async medioRegistro(req) {
+    try {
+     
+      const idusuario = await Usuario.findAll({
+        where : {
+          'correo' : req.body.correo
+        }
+      })
+
+      if ((JSON.parse(JSON.stringify(idusuario)))[0] != undefined) {
+        return (JSON.parse(JSON.stringify(idusuario)))[0]['proveedor']
+      } else {
+        return "No se encontro el proveedor"
+      }
+
+     
+
+
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
+  },
 };
 
 module.exports.usuarioService = service;

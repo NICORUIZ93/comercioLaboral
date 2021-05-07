@@ -229,6 +229,16 @@ module.exports = {
       res.status(500).send({ code: 500, mesaage: `${e}` });
     }
   },
+  async registroMedio(req, res) {
+    try {
+      
+      let p = await usuarioService.medioRegistro(req)
+      res.status(200).json(p)
+    } catch (e) {
+      console.log(e);
+      res.status(500).send({ code: 500, mesaage: `${e}` });
+    }
+  },
   async Pruebas(req, res) {
     try {
       

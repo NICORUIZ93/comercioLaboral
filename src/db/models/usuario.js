@@ -64,6 +64,7 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: true
     },
     progreso: DataTypes.INTEGER,
+    proveedor : DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Usuario',
