@@ -6,12 +6,17 @@ const cors = require('cors')
 const errorHandler = require('../src/helpers/error-handler');
 const app = express()
 const server = require('http').Server(app)
-const io = require('socket.io')(server)
+
 
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 app.use(helmet())
 app.use(cors())
+const io = require('socket.io')(server, {
+    cors: {
+        origins: ['http://localhost:4200']
+    }
+});
 
 require("../src/routes/routes")(app)
 
