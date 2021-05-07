@@ -4,9 +4,8 @@ const socketService = async(io) => {
         const idSocket = socket.id
         console.log("Usuario conectado  = " +idSocket)
         usuarios.push("Usuario conectado  = " +idSocket)
+        io.emit('activos' , usuarios)
     })
-
-    io.emit('activos' , usuarios)
 
 
 
