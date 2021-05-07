@@ -3,7 +3,7 @@ const axios = require('axios')
 
 const socketService = async(io) => {
     let usuarios = [];
-    io.on("connection", socket => {
+    io.on("connection", async socket => {
         const idSocket = socket.id
         console.log("Usuario conectado  = " +idSocket)
         usuarios.push(idSocket)
