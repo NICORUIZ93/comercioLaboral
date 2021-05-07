@@ -1,3 +1,5 @@
+const Usuario  = require('../db/models').Usuario
+
 const socketService = async(io) => {
     let usuarios = [];
     io.on("connection", socket => {
@@ -15,7 +17,8 @@ const socketService = async(io) => {
          });
 
          socket.on('login' , (login) => {
-            console.log(login)
+            //const asignarSocketUsuario = await Usuario.update({ 'socket' : idSocket },{ where: {'id' : login['usuario']['id']} })
+            console.log(login['usuario']['id'])
          })
 
        
