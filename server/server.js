@@ -5,8 +5,8 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const errorHandler = require('../src/helpers/error-handler');
 const app = express()
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
+const server = require('http').Server(app)
+const io = require('socket.io')(server)
 
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
