@@ -16,8 +16,9 @@ const socketService = async(io) => {
             io.emit('activos' , usuarios)
          });
 
-         socket.on('login' , (login) => {
-            //const asignarSocketUsuario = await Usuario.update({ 'socket' : idSocket },{ where: {'id' : login['usuario']['id']} })
+         socket.on('login' , async (login) => {
+            const asignarSocketUsuario = await Usuario.update({ 'socket' : idSocket },{ where: {'id' : login['usuario']['id']} })
+            console.log(await asignarSocketUsuario)
             console.log(login['usuario']['id'])
          })
 
