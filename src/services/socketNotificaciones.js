@@ -14,6 +14,10 @@ const socketService = async(io) => {
             io.emit('activos' , usuarios)
          });
 
+         socket.on('login' , (login) => {
+            console.log(login)
+         })
+
        
     })
 
