@@ -12,7 +12,8 @@ const crearUsuarioSchema = (req, res, next) => {
     direccion: Joi.string().min(6).empty(""),
     IdRol: Joi.number().integer().required(),
     IdFoto: Joi.number().integer(),
-    imagen: Joi.string().empty("")
+    imagen: Joi.string().empty(""),
+    proveedor : Joi.string().empty("").required()
   };
 
 
