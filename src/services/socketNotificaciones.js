@@ -7,6 +7,18 @@ const socketService = async(io) => {
         io.emit('activos' , usuarios)
     })
 
+    function removeItemFromArr ( arr, item ) {
+        var i = arr.indexOf( item );
+     
+        if ( i !== -1 ) {
+            arr.splice( i, 1 );
+        }
+    }
+
+    io.on("disconnect" , socket => {
+        removeItemFromArr(usuarios , socket.id)
+        io.emit('activos' , usuarios)
+    })
 
 
 
