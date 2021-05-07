@@ -13,6 +13,7 @@ var sequelize = require("../db/models").sequelize;
 const UsuariosTienda = require('../db/models').UsuariosTienda
 const Usuario = require('../db/models').Usuario
 const { Op } = require("sequelize");
+const { io } = require('../../server/server')
 
 const service = {
   async obtenerFerias() {

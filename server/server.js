@@ -28,5 +28,7 @@ server.listen(config.PORT, function () {
     console.log(`App listening on port:${config.PORT}`);
 });
 
+module.exports = { io }
+
 
 

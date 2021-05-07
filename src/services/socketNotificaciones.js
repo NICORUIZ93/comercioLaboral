@@ -1,4 +1,5 @@
 const Usuario  = require('../db/models').Usuario
+const axios = require('axios')
 
 const socketService = async(io) => {
     let usuarios = [];
@@ -21,6 +22,13 @@ const socketService = async(io) => {
             console.log(await asignarSocketUsuario)
             console.log(login['usuario']['id'])
          })
+
+         let nuevaFeria = undefined
+         const consultaFeriaActiva = await axios.get('https://secure-atoll-67302.herokuapp.com/api/feriaActiva')
+             if (consultaFeriaActiva.status != 500) {
+                nuevaFeria = consultaFeriaActiva.data   
+             }
+         io.emit('nuevaFeria' , nuevaFeria )
 
        
     })
