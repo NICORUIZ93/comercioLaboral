@@ -25,10 +25,11 @@ const socketService = async(io) => {
 
          let nuevaFeria = undefined
          const consultaFeriaActiva = await axios.get('https://secure-atoll-67302.herokuapp.com/api/feriaActiva')
+         console.log(consultaFeriaActiva.status)
              if (consultaFeriaActiva.status != 500) {
                 nuevaFeria = consultaFeriaActiva.data   
              }
-         io.emit('nuevaFeria' , nuevaFeria )
+         io.emit('nueva-feria' , nuevaFeria )
 
        
     })
