@@ -22,13 +22,13 @@ const socketService = async(io) => {
             console.log(await asignarSocketUsuario)
             console.log(login['usuario']['id'])
          })
-
+        /*
          const consultaFeriaActiva = await axios.get('https://secure-atoll-67302.herokuapp.com/api/feriaActiva')
          console.log(consultaFeriaActiva.status)
              if (consultaFeriaActiva.status != 500) {
                 io.emit('nueva-feria' , consultaFeriaActiva.data )   
              }
-
+        */
 
        
     })

@@ -14,7 +14,7 @@ app.use(helmet())
 app.use(cors())
 const io = require('socket.io')(server, {
     cors: {
-        origins: ['http://localhost:4200']
+        origins: ['*']
     }
 });
 
