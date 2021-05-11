@@ -99,7 +99,7 @@ const service = {
 
       let nProductos = await TiendaProducto.count({  where : {  'IdTienda' : idTienda } })
 
-      return tiendaSinUsuarios + {nProductos};
+      return tiendaSinUsuarios;
     } catch (error) {
       console.log(`${error}`);
       throw error;
