@@ -97,7 +97,9 @@ const service = {
         tiendaSinUsuarios.empleados = empleados;
       }
 
-      return tiendaSinUsuarios;
+      let nProductos = await TiendaProducto.count({  where : {  'IdTienda' : idTienda } })
+
+      return tiendaSinUsuarios + nProductos;
     } catch (error) {
       console.log(`${error}`);
       throw error;
