@@ -96,9 +96,9 @@ const service = {
           return usuarioTienda.Usuario;
         });
         tiendaSinUsuarios.empleados = empleados;
-        tiendaSinUsuarios.numeroProductos = nProductos;
       }
 
+      tiendaSinUsuarios.numeroProductos = nProductos;
       return tiendaSinUsuarios;
     } catch (error) {
       console.log(`${error}`);
