@@ -88,6 +88,7 @@ const service = {
 
       if(!tienda) throw Error(`No exite la tienda ${idTienda}`);
 
+      let nProductos = await TiendaProducto.count({  where : {  'IdTienda' : idTienda } })
       const { UsuariosTiendas, ...tiendaSinUsuarios } = tienda.dataValues;
 
       if (UsuariosTiendas.length > 0) {
@@ -95,9 +96,8 @@ const service = {
           return usuarioTienda.Usuario;
         });
         tiendaSinUsuarios.empleados = empleados;
+        tiendaSinUsuarios.numeroProductos = nProductos;
       }
-
-      let nProductos = await TiendaProducto.count({  where : {  'IdTienda' : idTienda } })
 
       return tiendaSinUsuarios;
     } catch (error) {
