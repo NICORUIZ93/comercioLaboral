@@ -37,7 +37,7 @@ const service = {
         ],
       });
 
-      const { UsuariosTiendas, ...tiendasSinUsuarios } = tiendas.dataValues;
+      const { ...tiendasSinUsuarios } = tiendas.dataValues;
       let nProductos = await TiendaProducto.count({  where : {  'IdTienda' : tiendasSinUsuarios.id } })
       tiendasSinUsuarios.numeroProductos = nProductos;
       console.log(tiendasSinUsuarios)
