@@ -37,9 +37,13 @@ const service = {
         ],
       });
 
-      const  tiendasSinUsuarios  =  (JSON.parse(JSON.stringify(tiendas)))[0];
+      const  tiendasSinUsuarios = "";
+      for (let i = 0; i >= (JSON.parse(JSON.stringify(tiendas))).length -1; i++) {
+      tiendasSinUsuarios  =  (JSON.parse(JSON.stringify(tiendas)))[i];
       let nProductos = await TiendaProducto.count({  where : {  'IdTienda' : tiendasSinUsuarios.id } })
-      tiendasSinUsuarios.numeroProductos = nProductos;
+      tiendasSinUsuarios.numeroProductos = nProductos;  
+      }
+
       console.log(tiendasSinUsuarios)
       return tiendas;
     } catch (error) {
