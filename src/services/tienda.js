@@ -39,12 +39,12 @@ const service = {
 
       let tiendasSinUsuarios = "";
       for (let i = 0; i <= (JSON.parse(JSON.stringify(tiendas))).length -1; i++) {
-      tiendasSinUsuarios  =  (JSON.parse(JSON.stringify(tiendas)))[i];
+      tiendasSinUsuarios[i]  =  (JSON.parse(JSON.stringify(tiendas)))[i];
       let nProductos = await TiendaProducto.count({  where : {  'IdTienda' : tiendasSinUsuarios.id } })
       tiendasSinUsuarios.numeroProductos = nProductos;
       }
-      console.log(tiendasSinUsuarios)
-      return tiendas;
+      //console.log(tiendasSinUsuarios)
+      return tiendasSinUsuarios;
     } catch (error) {
       console.log(`${error}`);
       throw error;
