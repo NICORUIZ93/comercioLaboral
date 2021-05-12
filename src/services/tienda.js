@@ -37,7 +37,7 @@ const service = {
         ],
       });
 
-      const { ...tiendasSinUsuarios } = tiendas.dataValues;
+      const  tiendasSinUsuarios  =  (JSON.parse(JSON.stringify(tiendas)))[0];
       let nProductos = await TiendaProducto.count({  where : {  'IdTienda' : tiendasSinUsuarios.id } })
       tiendasSinUsuarios.numeroProductos = nProductos;
       console.log(tiendasSinUsuarios)
