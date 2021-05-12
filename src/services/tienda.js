@@ -37,6 +37,10 @@ const service = {
         ],
       });
 
+      const { UsuariosTiendas, ...tiendasSinUsuarios } = tiendas.dataValues;
+      let nProductos = await TiendaProducto.count({  where : {  'IdTienda' : tiendasSinUsuarios.id } })
+      tiendasSinUsuarios.numeroProductos = nProductos;
+      console.log(tiendasSinUsuarios)
       return tiendas;
     } catch (error) {
       console.log(`${error}`);
