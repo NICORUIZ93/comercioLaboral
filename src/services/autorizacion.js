@@ -31,7 +31,7 @@ module.exports = {
   },
 
   async login(req, res) {
-    const { correo, contrasena, nombre } = req.body;
+    const { correo, contrasena, nombre , proveedor } = req.body;
 
     const contrasenaSinEncriptar = contrasena;
 
@@ -53,10 +53,11 @@ module.exports = {
       const rol = usuario.Rol.nombre;
       const token = generarToken(correo, rol);
 
-      if (rol === _Rol.Comprador) {
+      if (rol === _Rol.Comprador && proveedor === 1 || proveedor ===2 || proveedor ===3 || proveedor ===4) {
+        let p = ['correo','facebook','google','apple'];
         return res
           .status(200)
-          .json({ token: token, expiresIn: jwtExpirySeconds, usuario: usuarioSinContrasena });
+          .json({ token: token, expiresIn: jwtExpirySeconds, usuario: usuarioSinContrasena , proveedor : p[proveedor-1] });
       }
 
       const loginResult = await bcrypt.compare(contrasenaSinEncriptar, contrasena);
