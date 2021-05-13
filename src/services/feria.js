@@ -204,7 +204,7 @@ const service = {
           },
         });
 
-      if(!feria) throw Error('No existen ferias activas');
+      if(!feria){ return 'No existen ferias activas'};
 
       feria = feria.dataValues;
 
