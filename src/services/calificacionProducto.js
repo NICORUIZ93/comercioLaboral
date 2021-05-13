@@ -51,6 +51,7 @@ const service = {
   },
   async obtenerCalificacionesProducto(params) {
     try {
+     
       const calificaciones = await calificacionProductos.findAll({
         where: {
           [Op.or]: params,
@@ -68,41 +69,24 @@ const service = {
             'id': cl[i]['IdUsuario'],
           }
         });
-
+       
         const respuesta = await respuestaTienda.findAll({
           where: {
             'id_calificacion': cl[i]['id'],
           }
         });
 
-        if ((JSON.parse(JSON.stringify(usu)))[i] != undefined) {
           console.log(respuesta)
           resul[i] = {
             id: cl[i]['id'],
             id_producto: cl[i]['IdProducto'],
-            usuario: (JSON.parse(JSON.stringify(usu)))[i]['nombre'],
+            usuario: (JSON.parse(JSON.stringify(usu)))[0]['nombre'],
             calificacion: cl[i]['calificacion'],
             comentario: cl[i]['comentario'],
             respuestas: { "datos": JSON.parse(JSON.stringify(respuesta)) },
             createdAt: cl[i]['createdAt'],
             updatedAt: cl[i]['updatedAt']
-          }
-        } else {
-          console.log(respuesta)
-          resul[i] = {
-            id: cl[i]['id'],
-            id_producto: cl[i]['IdProducto'],
-            usuario: "",
-            calificacion: cl[i]['calificacion'],
-            comentario: cl[i]['comentario'],
-            respuestas: { "datos": JSON.parse(JSON.stringify(respuesta)) },
-            createdAt: cl[i]['createdAt'],
-            updatedAt: cl[i]['updatedAt']
-          }
-        }
-
-
-
+          }   
       }
 
       console.log(resul)
