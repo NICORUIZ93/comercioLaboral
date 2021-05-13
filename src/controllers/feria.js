@@ -43,7 +43,7 @@ module.exports = {
       return res.status(200).json(ferias);
     } catch (e) {
       console.log(e);
-      return res.status(500).send({ code: 500, mesaage: `${e}` });
+      return res.status(200).send({ code: 200, mesaage: `${e}` });
     }
   },
   async actualizarFeria(req, res) {
