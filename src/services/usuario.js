@@ -575,17 +575,32 @@ const service = {
           }
         });
 
+        if (usu[0]['nombre'] != undefined) {
           console.log(respuesta)
           resul[i] = {
             id: cl[i]['id'],
             id_producto: cl[i]['IdProducto'],
-            usuario: (JSON.parse(JSON.stringify(usu)))[0]['nombre'],
+            usuario: usu[0]['nombre'],
             calificacion: cl[i]['calificacion'],
             comentario: cl[i]['comentario'],
             respuestas: { "datos": JSON.parse(JSON.stringify(respuesta)) },
             createdAt: cl[i]['createdAt'],
             updatedAt: cl[i]['updatedAt']
           }   
+        } else {
+          console.log(respuesta)
+          resul[i] = {
+            id: cl[i]['id'],
+            id_producto: cl[i]['IdProducto'],
+            usuario: "No existe usuario",
+            calificacion: cl[i]['calificacion'],
+            comentario: cl[i]['comentario'],
+            respuestas: { "datos": JSON.parse(JSON.stringify(respuesta)) },
+            createdAt: cl[i]['createdAt'],
+            updatedAt: cl[i]['updatedAt']
+          }   
+        }
+  
       }
 
       console.log(resul)
