@@ -66,8 +66,52 @@ const service = {
            paymentCountry: "CO"
         }
      });
+
+     let banks = [
+      {"description" : "Aportes en Línea"},
+      {"description" : "Asopagos"},
+      {"description" : "Banco Agrario de Colombia"},
+      {"description" : "Banco AV Villas"},
+      {"description" : "Banco BBVA"},
+      {"description" : "Banco BCSC"},
+      {"description" : "Banco Citibank"},
+      {"description" : "Banco Coopcentral"},
+      {"description" : "Banco Davivienda"},
+      {"description" : "Banco de Bogotá"},
+      {"description" : "Banco de la República"},
+      {"description" : "Banco de Occidente"},
+      {"description" : "Banco Falabella"}, 
+      {"description" : "Banco Finandina"},
+      {"description" : "Banco GNB Sudameris"},
+      {"description" : "Banco ltaú Corpbanca Colombia S.A."},
+      {"description" : "Banco Mundo Mujer"},
+      {"description" : "Banco Pichincha"},
+      {"description" : "Banco Popular"},
+      {"description" : "Banco Procredit Colombia"},
+      {"description" : "Banco Santander de Negocios Colombia S.A."},
+      {"description" : "Banco Serf1nanza"},
+      {"description" : "Bancoldex"},
+      {"description" : "Bancolombia"},
+      {"description" : "Bancoomeva"},
+      {"description" : "BNP Paribas Coltefinanciera Compensar"},
+      {"description" : "Confiar Cooperativa Financiera"},
+      {"description" : "Coofinep Cooperativa Financiera"},
+      {"description" : "Cooperativa Financiera Cotrafa"},
+      {"description" : "Cooperativa Financiera de Antioquia"},
+      {"description" : "Deceval"},
+      {"description" : "Dirección del Tesoro Nacional - Regalias"},
+      {"description" : "Dirección del Tesoro Nacional"},
+      {"description" : "Enlace Operativo S.A."},
+      {"description" : "Fedecajas"},
+      {"description" : "Financiera Juriscoop"},
+      {"description" :"Banco JP Morgan Colombia"},
+      {"description" : "Mibanco S.A"},
+      {"description" : "Red Multibanca Colpatria"},
+      {"description" : "Simple S.A."},
+
+     ]  
      
-      return bancos.data.banks;
+      return banks;
 
     } catch (error) {
       console.log(`${error}`);
