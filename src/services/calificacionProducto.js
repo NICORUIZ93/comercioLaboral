@@ -77,16 +77,30 @@ const service = {
         });
 
           console.log(respuesta)
-          resul[i] = {
-            id: cl[i]['id'],
-            id_producto: cl[i]['IdProducto'],
-            usuario: (JSON.parse(JSON.stringify(usu)))[0]['nombre'],
-            calificacion: cl[i]['calificacion'],
-            comentario: cl[i]['comentario'],
-            respuestas: { "datos": JSON.parse(JSON.stringify(respuesta)) },
-            createdAt: cl[i]['createdAt'],
-            updatedAt: cl[i]['updatedAt']
-          }   
+          if ((JSON.parse(JSON.stringify(usu)))[0]['nombre'] != undefined) {
+            resul[i] = {
+              id: cl[i]['id'],
+              id_producto: cl[i]['IdProducto'],
+              usuario: (JSON.parse(JSON.stringify(usu)))[0]['nombre'],
+              calificacion: cl[i]['calificacion'],
+              comentario: cl[i]['comentario'],
+              respuestas: { "datos": JSON.parse(JSON.stringify(respuesta)) },
+              createdAt: cl[i]['createdAt'],
+              updatedAt: cl[i]['updatedAt']
+            }   
+          } else {
+            resul[i] = {
+              id: cl[i]['id'],
+              id_producto: cl[i]['IdProducto'],
+              usuario: "No se encontro usuario",
+              calificacion: cl[i]['calificacion'],
+              comentario: cl[i]['comentario'],
+              respuestas: { "datos": JSON.parse(JSON.stringify(respuesta)) },
+              createdAt: cl[i]['createdAt'],
+              updatedAt: cl[i]['updatedAt']
+            }   
+          }
+          
       }
 
       console.log(resul)
