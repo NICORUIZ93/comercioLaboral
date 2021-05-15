@@ -40,7 +40,9 @@ const service = {
   },
   async obtenerListaDepartamentos() {
     try {
-      const departamentos = await Departamento.findAll({ attributes: ["id","nombre"]});
+      const departamentos = await Departamento.findAll({ attributes: ["id","nombre"] , order: [
+        ['createdAt', 'DESC']
+      ]});
       return departamentos;
 
     } catch (error) {
