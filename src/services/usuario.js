@@ -575,7 +575,7 @@ const service = {
           }
         });
 
-        if ((usu[0]['nombre']) != undefined) {
+        if (usu.dataValues != undefined) {
           console.log(respuesta)
           resul[i] = {
             id: cl[i]['id'],
