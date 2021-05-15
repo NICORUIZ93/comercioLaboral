@@ -64,7 +64,7 @@ const service = {
       let resul = [];
       for (let i = 0; i <= cl.length - 1; i++) {
         const usu = await Usuario.findAll({
-          attributes: ['id', 'nombre'],
+          attributes: ['nombre'],
           where: {
             'id': cl[i]['IdUsuario'],
           }
@@ -80,7 +80,7 @@ const service = {
           resul[i] = {
             id: cl[i]['id'],
             id_producto: cl[i]['IdProducto'],
-            usuario: (JSON.parse(JSON.stringify(usu)))['nombre'],
+            usuario: JSON.parse(JSON.stringify(usu)),
             calificacion: cl[i]['calificacion'],
             comentario: cl[i]['comentario'],
             respuestas: { "datos": JSON.parse(JSON.stringify(respuesta)) },
