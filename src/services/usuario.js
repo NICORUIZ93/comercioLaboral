@@ -575,7 +575,7 @@ const service = {
           }
         });
 
-        if (usu != undefined) {
+        if ((JSON.parse(JSON.stringify(usu)))[0]['nombre'] != undefined) {
           console.log(respuesta)
           resul[i] = {
             id: cl[i]['id'],
