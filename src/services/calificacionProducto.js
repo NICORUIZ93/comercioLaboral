@@ -76,12 +76,6 @@ const service = {
             'id': cl[i]['IdUsuario'],
           }
         });
-       
-        const respuesta = await respuestaTienda.findAll({
-          where: {
-            'id_calificacion': cl[i]['id'],
-          }
-        });
 
           console.log(respuesta)
           resul[i] = {
@@ -89,8 +83,6 @@ const service = {
             id_producto: cl[i]['IdProducto'],
             usuario: usu[0],
             calificacion: cl[i]['calificacion'],
-            comentario: cl[i]['comentario'],
-            respuestas: { "datos": JSON.parse(JSON.stringify(respuesta)) },
             createdAt: cl[i]['createdAt'],
             updatedAt: cl[i]['updatedAt']
           }   
