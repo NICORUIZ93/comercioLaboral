@@ -7,7 +7,7 @@ var sequelize = require("../db/models").sequelize;
 const { malas_palabras } = require('../constants/filtroComentarios')
 const TiendaProducto = require('../db/models').TiendaProducto;
 const Producto = require('../db/models').Producto;
-const comentariosProductos = require('../models').comentariosProductos;
+const comentariosProductos = require('../db/models').comentariosProductos;
 const axios = require('axios');
 const service = {
 
