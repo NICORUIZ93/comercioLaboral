@@ -145,7 +145,7 @@ const service = {
           const create = await comentariosProductos.create(req.body);
           return create
         } else {
-          return "Usted ya califico este producto"
+          return "Usted ya comentó este producto"
         }
 
       } else {
