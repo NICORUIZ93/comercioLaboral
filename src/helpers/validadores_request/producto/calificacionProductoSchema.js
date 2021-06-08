@@ -6,11 +6,10 @@ const calificacionProductoSchema = (req, res, next) => {
     calificacion: Joi.number(),
     IdUsuario : Joi.number().integer(),
     IdProducto : Joi.number().integer(),
-    comentario : Joi.string().empty("").required(),
   };
 
   // create schema object with rules
-  const schema = Joi.object(reglasSchema).or("IdUsuario", "calificacion" ,"IdProducto","comentario");
+  const schema = Joi.object(reglasSchema).or("IdUsuario", "calificacion" ,"IdProducto");
 
   // schema options
   const opciones = {

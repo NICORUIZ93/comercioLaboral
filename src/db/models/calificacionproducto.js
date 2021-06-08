@@ -24,8 +24,7 @@ module.exports = (sequelize, DataTypes) => {
   calificacionProductos.init({
     IdProducto: DataTypes.INTEGER,
     IdUsuario: DataTypes.INTEGER,
-    calificacion: DataTypes.INTEGER,
-    comentario: DataTypes.STRING
+    calificacion: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'calificacionProductos',
