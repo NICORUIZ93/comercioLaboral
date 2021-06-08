@@ -40,7 +40,7 @@ const respuestaTiendaController = require('../controllers/respuestaTienda')
 //Validadores
 const { validadorObtenerPorId, obtenerPorUuidSchema } = require("../helpers/validadores_request/genericos");
 const { validadorCrearUsuario, validadorActualizarUsuario, validadorEliminarUsuario, validadorcrearUsuariosMasivo, validadorCrearEmpleadoTienda } = require("../helpers/validadores_request/usuario");
-const { validadorCrearProducto, validadorActualizarProducto, validadorEliminarProducto, validadorObtenerProductosPaginado, validadorBuscarProductosPaginado, validadorRecursosProducto, validadorProductosPorTiendaPaginado, validadorObtenerProductosTiendaFeria, validadorEliminarRecursoProducto , validadorCalificacionProducto,validadorObtenerCalificacionProducto,validarObtenerPromedioProducto } = require("../helpers/validadores_request/producto");
+const { validadorCrearProducto, validadorActualizarProducto, validadorEliminarProducto, validadorObtenerProductosPaginado, validadorBuscarProductosPaginado, validadorRecursosProducto, validadorProductosPorTiendaPaginado, validadorObtenerProductosTiendaFeria, validadorEliminarRecursoProducto , validadorCalificacionProducto,validadorObtenerCalificacionProducto,validarObtenerPromedioProducto, validadorCrearComentarioProducto } = require("../helpers/validadores_request/producto");
 const { validadorCrearTienda, validadorActualizarTienda, validadorEliminarTienda, validadorRecursosTienda, validadorActivarTienda , validadorRespuestaTienda ,validadorRespuestas} = require("../helpers/validadores_request/tienda");
 const { validadorCrearCategoria, validadorActualizarCategoria, validadorEliminarCategoria } = require("../helpers/validadores_request/categoria");
 const { validadorCrearMensaje, validadorEliminarMensaje } = require("../helpers/validadores_request/mensaje");
@@ -150,6 +150,7 @@ module.exports = app => {
   app.get("/api/producto/calificaciones/:id", validadorObtenerCalificacionProducto, calificacionProductoController.obtenercalificacionesProductos)
   app.get("/api/producto/calificacion/:id", validarObtenerPromedioProducto, calificacionProductoController.obtenerPromedioProducto)
   app.get('/api/comentarios/estados/:id' , calificacionProductoController.obtenerComentarios)
+  app.get('/api/comentarios/crear', validadorCrearComentarioProducto , calificacionProductoController.crearComentario)
 
   //Rutas productos solo de tiendas activas
   app.get("/api/activa/productos", productosTiendaActivaController.obtenerProductos)

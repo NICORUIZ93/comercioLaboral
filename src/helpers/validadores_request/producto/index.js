@@ -11,6 +11,7 @@ const validadorEliminarRecursoProducto = require("../producto/eliminarRecursoPro
 const validadorCalificacionProducto = require("../producto/calificacionProductoSchema").calificacionProductoSchema;
 const validadorObtenerCalificacionProducto = require('../producto/obtenerCalificacionProductoSchema').obtenerCalificacionProductoSchema;
 const validarObtenerPromedioProducto = require('../producto/obtenerPromedioProductoSchema').obtenerPromedioProductoSchema;
+const validadorCrearComentarioProducto = require('../producto/crearComentarioSchema').crearComentarioSchema;
 module.exports = {
     validadorCrearProducto,
     validadorActualizarProducto,
@@ -24,5 +25,6 @@ module.exports = {
     validadorEliminarRecursoProducto,
     validadorCalificacionProducto,
     validadorObtenerCalificacionProducto,
-    validarObtenerPromedioProducto
+    validarObtenerPromedioProducto,
+    validadorCrearComentarioProducto
 }

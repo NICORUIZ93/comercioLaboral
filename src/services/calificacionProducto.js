@@ -7,9 +7,11 @@ var sequelize = require("../db/models").sequelize;
 const { malas_palabras } = require('../constants/filtroComentarios')
 const TiendaProducto = require('../db/models').TiendaProducto;
 const Producto = require('../db/models').Producto;
+const comentariosProductos = require('../models').comentariosProductos;
 const axios = require('axios');
 const service = {
 
+  //ALTER TABLE "comentariosProductos" ADD COLUMN id SERIAL PRIMARY KEY;
 
   async calificacionProductos(nuevaCalificacion) {
     try {
@@ -35,19 +37,19 @@ const service = {
           'IdProducto': nuevaCalificacion.IdProducto
         }
       });
-    
+
       if ((JSON.parse(JSON.stringify(usu)))[0] != undefined && (JSON.parse(JSON.stringify(pro)))[0] != undefined) {
 
         if ((JSON.parse(JSON.stringify(verificar)))[0] == undefined) {
           let resultadocreate = await calificacionProductos.create(
             nuevaCalificacion
           );
-          return resultadocreate  
-        }else{
+          return resultadocreate
+        } else {
           return "Usted ya califico este producto"
         }
 
-      }else{
+      } else {
         return "Usuario o Producto no existen"
       }
 
@@ -58,7 +60,7 @@ const service = {
   },
   async obtenerCalificacionesProducto(params) {
     try {
-     
+
       const calificaciones = await calificacionProductos.findAll({
         where: {
           [Op.or]: params,
@@ -77,14 +79,14 @@ const service = {
           }
         });
 
-          resul[i] = {
-            id: cl[i]['id'],
-            id_producto: cl[i]['IdProducto'],
-            usuario: usu[0],
-            calificacion: cl[i]['calificacion'],
-            createdAt: cl[i]['createdAt'],
-            updatedAt: cl[i]['updatedAt']
-          }   
+        resul[i] = {
+          id: cl[i]['id'],
+          id_producto: cl[i]['IdProducto'],
+          usuario: usu[0],
+          calificacion: cl[i]['calificacion'],
+          createdAt: cl[i]['createdAt'],
+          updatedAt: cl[i]['updatedAt']
+        }
       }
 
       console.log(resul)
@@ -111,6 +113,53 @@ const service = {
       throw error;
     }
   },
+  async crearComentarioProducto(req) {
+
+    try {
+
+      const usu = await Usuario.findAll({
+        attributes: ['id', 'nombre'],
+        where: {
+          'id': req.body.IdUsuario,
+        }
+      });
+
+      const pro = await Producto.findAll({
+        attributes: ['id'],
+        where: {
+          'id': req.body.IdProducto,
+        }
+      });
+
+      const verificar = await comentariosProductos.findAll({
+        attributes: ['id'],
+        where: {
+          'IdUsuario': req.body.IdUsuario,
+          'IdProducto': req.body.IdProducto
+        }
+      });
+
+      if ((JSON.parse(JSON.stringify(usu)))[0] != undefined && (JSON.parse(JSON.stringify(pro)))[0] != undefined) {
+
+        if ((JSON.parse(JSON.stringify(verificar)))[0] == undefined) {
+          const create = await comentariosProductos.create(req.body);
+          return create
+        } else {
+          return "Usted ya califico este producto"
+        }
+
+      } else {
+        return "Usuario o Producto no existen"
+      }
+
+
+
+    } catch (error) {
+      return error
+    }
+
+
+  },
   async obtenerComentariosEstado(req) {
     try {
       const tiendaProducto = await TiendaProducto.findAll({
@@ -123,29 +172,29 @@ const service = {
       let sinresponder = [];
       for (let i = 0; i < (JSON.parse(JSON.stringify(tiendaProducto))).length; i++) {
         const res = await respuestaTienda.findAll({
-          where : {
-            'id_producto' : (JSON.parse(JSON.stringify(tiendaProducto)))[i]['IdProducto']
+          where: {
+            'id_producto': (JSON.parse(JSON.stringify(tiendaProducto)))[i]['IdProducto']
           }
         })
 
-        const comentarios = await calificacionProductos.findAll({ 
+        const comentarios = await calificacionProductos.findAll({
           where: {
-            'IdProducto' : (JSON.parse(JSON.stringify(tiendaProducto)))[i]['IdProducto']
+            'IdProducto': (JSON.parse(JSON.stringify(tiendaProducto)))[i]['IdProducto']
           }
-         });
-         
-       
-         
-         console.log(JSON.parse(JSON.stringify(res)))
-         console.log(JSON.parse(JSON.stringify(comentarios)))
-        
-         respondidos[i] =  JSON.parse(JSON.stringify(res))
-         sinresponder[i] = JSON.parse(JSON.stringify(comentarios))
-        
+        });
+
+
+
+        console.log(JSON.parse(JSON.stringify(res)))
+        console.log(JSON.parse(JSON.stringify(comentarios)))
+
+        respondidos[i] = JSON.parse(JSON.stringify(res))
+        sinresponder[i] = JSON.parse(JSON.stringify(comentarios))
+
       }
-      
+
       return {
-        "respondidos" : respondidos,
+        "respondidos": respondidos,
         "sinresponder": sinresponder
       }
 
