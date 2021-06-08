@@ -77,7 +77,6 @@ const service = {
           }
         });
 
-          console.log(respuesta)
           resul[i] = {
             id: cl[i]['id'],
             id_producto: cl[i]['IdProducto'],
