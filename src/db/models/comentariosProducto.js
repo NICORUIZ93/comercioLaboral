@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
      
     }
   };
-  calificacionProductos.init({
+  comentariosProductos.init({
     IdProducto: DataTypes.INTEGER,
     IdUsuario: DataTypes.INTEGER,
     comentario: DataTypes.STRING
