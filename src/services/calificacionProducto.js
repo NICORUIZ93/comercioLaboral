@@ -96,6 +96,44 @@ const service = {
       throw error;
     }
   },
+  async obtenerComentariosProducto(params) {
+    try {
+
+      const comentarios = await comentariosProductos.findAll({
+        where: {
+          [Op.or]: params,
+        },
+        order: [
+          ['createdAt', 'DESC']
+        ]
+      });
+      let cl = JSON.parse(JSON.stringify(comentarios))
+      let resul = [];
+      for (let i = 0; i <= cl.length - 1; i++) {
+        const usu = await Usuario.findAll({
+          attributes: ['nombre'],
+          where: {
+            'id': cl[i]['IdUsuario'],
+          }
+        });
+
+        resul[i] = {
+          id: cl[i]['id'],
+          id_producto: cl[i]['IdProducto'],
+          usuario: usu[0],
+          comentario: cl[i]['comentario'],
+          createdAt: cl[i]['createdAt'],
+          updatedAt: cl[i]['updatedAt']
+        }
+      }
+
+      console.log(resul)
+      return resul;
+    } catch (error) {
+      console.log(`${error}`);
+      throw error;
+    }
+  },
   async obtenerPromedioProducto(params) {
     try {
       const calificaciones = await calificacionProductos.findAll({

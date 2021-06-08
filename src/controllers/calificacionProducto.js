@@ -25,6 +25,17 @@ module.exports = {
         return res.status(500).send({ code: 500, mesaage: `${e}` });
       }
     },
+    async obtenerComentariosProductos(req, res) {
+      try {
+        const IdProducto = req.params.id;
+        const comentariosProducto = await  calificacionProductos.obtenerComentariosProducto({ IdProducto:IdProducto});
+        
+        return res.status(200).json(comentariosProducto);
+      } catch (e) {
+        console.log(e);
+        return res.status(500).send({ code: 500, mesaage: `${e}` });
+      }
+    },
     async obtenerPromedioProducto(req, res) {
       try {
         const IdProducto = req.params.id;

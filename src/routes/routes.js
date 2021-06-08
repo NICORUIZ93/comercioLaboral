@@ -151,6 +151,7 @@ module.exports = app => {
   app.get("/api/producto/calificacion/:id", validarObtenerPromedioProducto, calificacionProductoController.obtenerPromedioProducto)
   app.get('/api/comentarios/estados/:id' , calificacionProductoController.obtenerComentarios)
   app.post('/api/comentarios/crear', validadorCrearComentarioProducto , calificacionProductoController.crearComentario)
+  app.get('/api/comentarios/:id' , calificacionProductoController.obtenerComentariosProductos)
 
   //Rutas productos solo de tiendas activas
   app.get("/api/activa/productos", productosTiendaActivaController.obtenerProductos)
