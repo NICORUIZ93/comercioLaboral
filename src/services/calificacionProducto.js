@@ -117,11 +117,18 @@ const service = {
           }
         });
 
+        const respuesta = await respuestaTienda.findAll({
+          where: {
+            'id_calificacion': cl[i]['id'],
+          }
+        });
+
         resul[i] = {
           id: cl[i]['id'],
           id_producto: cl[i]['IdProducto'],
           usuario: usu[0],
           comentario: cl[i]['comentario'],
+          respuesta: JSON.parse(JSON.stringify(respuesta)),
           createdAt: cl[i]['createdAt'],
           updatedAt: cl[i]['updatedAt']
         }
