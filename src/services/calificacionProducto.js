@@ -27,14 +27,25 @@ const service = {
           'id': nuevaCalificacion.IdProducto,
         }
       });
+
+      const verificar = await calificacionProductos.findAll({
+        attributes: ['id'],
+        where: {
+          'IdUsuario': nuevaCalificacion.IdUsuario,
+          'IdProducto': nuevaCalificacion.IdProducto
+        }
+      });
     
       if ((JSON.parse(JSON.stringify(usu)))[0] != undefined && (JSON.parse(JSON.stringify(pro)))[0] != undefined) {
 
-        let resultadocreate = await calificacionProductos.create(
-          nuevaCalificacion
-        );
-
-        return resultadocreate
+        if ((JSON.parse(JSON.stringify(verificar)))[0] == undefined) {
+          let resultadocreate = await calificacionProductos.create(
+            nuevaCalificacion
+          );
+          return resultadocreate  
+        }else{
+          return "Usted ya califico este producto"
+        }
 
       }else{
         return "Usuario o Producto no existen"
