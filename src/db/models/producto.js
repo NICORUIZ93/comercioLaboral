@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
         otherKey: "IdPedido",
       });
       
-      this.hasMany(models.calificacionProductos, {foreignKey: "IdProducto"});
+      
 
       this.belongsToMany(models.Tienda, {
         through: models.TiendaProducto,
