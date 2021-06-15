@@ -17,6 +17,8 @@ const service = {
   async calificacionProductos(nuevaCalificacion) {
     try {
 
+      console.log(nuevaCalificacion)
+
       const usu = await Usuario.findAll({
         attributes: ['id', 'nombre'],
         where: {
