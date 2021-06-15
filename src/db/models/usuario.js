@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
 
       this.hasMany(models.Favorito, {foreignKey: "IdUsuario"});
 
-      this.hasMany(models.calificacionProductos, {foreignKey: "IdUsuario"});
+      
 
       this.hasMany(models.Pedido, {foreignKey: "IdUsuario"});
 
