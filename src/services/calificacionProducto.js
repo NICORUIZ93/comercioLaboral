@@ -29,7 +29,7 @@ const service = {
       const pe = await Pedido.findAll({
         attributes: ['id'],
         where: {
-          'id': nuevaCalificacion.IdProducto
+          'id': nuevaCalificacion.IdPedido
         }
       });
 
