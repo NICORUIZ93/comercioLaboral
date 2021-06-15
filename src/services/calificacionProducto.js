@@ -20,14 +20,14 @@ const service = {
       const usu = await Usuario.findAll({
         attributes: ['id', 'nombre'],
         where: {
-          'id': nuevaCalificacion.IdUsuario,
+          'id': nuevaCalificacion.IdUsuario
         }
       });
 
       const pe = await Pedido.findAll({
         attributes: ['id'],
         where: {
-          'id': nuevaCalificacion.IdProducto,
+          'id': nuevaCalificacion.IdProducto
         }
       });
 
