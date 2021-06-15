@@ -9,7 +9,7 @@ const calificacionProductoSchema = (req, res, next) => {
   };
 
   // create schema object with rules
-  const schema = Joi.object(reglasSchema).or("IdUsuario", "calificacion" ,"IdProducto");
+  const schema = Joi.object(reglasSchema).or("IdUsuario", "calificacion" ,"IdPedido");
 
   // schema options
   const opciones = {
