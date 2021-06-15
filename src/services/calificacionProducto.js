@@ -8,6 +8,7 @@ const { malas_palabras } = require('../constants/filtroComentarios')
 const TiendaProducto = require('../db/models').TiendaProducto;
 const Producto = require('../db/models').Producto;
 const comentariosProductos = require('../db/models').comentariosProductos;
+const Pedido = require("../db/models").Pedido;
 const axios = require('axios');
 const service = {
 
@@ -23,7 +24,7 @@ const service = {
         }
       });
 
-      const pro = await Producto.findAll({
+      const pe = await Pedido.findAll({
         attributes: ['id'],
         where: {
           'id': nuevaCalificacion.IdProducto,
@@ -34,11 +35,11 @@ const service = {
         attributes: ['id'],
         where: {
           'IdUsuario': nuevaCalificacion.IdUsuario,
-          'IdProducto': nuevaCalificacion.IdProducto
+          'IdPedido': nuevaCalificacion.IdPedido
         }
       });
 
-      if ((JSON.parse(JSON.stringify(usu)))[0] != undefined && (JSON.parse(JSON.stringify(pro)))[0] != undefined) {
+      if ((JSON.parse(JSON.stringify(usu)))[0] != undefined && (JSON.parse(JSON.stringify(pe)))[0] != undefined) {
 
         if ((JSON.parse(JSON.stringify(verificar)))[0] == undefined) {
           let resultadocreate = await calificacionProductos.create(

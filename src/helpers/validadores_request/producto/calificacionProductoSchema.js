@@ -5,7 +5,7 @@ const calificacionProductoSchema = (req, res, next) => {
   const reglasSchema = {
     calificacion: Joi.number(),
     IdUsuario : Joi.number().integer(),
-    IdProducto : Joi.number().integer(),
+    IdPedido : Joi.number().integer(),
   };
 
   // create schema object with rules

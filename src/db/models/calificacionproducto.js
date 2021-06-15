@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   calificacionProductos.init({
-    IdProducto: DataTypes.INTEGER,
+    IdPedido: DataTypes.INTEGER,
     IdUsuario: DataTypes.INTEGER,
     calificacion: DataTypes.INTEGER
   }, {
