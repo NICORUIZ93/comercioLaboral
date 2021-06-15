@@ -146,7 +146,7 @@ module.exports = app => {
   app.put("/api/producto", validadorActualizarProducto, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ productoController.actualizarProducto)
   app.delete("/api/producto/recurso", validadorEliminarRecursoProducto, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ productoController.eliminarRecursoProducto)
   app.delete("/api/producto/:id", validadorEliminarProducto, /*autorizacion.autorizar([Rol.Vendedor,Rol.Administrador]),*/ productoController.eliminarProducto)
-  app.post("/api/producto/calificacion", calificacionProductoController.calificacionProducto)
+  app.post("/api/producto/calificacion", validadorCalificacionProducto, calificacionProductoController.calificacionProducto)
   app.get("/api/producto/calificaciones/:id", validadorObtenerCalificacionProducto, calificacionProductoController.obtenercalificacionesProductos)
   app.get("/api/producto/calificacion/:id", validarObtenerPromedioProducto, calificacionProductoController.obtenerPromedioProducto)
   app.get('/api/comentarios/estados/:id' , calificacionProductoController.obtenerComentarios)
