@@ -63,7 +63,7 @@ const service = {
     try {
       const calificaciones = await calificacionProductos.findAll({
         where: {
-          IdPedido: params,
+          [Op.or]: params,
         },
         order: [["createdAt", "DESC"]],
       });
@@ -77,11 +77,17 @@ const service = {
           },
         });
 
+        const respuesta = await IdUsuario.findAll({
+          where: {
+            id_calificacion: cl[i]["id"],
+          },
+        });
+
         resul[i] = {
           id: cl[i]["id"],
           id_pedido: cl[i]["IdPedido"],
           usuario: usu[0],
-          calificacion: cl[i]["calificacion"],
+          calificacion: JSON.parse(JSON.stringify(respuesta)),
           createdAt: cl[i]["createdAt"],
           updatedAt: cl[i]["updatedAt"],
         };
@@ -94,6 +100,7 @@ const service = {
       throw error;
     }
   },
+
   async obtenerComentariosProducto(params) {
     try {
       const comentarios = await comentariosProductos.findAll({

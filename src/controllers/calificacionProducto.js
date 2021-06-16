@@ -16,8 +16,8 @@ module.exports = {
     },
     async obtenercalificacionesProductos(req, res) {
       try {
-        const IdPedido = req.params.id;
-        const calificacionProducto = await  calificacionProductos.obtenerCalificacionesProducto({ IdPedido:IdPedido});
+        const IdProducto = req.params.id;
+        const calificacionProducto = await  calificacionProductos.obtenerCalificacionesProducto({ IdProducto:IdProducto});
         
         return res.status(200).json(calificacionProducto);
       } catch (e) {
