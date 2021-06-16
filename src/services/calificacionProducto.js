@@ -87,7 +87,7 @@ const service = {
           id: cl[i]["id"],
           id_pedido: cl[i]["IdPedido"],
           usuario: usu[0],
-          calificacion: JSON.parse(JSON.stringify(respuesta)),
+          calificacion: cl[i]["calificacion"],
           createdAt: cl[i]["createdAt"],
           updatedAt: cl[i]["updatedAt"],
         };
