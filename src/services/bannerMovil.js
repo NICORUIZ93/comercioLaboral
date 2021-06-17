@@ -81,4 +81,4 @@ const service = {
   },
 };
 
-module.exports.bannerMovil = service;
+module.exports.bannerMovilService = service;
